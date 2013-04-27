@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Sport Coach Helper</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="menu_clear">Clear Board</string>
+    <string name="sure_want_clear">Are you sure you want to clear the board?</string>
+
+</resources>

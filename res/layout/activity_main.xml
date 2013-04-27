@@ -1,0 +1,42 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" >
+
+    <LinearLayout
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:id="@+id/layoutToolBar"
+        android:orientation="vertical"
+        >
+        <ImageView 
+            android:layout_width="100dp"
+        	android:layout_height="100dp"
+        	android:padding="10dp"
+        	android:id="@+id/playerTool"
+        	android:src="@drawable/player"/>
+        
+         <ImageView 
+            android:layout_width="100dp"
+        	android:layout_height="100dp"
+        	android:padding="10dp"
+        	android:id="@+id/triangleTool"
+        	android:src="@drawable/player_triangle"/>
+         
+          <ImageView 
+            android:layout_width="100dp"
+        	android:layout_height="100dp"
+        	android:padding="10dp"
+        	android:id="@+id/squareTool"
+        	android:src="@drawable/player_square"/>
+    </LinearLayout>
+    <com.sportcoachhelper.components.DrawingView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@+id/layoutToolBar"
+        android:id="@+id/drawingPanel">
+        
+    </com.sportcoachhelper.components.DrawingView>
+
+</RelativeLayout>
