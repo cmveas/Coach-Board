@@ -31,6 +31,7 @@ public class MainActivity extends GraphicsActivity implements
 	private ImageView playerImage;
 	private ImageView triangleTool;
 	private ImageView squareTool;
+	private ImageView ballTool;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +47,7 @@ public class MainActivity extends GraphicsActivity implements
 		playerImage = (ImageView) findViewById(R.id.playerTool);
 		triangleTool = (ImageView) findViewById(R.id.triangleTool);
 		squareTool = (ImageView) findViewById(R.id.squareTool);
+		ballTool = (ImageView) findViewById(R.id.ballTool);
 
 		mPaint = new Paint();
 		mPaint.setAntiAlias(true);
@@ -79,13 +81,7 @@ public class MainActivity extends GraphicsActivity implements
 					ClipData data = paramDragEvent.getClipData();
 
 					String label = data.getDescription().getLabel().toString();
-					if (label.equals("player")) {
-						drawingView.setCirclePlayer(x, y);
-					} else if (label.equals("triangle")) {
-						drawingView.setTrianglePlayer(x, y);
-					}else if (label.equals("square")) {
-						drawingView.setSquarePlayer(x, y);
-					}
+					checkDataType(x, y, label);
 					paramView.setVisibility(View.VISIBLE);
 					playerImage.setVisibility(View.VISIBLE);
 					break;
@@ -93,6 +89,18 @@ public class MainActivity extends GraphicsActivity implements
 				android.util.Log.d("[DRAG ACTION]",
 						"Event:" + paramDragEvent.getAction());
 				return true;
+			}
+
+			private void checkDataType(int x, int y, String label) {
+				if (label.equals("player")) {
+					drawingView.setCirclePlayer(x, y);
+				} else if (label.equals("triangle")) {
+					drawingView.setTrianglePlayer(x, y);
+				}else if (label.equals("square")) {
+					drawingView.setSquarePlayer(x, y);
+				} else if(label.equals("ball")){
+					drawingView.setBall(x, y);
+				}
 			}
 		};
 
@@ -105,6 +113,9 @@ public class MainActivity extends GraphicsActivity implements
 		
 		squareTool.setOnTouchListener(new TouchForDragListener(squareTool,
 				"square"));
+		
+		ballTool.setOnTouchListener(new TouchForDragListener(ballTool,
+				"ball"));
 
 	}
 

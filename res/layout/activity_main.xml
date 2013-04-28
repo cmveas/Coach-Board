@@ -30,6 +30,13 @@
         	android:padding="10dp"
         	android:id="@+id/squareTool"
         	android:src="@drawable/player_square"/>
+          
+          <ImageView 
+            android:layout_width="100dp"
+        	android:layout_height="100dp"
+        	android:padding="10dp"
+        	android:id="@+id/ballTool"
+        	android:src="@drawable/volleyball"/>
     </LinearLayout>
     <com.sportcoachhelper.components.DrawingView
         android:layout_width="match_parent"

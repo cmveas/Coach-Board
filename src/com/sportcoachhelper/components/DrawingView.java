@@ -15,12 +15,13 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.sportcoachhelper.R;
+import com.sportcoachhelper.paths.BallPath;
 import com.sportcoachhelper.paths.CirclePath;
 import com.sportcoachhelper.paths.ColorPath;
 import com.sportcoachhelper.paths.LinePath;
 import com.sportcoachhelper.paths.ShapePath;
 import com.sportcoachhelper.paths.SquarePath;
-import com.sportcoachhelper.paths.TrianglePath;
+import com.sportcoachhelper.util.Utility;
 
 public class DrawingView extends View {
 
@@ -90,6 +91,15 @@ public class DrawingView extends View {
 		squarePaint.setStrokeJoin(Paint.Join.ROUND);
 		squarePaint.setStrokeCap(Paint.Cap.ROUND);
 		squarePaint.setStrokeWidth(4);
+		
+		ballPaint = new Paint();
+		ballPaint.setAntiAlias(true);
+		ballPaint.setDither(true);
+		ballPaint.setColor(0xFF000000);
+		ballPaint.setStyle(Paint.Style.FILL);
+		ballPaint.setStrokeJoin(Paint.Join.ROUND);
+		ballPaint.setStrokeCap(Paint.Cap.ROUND);
+		ballPaint.setStrokeWidth(4);
 
 	}
 
@@ -114,7 +124,7 @@ public class DrawingView extends View {
 		mCanvas = new Canvas(mBitmap);
 		Bitmap bitmap = BitmapFactory.decodeResource(getResources(),
 				R.drawable.cancha_voley);
-		Bitmap resizedBitmap = getResizedBitmap(bitmap, h, w);
+		Bitmap resizedBitmap = Utility.getResizedBitmap(bitmap, h, w);
 		mCanvas.drawBitmap(resizedBitmap, new Matrix(), new Paint());
 	}
 
@@ -127,6 +137,8 @@ public class DrawingView extends View {
 		for (Path path : undoablePaths) {
 			if(path instanceof ShapePath) {
 				canvas.drawPath(path,((ShapePath)path).getPaint());
+			} else if(path instanceof BallPath) {
+				canvas.drawBitmap(((BallPath)path).getBitmap(),((BallPath)path).getX(),((BallPath)path).getY(),ballPaint);
 			} else {
 				canvas.drawPath(path, mPaint);
 			}
@@ -137,6 +149,7 @@ public class DrawingView extends View {
 	}
 
 	private float mX, mY;
+	private Paint ballPaint;
 	private static final float TOUCH_TOLERANCE = 2;
 
 	private void touch_start(float x, float y) {
@@ -168,28 +181,7 @@ public class DrawingView extends View {
 		invalidate();
 	}
 
-	public Bitmap getResizedBitmap(Bitmap bm, int newHeight, int newWidth) {
-
-		if (bm != null) {
-			int width = bm.getWidth();
-			int height = bm.getHeight();
-			float scaleWidth = ((float) newWidth) / width;
-			float scaleHeight = ((float) newHeight) / height;
-			// create a matrix for the manipulation
-			Matrix matrix = new Matrix();
-			// resize the bit map
-			matrix.postScale(scaleWidth, scaleHeight);
-
-			// recreate the new Bitmap
-
-			Bitmap resizedBitmap = Bitmap.createBitmap(bm, 0, 0, width, height,
-					matrix, false);
-
-			return resizedBitmap;
-		} else
-			return bm;
-
-	}
+	
 
 	public void undoLast() {
 		if (undoablePaths.size() > 0) {
@@ -231,8 +223,8 @@ public class DrawingView extends View {
 	public void setTrianglePlayer(int x, int y) {
 		initTrianglePath();
 		mPlayerPath.moveTo(x, y);
-		mPlayerPath.lineTo(x-20, y+30);
-		mPlayerPath.lineTo(x+20, y+30);
+		mPlayerPath.lineTo(x-25, y+40);
+		mPlayerPath.lineTo(x+25, y+40);
 		mPlayerPath.lineTo(x, y);		
 		undoablePaths.add(mPlayerPath);
 		invalidate();
@@ -253,14 +245,27 @@ public class DrawingView extends View {
 
 	public void setSquarePlayer(int x, int y) {
 		initSquarePath();
-		mPlayerPath.addRect(x,y, x+20, y+20, Path.Direction.CCW);	
+		mPlayerPath.addRect(x,y, x+35, y+35, Path.Direction.CCW);	
 		undoablePaths.add(mPlayerPath);
 		invalidate();
 		
 	}
 
 	private void initSquarePath() {
-		mPlayerPath = new SquarePath(squarePaint);		
-		
+		mPlayerPath = new SquarePath(squarePaint);				
 	}
+	
+	private void initBallPath() {
+		mPlayerPath = new BallPath(ballPaint,R.drawable.volleyball,getResources());			
+	}
+
+	public void setBall(int x, int y) {
+		initBallPath();
+		((BallPath)mPlayerPath).setX(x);
+		((BallPath)mPlayerPath).setY(y);
+		undoablePaths.add(mPlayerPath);
+		invalidate();
+	}
+
+
 }
