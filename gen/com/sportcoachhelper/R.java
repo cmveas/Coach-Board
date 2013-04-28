@@ -20,15 +20,17 @@ public final class R {
         public static final int round_player=0x7f020006;
         public static final int template=0x7f020007;
         public static final int voley=0x7f020008;
+        public static final int volleyball=0x7f020009;
     }
     public static final class id {
-        public static final int btn_no=0x7f070007;
-        public static final int btn_yes=0x7f070006;
-        public static final int drawingPanel=0x7f070004;
-        public static final int edit_name=0x7f070005;
+        public static final int ballTool=0x7f070004;
+        public static final int btn_no=0x7f070008;
+        public static final int btn_yes=0x7f070007;
+        public static final int drawingPanel=0x7f070005;
+        public static final int edit_name=0x7f070006;
         public static final int layoutToolBar=0x7f070000;
-        public static final int menu_clear_document=0x7f070008;
-        public static final int menu_settings=0x7f070009;
+        public static final int menu_clear_document=0x7f070009;
+        public static final int menu_settings=0x7f07000a;
         public static final int playerTool=0x7f070001;
         public static final int squareTool=0x7f070003;
         public static final int triangleTool=0x7f070002;

@@ -5,7 +5,9 @@ import java.util.ArrayList;
 
 import android.graphics.Path;
 
-public class SerializablePath extends Path implements Serializable {
+import com.sportcoachhelper.paths.interfaces.Dibujables;
+
+public abstract class SerializablePath extends Path implements Serializable,Dibujables {
 
     private ArrayList<float[]> pathPoints;
 
@@ -29,5 +31,9 @@ public class SerializablePath extends Path implements Serializable {
         for (float[] pointSet : pathPoints) {
             this.quadTo(pointSet[0], pointSet[1], pointSet[2], pointSet[3]);
         } 
+    }
+    
+    public void resetPath(){
+    	reset();
     }
 }

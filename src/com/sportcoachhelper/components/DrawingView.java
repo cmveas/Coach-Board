@@ -7,6 +7,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.DashPathEffect;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Path;
@@ -19,15 +20,15 @@ import com.sportcoachhelper.paths.BallPath;
 import com.sportcoachhelper.paths.CirclePath;
 import com.sportcoachhelper.paths.ColorPath;
 import com.sportcoachhelper.paths.LinePath;
-import com.sportcoachhelper.paths.ShapePath;
 import com.sportcoachhelper.paths.SquarePath;
+import com.sportcoachhelper.paths.interfaces.Dibujables;
 import com.sportcoachhelper.util.Utility;
 
 public class DrawingView extends View {
 
 	private Bitmap mBitmap;
 	private Canvas mCanvas;
-	private Path mPath;
+	private LinePath mPath;
 	private Paint mBitmapPaint;
 	private Paint mPaint;
 	private Paint playerLinePaint;
@@ -53,7 +54,18 @@ public class DrawingView extends View {
 	}
 
 	private void init() {
-		mPath = new LinePath();
+		
+		mPaint = new Paint();
+		mPaint.setAntiAlias(true);
+		mPaint.setDither(true);
+		mPaint.setColor(0xFF000000);
+		mPaint.setStyle(Paint.Style.STROKE);
+		mPaint.setStrokeJoin(Paint.Join.ROUND);
+		mPaint.setStrokeCap(Paint.Cap.ROUND);
+		mPaint.setStrokeWidth(4);
+		mPaint.setPathEffect(new DashPathEffect(new float[] { 10, 20 }, 0));
+		
+		mPath = new LinePath(mPaint);
 		mBitmapPaint = new Paint(Paint.DITHER_FLAG);
 
 		playerLinePaint = new Paint();
@@ -64,6 +76,7 @@ public class DrawingView extends View {
 		playerLinePaint.setStrokeJoin(Paint.Join.ROUND);
 		playerLinePaint.setStrokeCap(Paint.Cap.ROUND);
 		playerLinePaint.setStrokeWidth(4);
+		
 		
 		playerPaint = new Paint();
 		playerPaint.setAntiAlias(true);
@@ -111,7 +124,7 @@ public class DrawingView extends View {
 		mPlayerPath = new CirclePath(trianglePaint);		
 	}
 
-	private List<Path> undoablePaths = new ArrayList<Path>();
+	private List<Dibujables> undoablePaths = new ArrayList<Dibujables>();
 
 	public void setDrawingPaint(Paint paint) {
 		mPaint = paint;
@@ -134,14 +147,8 @@ public class DrawingView extends View {
 
 		canvas.drawBitmap(mBitmap, 0, 0, mBitmapPaint);
 
-		for (Path path : undoablePaths) {
-			if(path instanceof ShapePath) {
-				canvas.drawPath(path,((ShapePath)path).getPaint());
-			} else if(path instanceof BallPath) {
-				canvas.drawBitmap(((BallPath)path).getBitmap(),((BallPath)path).getX(),((BallPath)path).getY(),ballPaint);
-			} else {
-				canvas.drawPath(path, mPaint);
-			}
+		for (Dibujables path : undoablePaths) {
+			path.draw(canvas);
 			
 		}
 
@@ -185,8 +192,8 @@ public class DrawingView extends View {
 
 	public void undoLast() {
 		if (undoablePaths.size() > 0) {
-			Path removedPath = undoablePaths.remove(undoablePaths.size() - 1);
-			removedPath.reset();
+			Dibujables removedPath = undoablePaths.remove(undoablePaths.size() - 1);
+			removedPath.resetPath();
 		}
 		invalidate();
 	}
