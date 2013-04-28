@@ -3,8 +3,6 @@ package com.sportcoachhelper;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.ClipData;
-import android.graphics.DashPathEffect;
-import android.graphics.Paint;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -19,13 +17,11 @@ import android.view.View.OnDragListener;
 import android.view.View.OnTouchListener;
 import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.sportcoachhelper.components.DrawingView;
 import com.sportcoachhelper.dialogs.ClearDialog;
 
-public class MainActivity extends GraphicsActivity implements
-		ColorPickerDialog.OnColorChangedListener {
+public class MainActivity extends GraphicsActivity  {
 
 	private DrawingView drawingView;
 	private ImageView playerImage;
@@ -49,16 +45,6 @@ public class MainActivity extends GraphicsActivity implements
 		squareTool = (ImageView) findViewById(R.id.squareTool);
 		ballTool = (ImageView) findViewById(R.id.ballTool);
 
-		mPaint = new Paint();
-		mPaint.setAntiAlias(true);
-		mPaint.setDither(true);
-		mPaint.setColor(0xFF000000);
-		mPaint.setStyle(Paint.Style.STROKE);
-		mPaint.setStrokeJoin(Paint.Join.ROUND);
-		mPaint.setStrokeCap(Paint.Cap.ROUND);
-		mPaint.setStrokeWidth(4);
-		mPaint.setPathEffect(new DashPathEffect(new float[] { 10, 20 }, 0));
-		drawingView.setDrawingPaint(mPaint);
 
 		manageDrag();
 	}
@@ -119,8 +105,6 @@ public class MainActivity extends GraphicsActivity implements
 
 	}
 
-	private Paint mPaint;
-
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getMenuInflater();
@@ -146,9 +130,6 @@ public class MainActivity extends GraphicsActivity implements
 		return result;
 	}
 
-	public void colorChanged(int color) {
-		mPaint.setColor(color);
-	}
 
 	@Override
 	public void onBackPressed() {

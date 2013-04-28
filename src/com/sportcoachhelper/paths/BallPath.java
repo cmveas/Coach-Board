@@ -3,6 +3,7 @@ package com.sportcoachhelper.paths;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.graphics.Paint;
 
 import com.sportcoachhelper.util.Utility;
@@ -47,5 +48,8 @@ public class BallPath extends ColorPath {
 		return y;
 	}
 	
-	
+	@Override
+	public void draw(Canvas canvas) {
+		canvas.drawBitmap(bitmap,x,y,getPaint());
+	}
 }

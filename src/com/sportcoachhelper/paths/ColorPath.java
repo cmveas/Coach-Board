@@ -1,8 +1,11 @@
 package com.sportcoachhelper.paths;
 
+import android.graphics.Canvas;
 import android.graphics.Paint;
 
-public abstract class ColorPath extends SerializablePath {
+import com.sportcoachhelper.paths.interfaces.Dibujables;
+
+public abstract class ColorPath extends SerializablePath{
 
 	private Paint paint;
 
@@ -18,6 +21,11 @@ public abstract class ColorPath extends SerializablePath {
 	public void setPaint(Paint paint) {
 		this.paint = paint;
 	}
+	
+	@Override
+	public void draw(Canvas canvas) {
+		canvas.drawPath(this,paint);
+	} 
 	
 	
 }
