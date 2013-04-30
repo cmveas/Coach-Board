@@ -22,6 +22,7 @@ import com.sportcoachhelper.paths.ColorPath;
 import com.sportcoachhelper.paths.LinePath;
 import com.sportcoachhelper.paths.SquarePath;
 import com.sportcoachhelper.paths.interfaces.Dibujables;
+import com.sportcoachhelper.paths.interfaces.Movable;
 import com.sportcoachhelper.util.Utility;
 
 public class DrawingView extends View {
@@ -157,34 +158,61 @@ public class DrawingView extends View {
 
 	private float mX, mY;
 	private Paint ballPaint;
+	private Movable movable;
 	private static final float TOUCH_TOLERANCE = 2;
 
 	private void touch_start(float x, float y) {
-		init();
-		mPath.reset();
-		mPath.moveTo(x, y);
-		mX = x;
-		mY = y;
-	}
-
-	private void touch_move(float x, float y) {
-		float dx = Math.abs(x - mX);
-		float dy = Math.abs(y - mY);
-		if (dx >= TOUCH_TOLERANCE || dy >= TOUCH_TOLERANCE) {
-			mPath.quadTo(mX, mY, (x + mX) / 2, (y + mY) / 2);
+		movable = checkMovableObjectsPosition(x, y);
+		if(movable==null) {
+			init();
+			mPath.reset();
+			mPath.moveTo(x, y);
 			mX = x;
 			mY = y;
 		}
 	}
 
+	private Movable checkMovableObjectsPosition(float x, float y) {
+		Movable result = null;
+		for (Dibujables item : undoablePaths) {
+			if(item instanceof Movable) {
+				Movable moveItem = (Movable)item;
+				if(moveItem.isItIn(x, y)) {
+					result = moveItem;
+					break;
+				}
+			}
+		}
+		return result;
+	}
+
+	private void touch_move(float x, float y) {
+		if(movable==null) {
+			float dx = Math.abs(x - mX);
+			float dy = Math.abs(y - mY);
+			if (dx >= TOUCH_TOLERANCE || dy >= TOUCH_TOLERANCE) {
+				mPath.quadTo(mX, mY, (x + mX) / 2, (y + mY) / 2);
+				mX = x;
+				mY = y;
+			}
+		} else {
+			movable.setX((int)x);
+			movable.setY((int)y);
+			invalidate();
+		}
+	}
+
 	private void touch_up() {
-		mPath.lineTo(mX, mY);
-		// commit the path to our offscreen
-		// mCanvas.drawPath(mPath, mPaint);
-		// kill this so we don't double draw
-		// mPath.reset();
-		undoablePaths.add(mPath);
-		// mPath.reset();
+		if(movable==null) {
+			mPath.lineTo(mX, mY);
+			// commit the path to our offscreen
+			// mCanvas.drawPath(mPath, mPaint);
+			// kill this so we don't double draw
+			// mPath.reset();
+			undoablePaths.add(mPath);
+			// mPath.reset();
+		}
+		movable=null;
 		invalidate();
 	}
 

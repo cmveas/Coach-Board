@@ -6,10 +6,12 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 
+import com.sportcoachhelper.paths.interfaces.Movable;
 import com.sportcoachhelper.util.Utility;
 
-public class BallPath extends ColorPath {
+public class BallPath extends ColorPath implements Movable {
 
+	private static final int SIZE = 35;
 	private int resource;
 	private int x;
 	private int y;
@@ -19,7 +21,7 @@ public class BallPath extends ColorPath {
 		super(paint);
 		this.resource = resource;
 		bitmap = BitmapFactory.decodeResource(resources, resource);
-		bitmap = Utility.getResizedBitmap(bitmap, 35, 35);
+		bitmap = Utility.getResizedBitmap(bitmap, SIZE, SIZE);
 	}
 
 	public Bitmap getBitmap() {
@@ -51,5 +53,19 @@ public class BallPath extends ColorPath {
 	@Override
 	public void draw(Canvas canvas) {
 		canvas.drawBitmap(bitmap,x,y,getPaint());
+	}
+
+	@Override
+	public boolean isItIn(float x, float y) {
+		boolean result = false;
+				
+		if(x>this.x && x<this.x+SIZE) {
+			result = true;
+		}
+		
+		if(y>this.y && y<this.y+SIZE) {
+			result =  result && true;
+		}
+		return result;
 	}
 }
