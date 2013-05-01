@@ -5,8 +5,29 @@
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
     <string name="menu_clear">Clear Board</string>
+    <string name="menu_exit">Exit</string>
     <string name="sure_want_clear">Are you sure you want to clear the board?</string>
 	<string name="splash_title">Sports Coach Helper</string>
 	<string name="enter">Enter</string>
 	<string name="setNumber">Set Number</string>
+	
+	<string name="soccer">Soccer</string>
+	<string name="voley">Voleyball</string>
+	<string name="basketball">Basketball</string>
+	<string name="field">Field</string>
+	
+	
+	<string-array name="fields">
+		<item >@string/soccer</item>
+		<item >@string/voley</item>
+		<item >@string/basketball</item>
+	</string-array>
+	<integer-array name="fieldsIndexes">
+		<item >@drawable/soccer</item>
+		<item >@drawable/voley</item>
+		<item >@drawable/basket</item>
+	</integer-array>
+	
+	
+	
 </resources>

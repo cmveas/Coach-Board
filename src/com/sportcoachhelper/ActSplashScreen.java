@@ -29,7 +29,7 @@ public class ActSplashScreen extends Activity {
 	
 	
 	public void proceed(View view){
-		Intent intent = new Intent(this,MainActivity.class);
+		Intent intent = new Intent(this,ActHomeScreen.class);
 		startActivity(intent);
 	}
 	
