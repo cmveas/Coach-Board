@@ -4,46 +4,68 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity" >
 
-    <LinearLayout
-        android:layout_width="100dp"
-        android:layout_height="match_parent"
+    <ScrollView
         android:id="@+id/layoutToolBar"
-        android:orientation="vertical"
-        >
-        <ImageView 
-            android:layout_width="100dp"
-        	android:layout_height="100dp"
-        	android:padding="10dp"
-        	android:id="@+id/playerTool"
-        	android:src="@drawable/player"/>
-        
-         <ImageView 
-            android:layout_width="100dp"
-        	android:layout_height="100dp"
-        	android:padding="10dp"
-        	android:id="@+id/triangleTool"
-        	android:src="@drawable/player_triangle"/>
-         
-          <ImageView 
-            android:layout_width="100dp"
-        	android:layout_height="100dp"
-        	android:padding="10dp"
-        	android:id="@+id/squareTool"
-        	android:src="@drawable/player_square"/>
-          
-          <ImageView 
-            android:layout_width="100dp"
-        	android:layout_height="100dp"
-        	android:padding="10dp"
-        	android:id="@+id/ballTool"
-        	android:src="@drawable/volleyball"/>
-    </LinearLayout>
+        android:layout_width="125dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/layoutToolBar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/playerTool"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:padding="10dp"
+                android:src="@drawable/player" />
+
+            <ImageView
+                android:id="@+id/triangleTool"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:padding="10dp"
+                android:src="@drawable/player_triangle" />
+
+            <ImageView
+                android:id="@+id/squareTool"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:padding="10dp"
+                android:src="@drawable/player_square" />
+
+            <ImageView
+                android:id="@+id/ballTool"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:padding="10dp"
+                android:src="@drawable/volleyball" />
+
+            <EditText
+                android:id="@+id/playerNumber"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:inputType="number"
+                android:padding="10dp"
+                android:visibility="gone" />
+            <Button
+                android:id="@+id/playerNumberButton"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:padding="10dp"
+                android:text="@string/setNumber"
+                android:visibility="gone" />
+        </LinearLayout>
+    </ScrollView>
+
     <com.sportcoachhelper.components.DrawingView
+        android:id="@+id/drawingPanel"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_toRightOf="@+id/layoutToolBar"
-        android:id="@+id/drawingPanel">
-        
+        android:layout_toRightOf="@+id/layoutToolBar" >
     </com.sportcoachhelper.components.DrawingView>
 
 </RelativeLayout>

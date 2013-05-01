@@ -13,21 +13,29 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.DragShadowBuilder;
+import android.view.View.OnClickListener;
 import android.view.View.OnDragListener;
+import android.view.View.OnFocusChangeListener;
 import android.view.View.OnTouchListener;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.sportcoachhelper.components.DrawingView;
 import com.sportcoachhelper.dialogs.ClearDialog;
+import com.sportcoachhelper.interfaces.OnComponentSelectedListener;
+import com.sportcoachhelper.paths.ColorPath;
 
-public class MainActivity extends GraphicsActivity  {
+public class MainActivity extends GraphicsActivity implements OnComponentSelectedListener  {
 
 	private DrawingView drawingView;
 	private ImageView playerImage;
 	private ImageView triangleTool;
 	private ImageView squareTool;
 	private ImageView ballTool;
+	private EditText playerNumber;
+	private Button playerNumberButton;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -44,9 +52,27 @@ public class MainActivity extends GraphicsActivity  {
 		triangleTool = (ImageView) findViewById(R.id.triangleTool);
 		squareTool = (ImageView) findViewById(R.id.squareTool);
 		ballTool = (ImageView) findViewById(R.id.ballTool);
-
+		playerNumberButton = (Button) findViewById(R.id.playerNumberButton);
+		
+		playerNumber = (EditText) findViewById(R.id.playerNumber);
+		
+		
+		playerNumberButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				String number = playerNumber.getText().toString();
+				if(!number.trim().equals("")) {
+					drawingView.setLabel(number);
+				}
+				
+			}
+		});
+		
 
 		manageDrag();
+		
+	    drawingView.setOnComponentSelectedListener(this);
 	}
 
 	@SuppressLint("NewApi")
@@ -55,7 +81,6 @@ public class MainActivity extends GraphicsActivity  {
 
 			@Override
 			public boolean onDrag(View paramView, DragEvent paramDragEvent) {
-				int action = paramDragEvent.getAction();
 				switch (paramDragEvent.getAction()) {
 				case DragEvent.ACTION_DRAG_STARTED:
 					break;
@@ -181,4 +206,17 @@ public class MainActivity extends GraphicsActivity  {
 	        	drawingView.clearBoard();
 	        }
 	    }
+
+		@Override
+		public void onComponentSelected(ColorPath path) {
+			playerNumber.setVisibility(View.VISIBLE);
+			playerNumberButton.setVisibility(View.VISIBLE);
+		}
+
+		@Override
+		public void onComponentRelease() {
+			playerNumber.setVisibility(View.GONE);
+			playerNumberButton.setVisibility(View.GONE);
+			
+		}
 }

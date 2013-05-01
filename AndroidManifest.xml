@@ -14,9 +14,10 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme"
+        android:name="CoachApp"
         android:hardwareAccelerated="true" >
         <activity
-            android:name="com.sportcoachhelper.MainActivity"
+            android:name="com.sportcoachhelper.ActSplashScreen"
             android:label="@string/app_name" 
             android:screenOrientation="landscape">
             <intent-filter>
@@ -24,6 +25,12 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        
+         <activity
+            android:name="com.sportcoachhelper.MainActivity"
+            android:label="@string/app_name" 
+            android:screenOrientation="landscape">
         </activity>
     </application>
 

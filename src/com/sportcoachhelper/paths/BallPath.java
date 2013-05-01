@@ -6,15 +6,12 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 
-import com.sportcoachhelper.paths.interfaces.Movable;
 import com.sportcoachhelper.util.Utility;
 
-public class BallPath extends ColorPath implements Movable {
+public class BallPath extends ColorPath {
 
-	private static final int SIZE = 35;
+
 	private int resource;
-	private int x;
-	private int y;
 	private Bitmap bitmap;
 
 	public BallPath(Paint paint, int resource, Resources resources) {
@@ -32,24 +29,7 @@ public class BallPath extends ColorPath implements Movable {
 		return resource;
 	}
 
-	public void setX(int x) {
-		this.x=x;
-		
-	}
 
-	public void setY(int y) {
-		this.y=y;
-		
-	}
-
-	public int getX() {
-		return x;
-	}
-
-	public int getY() {
-		return y;
-	}
-	
 	@Override
 	public void draw(Canvas canvas) {
 		canvas.drawBitmap(bitmap,x,y,getPaint());
@@ -68,4 +48,10 @@ public class BallPath extends ColorPath implements Movable {
 		}
 		return result;
 	}
+	
+	@Override
+	public boolean canBeMoved() {
+		return true;
+	}
+	
 }
