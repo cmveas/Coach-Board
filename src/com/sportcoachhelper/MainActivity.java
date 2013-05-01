@@ -3,6 +3,7 @@ package com.sportcoachhelper;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.ClipData;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -15,7 +16,6 @@ import android.view.View;
 import android.view.View.DragShadowBuilder;
 import android.view.View.OnClickListener;
 import android.view.View.OnDragListener;
-import android.view.View.OnFocusChangeListener;
 import android.view.View.OnTouchListener;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -73,6 +73,10 @@ public class MainActivity extends GraphicsActivity implements OnComponentSelecte
 		manageDrag();
 		
 	    drawingView.setOnComponentSelectedListener(this);
+	    
+	    Intent intent = getIntent();
+	    String label  = intent.getStringExtra("field");
+	    drawingView.setField(label);
 	}
 
 	@SuppressLint("NewApi")
@@ -146,6 +150,9 @@ public class MainActivity extends GraphicsActivity implements OnComponentSelecte
 			showClearDialog();
 			result = true;
 			break;
+		case R.id.menu_exit:
+			finish();
+			break;
 		}
 		
 		if(!result) {
@@ -158,8 +165,10 @@ public class MainActivity extends GraphicsActivity implements OnComponentSelecte
 
 	@Override
 	public void onBackPressed() {
-		drawingView.undoLast();
-		// super.onBackPressed();
+		boolean result = drawingView.undoLast();
+		if(!result) {
+			super.onBackPressed();
+		}
 	}
 
 	class TouchForDragListener implements OnTouchListener {

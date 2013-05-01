@@ -136,6 +136,8 @@ public class DrawingView extends View {
 	}
 
 	private List<Dibujables> undoablePaths = new ArrayList<Dibujables>();
+	private int w;
+	private int h;
 
 	public void setDrawingPaint(Paint paint) {
 		mPaint = paint;
@@ -144,12 +146,35 @@ public class DrawingView extends View {
 	@Override
 	protected void onSizeChanged(int w, int h, int oldw, int oldh) {
 		super.onSizeChanged(w, h, oldw, oldh);
-		mBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
-		mCanvas = new Canvas(mBitmap);
+		initializeField(w, h);
+	}
+
+	private void initializeField(int w, int h) {
+		this.w=w;
+		this.h=h;
+		if(w!=0 && h!=0) {
+			mBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
+			mCanvas = new Canvas(mBitmap);
+			Bitmap bitmap = getFieldFromSelection();
+			Bitmap resizedBitmap = Utility.getResizedBitmap(bitmap, h, w);
+			mCanvas.drawBitmap(resizedBitmap, new Matrix(), new Paint());
+		}
+	}
+
+	private Bitmap getFieldFromSelection() {
 		Bitmap bitmap = BitmapFactory.decodeResource(getResources(),
 				R.drawable.soccer);
-		Bitmap resizedBitmap = Utility.getResizedBitmap(bitmap, h, w);
-		mCanvas.drawBitmap(resizedBitmap, new Matrix(), new Paint());
+		if(field.equals("Soccer")) {
+			bitmap = BitmapFactory.decodeResource(getResources(),
+					R.drawable.soccer);
+		} else if (field.equals("Voleyball")) {
+			bitmap = BitmapFactory.decodeResource(getResources(),
+					R.drawable.voley);
+		} else if (field.equals("Basketball")) {
+			bitmap = BitmapFactory.decodeResource(getResources(),
+					R.drawable.basket);
+		}
+		return bitmap;
 	}
 
 	@Override
@@ -169,6 +194,7 @@ public class DrawingView extends View {
 	private float mX, mY;
 	private Paint ballPaint;
 	private Detectable movable;
+	private String field;
 	private static final float TOUCH_TOLERANCE = 2;
 
 	private void touch_start(float x, float y) {
@@ -239,12 +265,16 @@ public class DrawingView extends View {
 
 	
 
-	public void undoLast() {
+	public boolean undoLast() {
+		boolean result = false;
 		if (undoablePaths.size() > 0) {
 			Dibujables removedPath = undoablePaths.remove(undoablePaths.size() - 1);
 			removedPath.resetPath();
+			invalidate();
+			result=true;
 		}
-		invalidate();
+		
+		return result;
 	}
 
 	@Override
@@ -333,6 +363,11 @@ public class DrawingView extends View {
 			}
 		}
 		
+	}
+
+	public void setField(String label) {
+		this.field = label;
+		initializeField(w, h);
 	}
 
 
