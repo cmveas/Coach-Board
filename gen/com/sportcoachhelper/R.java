@@ -47,8 +47,10 @@ public final class R {
         public static final int field_type=0x7f08000c;
         public static final int layoutToolBar=0x7f080000;
         public static final int menu_clear_document=0x7f080010;
-        public static final int menu_exit=0x7f080012;
-        public static final int menu_settings=0x7f080011;
+        public static final int menu_exit=0x7f080014;
+        public static final int menu_open_document=0x7f080011;
+        public static final int menu_save_document=0x7f080012;
+        public static final int menu_settings=0x7f080013;
         public static final int pager=0x7f08000d;
         public static final int playerNumber=0x7f080005;
         public static final int playerNumberButton=0x7f080006;
@@ -69,18 +71,20 @@ public final class R {
     }
     public static final class string {
         public static final int app_name=0x7f040000;
-        public static final int basketball=0x7f04000b;
-        public static final int enter=0x7f040007;
-        public static final int field=0x7f04000c;
+        public static final int basketball=0x7f04000d;
+        public static final int enter=0x7f040009;
+        public static final int field=0x7f04000e;
         public static final int hello_world=0x7f040001;
         public static final int menu_clear=0x7f040003;
-        public static final int menu_exit=0x7f040004;
+        public static final int menu_exit=0x7f040006;
+        public static final int menu_open=0x7f040004;
+        public static final int menu_save=0x7f040005;
         public static final int menu_settings=0x7f040002;
-        public static final int setNumber=0x7f040008;
-        public static final int soccer=0x7f040009;
-        public static final int splash_title=0x7f040006;
-        public static final int sure_want_clear=0x7f040005;
-        public static final int voley=0x7f04000a;
+        public static final int setNumber=0x7f04000a;
+        public static final int soccer=0x7f04000b;
+        public static final int splash_title=0x7f040008;
+        public static final int sure_want_clear=0x7f040007;
+        public static final int voley=0x7f04000c;
     }
     public static final class style {
         /** 

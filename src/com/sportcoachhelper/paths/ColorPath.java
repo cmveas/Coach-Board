@@ -10,10 +10,10 @@ public abstract class ColorPath extends SerializablePath implements Detectable {
 	public static final int SIZE = 35;
 	public static final int HALF_SIZE = 17;
 	
-	private Paint paint;
+	private transient Paint paint;
 	protected int x;
 	protected int y;
-	private Paint textPaint;
+	private transient Paint textPaint;
 
 	public ColorPath(Paint paint){
 		super();
