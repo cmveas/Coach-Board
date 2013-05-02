@@ -141,7 +141,9 @@ public class DrawingView extends View {
 	}
 	
 	private void initTrianglePath(int x,int y) {
-		mPlayerPath = new TrianglePath(trianglePaint);		
+		mPlayerPath = new TrianglePath(trianglePaint);	
+		mPlayerPath.setX(x);
+		mPlayerPath.setY(y);
 	}
 
 	private List<Dibujables> undoablePaths = new ArrayList<Dibujables>();

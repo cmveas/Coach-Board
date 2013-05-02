@@ -46,12 +46,12 @@ public abstract class ColorPath extends SerializablePath implements Detectable {
 	
 	@Override
 	public void setX(int x) {
-		this.x=x-HALF_SIZE;	
+		this.x=x;	
 	}
 	
 	@Override
 	public void setY(int y) {
-		this.y=y-HALF_SIZE;
+		this.y=y;
 	}
 	
 
