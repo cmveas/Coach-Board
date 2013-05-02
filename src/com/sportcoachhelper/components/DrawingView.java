@@ -1,5 +1,13 @@
 package com.sportcoachhelper.components;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.StreamCorruptedException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +31,7 @@ import com.sportcoachhelper.paths.ColorPath;
 import com.sportcoachhelper.paths.LinePath;
 import com.sportcoachhelper.paths.ShapePath;
 import com.sportcoachhelper.paths.SquarePath;
+import com.sportcoachhelper.paths.TrianglePath;
 import com.sportcoachhelper.paths.interfaces.Detectable;
 import com.sportcoachhelper.paths.interfaces.Dibujables;
 import com.sportcoachhelper.util.Utility;
@@ -132,7 +141,7 @@ public class DrawingView extends View {
 	}
 	
 	private void initTrianglePath(int x,int y) {
-		mPlayerPath = new CirclePath(trianglePaint);		
+		mPlayerPath = new TrianglePath(trianglePaint);		
 	}
 
 	private List<Dibujables> undoablePaths = new ArrayList<Dibujables>();
@@ -195,6 +204,7 @@ public class DrawingView extends View {
 	private Paint ballPaint;
 	private Detectable movable;
 	private String field;
+	private List<Dibujables> temp;
 	private static final float TOUCH_TOLERANCE = 2;
 
 	private void touch_start(float x, float y) {
@@ -229,6 +239,7 @@ public class DrawingView extends View {
 			float dy = Math.abs(y - mY);
 			if (dx >= TOUCH_TOLERANCE || dy >= TOUCH_TOLERANCE) {
 				mPath.quadTo(mX, mY, (x + mX) / 2, (y + mY) / 2);
+				mPath.addPathPoints(new float[]{mX, mY, (x + mX) / 2, (y + mY) / 2});
 				mX = x;
 				mY = y;
 			}
@@ -302,6 +313,7 @@ public class DrawingView extends View {
 	public void setCirclePlayer(int x, int y) {
 		initPlayerPath(x, y);
 		mPlayerPath.addCircle(x, y, ColorPath.HALF_SIZE, Path.Direction.CCW);
+		mPlayerPath.addCirclePath(new float[] {x,y});
 		undoablePaths.add(mPlayerPath);
 		invalidate();
 	}
@@ -311,7 +323,8 @@ public class DrawingView extends View {
 		mPlayerPath.moveTo(x, y);
 		mPlayerPath.lineTo(x-ColorPath.HALF_SIZE, y+ColorPath.SIZE);
 		mPlayerPath.lineTo(x+ColorPath.HALF_SIZE, y+ColorPath.SIZE);
-		mPlayerPath.lineTo(x, y);		
+		mPlayerPath.lineTo(x, y);	
+		mPlayerPath.addCirclePath(new float[]{x,y});
 		undoablePaths.add(mPlayerPath);
 		invalidate();
 		
@@ -331,7 +344,8 @@ public class DrawingView extends View {
 
 	public void setSquarePlayer(int x, int y) {
 		initSquarePath(x,y);
-		mPlayerPath.addRect(x,y, x+ColorPath.SIZE, y+ColorPath.SIZE, Path.Direction.CCW);	
+		mPlayerPath.addRect(x-ColorPath.HALF_SIZE,y-ColorPath.HALF_SIZE, x+ColorPath.SIZE, y+ColorPath.SIZE, Path.Direction.CCW);	
+		mPlayerPath.addCirclePath(new float[]{x,y, x+ColorPath.SIZE, y+ColorPath.SIZE });
 		undoablePaths.add(mPlayerPath);
 		invalidate();
 		
@@ -368,6 +382,83 @@ public class DrawingView extends View {
 	public void setField(String label) {
 		this.field = label;
 		initializeField(w, h);
+	}
+
+	public void saveDocument(File file) {
+	long time = System.currentTimeMillis();
+	String name = ""+time;
+	File toSaveFile = new File(file.getAbsoluteFile() + "/" + name);
+	try {
+	
+	if(!toSaveFile.exists()) {
+		toSaveFile.createNewFile();
+	}
+	
+		FileOutputStream output = new FileOutputStream(toSaveFile);
+		ObjectOutputStream stream = new ObjectOutputStream(output);
+		stream.writeObject(field);
+		stream.writeObject(undoablePaths);
+		stream.flush();
+		
+	} catch (FileNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	}
+
+	public void openDocument(File file) {
+		try {
+			FileInputStream stream = new FileInputStream(file);
+			ObjectInputStream fin = new ObjectInputStream(stream);
+			field = (String) fin.readObject();
+			temp = (List<Dibujables>) fin.readObject();
+			
+			initializePaths();
+			
+			undoablePaths=temp;
+			
+			invalidate();
+			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (StreamCorruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
+
+	private void initializePaths() {
+		for (Dibujables dibujable : temp) {
+			if(dibujable instanceof CirclePath) {
+				((CirclePath)dibujable).setPaint(playerPaint);		
+				((CirclePath)dibujable).loadCirclePathPointsAsQuadTo();
+			} else if(dibujable instanceof SquarePath) {
+				((SquarePath)dibujable).setPaint(squarePaint);	
+				((SquarePath)dibujable).loadSquarePathPointsAsQuadTo();
+			} else if(dibujable instanceof TrianglePath) {
+				((TrianglePath)dibujable).setPaint(trianglePaint);				
+				((TrianglePath)dibujable).loadTrianglePathPointsAsQuadTo();		
+			} else if(dibujable instanceof BallPath) {
+				((BallPath)dibujable).setPaint(ballPaint);				
+			}  else if (dibujable instanceof LinePath) {
+				((LinePath)dibujable).setPaint(mPaint);	
+				((LinePath)dibujable).loadPathPointsAsQuadTo();
+			} 
+			
+		}
+		
 	}
 
 

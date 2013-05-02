@@ -6,18 +6,23 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 
+import com.sportcoachhelper.CoachApp;
 import com.sportcoachhelper.util.Utility;
 
 public class BallPath extends ColorPath {
 
 
 	private int resource;
-	private Bitmap bitmap;
+	private transient Bitmap bitmap;
 
 	public BallPath(Paint paint, int resource, Resources resources) {
 		super(paint);
 		this.resource = resource;
-		bitmap = BitmapFactory.decodeResource(resources, resource);
+		init();
+	}
+
+	private void init() {
+		bitmap = BitmapFactory.decodeResource(CoachApp.getInstance().getApplicationContext().getResources(), resource);
 		bitmap = Utility.getResizedBitmap(bitmap, SIZE, SIZE);
 	}
 
@@ -32,6 +37,9 @@ public class BallPath extends ColorPath {
 
 	@Override
 	public void draw(Canvas canvas) {
+		if(bitmap==null) {
+			init();
+		}
 		canvas.drawBitmap(bitmap,x,y,getPaint());
 	}
 

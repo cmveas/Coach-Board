@@ -1,12 +1,17 @@
 package com.sportcoachhelper;
 
+import java.io.File;
+
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
+import android.content.ActivityNotFoundException;
 import android.content.ClipData;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.DragEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -29,6 +34,7 @@ import com.sportcoachhelper.paths.ColorPath;
 
 public class MainActivity extends GraphicsActivity implements OnComponentSelectedListener  {
 
+	private static final int PICKFILE_RESULT_CODE = 0;
 	private DrawingView drawingView;
 	private ImageView playerImage;
 	private ImageView triangleTool;
@@ -146,6 +152,12 @@ public class MainActivity extends GraphicsActivity implements OnComponentSelecte
 	public boolean onMenuItemSelected(int featureId, MenuItem item) {
 		boolean result = false;
 		switch(item.getItemId()){
+		case R.id.menu_open_document:
+			openDocument();
+			break;
+		case R.id.menu_save_document:
+			saveDocument();
+			break;
 		case R.id.menu_clear_document:
 			showClearDialog();
 			result = true;
@@ -162,6 +174,23 @@ public class MainActivity extends GraphicsActivity implements OnComponentSelecte
 		return result;
 	}
 
+
+	private void openDocument() {
+		 Intent fileintent = new Intent(Intent.ACTION_GET_CONTENT);
+	        try {
+	        	fileintent.setType("file/*");
+	            startActivityForResult(fileintent, PICKFILE_RESULT_CODE);
+	        } catch (ActivityNotFoundException e) {
+	            Log.e("tag", "No activity can handle picking a file. Showing alternatives.");
+	        }
+
+		
+	}
+
+	private void saveDocument() {
+		File file = Environment.getExternalStorageDirectory();
+		drawingView.saveDocument(file);
+	}
 
 	@Override
 	public void onBackPressed() {
@@ -228,4 +257,21 @@ public class MainActivity extends GraphicsActivity implements OnComponentSelecte
 			playerNumberButton.setVisibility(View.GONE);
 			
 		}
+		
+		
+       
+
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // TODO Fix no activity available
+        if (data == null)
+            return;
+        switch (requestCode) {
+        case PICKFILE_RESULT_CODE:
+            if (resultCode == RESULT_OK) {
+                String FilePath = data.getData().getPath();
+                drawingView.openDocument(new File(FilePath));
+            }
+        }
+}
+
 }
