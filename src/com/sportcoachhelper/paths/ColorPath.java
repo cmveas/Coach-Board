@@ -4,16 +4,17 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 
 import com.sportcoachhelper.paths.interfaces.Detectable;
+import com.sportcoachhelper.util.TeamManager;
 
 public abstract class ColorPath extends SerializablePath implements Detectable {
 	
 	public static final int SIZE = 35;
 	public static final int HALF_SIZE = 17;
 	
-	private transient Paint paint;
+	protected transient Paint paint;
 	protected int x;
 	protected int y;
-	private transient Paint textPaint;
+	protected transient Paint textPaint;
 
 	public ColorPath(Paint paint){
 		super();
@@ -32,13 +33,15 @@ public abstract class ColorPath extends SerializablePath implements Detectable {
 	}
 	
 	@Override
-	public void draw(Canvas canvas) {
+	public void draw(Canvas canvas) {	
 		canvas.drawPath(this,paint);
 		if(label!=null && !label.trim().equals("")) {
 			canvas.drawText(label, x-HALF_SIZE, y-HALF_SIZE, textPaint);
 		}
 	} 
 	
+	
+
 	@Override
 	public boolean canBeMoved() {
 		return false;

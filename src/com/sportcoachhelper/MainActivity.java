@@ -30,7 +30,9 @@ import android.widget.ImageView;
 import com.sportcoachhelper.components.DrawingView;
 import com.sportcoachhelper.dialogs.ClearDialog;
 import com.sportcoachhelper.interfaces.OnComponentSelectedListener;
+import com.sportcoachhelper.model.Team;
 import com.sportcoachhelper.paths.ColorPath;
+import com.sportcoachhelper.util.TeamManager;
 
 public class MainActivity extends GraphicsActivity implements OnComponentSelectedListener  {
 
@@ -42,6 +44,12 @@ public class MainActivity extends GraphicsActivity implements OnComponentSelecte
 	private ImageView ballTool;
 	private EditText playerNumber;
 	private Button playerNumberButton;
+	private ImageView playerImage2;
+	private ImageView triangleTool2;
+	private ImageView squareTool2;
+	private Button playerNumberButton2;
+	private EditText playerNumber2;
+	private String field;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -54,12 +62,15 @@ public class MainActivity extends GraphicsActivity implements OnComponentSelecte
 		setContentView(R.layout.activity_main);
 		drawingView = (DrawingView) findViewById(R.id.drawingPanel);
 
+		/*
+		 * Team A Toolbar
+		 */
+		
 		playerImage = (ImageView) findViewById(R.id.playerTool);
 		triangleTool = (ImageView) findViewById(R.id.triangleTool);
 		squareTool = (ImageView) findViewById(R.id.squareTool);
 		ballTool = (ImageView) findViewById(R.id.ballTool);
 		playerNumberButton = (Button) findViewById(R.id.playerNumberButton);
-		
 		playerNumber = (EditText) findViewById(R.id.playerNumber);
 		
 		
@@ -75,18 +86,85 @@ public class MainActivity extends GraphicsActivity implements OnComponentSelecte
 			}
 		});
 		
-
-		manageDrag();
 		
-	    drawingView.setOnComponentSelectedListener(this);
+		
+		/*
+		 * Team B Toolbar
+		 */
+		
+		playerImage2 = (ImageView) findViewById(R.id.playerTool2);
+		triangleTool2 = (ImageView) findViewById(R.id.triangleTool2);
+		squareTool2 = (ImageView) findViewById(R.id.squareTool2);
+		playerNumber2 = (EditText) findViewById(R.id.playerNumber2);
+		playerNumberButton2 = (Button) findViewById(R.id.playerNumberButton2);
+		
+		playerNumberButton2.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				String number = playerNumber2.getText().toString();
+				if(!number.trim().equals("")) {
+					drawingView.setLabel(number);
+				}
+				
+			}
+		});
+		
+		Intent intent = getIntent();
+		field  = intent.getStringExtra("field");
+		drawingView.setField(field);
+
+		manageDrag(field);
+		
+		drawTheAppropiateBall(field);
+		
+	    drawingView.setOnComponentSelectedListener(this);	    	  
 	    
-	    Intent intent = getIntent();
-	    String label  = intent.getStringExtra("field");
-	    drawingView.setField(label);
+	    checkForFullTools();
 	}
 
+	private void checkForFullTools() {
+		boolean fullTools = fullTools(field);
+	    triangleTool.setVisibility((fullTools?View.VISIBLE:View.GONE));
+	    triangleTool2.setVisibility((fullTools?View.VISIBLE:View.GONE));
+	    squareTool.setVisibility((fullTools?View.VISIBLE:View.GONE));
+	    squareTool2.setVisibility((fullTools?View.VISIBLE:View.GONE));
+	}
+
+	private void drawTheAppropiateBall(String field) {
+		int resource = giveMeFieldBall(field);
+		
+		ballTool.setImageResource(resource);
+	}
+
+	private int giveMeFieldBall(String field) {
+		int resource = -1;
+		if (field.equals("Soccer")) {
+			resource = R.drawable.soccerball;
+		} else if (field.equals("Basketball")) {
+			resource = R.drawable.basketball;
+		} else if (field.equals("Voleyball")) {
+			resource = R.drawable.volleyball;
+		}
+		return resource;
+	}
+	
+	private boolean fullTools(String field) {
+		boolean result = false;
+		if (field.equals("Soccer")) {
+			result = false;
+		} else if (field.equals("Basketball")) {
+			result = false;
+		} else if (field.equals("Voleyball")) {
+			result = true;
+		}
+		return result;
+	}
+	
+	
+
 	@SuppressLint("NewApi")
-	private void manageDrag() {
+	private void manageDrag(final String field) {
 		OnDragListener dragListener = new OnDragListener() {
 
 			@Override
@@ -113,30 +191,46 @@ public class MainActivity extends GraphicsActivity implements OnComponentSelecte
 			}
 
 			private void checkDataType(int x, int y, String label) {
+				String data[] = label.split(",");
+				label = data[0];
+				int team = Integer.parseInt(data[1]);
 				if (label.equals("player")) {
-					drawingView.setCirclePlayer(x, y);
+					drawingView.setCirclePlayer(x, y,team);
 				} else if (label.equals("triangle")) {
-					drawingView.setTrianglePlayer(x, y);
+					drawingView.setTrianglePlayer(x, y,team);
 				}else if (label.equals("square")) {
-					drawingView.setSquarePlayer(x, y);
+					drawingView.setSquarePlayer(x, y,team);
 				} else if(label.equals("ball")){
-					drawingView.setBall(x, y);
+					drawingView.setBall(x, y,team,giveMeFieldBall(field));
 				}
 			}
 		};
 
 		drawingView.setOnDragListener(dragListener);
 
+		Team teamA = TeamManager.getInstance().getTeamA();
+		Team teamB = TeamManager.getInstance().getTeamB();
+		
+		
 		playerImage.setOnTouchListener(new TouchForDragListener(playerImage,
-				"player"));
+				"player",teamA));
 		triangleTool.setOnTouchListener(new TouchForDragListener(triangleTool,
-				"triangle"));
+				"triangle",teamA));
 		
 		squareTool.setOnTouchListener(new TouchForDragListener(squareTool,
-				"square"));
+				"square",teamA));
 		
 		ballTool.setOnTouchListener(new TouchForDragListener(ballTool,
-				"ball"));
+				"ball",teamA));
+		
+		
+		playerImage2.setOnTouchListener(new TouchForDragListener(playerImage,
+				"player",teamB));
+		triangleTool2.setOnTouchListener(new TouchForDragListener(triangleTool,
+				"triangle",teamB));
+		
+		squareTool2.setOnTouchListener(new TouchForDragListener(squareTool,
+				"square",teamB));
 
 	}
 
@@ -204,10 +298,12 @@ public class MainActivity extends GraphicsActivity implements OnComponentSelecte
 
 		private View view;
 		private String dataToInput;
+		private Team team;
 
-		public TouchForDragListener(View view, String data) {
+		public TouchForDragListener(View view, String data, Team team) {
 			this.view = view;
 			this.dataToInput = data;
+			this.team = team;
 		}
 
 		@TargetApi(Build.VERSION_CODES.HONEYCOMB)
@@ -215,7 +311,7 @@ public class MainActivity extends GraphicsActivity implements OnComponentSelecte
 		public boolean onTouch(View paramView, MotionEvent paramMotionEvent) {
 			switch (paramMotionEvent.getAction()) {
 			case MotionEvent.ACTION_DOWN:
-				ClipData data = ClipData.newPlainText(dataToInput, dataToInput);
+				ClipData data = ClipData.newPlainText(dataToInput+","+ team.getNumber(), dataToInput+","+ team.getNumber());
 				DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(
 						view);
 				view.startDrag(data, shadowBuilder, view, 0);

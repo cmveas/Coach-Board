@@ -25,6 +25,7 @@ import android.view.View;
 
 import com.sportcoachhelper.R;
 import com.sportcoachhelper.interfaces.OnComponentSelectedListener;
+import com.sportcoachhelper.model.Team;
 import com.sportcoachhelper.paths.BallPath;
 import com.sportcoachhelper.paths.CirclePath;
 import com.sportcoachhelper.paths.ColorPath;
@@ -34,6 +35,7 @@ import com.sportcoachhelper.paths.SquarePath;
 import com.sportcoachhelper.paths.TrianglePath;
 import com.sportcoachhelper.paths.interfaces.Detectable;
 import com.sportcoachhelper.paths.interfaces.Dibujables;
+import com.sportcoachhelper.util.TeamManager;
 import com.sportcoachhelper.util.Utility;
 
 public class DrawingView extends View {
@@ -43,11 +45,8 @@ public class DrawingView extends View {
 	private LinePath mPath;
 	private Paint mBitmapPaint;
 	private Paint mPaint;
-	private Paint playerLinePaint;
 	private ColorPath mPlayerPath;
 	private Paint playerPaint;
-	private Paint trianglePaint;
-	private Paint squarePaint;
 	private Detectable mSelectedPath;
 	private OnComponentSelectedListener listener;
 
@@ -85,15 +84,6 @@ public class DrawingView extends View {
 		
 		mPath = new LinePath(mPaint);
 		mBitmapPaint = new Paint(Paint.DITHER_FLAG);
-
-		playerLinePaint = new Paint();
-		playerLinePaint.setAntiAlias(true);
-		playerLinePaint.setDither(true);
-		playerLinePaint.setColor(0xFF000000);
-		playerLinePaint.setStyle(Paint.Style.FILL);
-		playerLinePaint.setStrokeJoin(Paint.Join.ROUND);
-		playerLinePaint.setStrokeCap(Paint.Cap.ROUND);
-		playerLinePaint.setStrokeWidth(4);
 		
 		
 		playerPaint = new Paint();
@@ -104,24 +94,6 @@ public class DrawingView extends View {
 		playerPaint.setStrokeJoin(Paint.Join.ROUND);
 		playerPaint.setStrokeCap(Paint.Cap.ROUND);
 		playerPaint.setStrokeWidth(4);
-		
-		trianglePaint = new Paint();
-		trianglePaint.setAntiAlias(true);
-		trianglePaint.setDither(true);
-		trianglePaint.setColor(0xFFFF0000);
-		trianglePaint.setStyle(Paint.Style.FILL);
-		trianglePaint.setStrokeJoin(Paint.Join.ROUND);
-		trianglePaint.setStrokeCap(Paint.Cap.ROUND);
-		trianglePaint.setStrokeWidth(4);
-		
-		squarePaint = new Paint();
-		squarePaint.setAntiAlias(true);
-		squarePaint.setDither(true);
-		squarePaint.setColor(0xFF00FF00);
-		squarePaint.setStyle(Paint.Style.FILL);
-		squarePaint.setStrokeJoin(Paint.Join.ROUND);
-		squarePaint.setStrokeCap(Paint.Cap.ROUND);
-		squarePaint.setStrokeWidth(4);
 		
 		ballPaint = new Paint();
 		ballPaint.setAntiAlias(true);
@@ -134,14 +106,16 @@ public class DrawingView extends View {
 
 	}
 
-	private void initPlayerPath(int x, int y) {
-		mPlayerPath = new CirclePath(playerPaint);	
+	private void initPlayerPath(int x, int y,Team team) {
+		mPlayerPath = new CirclePath(team.getPaint());	
+		((CirclePath)mPlayerPath).setTeam(team.getNumber());
 		mPlayerPath.setX(x);
 		mPlayerPath.setY(y);
 	}
 	
-	private void initTrianglePath(int x,int y) {
-		mPlayerPath = new TrianglePath(trianglePaint);	
+	private void initTrianglePath(int x,int y, Team team) {
+		mPlayerPath = new TrianglePath(team.getPaint());	
+		((TrianglePath)mPlayerPath).setTeam(team.getNumber());
 		mPlayerPath.setX(x);
 		mPlayerPath.setY(y);
 	}
@@ -212,7 +186,7 @@ public class DrawingView extends View {
 	private void touch_start(float x, float y) {
 		movable = checkMovableObjectsPosition(x, y);
 		setSelectedPath(movable);
-		if(movable==null) {
+		if(movable==null || !movable.canBeMoved() ) {
 			init();
 			mPath.reset();
 			mPath.moveTo(x, y);
@@ -312,16 +286,17 @@ public class DrawingView extends View {
 		return true;
 	}
 
-	public void setCirclePlayer(int x, int y) {
-		initPlayerPath(x, y);
+	public void setCirclePlayer(int x, int y, int team) {
+		initPlayerPath(x, y,TeamManager.getInstance().getTeam(team));
 		mPlayerPath.addCircle(x, y, ColorPath.HALF_SIZE, Path.Direction.CCW);
 		mPlayerPath.addCirclePath(new float[] {x,y});
+	
 		undoablePaths.add(mPlayerPath);
 		invalidate();
 	}
 
-	public void setTrianglePlayer(int x, int y) {
-		initTrianglePath(x, y);
+	public void setTrianglePlayer(int x, int y, int team) {
+		initTrianglePath(x, y,TeamManager.getInstance().getTeam(team));
 		mPlayerPath.moveTo(x, y);
 		mPlayerPath.lineTo(x-ColorPath.HALF_SIZE, y+ColorPath.SIZE);
 		mPlayerPath.lineTo(x+ColorPath.HALF_SIZE, y+ColorPath.SIZE);
@@ -344,8 +319,8 @@ public class DrawingView extends View {
 		invalidate();
 	}
 
-	public void setSquarePlayer(int x, int y) {
-		initSquarePath(x,y);
+	public void setSquarePlayer(int x, int y, int team) {
+		initSquarePath(x,y,TeamManager.getInstance().getTeam(team));
 		mPlayerPath.addRect(x-ColorPath.HALF_SIZE,y-ColorPath.HALF_SIZE, x+ColorPath.SIZE, y+ColorPath.SIZE, Path.Direction.CCW);	
 		mPlayerPath.addCirclePath(new float[]{x,y, x+ColorPath.SIZE, y+ColorPath.SIZE });
 		undoablePaths.add(mPlayerPath);
@@ -353,18 +328,19 @@ public class DrawingView extends View {
 		
 	}
 
-	private void initSquarePath(int x,int y) {
-		mPlayerPath = new SquarePath(squarePaint);		
+	private void initSquarePath(int x,int y, Team team) {
+		mPlayerPath = new SquarePath(team.getPaint());		
+		((SquarePath)mPlayerPath).setTeam(team.getNumber());
 		mPlayerPath.setX(x);
 		mPlayerPath.setY(y);
 	}
 	
-	private void initBallPath() {
-		mPlayerPath = new BallPath(ballPaint,R.drawable.volleyball,getResources());			
+	private void initBallPath(int field2) {
+		mPlayerPath = new BallPath(ballPaint,field2,getResources());			
 	}
 
-	public void setBall(int x, int y) {
-		initBallPath();
+	public void setBall(int x, int y, int team, int field) {
+		initBallPath(field);
 		((BallPath)mPlayerPath).setX(x);
 		((BallPath)mPlayerPath).setY(y);
 		undoablePaths.add(mPlayerPath);
@@ -443,14 +419,11 @@ public class DrawingView extends View {
 
 	private void initializePaths() {
 		for (Dibujables dibujable : temp) {
-			if(dibujable instanceof CirclePath) {
-				((CirclePath)dibujable).setPaint(playerPaint);		
+			if(dibujable instanceof CirclePath) {	
 				((CirclePath)dibujable).loadCirclePathPointsAsQuadTo();
 			} else if(dibujable instanceof SquarePath) {
-				((SquarePath)dibujable).setPaint(squarePaint);	
 				((SquarePath)dibujable).loadSquarePathPointsAsQuadTo();
-			} else if(dibujable instanceof TrianglePath) {
-				((TrianglePath)dibujable).setPaint(trianglePaint);				
+			} else if(dibujable instanceof TrianglePath) {				
 				((TrianglePath)dibujable).loadTrianglePathPointsAsQuadTo();		
 			} else if(dibujable instanceof BallPath) {
 				((BallPath)dibujable).setPaint(ballPaint);				

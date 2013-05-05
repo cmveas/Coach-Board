@@ -55,10 +55,10 @@ public class ScreenSlidePageFragment extends Fragment {
 			result = R.drawable.soccer;
 			break;
 		case 1:
-			result = R.drawable.basket;
+			result = R.drawable.voley;
 			break;
 		case 2:
-			result = R.drawable.voley;
+			result = R.drawable.basket;
 			break;
 		}
 		return result;

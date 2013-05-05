@@ -10,6 +10,7 @@ import com.sportcoachhelper.paths.interfaces.Dibujables;
 public abstract class SerializablePath extends Path implements Serializable,
 		Dibujables {
 
+	
 	private ArrayList<float[]> pathPoints;
 
 	public SerializablePath() {
