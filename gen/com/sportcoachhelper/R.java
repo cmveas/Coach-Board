@@ -37,9 +37,8 @@ public final class R {
         public static final int splash_image=0x7f020013;
         public static final int splash_image2=0x7f020014;
         public static final int splash_image3=0x7f020015;
-        public static final int template=0x7f020016;
-        public static final int voley=0x7f020017;
-        public static final int volleyball=0x7f020018;
+        public static final int voley=0x7f020016;
+        public static final int volleyball=0x7f020017;
     }
     public static final class id {
         public static final int ballTool=0x7f080004;
@@ -47,24 +46,26 @@ public final class R {
         public static final int btn_yes=0x7f08000f;
         public static final int drawingPanel=0x7f080007;
         public static final int edit_name=0x7f08000e;
-        public static final int enter=0x7f080015;
+        public static final int enter=0x7f080017;
         public static final int field_name=0x7f080011;
         public static final int field_type=0x7f080012;
+        public static final int imvLeftArrow=0x7f080013;
+        public static final int imvRightArrow=0x7f080015;
         public static final int layoutToolBar=0x7f080000;
         public static final int layoutToolBar2=0x7f080008;
-        public static final int menu_clear_document=0x7f080016;
-        public static final int menu_exit=0x7f08001a;
-        public static final int menu_open_document=0x7f080017;
-        public static final int menu_save_document=0x7f080018;
-        public static final int menu_settings=0x7f080019;
-        public static final int pager=0x7f080013;
+        public static final int menu_clear_document=0x7f080018;
+        public static final int menu_exit=0x7f08001c;
+        public static final int menu_open_document=0x7f080019;
+        public static final int menu_save_document=0x7f08001a;
+        public static final int menu_settings=0x7f08001b;
+        public static final int pager=0x7f080014;
         public static final int playerNumber=0x7f080005;
         public static final int playerNumber2=0x7f08000c;
         public static final int playerNumberButton=0x7f080006;
         public static final int playerNumberButton2=0x7f08000d;
         public static final int playerTool=0x7f080001;
         public static final int playerTool2=0x7f080009;
-        public static final int splash_title=0x7f080014;
+        public static final int splash_title=0x7f080016;
         public static final int squareTool=0x7f080003;
         public static final int squareTool2=0x7f08000b;
         public static final int triangleTool=0x7f080002;
