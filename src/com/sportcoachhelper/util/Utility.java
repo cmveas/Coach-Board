@@ -5,6 +5,8 @@ import android.graphics.Matrix;
 
 public class Utility {
 
+	public static final boolean DEBUG_ENABLED = true;
+
 	public static Bitmap getResizedBitmap(Bitmap bm, int newHeight, int newWidth) {
 
 		if (bm != null) {

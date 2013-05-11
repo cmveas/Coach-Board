@@ -10,6 +10,7 @@ public abstract class ColorPath extends SerializablePath implements Detectable {
 	
 	public static final int SIZE = 35;
 	public static final int HALF_SIZE = 17;
+	private static final String TAG = "ColorPath";
 	
 	protected transient Paint paint;
 	protected int x;
@@ -44,7 +45,7 @@ public abstract class ColorPath extends SerializablePath implements Detectable {
 
 	@Override
 	public boolean canBeMoved() {
-		return false;
+		return true;
 	}
 	
 	@Override
@@ -69,14 +70,23 @@ public abstract class ColorPath extends SerializablePath implements Detectable {
 	@Override
 	public boolean isItIn(float x, float y) {
 		boolean result = false;
-				
+		
+		
+		
 		if(x>(this.x-HALF_SIZE) && x<this.x+HALF_SIZE) {
 			result = true;
 		}
 		
+		
 		if((y>this.y-HALF_SIZE) && (y<this.y+HALF_SIZE)) {
 			result =  result && true;
+		} else {
+			result =  false;
 		}
+		
+		android.util.Log.d(TAG,"x=" +x + " Xinit = " + (this.x-HALF_SIZE) + " XFinal:" + (this.x+HALF_SIZE) + " result:" + result);
+		android.util.Log.d(TAG,"y=" +y + " Yinit = " + (this.y-HALF_SIZE) + " YFinal:" + (this.y+HALF_SIZE) + " result:" + result);
+		
 		return result;
 	}
 	
