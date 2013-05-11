@@ -2,9 +2,11 @@ package com.sportcoachhelper.database;
 
 import com.sportcoachhelper.CoachApp;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -58,8 +60,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-		// TODO Auto-generated method stub
 
+	}
+	
+	public void insertPlay(String name, byte[] play, long date){
+		SQLiteDatabase db = getWritableDatabase();
+		
+		ContentValues cv = new ContentValues();
+		cv.put(PLAYS_NAME, name);
+		cv.put(PLAYS_DATE, date);
+		cv.put(PLAYS_DATA, play);
+	
+		db.insert(PLAYS_TABLE_NAME, null, cv);
+	}
+	
+	public Cursor getPlays(){
+		SQLiteDatabase db = getReadableDatabase();
+		
+		return db.query(PLAYS_TABLE_NAME, null, null, null, null, null, null);
+		
 	}
 
 }

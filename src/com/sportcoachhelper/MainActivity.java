@@ -250,7 +250,7 @@ public class MainActivity extends GraphicsActivity implements OnComponentSelecte
 			openDocument();
 			break;
 		case R.id.menu_save_document:
-			saveDocument();
+			
 			break;
 		case R.id.menu_clear_document:
 			showClearDialog();

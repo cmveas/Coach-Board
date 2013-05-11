@@ -321,7 +321,7 @@ public class DrawingView extends View {
 
 	public void setSquarePlayer(int x, int y, int team) {
 		initSquarePath(x,y,TeamManager.getInstance().getTeam(team));
-		mPlayerPath.addRect(x-ColorPath.HALF_SIZE,y-ColorPath.HALF_SIZE, x+ColorPath.SIZE, y+ColorPath.SIZE, Path.Direction.CCW);	
+		mPlayerPath.addRect(x-ColorPath.HALF_SIZE,y-ColorPath.HALF_SIZE, x+ColorPath.HALF_SIZE, y+ColorPath.HALF_SIZE, Path.Direction.CCW);	
 		mPlayerPath.addCirclePath(new float[]{x,y, x+ColorPath.SIZE, y+ColorPath.SIZE });
 		undoablePaths.add(mPlayerPath);
 		invalidate();
@@ -331,8 +331,8 @@ public class DrawingView extends View {
 	private void initSquarePath(int x,int y, Team team) {
 		mPlayerPath = new SquarePath(team.getPaint());		
 		((SquarePath)mPlayerPath).setTeam(team.getNumber());
-		mPlayerPath.setX(x);
-		mPlayerPath.setY(y);
+		mPlayerPath.setX(x-ColorPath.HALF_SIZE);
+		mPlayerPath.setY(y-ColorPath.HALF_SIZE);
 	}
 	
 	private void initBallPath(int field2) {
