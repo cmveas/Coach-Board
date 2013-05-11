@@ -362,9 +362,7 @@ public class DrawingView extends View {
 		initializeField(w, h);
 	}
 
-	public void saveDocument(File file) {
-	long time = System.currentTimeMillis();
-	String name = ""+time;
+	public void saveDocument(File file, String name) {
 	File toSaveFile = new File(file.getAbsoluteFile() + "/" + name);
 	try {
 	
