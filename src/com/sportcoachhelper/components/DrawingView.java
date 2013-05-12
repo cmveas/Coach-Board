@@ -24,6 +24,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.sportcoachhelper.R;
+import com.sportcoachhelper.database.DatabaseHelper;
 import com.sportcoachhelper.interfaces.OnComponentSelectedListener;
 import com.sportcoachhelper.model.Team;
 import com.sportcoachhelper.paths.BallPath;
@@ -109,8 +110,8 @@ public class DrawingView extends View {
 	private void initPlayerPath(int x, int y,Team team) {
 		mPlayerPath = new CirclePath(team.getPaint());	
 		((CirclePath)mPlayerPath).setTeam(team.getNumber());
-		mPlayerPath.setX(x);
-		mPlayerPath.setY(y);
+		mPlayerPath.setX(x-ColorPath.HALF_SIZE);
+		mPlayerPath.setY(y-ColorPath.HALF_SIZE);
 	}
 	
 	private void initTrianglePath(int x,int y, Team team) {
@@ -210,7 +211,7 @@ public class DrawingView extends View {
 	}
 
 	private void touch_move(float x, float y) {
-		if(movable==null) {
+		if(movable==null|| !movable.canBeMoved()) {
 			float dx = Math.abs(x - mX);
 			float dy = Math.abs(y - mY);
 			if (dx >= TOUCH_TOLERANCE || dy >= TOUCH_TOLERANCE) {
@@ -229,7 +230,7 @@ public class DrawingView extends View {
 	}
 
 	private void touch_up(float x, float y) {
-		if(movable==null) {
+		if(movable==null|| !movable.canBeMoved()) {
 			mPath.lineTo(mX, mY);
 			// commit the path to our offscreen
 			// mCanvas.drawPath(mPath, mPaint);
@@ -288,7 +289,7 @@ public class DrawingView extends View {
 
 	public void setCirclePlayer(int x, int y, int team) {
 		initPlayerPath(x, y,TeamManager.getInstance().getTeam(team));
-		mPlayerPath.addCircle(x, y, ColorPath.HALF_SIZE, Path.Direction.CCW);
+		mPlayerPath.addCircle(x-ColorPath.HALF_SIZE, y-ColorPath.HALF_SIZE, ColorPath.HALF_SIZE, Path.Direction.CCW);
 		mPlayerPath.addCirclePath(new float[] {x,y});
 	
 		undoablePaths.add(mPlayerPath);
@@ -321,7 +322,7 @@ public class DrawingView extends View {
 
 	public void setSquarePlayer(int x, int y, int team) {
 		initSquarePath(x,y,TeamManager.getInstance().getTeam(team));
-		mPlayerPath.addRect(x-ColorPath.HALF_SIZE,y-ColorPath.HALF_SIZE, x+ColorPath.SIZE, y+ColorPath.SIZE, Path.Direction.CCW);	
+		mPlayerPath.addRect(x-ColorPath.HALF_SIZE,y-ColorPath.HALF_SIZE, x+ColorPath.HALF_SIZE, y+ColorPath.HALF_SIZE, Path.Direction.CCW);	
 		mPlayerPath.addCirclePath(new float[]{x,y, x+ColorPath.SIZE, y+ColorPath.SIZE });
 		undoablePaths.add(mPlayerPath);
 		invalidate();
@@ -331,8 +332,8 @@ public class DrawingView extends View {
 	private void initSquarePath(int x,int y, Team team) {
 		mPlayerPath = new SquarePath(team.getPaint());		
 		((SquarePath)mPlayerPath).setTeam(team.getNumber());
-		mPlayerPath.setX(x);
-		mPlayerPath.setY(y);
+		mPlayerPath.setX(x-ColorPath.HALF_SIZE);
+		mPlayerPath.setY(y-ColorPath.HALF_SIZE);
 	}
 	
 	private void initBallPath(int field2) {
@@ -362,9 +363,7 @@ public class DrawingView extends View {
 		initializeField(w, h);
 	}
 
-	public void saveDocument(File file) {
-	long time = System.currentTimeMillis();
-	String name = ""+time;
+	public void saveDocument(File file, String name) {
 	File toSaveFile = new File(file.getAbsoluteFile() + "/" + name);
 	try {
 	
@@ -377,6 +376,9 @@ public class DrawingView extends View {
 		stream.writeObject(field);
 		stream.writeObject(undoablePaths);
 		stream.flush();
+		
+		
+		DatabaseHelper.getInstance().insertPlay(name, toSaveFile.getAbsolutePath(), System.currentTimeMillis());
 		
 	} catch (FileNotFoundException e) {
 		// TODO Auto-generated catch block

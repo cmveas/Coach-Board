@@ -28,7 +28,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.sportcoachhelper.components.DrawingView;
+import com.sportcoachhelper.database.DatabaseHelper;
 import com.sportcoachhelper.dialogs.ClearDialog;
+import com.sportcoachhelper.dialogs.PlaysNameDialogFragment;
 import com.sportcoachhelper.interfaces.OnComponentSelectedListener;
 import com.sportcoachhelper.model.Team;
 import com.sportcoachhelper.paths.ColorPath;
@@ -250,7 +252,7 @@ public class MainActivity extends GraphicsActivity implements OnComponentSelecte
 			openDocument();
 			break;
 		case R.id.menu_save_document:
-			saveDocument();
+			showPlayNameDialog();
 			break;
 		case R.id.menu_clear_document:
 			showClearDialog();
@@ -281,9 +283,10 @@ public class MainActivity extends GraphicsActivity implements OnComponentSelecte
 		
 	}
 
-	private void saveDocument() {
+	public void saveDocument(String name) {
 		File file = Environment.getExternalStorageDirectory();
-		drawingView.saveDocument(file);
+		drawingView.saveDocument(file,name);
+		
 	}
 
 	@Override
@@ -331,6 +334,12 @@ public class MainActivity extends GraphicsActivity implements OnComponentSelecte
 		FragmentManager fm = getSupportFragmentManager();
 		ClearDialog clearDialog = new ClearDialog();
 		clearDialog.show(fm, "fragment_clear_name");
+	}
+	
+	private void showPlayNameDialog() {
+		FragmentManager fm = getSupportFragmentManager();
+		PlaysNameDialogFragment  playsNameDialog = new PlaysNameDialogFragment();
+		playsNameDialog.show(fm, "fragment_clear_name");
 	}
 
 
