@@ -73,19 +73,19 @@ public abstract class ColorPath extends SerializablePath implements Detectable {
 		
 		
 		
-		if(x>(this.x-HALF_SIZE) && x<this.x+HALF_SIZE) {
+		if(x>(this.x-HALF_SIZE) && x<this.x+SIZE) {
 			result = true;
 		}
 		
 		
-		if((y>this.y-HALF_SIZE) && (y<this.y+HALF_SIZE)) {
+		if((y>this.y-HALF_SIZE) && (y<this.y+SIZE)) {
 			result =  result && true;
 		} else {
 			result =  false;
 		}
 		
-		android.util.Log.d(TAG,"x=" +x + " Xinit = " + (this.x-HALF_SIZE) + " XFinal:" + (this.x+HALF_SIZE) + " result:" + result);
-		android.util.Log.d(TAG,"y=" +y + " Yinit = " + (this.y-HALF_SIZE) + " YFinal:" + (this.y+HALF_SIZE) + " result:" + result);
+		android.util.Log.d(TAG,"x=" +x + " Xinit = " + (this.x-HALF_SIZE) + " XFinal:" + (this.x+SIZE) + " result:" + result);
+		android.util.Log.d(TAG,"y=" +y + " Yinit = " + (this.y-HALF_SIZE) + " YFinal:" + (this.y+SIZE) + " result:" + result);
 		
 		return result;
 	}

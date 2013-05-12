@@ -10,4 +10,5 @@ public interface Detectable {
 	
 	boolean canBeMoved();
 	
+	void reinitialize();
 }

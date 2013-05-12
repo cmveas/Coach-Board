@@ -9,9 +9,11 @@ public abstract class ShapePath extends ColorPath {
 
 	private int team = 1;
 	
-	public ShapePath(Paint paint) {
+	public ShapePath(Paint paint, int x, int y) {
 		super(paint);
-		// TODO Auto-generated constructor stub
+		setX(x);
+		setY(y);
+		reinitialize();
 	}
 
 	public int getTeam() {
@@ -37,5 +39,9 @@ public abstract class ShapePath extends ColorPath {
 		
 	}
 
-
+	@Override
+	public void reinitialize() {
+		reset();
+		
+	}
 }
