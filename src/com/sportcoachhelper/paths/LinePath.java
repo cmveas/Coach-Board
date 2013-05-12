@@ -5,6 +5,12 @@ import android.graphics.Paint;
 
 public class LinePath extends ColorPath {
 
+	private String lineMode;
+
+	public String getLineMode() {
+		return lineMode;
+	}
+
 	public LinePath(Paint paint) {
 		super(paint);
 		// TODO Auto-generated constructor stub
@@ -19,6 +25,11 @@ public class LinePath extends ColorPath {
 	@Override
 	public void reinitialize() {
 		// TODO Auto-generated method stub
+		
+	}
+
+	public void setLineMode(String lineMode) {
+		this.lineMode=lineMode;
 		
 	}
 
