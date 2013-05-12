@@ -141,11 +141,14 @@ public class MainActivity extends GraphicsActivity implements OnComponentSelecte
 
 	private int giveMeFieldBall(String field) {
 		int resource = -1;
-		if (field.equals("Soccer")) {
+		final String volley = getString(R.string.voley);
+		final String soccer = getString(R.string.soccer);
+		final String basket = getString(R.string.basketball);
+		if (field.equals(soccer)) {
 			resource = R.drawable.soccerball;
-		} else if (field.equals("Basketball")) {
+		} else if (field.equals(basket)) {
 			resource = R.drawable.basketball;
-		} else if (field.equals("Voleyball")) {
+		} else if (field.equals(volley)) {
 			resource = R.drawable.volleyball;
 		}
 		return resource;
@@ -153,11 +156,14 @@ public class MainActivity extends GraphicsActivity implements OnComponentSelecte
 	
 	private boolean fullTools(String field) {
 		boolean result = false;
-		if (field.equals("Soccer")) {
+		final String volley = getString(R.string.voley);
+		final String soccer = getString(R.string.soccer);
+		final String basket = getString(R.string.basketball);
+		if (field.equals(soccer)) {
 			result = false;
-		} else if (field.equals("Basketball")) {
+		} else if (field.equals(basket)) {
 			result = false;
-		} else if (field.equals("Voleyball")) {
+		} else if (field.equals(volley)) {
 			result = true;
 		}
 		return result;

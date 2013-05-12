@@ -19,6 +19,7 @@ import android.graphics.DashPathEffect;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.text.GetChars;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -50,6 +51,7 @@ public class DrawingView extends View {
 	private Paint playerPaint;
 	private Detectable mSelectedPath;
 	private OnComponentSelectedListener listener;
+	
 
 	public void setOnComponentSelectedListener(OnComponentSelectedListener listener){
 		this.listener = listener;
@@ -150,13 +152,17 @@ public class DrawingView extends View {
 	private Bitmap getFieldFromSelection() {
 		Bitmap bitmap = BitmapFactory.decodeResource(getResources(),
 				R.drawable.soccer);
-		if(field.equals("Soccer")) {
+		Context context = getContext();
+		final String volley = context.getString(R.string.voley);
+		final String soccer = context.getString(R.string.soccer);
+		final String basket = context.getString(R.string.basketball);
+		if(field.equals(soccer)) {
 			bitmap = BitmapFactory.decodeResource(getResources(),
 					R.drawable.soccer);
-		} else if (field.equals("Voleyball")) {
+		} else if (field.equals(volley)) {
 			bitmap = BitmapFactory.decodeResource(getResources(),
 					R.drawable.voley);
-		} else if (field.equals("Basketball")) {
+		} else if (field.equals(basket)) {
 			bitmap = BitmapFactory.decodeResource(getResources(),
 					R.drawable.basket);
 		}
