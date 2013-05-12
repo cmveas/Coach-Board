@@ -51,6 +51,7 @@ public class DrawingView extends View {
 	private Paint playerPaint;
 	private Detectable mSelectedPath;
 	private OnComponentSelectedListener listener;
+	private String stateMode = getContext().getString(R.string.organization_mode);;
 	
 
 	public void setOnComponentSelectedListener(OnComponentSelectedListener listener){
@@ -106,6 +107,7 @@ public class DrawingView extends View {
 		ballPaint.setStrokeJoin(Paint.Join.ROUND);
 		ballPaint.setStrokeCap(Paint.Cap.ROUND);
 		ballPaint.setStrokeWidth(4);
+
 
 	}
 
@@ -191,15 +193,20 @@ public class DrawingView extends View {
 	private static final float TOUCH_TOLERANCE = 2;
 
 	private void touch_start(float x, float y) {
-		movable = checkMovableObjectsPosition(x, y);
-		setSelectedPath(movable);
-		if(movable==null || !movable.canBeMoved() ) {
+		if(isOrganizationMode()) {
+			movable = checkMovableObjectsPosition(x, y);
+			setSelectedPath(movable);
+		} else {
 			init();
 			mPath.reset();
 			mPath.moveTo(x, y);
 			mX = x;
 			mY = y;
-		}
+		}				
+	}
+
+	private boolean isOrganizationMode() {
+		return stateMode.equals(getContext().getString(R.string.organization_mode));
 	}
 
 	private Detectable checkMovableObjectsPosition(float x, float y) {
@@ -217,26 +224,28 @@ public class DrawingView extends View {
 	}
 
 	private void touch_move(float x, float y) {
-		if(movable==null|| !movable.canBeMoved()) {
+		if (isOrganizationMode()) {
+			if (movable != null && movable.canBeMoved() && movable.canBeMoved()) {
+				movable.setX((int) x);
+				movable.setY((int) y);
+				invalidate();
+			}
+		} else {
+
 			float dx = Math.abs(x - mX);
 			float dy = Math.abs(y - mY);
 			if (dx >= TOUCH_TOLERANCE || dy >= TOUCH_TOLERANCE) {
 				mPath.quadTo(mX, mY, (x + mX) / 2, (y + mY) / 2);
-				mPath.addPathPoints(new float[]{mX, mY, (x + mX) / 2, (y + mY) / 2});
+				mPath.addPathPoints(new float[] { mX, mY, (x + mX) / 2,
+						(y + mY) / 2 });
 				mX = x;
 				mY = y;
-			}
-		} else {
-			if(movable.canBeMoved()) {
-				movable.setX((int)x);
-				movable.setY((int)y);
-				invalidate();
 			}
 		}
 	}
 
 	private void touch_up(float x, float y) {
-		if(movable==null|| !movable.canBeMoved()) {
+		if (!isOrganizationMode()) {
 			mPath.lineTo(mX, mY);
 			// commit the path to our offscreen
 			// mCanvas.drawPath(mPath, mPaint);
@@ -245,7 +254,6 @@ public class DrawingView extends View {
 			undoablePaths.add(mPath);
 			// mPath.reset();
 		}
-		
 		movable=null;
 		invalidate();
 	}
@@ -442,6 +450,10 @@ public class DrawingView extends View {
 			
 		}
 		
+	}
+
+	public void setMode(String mode) {
+		this.stateMode=mode;		
 	}
 
 

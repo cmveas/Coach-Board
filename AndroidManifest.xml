@@ -20,6 +20,7 @@
         <activity
             android:name="com.sportcoachhelper.ActSplashScreen"
             android:label="@string/app_name" 
+             android:theme="@android:style/Theme.Holo.Light"
             android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,10 +32,12 @@
          <activity
             android:name="com.sportcoachhelper.MainActivity"
             android:label="@string/app_name" 
+            android:theme="@android:style/Theme.Holo.Light"
             android:screenOrientation="landscape">
         </activity>
         
          <activity 
+              android:theme="@android:style/Theme.Holo.Light"
              android:name="com.sportcoachhelper.ActHomeScreen"
              android:screenOrientation="landscape"
              ></activity>
