@@ -11,6 +11,7 @@ import java.io.StreamCorruptedException;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -18,8 +19,7 @@ import android.graphics.Canvas;
 import android.graphics.DashPathEffect;
 import android.graphics.Matrix;
 import android.graphics.Paint;
-import android.graphics.Path;
-import android.text.GetChars;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -51,7 +51,7 @@ public class DrawingView extends View {
 	private Paint playerPaint;
 	private Detectable mSelectedPath;
 	private OnComponentSelectedListener listener;
-	private String stateMode = getContext().getString(R.string.organization_mode);;
+	private String stateMode = getContext().getString(R.string.organization_mode);
 	
 
 	public void setOnComponentSelectedListener(OnComponentSelectedListener listener){
@@ -87,8 +87,7 @@ public class DrawingView extends View {
 		mPaint.setPathEffect(new DashPathEffect(new float[] { 10, 20 }, 0));
 		
 		mPath = new LinePath(mPaint);
-		mBitmapPaint = new Paint(Paint.DITHER_FLAG);
-		
+		mBitmapPaint = new Paint(Paint.DITHER_FLAG);		
 		
 		playerPaint = new Paint();
 		playerPaint.setAntiAlias(true);
@@ -243,8 +242,9 @@ public class DrawingView extends View {
 			// mPath.reset();
 			undoablePaths.add(mPath);
 			// mPath.reset();
+			movable=null;
 		}
-		movable=null;
+		
 		invalidate();
 	}
 
@@ -445,6 +445,41 @@ public class DrawingView extends View {
 
 	public void setMode(String mode) {
 		this.stateMode=mode;		
+	}
+	
+	
+	class TouchForDragListener implements OnTouchListener {
+
+		int movableIndex = -1;
+
+		public TouchForDragListener(int index) {
+			movableIndex = index;
+		}
+
+		@TargetApi(Build.VERSION_CODES.HONEYCOMB)
+		@Override
+		public boolean onTouch(View paramView, MotionEvent paramMotionEvent) {
+			switch (paramMotionEvent.getAction()) {
+			case MotionEvent.ACTION_DOWN:
+				
+				break;
+
+			case MotionEvent.ACTION_UP:
+				
+				break;
+			}
+			return false;
+		}
+
+	}
+
+
+	public void eraseSelected() {
+		if(movable!=null && undoablePaths.contains(movable)) {
+			undoablePaths.remove(movable);
+			listener.onComponentRelease();
+			invalidate();
+		}
 	}
 
 

@@ -55,6 +55,7 @@ public class MainActivity extends GraphicsActivity implements OnComponentSelecte
 	private Button playerNumberButton2;
 	private EditText playerNumber2;
 	private String field;
+	private ImageView trash;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +78,7 @@ public class MainActivity extends GraphicsActivity implements OnComponentSelecte
 		ballTool = (ImageView) findViewById(R.id.ballTool);
 		playerNumberButton = (Button) findViewById(R.id.playerNumberButton);
 		playerNumber = (EditText) findViewById(R.id.playerNumber);
+		trash = (ImageView) findViewById(R.id.trash);
 		
 		
 		playerNumberButton.setOnClickListener(new OnClickListener() {
@@ -272,6 +274,10 @@ public class MainActivity extends GraphicsActivity implements OnComponentSelecte
 	        
 	    }
 	}
+	
+	public void eraseSelected(View view){
+		drawingView.eraseSelected();
+	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -394,12 +400,15 @@ public class MainActivity extends GraphicsActivity implements OnComponentSelecte
 		public void onComponentSelected(ColorPath path) {
 			playerNumber.setVisibility(View.VISIBLE);
 			playerNumberButton.setVisibility(View.VISIBLE);
+			
+			trash.setVisibility(View.VISIBLE);
 		}
 
 		@Override
 		public void onComponentRelease() {
 			playerNumber.setVisibility(View.GONE);
 			playerNumberButton.setVisibility(View.GONE);
+			trash.setVisibility(View.GONE);
 			
 		}
 		
