@@ -19,7 +19,8 @@
 	<string name="voley">Volleyball</string>
 	<string name="basketball">Basketball</string>
 	<string name="field">Field</string>
-	
+	<string name="drawing_mode">Drawing Mode</string>
+	<string name="organization_mode">Organization Mode</string>
 	
 	<string-array name="fields">
 		<item >@string/soccer</item>
@@ -33,6 +34,9 @@
 		<item >@drawable/basket</item>
 	</integer-array>
 	
-	
+	<string-array name="main_mode_options">
+	    <item >@string/organization_mode</item>
+	    <item >@string/drawing_mode</item>
+	</string-array>
 	
 </resources>

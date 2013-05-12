@@ -11,6 +11,7 @@ public final class R {
     public static final class array {
         public static final int fields=0x7f050000;
         public static final int fieldsIndexes=0x7f050001;
+        public static final int main_mode_options=0x7f050002;
     }
     public static final class attr {
     }
@@ -55,11 +56,12 @@ public final class R {
         public static final int imvRightArrow=0x7f080015;
         public static final int layoutToolBar=0x7f080000;
         public static final int layoutToolBar2=0x7f080008;
-        public static final int menu_clear_document=0x7f08001a;
-        public static final int menu_exit=0x7f08001e;
-        public static final int menu_open_document=0x7f08001b;
-        public static final int menu_save_document=0x7f08001c;
-        public static final int menu_settings=0x7f08001d;
+        public static final int menu_clear_document=0x7f08001b;
+        public static final int menu_exit=0x7f08001f;
+        public static final int menu_mode_spinner=0x7f08001a;
+        public static final int menu_open_document=0x7f08001c;
+        public static final int menu_save_document=0x7f08001d;
+        public static final int menu_settings=0x7f08001e;
         public static final int pager=0x7f080014;
         public static final int playerNumber=0x7f080005;
         public static final int playerNumber2=0x7f08000c;
@@ -87,6 +89,7 @@ public final class R {
     public static final class string {
         public static final int app_name=0x7f040000;
         public static final int basketball=0x7f04000f;
+        public static final int drawing_mode=0x7f040011;
         public static final int enter=0x7f040009;
         public static final int enter_play_name=0x7f04000b;
         public static final int field=0x7f040010;
@@ -96,6 +99,7 @@ public final class R {
         public static final int menu_open=0x7f040004;
         public static final int menu_save=0x7f040005;
         public static final int menu_settings=0x7f040002;
+        public static final int organization_mode=0x7f040012;
         public static final int play_name=0x7f04000c;
         public static final int setNumber=0x7f04000a;
         public static final int soccer=0x7f04000d;

@@ -23,12 +23,15 @@ import android.view.View.OnClickListener;
 import android.view.View.OnDragListener;
 import android.view.View.OnTouchListener;
 import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 
 import com.sportcoachhelper.components.DrawingView;
-import com.sportcoachhelper.database.DatabaseHelper;
 import com.sportcoachhelper.dialogs.ClearDialog;
 import com.sportcoachhelper.dialogs.PlaysNameDialogFragment;
 import com.sportcoachhelper.interfaces.OnComponentSelectedListener;
@@ -241,11 +244,42 @@ public class MainActivity extends GraphicsActivity implements OnComponentSelecte
 				"square",teamB));
 
 	}
+	
+	private void setupMainMenuSpinner(MenuItem item) {
+	    View view = item.getActionView();
+	    if (view instanceof Spinner) {
+	        Spinner spinner = (Spinner) view;
+	        spinner.setAdapter(ArrayAdapter.createFromResource(this,
+	                R.array.main_mode_options,
+	                android.R.layout.simple_spinner_dropdown_item));
+	        
+	        spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+
+				@Override
+				public void onItemSelected(AdapterView<?> adapterView, View view,
+						int position, long id) {
+					ArrayAdapter arrayAdapter = (ArrayAdapter) adapterView.getAdapter();
+					String mode = (String) arrayAdapter.getItem(position);
+					drawingView.setMode(mode);
+				}
+
+				@Override
+				public void onNothingSelected(AdapterView<?> arg0) {
+					// TODO Auto-generated method stub
+					
+				}
+			});
+	        
+	    }
+	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.activity_main, menu);
+		
+		MenuItem modeMenuSpinner = menu.findItem( R.id.menu_mode_spinner);
+		setupMainMenuSpinner(modeMenuSpinner);
 		return true;
 	}
 	
