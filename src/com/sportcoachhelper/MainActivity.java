@@ -275,6 +275,34 @@ public class MainActivity extends GraphicsActivity implements OnComponentSelecte
 	    }
 	}
 	
+	private void setupLineMenuSpinner(MenuItem item) {
+	    View view = item.getActionView();
+	    if (view instanceof Spinner) {
+	        Spinner spinner = (Spinner) view;
+	        spinner.setAdapter(ArrayAdapter.createFromResource(this,
+	                R.array.main_line_options,
+	                android.R.layout.simple_spinner_dropdown_item));
+	        
+	        spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+
+				@Override
+				public void onItemSelected(AdapterView<?> adapterView, View view,
+						int position, long id) {
+					ArrayAdapter arrayAdapter = (ArrayAdapter) adapterView.getAdapter();
+					String mode = (String) arrayAdapter.getItem(position);
+					drawingView.setLineMode(mode);
+				}
+
+				@Override
+				public void onNothingSelected(AdapterView<?> arg0) {
+					// TODO Auto-generated method stub
+					
+				}
+			});
+	        
+	    }
+	}
+	
 	public void eraseSelected(View view){
 		drawingView.eraseSelected();
 	}
@@ -286,6 +314,9 @@ public class MainActivity extends GraphicsActivity implements OnComponentSelecte
 		
 		MenuItem modeMenuSpinner = menu.findItem( R.id.menu_mode_spinner);
 		setupMainMenuSpinner(modeMenuSpinner);
+		
+		MenuItem modelineSpinner = menu.findItem( R.id.menu_line_spinner);
+		setupLineMenuSpinner(modelineSpinner);
 		return true;
 	}
 	

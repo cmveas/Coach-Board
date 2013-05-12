@@ -84,9 +84,10 @@ public class DrawingView extends View {
 		mPaint.setStrokeJoin(Paint.Join.ROUND);
 		mPaint.setStrokeCap(Paint.Cap.ROUND);
 		mPaint.setStrokeWidth(4);
-		mPaint.setPathEffect(new DashPathEffect(new float[] { 10, 20 }, 0));
+		mPaint.setPathEffect(getLineMode(lineMode));
 		
 		mPath = new LinePath(mPaint);
+		mPath.setLineMode(lineMode);
 		mBitmapPaint = new Paint(Paint.DITHER_FLAG);		
 		
 		playerPaint = new Paint();
@@ -178,6 +179,7 @@ public class DrawingView extends View {
 	private Detectable movable;
 	private String field;
 	private List<Dibujables> temp;
+	private String lineMode = getContext().getString(R.string.continuous_line_mode);
 	private static final float TOUCH_TOLERANCE = 2;
 
 	private void touch_start(float x, float y) {
@@ -435,7 +437,9 @@ public class DrawingView extends View {
 			} else if(dibujable instanceof BallPath) {
 				((BallPath)dibujable).setPaint(ballPaint);				
 			}  else if (dibujable instanceof LinePath) {
-				((LinePath)dibujable).setPaint(mPaint);	
+				Paint paint = new Paint(mPaint);
+				paint.setPathEffect(getLineMode(((LinePath)dibujable).getLineMode()));
+				((LinePath)dibujable).setPaint(paint);	
 				((LinePath)dibujable).loadPathPointsAsQuadTo();
 			} 
 			
@@ -446,32 +450,6 @@ public class DrawingView extends View {
 	public void setMode(String mode) {
 		this.stateMode=mode;		
 	}
-	
-	
-	class TouchForDragListener implements OnTouchListener {
-
-		int movableIndex = -1;
-
-		public TouchForDragListener(int index) {
-			movableIndex = index;
-		}
-
-		@TargetApi(Build.VERSION_CODES.HONEYCOMB)
-		@Override
-		public boolean onTouch(View paramView, MotionEvent paramMotionEvent) {
-			switch (paramMotionEvent.getAction()) {
-			case MotionEvent.ACTION_DOWN:
-				
-				break;
-
-			case MotionEvent.ACTION_UP:
-				
-				break;
-			}
-			return false;
-		}
-
-	}
 
 
 	public void eraseSelected() {
@@ -480,6 +458,18 @@ public class DrawingView extends View {
 			listener.onComponentRelease();
 			invalidate();
 		}
+	}
+
+	public void setLineMode(String mode) {
+		this.lineMode = mode;
+	}
+	
+	public DashPathEffect getLineMode(String mode) {
+		DashPathEffect result = null;
+		if(!mode.equals(getContext().getString(R.string.continuous_line_mode))){
+			result = new DashPathEffect(new float[] { 10, 20 }, 0);
+		}
+		return result;
 	}
 
 

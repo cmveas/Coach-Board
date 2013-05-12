@@ -21,6 +21,8 @@
 	<string name="field">Field</string>
 	<string name="drawing_mode">Drawing Mode</string>
 	<string name="organization_mode">Organization Mode</string>
+	<string name="continuous_line_mode">Continuous Line</string>
+	<string name="dotted_line_mode">Dotted Line</string>
 	
 	<string-array name="fields">
 		<item >@string/soccer</item>
@@ -39,4 +41,10 @@
 	    <item >@string/drawing_mode</item>
 	</string-array>
 	
+	
+	<string-array name="main_line_options">
+	    <item >@string/continuous_line_mode</item>
+	    <item >@string/dotted_line_mode</item>
+	</string-array>
+
 </resources>
