@@ -23,7 +23,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	private static final String CREATE_TABLE_PLAYS = "create table " + PLAYS_TABLE_NAME + " (" +
 													 PLAYS_ID + " integer primary key," +
 													 PLAYS_NAME + " text not null," +
-													 PLAYS_DATA + " blob not null," + 
+													 PLAYS_DATA + " text not null," + 
 													 PLAYS_DATE + " integer);";
 			                                         
 
@@ -63,7 +63,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 	}
 	
-	public void insertPlay(String name, byte[] play, long date){
+	public void insertPlay(String name, String play, long date){
 		SQLiteDatabase db = getWritableDatabase();
 		
 		ContentValues cv = new ContentValues();

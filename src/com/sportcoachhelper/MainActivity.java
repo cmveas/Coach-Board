@@ -28,6 +28,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.sportcoachhelper.components.DrawingView;
+import com.sportcoachhelper.database.DatabaseHelper;
 import com.sportcoachhelper.dialogs.ClearDialog;
 import com.sportcoachhelper.dialogs.PlaysNameDialogFragment;
 import com.sportcoachhelper.interfaces.OnComponentSelectedListener;
@@ -285,6 +286,7 @@ public class MainActivity extends GraphicsActivity implements OnComponentSelecte
 	public void saveDocument(String name) {
 		File file = Environment.getExternalStorageDirectory();
 		drawingView.saveDocument(file,name);
+		
 	}
 
 	@Override

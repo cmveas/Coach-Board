@@ -24,6 +24,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.sportcoachhelper.R;
+import com.sportcoachhelper.database.DatabaseHelper;
 import com.sportcoachhelper.interfaces.OnComponentSelectedListener;
 import com.sportcoachhelper.model.Team;
 import com.sportcoachhelper.paths.BallPath;
@@ -375,6 +376,9 @@ public class DrawingView extends View {
 		stream.writeObject(field);
 		stream.writeObject(undoablePaths);
 		stream.flush();
+		
+		
+		DatabaseHelper.getInstance().insertPlay(name, toSaveFile.getAbsolutePath(), System.currentTimeMillis());
 		
 	} catch (FileNotFoundException e) {
 		// TODO Auto-generated catch block
