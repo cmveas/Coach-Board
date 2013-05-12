@@ -111,19 +111,8 @@ public class DrawingView extends View {
 
 	}
 
-	private void initPlayerPath(int x, int y,Team team) {
-		mPlayerPath = new CirclePath(team.getPaint());	
-		((CirclePath)mPlayerPath).setTeam(team.getNumber());
-		mPlayerPath.setX(x-ColorPath.HALF_SIZE);
-		mPlayerPath.setY(y-ColorPath.HALF_SIZE);
-	}
-	
-	private void initTrianglePath(int x,int y, Team team) {
-		mPlayerPath = new TrianglePath(team.getPaint());	
-		((TrianglePath)mPlayerPath).setTeam(team.getNumber());
-		mPlayerPath.setX(x);
-		mPlayerPath.setY(y);
-	}
+
+
 
 	private List<Dibujables> undoablePaths = new ArrayList<Dibujables>();
 	private int w;
@@ -225,9 +214,10 @@ public class DrawingView extends View {
 
 	private void touch_move(float x, float y) {
 		if (isOrganizationMode()) {
-			if (movable != null && movable.canBeMoved() && movable.canBeMoved()) {
+			if (movable != null && movable.canBeMoved() ) {
 				movable.setX((int) x);
 				movable.setY((int) y);
+				movable.reinitialize();
 				invalidate();
 			}
 		} else {
@@ -301,26 +291,8 @@ public class DrawingView extends View {
 		return true;
 	}
 
-	public void setCirclePlayer(int x, int y, int team) {
-		initPlayerPath(x, y,TeamManager.getInstance().getTeam(team));
-		mPlayerPath.addCircle(x-ColorPath.HALF_SIZE, y-ColorPath.HALF_SIZE, ColorPath.HALF_SIZE, Path.Direction.CCW);
-		mPlayerPath.addCirclePath(new float[] {x,y});
-	
-		undoablePaths.add(mPlayerPath);
-		invalidate();
-	}
 
-	public void setTrianglePlayer(int x, int y, int team) {
-		initTrianglePath(x, y,TeamManager.getInstance().getTeam(team));
-		mPlayerPath.moveTo(x, y);
-		mPlayerPath.lineTo(x-ColorPath.HALF_SIZE, y+ColorPath.SIZE);
-		mPlayerPath.lineTo(x+ColorPath.HALF_SIZE, y+ColorPath.SIZE);
-		mPlayerPath.lineTo(x, y);	
-		mPlayerPath.addCirclePath(new float[]{x,y});
-		undoablePaths.add(mPlayerPath);
-		invalidate();
-		
-	}
+	
 
 	public void clearBoard() {
 		undoablePaths.removeAll(undoablePaths);
@@ -333,21 +305,40 @@ public class DrawingView extends View {
 		}
 		invalidate();
 	}
-
-	public void setSquarePlayer(int x, int y, int team) {
-		initSquarePath(x,y,TeamManager.getInstance().getTeam(team));
-		mPlayerPath.addRect(x-ColorPath.HALF_SIZE,y-ColorPath.HALF_SIZE, x+ColorPath.HALF_SIZE, y+ColorPath.HALF_SIZE, Path.Direction.CCW);	
-		mPlayerPath.addCirclePath(new float[]{x,y, x+ColorPath.SIZE, y+ColorPath.SIZE });
+	
+	public void setCirclePlayer(int x, int y, int team) {
+		initPlayerPath(x, y,TeamManager.getInstance().getTeam(team));	
+		undoablePaths.add(mPlayerPath);
+		invalidate();
+	}
+	
+	private void initPlayerPath(int x, int y,Team team) {
+		mPlayerPath = new CirclePath(team.getPaint(),x-ColorPath.HALF_SIZE,y-ColorPath.HALF_SIZE);	
+		((CirclePath)mPlayerPath).setTeam(team.getNumber());
+	}
+	
+	public void setTrianglePlayer(int x, int y, int team) {
+		initTrianglePath(x, y,TeamManager.getInstance().getTeam(team));
 		undoablePaths.add(mPlayerPath);
 		invalidate();
 		
 	}
+	
+	
+	private void initTrianglePath(int x,int y, Team team) {
+		mPlayerPath = new TrianglePath(team.getPaint(),x,y);	
+		((TrianglePath)mPlayerPath).setTeam(team.getNumber());
+	}
+
+	public void setSquarePlayer(int x, int y, int team) {
+		initSquarePath(x,y,TeamManager.getInstance().getTeam(team));		
+		undoablePaths.add(mPlayerPath);
+		invalidate();		
+	}
 
 	private void initSquarePath(int x,int y, Team team) {
-		mPlayerPath = new SquarePath(team.getPaint());		
+		mPlayerPath = new SquarePath(team.getPaint(),x-ColorPath.HALF_SIZE,y-ColorPath.HALF_SIZE);		
 		((SquarePath)mPlayerPath).setTeam(team.getNumber());
-		mPlayerPath.setX(x-ColorPath.HALF_SIZE);
-		mPlayerPath.setY(y-ColorPath.HALF_SIZE);
 	}
 	
 	private void initBallPath(int field2) {

@@ -61,5 +61,11 @@ public class BallPath extends ColorPath {
 	public boolean canBeMoved() {
 		return true;
 	}
+
+	@Override
+	public void reinitialize() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

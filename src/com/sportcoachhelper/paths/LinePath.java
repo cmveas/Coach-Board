@@ -16,4 +16,10 @@ public class LinePath extends ColorPath {
 		
 	}
 
+	@Override
+	public void reinitialize() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
