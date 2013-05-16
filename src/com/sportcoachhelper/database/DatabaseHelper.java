@@ -14,16 +14,18 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
 	
-	private static final String PLAYS_TABLE_NAME = "plays";
-	private static final String PLAYS_ID = "_id";
-	private static final String PLAYS_NAME = "name";
-	private static final String PLAYS_DATE = "date";
-	private static final String PLAYS_DATA = "data";
+	public static final String PLAYS_TABLE_NAME = "plays";
+	public static final String PLAYS_ID = "_id";
+	public static final String PLAYS_NAME = "name";
+	public static final String PLAYS_DATE = "date";
+	public static final String PLAYS_FIELD = "field";
+	public static final String PLAYS_DATA = "data";
 	
 	private static final String CREATE_TABLE_PLAYS = "create table " + PLAYS_TABLE_NAME + " (" +
 													 PLAYS_ID + " integer primary key," +
 													 PLAYS_NAME + " text not null," +
 													 PLAYS_DATA + " text not null," + 
+													 PLAYS_FIELD + " text not null," +
 													 PLAYS_DATE + " integer);";
 			                                         
 
@@ -63,21 +65,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 	}
 	
-	public void insertPlay(String name, String play, long date){
+	public void insertPlay(String name, String field, String play, long date){
 		SQLiteDatabase db = getWritableDatabase();
 		
 		ContentValues cv = new ContentValues();
 		cv.put(PLAYS_NAME, name);
 		cv.put(PLAYS_DATE, date);
+		cv.put(PLAYS_FIELD, field);
 		cv.put(PLAYS_DATA, play);
 	
 		db.insert(PLAYS_TABLE_NAME, null, cv);
 	}
 	
-	public Cursor getPlays(){
+	public Cursor getPlays(String court){
 		SQLiteDatabase db = getReadableDatabase();
 		
-		return db.query(PLAYS_TABLE_NAME, null, null, null, null, null, null);
+		return db.query(PLAYS_TABLE_NAME, null, PLAYS_FIELD+"=?", new String[]{court}, null, null, PLAYS_DATE);
 		
 	}
 
