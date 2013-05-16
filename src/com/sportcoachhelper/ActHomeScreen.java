@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.sportcoachhelper.fragments.ScreenSlidePageFragment;
+import com.sportcoachhelper.util.Utility;
 
 public class ActHomeScreen extends FragmentActivity {
 
@@ -22,6 +23,8 @@ public class ActHomeScreen extends FragmentActivity {
 	@Override
 	protected void onCreate(Bundle arg0) {
 		super.onCreate(arg0);
+		Utility.setHoloTheme(this);
+		
 		setContentView(R.layout.home);
 
         // Instantiate a ViewPager and a PagerAdapter.

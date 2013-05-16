@@ -1,28 +1,40 @@
 package com.sportcoachhelper.fragments;
 
+import java.util.ArrayList;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.sportcoachhelper.MainActivity;
 import com.sportcoachhelper.R;
+import com.sportcoachhelper.database.DatabaseHelper;
+import com.sportcoachhelper.fragments.ScreenSlidePageFragment.PlaysAdapter;
 import com.sportcoachhelper.util.FontManager;
 
 @SuppressLint("ValidFragment")
 public class ScreenSlidePageFragment extends Fragment {
 
-    private int position;
+    public static final String PLAY = "play";
+	private int position;
 	private String label;
 	private int[] fieldIndexes;
 	private ImageView field_type;
 	private TextView field_name;
+	private ListView playList;
+	private PlaysAdapter playsAdapter;
 
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -45,8 +57,24 @@ public class ScreenSlidePageFragment extends Fragment {
 					startActivity(intent);
 			}
 		});
+        
+        playList = (ListView) rootView.findViewById(R.id.playList);
+        playList.setAdapter(playsAdapter = new PlaysAdapter());
+        playList.setDividerHeight(0);
+        playList.setOnItemClickListener(new OnItemClickListener() {
+        	@Override
+        	public void onItemClick(AdapterView<?> paramAdapterView,
+        			View paramView, int position, long paramLong) {
+        		String play = (String) playsAdapter.getItem(position);
+        		Intent intent = new Intent(getActivity(),MainActivity.class);
+        		intent.putExtra(PLAY, play);
+        		intent.putExtra("field", label);
+        		startActivity(intent);
+        	}
+		});
         return rootView;
     }
+	
 
 	private int getField() {
 		int result = R.drawable.soccer;
@@ -72,4 +100,80 @@ public class ScreenSlidePageFragment extends Fragment {
 		this.label=label;
 		
 	}
+	
+	@Override
+	public void onResume() {
+		super.onResume();
+		playsAdapter.reloadList(label);
+		playsAdapter.notifyDataSetChanged();
+		
+	}
+	
+	public class PlaysAdapter extends BaseAdapter {
+
+		private ArrayList<String> plays;
+		private LayoutInflater inflater;
+
+		public PlaysAdapter(){
+		
+		}
+
+		private void reloadList(String label) {
+			plays = new ArrayList<String>();
+			Cursor cursor = DatabaseHelper.getInstance().getPlays(label);
+			if(cursor.moveToFirst()) {
+				int nameIndex = cursor.getColumnIndex(DatabaseHelper.PLAYS_NAME);
+				while(!cursor.isAfterLast()){
+					String name = cursor.getString(nameIndex);
+					plays.add(name);
+					cursor.moveToNext();
+				}
+			}
+			if(cursor!=null && !cursor.isClosed()) {
+				cursor.close();
+			}
+			inflater = LayoutInflater.from(getActivity());
+		}
+		
+		@Override
+		public int getCount() {
+			int result = 0;
+			if(plays!=null) {
+				result = plays.size();
+			}
+			return result;
+		}
+
+		@Override
+		public Object getItem(int position) {
+			return plays.get(position);
+		}
+
+		@Override
+		public long getItemId(int position) {
+			return 0;
+		}
+
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent) {
+			View view = (View) convertView;
+			
+			if(view==null) {
+				view = inflater.inflate(R.layout.plays_item, null);
+			}
+			
+			TextView name = (TextView) view.findViewById(R.id.play_name);
+			name.setTypeface(FontManager.getInstance().getFont(FontManager.CHALK_REGULAR));
+			name.setTextColor(getResources().getColor(android.R.color.white));
+			TextView date = (TextView) view.findViewById(R.id.play_date);
+			date.setTypeface(FontManager.getInstance().getFont(FontManager.CHALK_REGULAR));
+			date.setTextColor(getResources().getColor(android.R.color.white));
+			name.setText(plays.get(position));
+			date.setText(plays.get(position));
+			
+			return view;
+		}
+		
+	}
+	
 }

@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.sportcoachhelper.util.FontManager;
+import com.sportcoachhelper.util.Utility;
 
 public class ActSplashScreen extends Activity {
 
@@ -17,6 +18,8 @@ public class ActSplashScreen extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		Utility.setHoloTheme(this);
 		
 		setContentView(R.layout.splash);
 		

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="splash_title_size">48dp</dimen>
+    <dimen name="splash_btn_enter_size">36sp</dimen>
+    <dimen name="court_padding">8dp</dimen>
+    <dimen name="pager_court_width">150dp</dimen>
+    <dimen name="pager_court_height">75dp</dimen>
+    <dimen name="toolbar_width">50dp</dimen>
+
+</resources>

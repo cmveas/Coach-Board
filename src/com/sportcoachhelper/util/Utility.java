@@ -1,7 +1,10 @@
 package com.sportcoachhelper.util;
 
+import android.annotation.TargetApi;
+import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
+import android.os.Build;
 
 public class Utility {
 
@@ -28,6 +31,15 @@ public class Utility {
 		} else
 			return bm;
 
+	}
+	
+	
+	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
+	public static void setHoloTheme(Activity activity){
+		
+		 if( (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.HONEYCOMB)) {
+			 activity.setTheme(android.R.style.Theme_Holo_Light);			 
+		 }
 	}
 	
 }

@@ -162,7 +162,10 @@ public class DrawingView extends View {
 
 	@Override
 	protected void onDraw(Canvas canvas) {
-		canvas.drawColor(0xFFFFFFFF);
+		long now = System.currentTimeMillis();
+		android.util.Log.d(TAG, "onDraw Started");
+		
+		//canvas.drawColor(0xFFFFFFFF);
 
 		canvas.drawBitmap(mBitmap, 0, 0, mBitmapPaint);
 
@@ -172,6 +175,8 @@ public class DrawingView extends View {
 		}
 
 		canvas.drawPath(mPath, mPaint);
+		long last = System.currentTimeMillis();
+		android.util.Log.d(TAG, "onDraw Finished:" + (last - now) + "now: " + now + " last:" + last);
 	}
 
 	private float mX, mY;
@@ -180,9 +185,12 @@ public class DrawingView extends View {
 	private String field;
 	private List<Dibujables> temp;
 	private String lineMode = getContext().getString(R.string.continuous_line_mode);
+	private long now;
 	private static final float TOUCH_TOLERANCE = 2;
+	private static final String TAG = "DrawingView";
 
 	private void touch_start(float x, float y) {
+		android.util.Log.d(TAG, "touch_start");
 		if(isOrganizationMode()) {
 			movable = checkMovableObjectsPosition(x, y);
 			setSelectedPath(movable);
@@ -214,12 +222,12 @@ public class DrawingView extends View {
 	}
 
 	private void touch_move(float x, float y) {
+		android.util.Log.d(TAG, "touch_move start");
 		if (isOrganizationMode()) {
 			if (movable != null && movable.canBeMoved() ) {
 				movable.setX((int) x);
 				movable.setY((int) y);
 				movable.reinitialize();
-				invalidate();
 			}
 		} else {
 
@@ -236,18 +244,21 @@ public class DrawingView extends View {
 	}
 
 	private void touch_up(float x, float y) {
+		android.util.Log.d(TAG, "touch_up");
 		if (!isOrganizationMode()) {
 			mPath.lineTo(mX, mY);
 			// commit the path to our offscreen
 			// mCanvas.drawPath(mPath, mPaint);
 			// kill this so we don't double draw
 			// mPath.reset();
-			undoablePaths.add(mPath);
+			addPathsToQueue(mPath);
 			// mPath.reset();
 			movable=null;
 		}
-		
-		invalidate();
+	}
+
+	private void addPathsToQueue(ColorPath mPath) {
+		undoablePaths.add(mPath);
 	}
 
 	private void setSelectedPath(Detectable movable) {
@@ -273,9 +284,9 @@ public class DrawingView extends View {
 
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
+		drawDifference("onTouchEvent Started",event.getAction());
 		float x = event.getX();
 		float y = event.getY();
-
 		switch (event.getAction()) {
 		case MotionEvent.ACTION_DOWN:
 			touch_start(x, y);
@@ -290,11 +301,23 @@ public class DrawingView extends View {
 			invalidate();
 			break;
 		}
+		
+		
+		drawDifference("onTouchEvent Ended",event.getAction());
 		return true;
 	}
 
 
 	
+
+	private void drawDifference(String event, int action) {
+		long dif =  (System.currentTimeMillis()-now);
+		if(dif>500) {
+			android.util.Log.d(TAG, event + dif + " " + action);
+		}
+		now = System.currentTimeMillis();
+		
+	}
 
 	public void clearBoard() {
 		undoablePaths.removeAll(undoablePaths);
@@ -310,7 +333,7 @@ public class DrawingView extends View {
 	
 	public void setCirclePlayer(int x, int y, int team) {
 		initPlayerPath(x, y,TeamManager.getInstance().getTeam(team));	
-		undoablePaths.add(mPlayerPath);
+		addPathsToQueue(mPlayerPath);
 		invalidate();
 	}
 	
@@ -321,7 +344,7 @@ public class DrawingView extends View {
 	
 	public void setTrianglePlayer(int x, int y, int team) {
 		initTrianglePath(x, y,TeamManager.getInstance().getTeam(team));
-		undoablePaths.add(mPlayerPath);
+		addPathsToQueue(mPlayerPath);
 		invalidate();
 		
 	}
@@ -334,7 +357,7 @@ public class DrawingView extends View {
 
 	public void setSquarePlayer(int x, int y, int team) {
 		initSquarePath(x,y,TeamManager.getInstance().getTeam(team));		
-		undoablePaths.add(mPlayerPath);
+		addPathsToQueue(mPlayerPath);
 		invalidate();		
 	}
 
@@ -351,7 +374,7 @@ public class DrawingView extends View {
 		initBallPath(field);
 		((BallPath)mPlayerPath).setX(x);
 		((BallPath)mPlayerPath).setY(y);
-		undoablePaths.add(mPlayerPath);
+		addPathsToQueue(mPlayerPath);
 		invalidate();
 	}
 
@@ -385,7 +408,7 @@ public class DrawingView extends View {
 		stream.flush();
 		
 		
-		DatabaseHelper.getInstance().insertPlay(name, toSaveFile.getAbsolutePath(), System.currentTimeMillis());
+		DatabaseHelper.getInstance().insertPlay(name, field ,  toSaveFile.getAbsolutePath(), System.currentTimeMillis());
 		
 	} catch (FileNotFoundException e) {
 		// TODO Auto-generated catch block
