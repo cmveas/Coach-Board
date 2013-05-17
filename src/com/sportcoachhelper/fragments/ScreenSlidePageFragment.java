@@ -1,6 +1,10 @@
 package com.sportcoachhelper.fragments;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -22,6 +26,7 @@ import com.sportcoachhelper.MainActivity;
 import com.sportcoachhelper.R;
 import com.sportcoachhelper.database.DatabaseHelper;
 import com.sportcoachhelper.fragments.ScreenSlidePageFragment.PlaysAdapter;
+import com.sportcoachhelper.model.Play;
 import com.sportcoachhelper.util.FontManager;
 
 @SuppressLint("ValidFragment")
@@ -65,9 +70,9 @@ public class ScreenSlidePageFragment extends Fragment {
         	@Override
         	public void onItemClick(AdapterView<?> paramAdapterView,
         			View paramView, int position, long paramLong) {
-        		String play = (String) playsAdapter.getItem(position);
+        		Play play = (Play) playsAdapter.getItem(position);
         		Intent intent = new Intent(getActivity(),MainActivity.class);
-        		intent.putExtra(PLAY, play);
+        		intent.putExtra(PLAY, play.getName());
         		intent.putExtra("field", label);
         		startActivity(intent);
         	}
@@ -111,7 +116,7 @@ public class ScreenSlidePageFragment extends Fragment {
 	
 	public class PlaysAdapter extends BaseAdapter {
 
-		private ArrayList<String> plays;
+		private ArrayList<Play> plays;
 		private LayoutInflater inflater;
 
 		public PlaysAdapter(){
@@ -119,13 +124,18 @@ public class ScreenSlidePageFragment extends Fragment {
 		}
 
 		private void reloadList(String label) {
-			plays = new ArrayList<String>();
+			plays = new ArrayList<Play>();
 			Cursor cursor = DatabaseHelper.getInstance().getPlays(label);
 			if(cursor.moveToFirst()) {
 				int nameIndex = cursor.getColumnIndex(DatabaseHelper.PLAYS_NAME);
+				int dateIndex = cursor.getColumnIndex(DatabaseHelper.PLAYS_DATE);
 				while(!cursor.isAfterLast()){
 					String name = cursor.getString(nameIndex);
-					plays.add(name);
+					long date = cursor.getLong(dateIndex);
+					Play temp = new Play();
+					temp.setName(name);
+					temp.setLastSaved(date);
+					plays.add(temp);
 					cursor.moveToNext();
 				}
 			}
@@ -168,8 +178,9 @@ public class ScreenSlidePageFragment extends Fragment {
 			TextView date = (TextView) view.findViewById(R.id.play_date);
 			date.setTypeface(FontManager.getInstance().getFont(FontManager.CHALK_REGULAR));
 			date.setTextColor(getResources().getColor(android.R.color.white));
-			name.setText(plays.get(position));
-			date.setText(plays.get(position));
+			name.setText(plays.get(position).getName());
+			 DateFormat format = SimpleDateFormat.getDateTimeInstance();
+			date.setText(format.format(new Date(plays.get(position).getLastSaved())));
 			
 			return view;
 		}

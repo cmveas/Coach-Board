@@ -11,7 +11,6 @@ import java.io.StreamCorruptedException;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -19,7 +18,6 @@ import android.graphics.Canvas;
 import android.graphics.DashPathEffect;
 import android.graphics.Matrix;
 import android.graphics.Paint;
-import android.os.Build;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -27,6 +25,7 @@ import android.view.View;
 import com.sportcoachhelper.R;
 import com.sportcoachhelper.database.DatabaseHelper;
 import com.sportcoachhelper.interfaces.OnComponentSelectedListener;
+import com.sportcoachhelper.model.Play;
 import com.sportcoachhelper.model.Team;
 import com.sportcoachhelper.paths.BallPath;
 import com.sportcoachhelper.paths.CirclePath;
@@ -52,6 +51,7 @@ public class DrawingView extends View {
 	private Detectable mSelectedPath;
 	private OnComponentSelectedListener listener;
 	private String stateMode = getContext().getString(R.string.organization_mode);
+	private Play play;
 	
 
 	public void setOnComponentSelectedListener(OnComponentSelectedListener listener){
@@ -60,21 +60,28 @@ public class DrawingView extends View {
 	
 	public DrawingView(Context c) {
 		super(c);
-
 		init();
+		initializePaints();
 	}
 
 	public DrawingView(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
 		init();
+		initializePaints();
 	}
 
 	public DrawingView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		init();
+		initializePaints();
 	}
 
 	private void init() {
+		play = new Play();
+		
+	}
+
+	private void initializePaints() {
 		
 		mPaint = new Paint();
 		mPaint.setAntiAlias(true);
@@ -114,7 +121,7 @@ public class DrawingView extends View {
 
 
 
-	private List<Dibujables> undoablePaths = new ArrayList<Dibujables>();
+	
 	private int w;
 	private int h;
 
@@ -147,13 +154,13 @@ public class DrawingView extends View {
 		final String volley = context.getString(R.string.voley);
 		final String soccer = context.getString(R.string.soccer);
 		final String basket = context.getString(R.string.basketball);
-		if(field.equals(soccer)) {
+		if(play.getField().equals(soccer)) {
 			bitmap = BitmapFactory.decodeResource(getResources(),
 					R.drawable.soccer);
-		} else if (field.equals(volley)) {
+		} else if (play.getField().equals(volley)) {
 			bitmap = BitmapFactory.decodeResource(getResources(),
 					R.drawable.voley);
-		} else if (field.equals(basket)) {
+		} else if (play.getField().equals(basket)) {
 			bitmap = BitmapFactory.decodeResource(getResources(),
 					R.drawable.basket);
 		}
@@ -169,6 +176,8 @@ public class DrawingView extends View {
 
 		canvas.drawBitmap(mBitmap, 0, 0, mBitmapPaint);
 
+		ArrayList<Dibujables> undoablePaths = play.getUndoablePaths();
+		
 		for (Dibujables path : undoablePaths) {
 			path.draw(canvas);
 			
@@ -182,8 +191,6 @@ public class DrawingView extends View {
 	private float mX, mY;
 	private Paint ballPaint;
 	private Detectable movable;
-	private String field;
-	private List<Dibujables> temp;
 	private String lineMode = getContext().getString(R.string.continuous_line_mode);
 	private long now;
 	private static final float TOUCH_TOLERANCE = 2;
@@ -195,7 +202,7 @@ public class DrawingView extends View {
 			movable = checkMovableObjectsPosition(x, y);
 			setSelectedPath(movable);
 		} else {
-			init();
+			initializePaints();
 			mPath.reset();
 			mPath.moveTo(x, y);
 			mX = x;
@@ -209,6 +216,7 @@ public class DrawingView extends View {
 
 	private Detectable checkMovableObjectsPosition(float x, float y) {
 		Detectable result = null;
+		ArrayList<Dibujables> undoablePaths = play.getUndoablePaths();
 		for (Dibujables item : undoablePaths) {
 			if(item instanceof Detectable) {
 				Detectable moveItem = (Detectable)item;
@@ -258,7 +266,7 @@ public class DrawingView extends View {
 	}
 
 	private void addPathsToQueue(ColorPath mPath) {
-		undoablePaths.add(mPath);
+		play.addPath(mPath);
 	}
 
 	private void setSelectedPath(Detectable movable) {
@@ -272,13 +280,10 @@ public class DrawingView extends View {
 
 	public boolean undoLast() {
 		boolean result = false;
-		if (undoablePaths.size() > 0) {
-			Dibujables removedPath = undoablePaths.remove(undoablePaths.size() - 1);
-			removedPath.resetPath();
+		result = play.removeLast();
+		if(result) {
 			invalidate();
-			result=true;
 		}
-		
 		return result;
 	}
 
@@ -320,7 +325,7 @@ public class DrawingView extends View {
 	}
 
 	public void clearBoard() {
-		undoablePaths.removeAll(undoablePaths);
+		play.removeAllMoves();
 		
 		if(mPlayerPath!=null) {
 			mPlayerPath.reset();
@@ -389,7 +394,7 @@ public class DrawingView extends View {
 	}
 
 	public void setField(String label) {
-		this.field = label;
+		play.setField(label);
 		initializeField(w, h);
 	}
 
@@ -403,12 +408,12 @@ public class DrawingView extends View {
 	
 		FileOutputStream output = new FileOutputStream(toSaveFile);
 		ObjectOutputStream stream = new ObjectOutputStream(output);
-		stream.writeObject(field);
-		stream.writeObject(undoablePaths);
+		play.setName(name);
+		stream.writeObject(play);
 		stream.flush();
 		
 		
-		DatabaseHelper.getInstance().insertPlay(name, field ,  toSaveFile.getAbsolutePath(), System.currentTimeMillis());
+		DatabaseHelper.getInstance().insertPlay(name, play.getField() ,  toSaveFile.getAbsolutePath(), System.currentTimeMillis());
 		
 	} catch (FileNotFoundException e) {
 		// TODO Auto-generated catch block
@@ -423,12 +428,9 @@ public class DrawingView extends View {
 		try {
 			FileInputStream stream = new FileInputStream(file);
 			ObjectInputStream fin = new ObjectInputStream(stream);
-			field = (String) fin.readObject();
-			temp = (List<Dibujables>) fin.readObject();
+			play =  (Play) fin.readObject();
 			
 			initializePaths();
-			
-			undoablePaths=temp;
 			
 			invalidate();
 			
@@ -448,8 +450,14 @@ public class DrawingView extends View {
 		
 		
 	}
+	
+	
+	public Play getPlay(){
+		return play;
+	}
 
 	private void initializePaths() {
+		ArrayList<Dibujables> temp = play.getUndoablePaths();
 		for (Dibujables dibujable : temp) {
 			if(dibujable instanceof CirclePath) {	
 				((CirclePath)dibujable).loadCirclePathPointsAsQuadTo();
@@ -476,11 +484,10 @@ public class DrawingView extends View {
 
 
 	public void eraseSelected() {
-		if(movable!=null && undoablePaths.contains(movable)) {
-			undoablePaths.remove(movable);
+		if(play.erasedSelected(movable)) {
 			listener.onComponentRelease();
 			invalidate();
-		}
+		}	
 	}
 
 	public void setLineMode(String mode) {

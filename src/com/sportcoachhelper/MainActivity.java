@@ -36,6 +36,7 @@ import com.sportcoachhelper.dialogs.ClearDialog;
 import com.sportcoachhelper.dialogs.PlaysNameDialogFragment;
 import com.sportcoachhelper.fragments.ScreenSlidePageFragment;
 import com.sportcoachhelper.interfaces.OnComponentSelectedListener;
+import com.sportcoachhelper.model.Play;
 import com.sportcoachhelper.model.Team;
 import com.sportcoachhelper.paths.ColorPath;
 import com.sportcoachhelper.util.TeamManager;
@@ -436,7 +437,13 @@ public class MainActivity extends GraphicsActivity implements
 
 	private void showPlayNameDialog() {
 		FragmentManager fm = getSupportFragmentManager();
+		Play play = drawingView.getPlay();
+		String name = "";
+		if(play!=null && play.getName()!=null) {
+			name = play.getName();
+		}
 		PlaysNameDialogFragment playsNameDialog = new PlaysNameDialogFragment();
+		playsNameDialog.setName(name);
 		playsNameDialog.show(fm, "fragment_clear_name");
 	}
 

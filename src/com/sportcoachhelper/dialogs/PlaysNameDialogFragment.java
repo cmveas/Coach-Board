@@ -16,6 +16,11 @@ public class PlaysNameDialogFragment extends DialogFragment {
 
 	private EditText edv ;
 	private Button btnName;
+	private String name;
+
+	public PlaysNameDialogFragment() {
+	
+	}
 
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -27,6 +32,10 @@ public class PlaysNameDialogFragment extends DialogFragment {
 		getDialog().setTitle(R.string.play_name);
 		
         edv = (EditText) view.findViewById(R.id.edtPlayName);
+        
+        if(name!=null) {
+        	edv.setText(name);
+        }
         
         btnName = (Button) view.findViewById(R.id.btnName);
         
@@ -45,5 +54,10 @@ public class PlaysNameDialogFragment extends DialogFragment {
         
       return view;
         }
+
+	public void setName(String name) {
+		this.name=name;
+		
+	}
 	
 }
