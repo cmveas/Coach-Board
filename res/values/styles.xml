@@ -33,4 +33,24 @@
     </style>
     
 
+    <style name="organization_button_style" parent="android:Widget">
+	    <item name="android:background">@drawable/organization_mode_style</item>
+	    <item name="android:layout_margin">3dp</item>
+	    <item name="android:textOn"></item>
+	    <item name="android:textOff"></item>
+	</style>
+	
+     <style name="continuous_line_button_style" parent="android:Widget">
+	    <item name="android:background">@drawable/continuous_line_mode_style</item>
+	    <item name="android:layout_margin">3dp</item>
+	    <item name="android:textOn"></item>
+	    <item name="android:textOff"></item>
+	</style>
+	
+     <style name="dotted_line_button_style" parent="android:Widget">
+	    <item name="android:background">@drawable/dotted_line_mode_style</item>
+	    <item name="android:layout_margin">3dp</item>
+	    <item name="android:textOn"></item>
+	    <item name="android:textOff"></item>
+	</style>
 </resources>
