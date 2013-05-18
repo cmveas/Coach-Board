@@ -9,7 +9,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.StreamCorruptedException;
 import java.util.ArrayList;
-import java.util.List;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -27,6 +26,7 @@ import com.sportcoachhelper.database.DatabaseHelper;
 import com.sportcoachhelper.interfaces.OnComponentSelectedListener;
 import com.sportcoachhelper.model.Play;
 import com.sportcoachhelper.model.Team;
+import com.sportcoachhelper.model.TemplateItem;
 import com.sportcoachhelper.paths.BallPath;
 import com.sportcoachhelper.paths.CirclePath;
 import com.sportcoachhelper.paths.ColorPath;
@@ -357,7 +357,22 @@ public class DrawingView extends View {
 	
 	private void initTrianglePath(int x,int y, Team team) {
 		mPlayerPath = new TrianglePath(team.getPaint(),x,y);	
+		TemplateItem item = new TemplateItem();
+		item.setShape(TemplateItem.SHAPE_TRIANGLE);
+		item.setxPercentage(getPercentageWidth(x));
+		item.setyPercentage(getPercentageHeight(y));
 		((TrianglePath)mPlayerPath).setTeam(team.getNumber());
+	}
+
+	private int getPercentageWidth(int x) {
+		int totalWidth = getWidth();
+		return (x*100)/totalWidth;
+	}
+	
+
+	private int getPercentageHeight(int y) {
+		int totalHeight = getHeight();
+		return (y*100)/totalHeight;
 	}
 
 	public void setSquarePlayer(int x, int y, int team) {

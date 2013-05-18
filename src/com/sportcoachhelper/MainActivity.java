@@ -23,13 +23,12 @@ import android.view.View.OnClickListener;
 import android.view.View.OnDragListener;
 import android.view.View.OnTouchListener;
 import android.view.WindowManager;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Spinner;
+import android.widget.ToggleButton;
 
 import com.sportcoachhelper.components.DrawingView;
 import com.sportcoachhelper.dialogs.ClearDialog;
@@ -38,6 +37,7 @@ import com.sportcoachhelper.fragments.ScreenSlidePageFragment;
 import com.sportcoachhelper.interfaces.OnComponentSelectedListener;
 import com.sportcoachhelper.model.Play;
 import com.sportcoachhelper.model.Team;
+import com.sportcoachhelper.paths.BallPath;
 import com.sportcoachhelper.paths.ColorPath;
 import com.sportcoachhelper.util.TeamManager;
 import com.sportcoachhelper.util.Utility;
@@ -56,11 +56,12 @@ public class MainActivity extends GraphicsActivity implements
 	private ImageView playerImage2;
 	private ImageView triangleTool2;
 	private ImageView squareTool2;
-	private Button playerNumberButton2;
-	private EditText playerNumber2;
 	private String field;
 	private ImageView trash;
 	private String mode;
+	private ToggleButton organizationMode;
+	private ToggleButton continuousLineMode;
+	private ToggleButton dottedLineMode;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -104,20 +105,9 @@ public class MainActivity extends GraphicsActivity implements
 		playerImage2 = (ImageView) findViewById(R.id.playerTool2);
 		triangleTool2 = (ImageView) findViewById(R.id.triangleTool2);
 		squareTool2 = (ImageView) findViewById(R.id.squareTool2);
-		playerNumber2 = (EditText) findViewById(R.id.playerNumber2);
-		playerNumberButton2 = (Button) findViewById(R.id.playerNumberButton2);
-
-		playerNumberButton2.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				String number = playerNumber2.getText().toString();
-				if (!number.trim().equals("")) {
-					drawingView.setLabel(number);
-				}
-
-			}
-		});
+		organizationMode = (ToggleButton) findViewById(R.id.organization_mode);
+		continuousLineMode = (ToggleButton) findViewById(R.id.continuous_line_mode);
+		dottedLineMode = (ToggleButton) findViewById(R.id.dotted_line_mode);
 
 		Intent intent = getIntent();
 		field = intent.getStringExtra("field");
@@ -129,6 +119,7 @@ public class MainActivity extends GraphicsActivity implements
 		}
 		
 		mode = getString(R.string.organization_mode);
+		setOrganizationModeButton();
 		
 		manageDrag(field);
 
@@ -137,6 +128,70 @@ public class MainActivity extends GraphicsActivity implements
 		drawingView.setOnComponentSelectedListener(this);
 
 		checkForFullTools();
+	}
+	
+	public void setOrganizationModeButton(){
+		organizationMode.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+			
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+				if(isChecked) {
+					
+					setOrganizationMode();
+				} else {
+					checkAButtonIsPressed(organizationMode);
+				}		
+			}
+		})	;
+		
+		continuousLineMode.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+			
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+				if(isChecked) {
+					
+					setContinuousLine();
+				} 	else {
+					checkAButtonIsPressed(continuousLineMode);
+				}		
+			}
+		})	;
+		
+		dottedLineMode.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+			
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+				if(isChecked) {
+					
+					setDottedLine();
+				} 	else {
+					checkAButtonIsPressed(dottedLineMode);
+				}		
+			}
+		})	;
+	}
+
+	protected void setContinuousLine() {
+		organizationMode.setChecked(false);
+		dottedLineMode.setChecked(false);	
+		drawingView.setMode(getString(R.string.drawing_mode));
+		drawingView.setLineMode(getString(R.string.continuous_line_mode));
+		
+	}
+	
+	protected void setDottedLine() {
+		organizationMode.setChecked(false);
+		continuousLineMode.setChecked(false);	
+		drawingView.setMode(getString(R.string.drawing_mode));
+		drawingView.setLineMode(getString(R.string.dotted_line_mode));
+		
+	}
+
+	protected void checkAButtonIsPressed(ToggleButton selectedButton) {
+		if(!organizationMode.isChecked() && !continuousLineMode.isChecked() && !dottedLineMode.isChecked()) {
+			selectedButton.setChecked(true);
+		}
+		
 	}
 
 	private void checkForFullTools() {
@@ -159,11 +214,11 @@ public class MainActivity extends GraphicsActivity implements
 		final String soccer = getString(R.string.soccer);
 		final String basket = getString(R.string.basketball);
 		if (field.equals(soccer)) {
-			resource = R.drawable.soccerball;
+			resource = BallPath.SOCCER_BALL;
 		} else if (field.equals(basket)) {
-			resource = R.drawable.basketball;
+			resource = BallPath.BASKETBALL;
 		} else if (field.equals(volley)) {
-			resource = R.drawable.volleyball;
+			resource = BallPath.VOLLEYBALL;
 		}
 		return resource;
 	}
@@ -253,68 +308,6 @@ public class MainActivity extends GraphicsActivity implements
 		}
 	}
 
-	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
-	private void setupMainMenuSpinner(MenuItem item) {
-		View view = item.getActionView();
-		if (view instanceof Spinner) {
-			Spinner spinner = (Spinner) view;
-			spinner.setAdapter(ArrayAdapter.createFromResource(this,
-					R.array.main_mode_options,
-					android.R.layout.simple_spinner_dropdown_item));
-
-			spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
-
-				@Override
-				public void onItemSelected(AdapterView<?> adapterView,
-						View view, int position, long id) {
-					ArrayAdapter arrayAdapter = (ArrayAdapter) adapterView
-							.getAdapter();
-					String mode = (String) arrayAdapter.getItem(position);
-					drawingView.setMode(mode);
-					
-				}
-
-				@Override
-				public void onNothingSelected(AdapterView<?> arg0) {
-					// TODO Auto-generated method stub
-
-				}
-			});
-
-		}
-	}
-
-	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
-	private void setupLineMenuSpinner(MenuItem item) {
-		View view = item.getActionView();
-		if (view instanceof Spinner) {
-			Spinner spinner = (Spinner) view;
-			spinner.setAdapter(ArrayAdapter.createFromResource(this,
-					R.array.main_line_options,
-					android.R.layout.simple_spinner_dropdown_item));
-
-			spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
-
-			
-
-				@Override
-				public void onItemSelected(AdapterView<?> adapterView,
-						View view, int position, long id) {
-					ArrayAdapter arrayAdapter = (ArrayAdapter) adapterView
-							.getAdapter();
-					mode = (String) arrayAdapter.getItem(position);
-					drawingView.setLineMode(mode);
-				}
-
-				@Override
-				public void onNothingSelected(AdapterView<?> arg0) {
-					// TODO Auto-generated method stub
-
-				}
-			});
-
-		}
-	}
 
 	public void eraseSelected(View view) {
 		drawingView.eraseSelected();
@@ -325,20 +318,6 @@ public class MainActivity extends GraphicsActivity implements
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.activity_main, menu);
 
-		if(supportsDragAndDrop()) {
-			MenuItem modeMenuSpinner = menu.findItem(R.id.menu_mode_spinner);
-			setupMainMenuSpinner(modeMenuSpinner);
-	
-			boolean visible = !mode.equals(getString(R.string.organization_mode));
-			
-			MenuItem modelineSpinner = menu.findItem(R.id.menu_line_spinner);
-			if(visible) {
-			setupLineMenuSpinner(modelineSpinner);
-			modelineSpinner.setVisible(mode.equals(getString(R.string.organization_mode)));
-			} else {
-				modelineSpinner.setVisible(visible);
-			}
-		} 
 		return true;
 	}
 
@@ -485,5 +464,13 @@ public class MainActivity extends GraphicsActivity implements
 	public boolean supportsDragAndDrop() {
 		return  (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.HONEYCOMB);
 	}
+
+	private void setOrganizationMode() {
+		continuousLineMode.setChecked(false);
+		dottedLineMode.setChecked(false);	
+		drawingView.setMode(getString(R.string.organization_mode));
+	}
+	
+	
 
 }
