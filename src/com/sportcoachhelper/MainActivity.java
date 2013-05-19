@@ -203,8 +203,8 @@ public class MainActivity extends GraphicsActivity implements
 	}
 
 	private void drawTheAppropiateBall(String field) {
-		int resource = giveMeFieldBall(field);
-
+		int type = giveMeFieldBall(field);
+		int resource = BallPath.getResourceFromType(type);
 		ballTool.setImageResource(resource);
 	}
 

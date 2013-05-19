@@ -16,6 +16,7 @@ public abstract class ColorPath extends SerializablePath implements Detectable {
 	protected int x;
 	protected int y;
 	protected transient Paint textPaint;
+	protected Paint selectedPaint;
 
 	public ColorPath(Paint paint){
 		super();
@@ -29,13 +30,19 @@ public abstract class ColorPath extends SerializablePath implements Detectable {
 	public void setPaint(Paint paint) {
 		this.paint = paint;
 		this.textPaint = new Paint(paint);
+		this.selectedPaint = new Paint(paint);
+		selectedPaint.setAlpha(0x7f);
 		textPaint.setTextSize(36);
 		textPaint.setColor(0xFFFFFFFF);
 	}
 	
 	@Override
-	public void draw(Canvas canvas) {	
-		canvas.drawPath(this,paint);
+	public void draw(Canvas canvas) {
+		if(selected) {
+		canvas.drawPath(this,selectedPaint);
+		} else {
+		canvas.drawPath(this,paint);	
+		}
 		if(label!=null && !label.trim().equals("")) {
 			canvas.drawText(label, x-HALF_SIZE, y-HALF_SIZE, textPaint);
 		}
@@ -92,6 +99,7 @@ public abstract class ColorPath extends SerializablePath implements Detectable {
 	
 
 	private String label;
+	private boolean selected;
 
 	
 	public void setLabel(String number) {
@@ -102,4 +110,14 @@ public abstract class ColorPath extends SerializablePath implements Detectable {
 		return label;
 	}
 	
+	
+	@Override
+	public void setSelected(boolean b) {
+		selected=b;
+		
+	}
+	
+	public boolean isSelected(){
+		return selected;
+	}
 }

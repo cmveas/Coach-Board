@@ -64,7 +64,7 @@ public class Play implements Serializable {
 		boolean result = false;
 		if(movable!=null && undoablePaths.contains(movable)) {
 			undoablePaths.remove(movable);
-			
+			result = true;
 		}
 		return result;
 	}

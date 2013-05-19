@@ -29,11 +29,11 @@ public class BallPath extends ColorPath {
 	}
 
 	private void init() {
-		bitmap = BitmapFactory.decodeResource(CoachApp.getInstance().getApplicationContext().getResources(), getResourceFromType());
+		bitmap = BitmapFactory.decodeResource(CoachApp.getInstance().getApplicationContext().getResources(), getResourceFromType(ballType));
 		bitmap = Utility.getResizedBitmap(bitmap, SIZE, SIZE);
 	}
 
-	private int getResourceFromType() {
+	public static int getResourceFromType(int ballType) {
 		int result = 0;
 		switch(ballType){
 		case SOCCER_BALL:

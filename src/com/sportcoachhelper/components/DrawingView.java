@@ -199,8 +199,14 @@ public class DrawingView extends View {
 	private void touch_start(float x, float y) {
 		android.util.Log.d(TAG, "touch_start");
 		if(isOrganizationMode()) {
+			disSelectMovable();
 			movable = checkMovableObjectsPosition(x, y);
+			
+			if(movable==null) {
+				movable = checkNonMovableObjectsPosition(x, y);
+			}
 			setSelectedPath(movable);
+			selectMovable();
 		} else {
 			initializePaints();
 			mPath.reset();
@@ -208,6 +214,18 @@ public class DrawingView extends View {
 			mX = x;
 			mY = y;
 		}				
+	}
+
+	private void selectMovable() {
+		if(movable!=null) {
+		movable.setSelected(true);
+		}
+	}
+
+	private void disSelectMovable() {
+		if(movable!=null) {
+			movable.setSelected(false);
+		}
 	}
 
 	private boolean isOrganizationMode() {
@@ -218,7 +236,22 @@ public class DrawingView extends View {
 		Detectable result = null;
 		ArrayList<Dibujables> undoablePaths = play.getUndoablePaths();
 		for (Dibujables item : undoablePaths) {
-			if(item instanceof Detectable) {
+			if(item instanceof Detectable && ((Detectable) item).canBeMoved()) {
+				Detectable moveItem = (Detectable)item;
+				if(moveItem.isItIn(x, y)) {
+					result = moveItem;
+					break;
+				}
+			}
+		}
+		return result;
+	}
+	
+	private Detectable checkNonMovableObjectsPosition(float x, float y) {
+		Detectable result = null;
+		ArrayList<Dibujables> undoablePaths = play.getUndoablePaths();
+		for (Dibujables item : undoablePaths) {
+			if(item instanceof Detectable && !((Detectable) item).canBeMoved()) {
 				Detectable moveItem = (Detectable)item;
 				if(moveItem.isItIn(x, y)) {
 					result = moveItem;
@@ -271,9 +304,7 @@ public class DrawingView extends View {
 
 	private void setSelectedPath(Detectable movable) {
 		mSelectedPath =movable;
-		if(mSelectedPath instanceof ColorPath) {
-			listener.onComponentSelected((ColorPath)mSelectedPath);
-		}
+		listener.onComponentSelected((ColorPath)mSelectedPath);
 	}
 
 	

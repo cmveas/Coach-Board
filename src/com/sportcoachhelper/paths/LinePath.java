@@ -5,21 +5,67 @@ import android.graphics.Paint;
 
 public class LinePath extends ColorPath {
 
+	private static final String TAG = "LinePath";
+	private static final boolean DEBUG = false ;
 	private String lineMode;
 
 	public String getLineMode() {
 		return lineMode;
 	}
 
+	private float highestY=-1;
+	private float lowestY=-1;
+	private float highestX=-1;
+	private float lowestX=-1;
+	
 	public LinePath(Paint paint) {
 		super(paint);
 		// TODO Auto-generated constructor stub
 	}
+	
+	public boolean areBoundsInitialize(){
+		return highestX!=-1&&highestY!=-1&&lowestX!=-1&&lowestY!=-1;
+	}
 
 	@Override
+	public void addPathPoints(float[] points) {
+		if(points.length==4) {
+			float x1=points[0];
+			float y1=points[1];
+			float x2=points[2];
+			float y2=points[3];
+			float lowerX = (x1<x2?x1:x2);
+			float lowerY = (y1<y2?y1:y2);
+			float higherX = (x1>x2?x1:x2);
+			float higherY = (y1>y2?y1:y2);
+			
+			if(lowestX==-1 ||lowerX<lowestX) {
+				lowestX = lowerX;
+			}
+			
+			if(lowestY==-1 ||lowerY<lowestY) {
+				lowestY = lowerY;
+			}
+			
+			if(higherY>highestY) {
+				highestY = higherY;
+			}
+			
+			if(higherX>highestX) {
+				highestX = higherX;
+			}
+					
+		}
+		super.addPathPoints(points);
+	}
+	
+	
+	@Override
 	public void draw(Canvas canvas) {
-		canvas.drawPath(this, getPaint());
-		
+		super.draw(canvas);
+		if(DEBUG && areBoundsInitialize()) {
+			canvas.drawRect(lowestX, lowestY, highestX, highestY, selectedPaint);
+		}
 	}
 
 	@Override
@@ -31,6 +77,36 @@ public class LinePath extends ColorPath {
 	public void setLineMode(String lineMode) {
 		this.lineMode=lineMode;
 		
+	}
+	
+	@Override
+	public boolean isItIn(float x, float y) {
+		boolean result = false;		
+		
+		if(!areBoundsInitialize()) {
+			return false;
+		}
+		
+		if(x>(lowestX) && x<highestX) {
+			result = true;
+		}
+		
+		
+		if((y>this.lowestY) && (y<highestY)) {
+			result =  result && true;
+		} else {
+			result =  false;
+		}
+		
+		android.util.Log.d(TAG,"x=" +x + " Xinit = " + lowestX + " XFinal:" + highestX + " result:" + result);
+		android.util.Log.d(TAG,"y=" +y + " Yinit = " + lowestY + " YFinal:" + highestY + " result:" + result);
+		
+		return result;
+	}
+	
+	@Override
+	public boolean canBeMoved() {
+		return false;
 	}
 
 }

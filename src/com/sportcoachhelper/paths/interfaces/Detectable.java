@@ -11,4 +11,6 @@ public interface Detectable {
 	boolean canBeMoved();
 	
 	void reinitialize();
+
+	void setSelected(boolean b);
 }
