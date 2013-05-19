@@ -38,7 +38,10 @@ public abstract class SerializablePath extends Path implements Serializable,
 	}
 	
 	public void addCirclePath(float[] points) {
-		this.pathPoints.add(points);
+		this.pathPoints.add(0, points);
+		while(pathPoints.size()>1) {
+			pathPoints.remove(1);
+		}
 	}
 
 	public void loadPathPointsAsQuadTo() {

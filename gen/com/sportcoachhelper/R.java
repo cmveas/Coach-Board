@@ -20,6 +20,7 @@ public final class R {
         public static final int court_padding=0x7f040002;
         public static final int pager_court_height=0x7f040004;
         public static final int pager_court_width=0x7f040003;
+        public static final int play_list_title=0x7f040006;
         public static final int splash_btn_enter_size=0x7f040001;
         public static final int splash_title_size=0x7f040000;
         public static final int toolbar_width=0x7f040005;
@@ -65,38 +66,41 @@ public final class R {
     }
     public static final class id {
         public static final int ballTool=0x7f09000f;
-        public static final int btnName=0x7f09001c;
+        public static final int btnName=0x7f09001f;
         public static final int btn_no=0x7f090012;
         public static final int btn_yes=0x7f090011;
         public static final int continuous_line_mode=0x7f09000d;
         public static final int dotted_line_mode=0x7f09000e;
         public static final int drawingPanel=0x7f090009;
         public static final int edit_name=0x7f090010;
-        public static final int edtPlayName=0x7f09001b;
-        public static final int enter=0x7f09001e;
+        public static final int edtPlayName=0x7f09001e;
+        public static final int enter=0x7f090021;
         public static final int field_name=0x7f090013;
         public static final int field_type=0x7f090014;
-        public static final int imvLeftArrow=0x7f090016;
-        public static final int imvRightArrow=0x7f090018;
+        public static final int imvLeftArrow=0x7f090019;
+        public static final int imvRightArrow=0x7f09001b;
         public static final int layoutToolBar=0x7f090000;
         public static final int layoutToolBar2=0x7f09000a;
-        public static final int menu_clear_document=0x7f09001f;
-        public static final int menu_exit=0x7f090023;
-        public static final int menu_open_document=0x7f090020;
-        public static final int menu_save_document=0x7f090021;
-        public static final int menu_settings=0x7f090022;
+        public static final int menu_clear_document=0x7f090022;
+        public static final int menu_exit=0x7f090026;
+        public static final int menu_open_document=0x7f090023;
+        public static final int menu_save_document=0x7f090024;
+        public static final int menu_settings=0x7f090025;
         public static final int organization_mode=0x7f09000c;
-        public static final int pager=0x7f090017;
-        public static final int playList=0x7f090015;
-        public static final int play_date=0x7f09001a;
-        public static final int play_name=0x7f090019;
+        public static final int pager=0x7f09001a;
+        public static final int playList=0x7f090016;
+        public static final int play_date=0x7f09001d;
+        public static final int play_list_title=0x7f090015;
+        public static final int play_name=0x7f09001c;
         public static final int playerNumber=0x7f090004;
         public static final int playerNumberButton=0x7f090005;
         public static final int playerTool=0x7f090001;
         public static final int playerTool2=0x7f090006;
-        public static final int splash_title=0x7f09001d;
+        public static final int splash_title=0x7f090020;
         public static final int squareTool=0x7f090003;
         public static final int squareTool2=0x7f090008;
+        public static final int templateList=0x7f090018;
+        public static final int template_list_title=0x7f090017;
         public static final int trash=0x7f09000b;
         public static final int triangleTool=0x7f090002;
         public static final int triangleTool2=0x7f090007;
@@ -130,10 +134,12 @@ public final class R {
         public static final int menu_settings=0x7f050002;
         public static final int organization_mode=0x7f050012;
         public static final int play_name=0x7f05000c;
+        public static final int saved_plays=0x7f050015;
         public static final int setNumber=0x7f05000a;
         public static final int soccer=0x7f05000d;
         public static final int splash_title=0x7f050008;
         public static final int sure_want_clear=0x7f050007;
+        public static final int templates=0x7f050016;
         public static final int voley=0x7f05000e;
     }
     public static final class style {

@@ -40,6 +40,8 @@ public class ScreenSlidePageFragment extends Fragment {
 	private TextView field_name;
 	private ListView playList;
 	private PlaysAdapter playsAdapter;
+	private TextView savedPlays;
+	private TextView template_list_title;
 
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -49,8 +51,12 @@ public class ScreenSlidePageFragment extends Fragment {
                 R.layout.display_field_fragment, container, false);
         fieldIndexes = getActivity().getResources().getIntArray(R.array.fieldsIndexes);
         field_name = (TextView) rootView.findViewById(R.id.field_name);
+        savedPlays = (TextView) rootView.findViewById(R.id.play_list_title);
+        template_list_title = (TextView) rootView.findViewById(R.id.template_list_title);
         field_name.setText(label);
         field_name.setTypeface(FontManager.getInstance().getFont(FontManager.CHALK_REGULAR));
+        savedPlays.setTypeface(FontManager.getInstance().getFont(FontManager.CHALK_REGULAR));
+        template_list_title.setTypeface(FontManager.getInstance().getFont(FontManager.CHALK_REGULAR));
         field_type = (ImageView) rootView.findViewById(R.id.field_type);
         field_type.setImageResource(getField());
         field_type.setOnClickListener(new OnClickListener() {

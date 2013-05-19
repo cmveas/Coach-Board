@@ -1,6 +1,8 @@
 package com.sportcoachhelper.model;
 
-public class TemplateItem {
+import java.io.Serializable;
+
+public class TemplateItem implements Serializable{
 
 	public static final int SHAPE_CIRCLE = 0;
 	public static final int SHAPE_SQUARE = 1;

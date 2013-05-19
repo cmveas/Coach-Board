@@ -37,11 +37,39 @@
     android:layout_weight="5"
     android:layout_height="match_parent"
     android:orientation="vertical" >
+    <TextView 
+        android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:id="@+id/play_list_title"
+    	android:text="@string/saved_plays"
+    	android:textSize="@dimen/play_list_title"
+    	android:textColor="@android:color/white"
+    	android:layout_marginTop="50dp"
+    	android:layout_gravity="center"
+    	android:gravity="center"/>
+         
     	<ListView 
     	    android:layout_width="match_parent"
-    		android:layout_height="match_parent"
-    		android:id="@+id/playList" 
-    		android:layout_marginTop="50dp"
+    		android:layout_height="0dp"
+    		android:layout_weight="5"
+    		android:id="@+id/playList" 	
+    		></ListView>
+    	
+    	<TextView 
+        android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:id="@+id/template_list_title"
+    	android:text="@string/templates"
+    	android:textSize="@dimen/play_list_title"
+    	android:textColor="@android:color/white"
+    	android:layout_gravity="center"
+    	android:gravity="center"/>
+         
+    	<ListView 
+    	    android:layout_width="match_parent"
+    		android:layout_height="0dp"
+    		android:layout_weight="5"
+    		android:id="@+id/templateList" 
     		android:layout_marginBottom="50dp"
     		></ListView>
    

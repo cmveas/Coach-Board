@@ -8,6 +8,7 @@ import com.sportcoachhelper.util.TeamManager;
 
 public abstract class ColorPath extends SerializablePath implements Detectable {
 	
+	private static final boolean DEBUG = true ;
 	public static final int SIZE = 50;
 	public static final int HALF_SIZE = 25;
 	private static final String TAG = "ColorPath";
@@ -16,7 +17,7 @@ public abstract class ColorPath extends SerializablePath implements Detectable {
 	protected int x;
 	protected int y;
 	protected transient Paint textPaint;
-	protected Paint selectedPaint;
+	protected transient Paint selectedPaint;
 
 	public ColorPath(Paint paint){
 		super();
@@ -45,6 +46,10 @@ public abstract class ColorPath extends SerializablePath implements Detectable {
 		}
 		if(label!=null && !label.trim().equals("")) {
 			canvas.drawText(label, x-HALF_SIZE, y-HALF_SIZE, textPaint);
+		}
+		
+		if(DEBUG) {
+			canvas.drawRect(this.x-HALF_SIZE, this.y-HALF_SIZE, (this.x+SIZE), (this.y+SIZE), selectedPaint);
 		}
 	} 
 	

@@ -16,8 +16,7 @@ public class TrianglePath extends ShapePath {
 		this.lineTo(x-ColorPath.HALF_SIZE, y+ColorPath.SIZE);
 		this.lineTo(x+ColorPath.HALF_SIZE, y+ColorPath.SIZE);
 		this.lineTo(x, y);	
-		this.addCirclePath(new float[]{x,y});
-		
+		this.addCirclePath(new float[]{x,y});		
 	}
 	
 	

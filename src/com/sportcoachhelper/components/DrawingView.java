@@ -17,6 +17,7 @@ import android.graphics.Canvas;
 import android.graphics.DashPathEffect;
 import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.os.Environment;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -26,6 +27,7 @@ import com.sportcoachhelper.database.DatabaseHelper;
 import com.sportcoachhelper.interfaces.OnComponentSelectedListener;
 import com.sportcoachhelper.model.Play;
 import com.sportcoachhelper.model.Team;
+import com.sportcoachhelper.model.Template;
 import com.sportcoachhelper.model.TemplateItem;
 import com.sportcoachhelper.paths.BallPath;
 import com.sportcoachhelper.paths.CirclePath;
@@ -471,8 +473,11 @@ public class DrawingView extends View {
 		stream.writeObject(play);
 		stream.flush();
 		
-		
 		DatabaseHelper.getInstance().insertPlay(name, play.getField() ,  toSaveFile.getAbsolutePath(), System.currentTimeMillis());
+		
+		createTemplate();
+		
+		
 		
 	} catch (FileNotFoundException e) {
 		// TODO Auto-generated catch block
@@ -481,6 +486,63 @@ public class DrawingView extends View {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
+	}
+
+	/**
+	 * Creation and template saving
+	 */
+	private void createTemplate() {
+		Template template = new Template();
+		ArrayList<Dibujables> plays = play.getUndoablePaths();
+		for (Dibujables dibujable : plays) {
+			if(dibujable instanceof ShapePath) {
+				TemplateItem item = new TemplateItem();
+				int shape = -1;
+				if(dibujable instanceof CirclePath) {
+					shape = TemplateItem.SHAPE_CIRCLE;
+				} else if(dibujable instanceof TrianglePath) {
+					shape = TemplateItem.SHAPE_TRIANGLE;
+				} else if(dibujable instanceof SquarePath) {
+					shape = TemplateItem.SHAPE_SQUARE;
+				} 
+				item.setShape(shape);
+				item.setxPercentage(getXPercentageOf(((ShapePath) dibujable).getX()));
+				item.setyPercentage(getYPercentageOf(((ShapePath) dibujable).getY()));
+				template.add(item);
+			}
+		}
+		File toSaveFile = new File(Environment.getExternalStorageDirectory()
+				+ "/" + play.getName() + "_" + template);	
+		
+		FileOutputStream output;
+		try {
+			if(!toSaveFile.exists()) {
+				toSaveFile.createNewFile();
+			}
+			output = new FileOutputStream(toSaveFile);
+
+			ObjectOutputStream stream = new ObjectOutputStream(output);
+			stream.writeObject(template);
+			stream.flush();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	private int getYPercentageOf(int y) {
+		int totalHeight = getHeight();
+		int percentage = (y * 100)/totalHeight;
+		return percentage;
+	}
+
+	private int getXPercentageOf(int x) {
+		int totalWidth = getWidth();
+		int percentage = (x * 100)/totalWidth;
+		return percentage;
 	}
 
 	public void openDocument(File file) {

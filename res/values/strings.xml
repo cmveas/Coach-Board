@@ -23,6 +23,9 @@
 	<string name="organization_mode">Organization Mode</string>
 	<string name="continuous_line_mode">Continuous Line</string>
 	<string name="dotted_line_mode">Dotted Line</string>
+	<string name="saved_plays">Saved Plays</string>
+	<string name="templates">Templates</string>
+	
 	
 	<string-array name="fields">
 		<item >@string/soccer</item>
