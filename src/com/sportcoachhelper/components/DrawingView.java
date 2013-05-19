@@ -218,7 +218,7 @@ public class DrawingView extends View {
 
 	private void selectMovable() {
 		if(movable!=null) {
-		movable.setSelected(true);
+			movable.setSelected(true);
 		}
 	}
 
@@ -376,6 +376,7 @@ public class DrawingView extends View {
 	private void initPlayerPath(int x, int y,Team team) {
 		mPlayerPath = new CirclePath(team.getPaint(),x-ColorPath.HALF_SIZE,y-ColorPath.HALF_SIZE);	
 		((CirclePath)mPlayerPath).setTeam(team.getNumber());
+		setPathSelected(mPlayerPath);
 	}
 	
 	public void setTrianglePlayer(int x, int y, int team) {
@@ -393,6 +394,39 @@ public class DrawingView extends View {
 		item.setxPercentage(getPercentageWidth(x));
 		item.setyPercentage(getPercentageHeight(y));
 		((TrianglePath)mPlayerPath).setTeam(team.getNumber());
+		setPathSelected(mPlayerPath);
+	}
+
+	private void setPathSelected(ColorPath mPlayerPath) {
+		disSelectMovable();
+		movable = mPlayerPath;
+		selectMovable();
+		setSelectedPath(movable);
+	}
+	
+	public void setSquarePlayer(int x, int y, int team) {
+		initSquarePath(x,y,TeamManager.getInstance().getTeam(team));		
+		addPathsToQueue(mPlayerPath);
+		invalidate();		
+	}
+
+	private void initSquarePath(int x,int y, Team team) {
+		mPlayerPath = new SquarePath(team.getPaint(),x-ColorPath.HALF_SIZE,y-ColorPath.HALF_SIZE);		
+		((SquarePath)mPlayerPath).setTeam(team.getNumber());
+		setPathSelected(mPlayerPath);
+	}
+	
+	private void initBallPath(int field2) {
+		mPlayerPath = new BallPath(ballPaint,field2,getResources());			
+	}
+
+	public void setBall(int x, int y, int team, int field) {
+		initBallPath(field);
+		((BallPath)mPlayerPath).setX(x);
+		((BallPath)mPlayerPath).setY(y);
+		setPathSelected(mPlayerPath);
+		addPathsToQueue(mPlayerPath);
+		invalidate();
 	}
 
 	private int getPercentageWidth(int x) {
@@ -406,28 +440,7 @@ public class DrawingView extends View {
 		return (y*100)/totalHeight;
 	}
 
-	public void setSquarePlayer(int x, int y, int team) {
-		initSquarePath(x,y,TeamManager.getInstance().getTeam(team));		
-		addPathsToQueue(mPlayerPath);
-		invalidate();		
-	}
 
-	private void initSquarePath(int x,int y, Team team) {
-		mPlayerPath = new SquarePath(team.getPaint(),x-ColorPath.HALF_SIZE,y-ColorPath.HALF_SIZE);		
-		((SquarePath)mPlayerPath).setTeam(team.getNumber());
-	}
-	
-	private void initBallPath(int field2) {
-		mPlayerPath = new BallPath(ballPaint,field2,getResources());			
-	}
-
-	public void setBall(int x, int y, int team, int field) {
-		initBallPath(field);
-		((BallPath)mPlayerPath).setX(x);
-		((BallPath)mPlayerPath).setY(y);
-		addPathsToQueue(mPlayerPath);
-		invalidate();
-	}
 
 	public void setLabel(String number) {
 		if(mSelectedPath!=null) {
@@ -546,6 +559,14 @@ public class DrawingView extends View {
 			result = new DashPathEffect(new float[] { 10, 20 }, 0);
 		}
 		return result;
+	}
+
+	public void setModeChanged() {
+		disSelectMovable();
+		invalidate();
+		if(listener!=null) {
+			listener.onComponentRelease();
+		}
 	}
 
 
