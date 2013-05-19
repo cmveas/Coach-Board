@@ -108,6 +108,8 @@ public class MainActivity extends GraphicsActivity implements
 		organizationMode = (ToggleButton) findViewById(R.id.organization_mode);
 		continuousLineMode = (ToggleButton) findViewById(R.id.continuous_line_mode);
 		dottedLineMode = (ToggleButton) findViewById(R.id.dotted_line_mode);
+		
+		organizationMode.setChecked(true);
 
 		Intent intent = getIntent();
 		field = intent.getStringExtra("field");
@@ -135,9 +137,9 @@ public class MainActivity extends GraphicsActivity implements
 			
 			@Override
 			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-				if(isChecked) {
-					
+				if(isChecked) {				
 					setOrganizationMode();
+					modeChanged();
 				} else {
 					checkAButtonIsPressed(organizationMode);
 				}		
@@ -148,9 +150,9 @@ public class MainActivity extends GraphicsActivity implements
 			
 			@Override
 			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-				if(isChecked) {
-					
+				if(isChecked) {					
 					setContinuousLine();
+					modeChanged();
 				} 	else {
 					checkAButtonIsPressed(continuousLineMode);
 				}		
@@ -161,14 +163,19 @@ public class MainActivity extends GraphicsActivity implements
 			
 			@Override
 			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-				if(isChecked) {
-					
+				if(isChecked) {					
 					setDottedLine();
+					modeChanged();
 				} 	else {
 					checkAButtonIsPressed(dottedLineMode);
 				}		
 			}
 		})	;
+	}
+
+	protected void modeChanged() {
+		drawingView.setModeChanged();
+		
 	}
 
 	protected void setContinuousLine() {
