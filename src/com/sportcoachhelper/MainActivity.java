@@ -115,9 +115,20 @@ public class MainActivity extends GraphicsActivity implements
 		field = intent.getStringExtra("field");
 		drawingView.setField(field);
 		
-		String play = intent.getStringExtra(ScreenSlidePageFragment.PLAY);
-		if(play!=null && !play.trim().equals("")) {
-			drawingView.openDocument(new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/"+play));
+		String type = intent.getStringExtra(ScreenSlidePageFragment.TYPE);
+		if (type != null && type.equals("play")) {
+			String play = intent.getStringExtra(ScreenSlidePageFragment.PLAY);
+			if (play != null && !play.trim().equals("")) {
+				drawingView.openDocument(new File(Environment
+						.getExternalStorageDirectory().getAbsolutePath()
+						+ "/"
+						+ play));
+			}
+		} else if (type != null && type.equals("template")) {
+			String play = intent.getStringExtra(ScreenSlidePageFragment.PLAY);
+			if (play != null && !play.trim().equals("")) {
+				drawingView.loadFromTemplate(play);
+			}
 		}
 		
 		mode = getString(R.string.organization_mode);

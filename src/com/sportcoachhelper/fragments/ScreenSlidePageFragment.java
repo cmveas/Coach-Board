@@ -4,7 +4,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Locale;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -15,8 +14,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -25,14 +24,17 @@ import android.widget.TextView;
 import com.sportcoachhelper.MainActivity;
 import com.sportcoachhelper.R;
 import com.sportcoachhelper.database.DatabaseHelper;
-import com.sportcoachhelper.fragments.ScreenSlidePageFragment.PlaysAdapter;
+import com.sportcoachhelper.fragments.ScreenSlidePageFragment.TemplateAdapter;
 import com.sportcoachhelper.model.Play;
+import com.sportcoachhelper.model.Template;
 import com.sportcoachhelper.util.FontManager;
+import com.sportcoachhelper.util.TemplateManager;
 
 @SuppressLint("ValidFragment")
 public class ScreenSlidePageFragment extends Fragment {
 
     public static final String PLAY = "play";
+    public static final String TYPE = "type";
 	private int position;
 	private String label;
 	private int[] fieldIndexes;
@@ -40,6 +42,9 @@ public class ScreenSlidePageFragment extends Fragment {
 	private TextView field_name;
 	private ListView playList;
 	private PlaysAdapter playsAdapter;
+	private TextView savedPlays;
+	private TextView template_list_title;
+	private ListView templateList;
 
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -49,8 +54,12 @@ public class ScreenSlidePageFragment extends Fragment {
                 R.layout.display_field_fragment, container, false);
         fieldIndexes = getActivity().getResources().getIntArray(R.array.fieldsIndexes);
         field_name = (TextView) rootView.findViewById(R.id.field_name);
+        savedPlays = (TextView) rootView.findViewById(R.id.play_list_title);
+        template_list_title = (TextView) rootView.findViewById(R.id.template_list_title);
         field_name.setText(label);
         field_name.setTypeface(FontManager.getInstance().getFont(FontManager.CHALK_REGULAR));
+        savedPlays.setTypeface(FontManager.getInstance().getFont(FontManager.CHALK_REGULAR));
+        template_list_title.setTypeface(FontManager.getInstance().getFont(FontManager.CHALK_REGULAR));
         field_type = (ImageView) rootView.findViewById(R.id.field_type);
         field_type.setImageResource(getField());
         field_type.setOnClickListener(new OnClickListener() {
@@ -73,10 +82,28 @@ public class ScreenSlidePageFragment extends Fragment {
         		Play play = (Play) playsAdapter.getItem(position);
         		Intent intent = new Intent(getActivity(),MainActivity.class);
         		intent.putExtra(PLAY, play.getName());
+        		intent.putExtra(TYPE, "play");
         		intent.putExtra("field", label);
         		startActivity(intent);
         	}
 		});
+        
+        templateList = (ListView) rootView.findViewById(R.id.templateList);
+        templateList.setAdapter(new TemplateAdapter());
+        templateList.setOnItemClickListener(new OnItemClickListener() {
+        	@Override
+        	public void onItemClick(AdapterView<?> paramAdapterView,
+        			View paramView, int position, long paramLong) {
+        		TemplateAdapter templateAdapter = (TemplateAdapter) paramAdapterView.getAdapter();
+        		Template template = (Template) templateAdapter.getItem(position);
+        		Intent intent = new Intent(getActivity(),MainActivity.class);
+        		intent.putExtra(PLAY, template.getName());
+        		intent.putExtra(TYPE, "template");
+        		intent.putExtra("field", template.getField());
+        		startActivity(intent);
+        	}
+		});
+        templateList.setDividerHeight(0);
         return rootView;
     }
 	
@@ -187,4 +214,56 @@ public class ScreenSlidePageFragment extends Fragment {
 		
 	}
 	
+	
+	class TemplateAdapter extends BaseAdapter{
+
+		private LayoutInflater inflater;
+		private ArrayList<Template> fieldTemplates;
+
+		public TemplateAdapter() {
+			inflater = LayoutInflater.from(getActivity());
+			ArrayList<Template> allTemplates = TemplateManager.getInstance().getTemplates();
+			fieldTemplates = new ArrayList<Template>();
+			for (Template template : allTemplates) {
+				if(template.getField().equals(label)) {
+					fieldTemplates.add(template);
+				}
+			}
+		}
+		
+		@Override
+		public int getCount() {		
+			return fieldTemplates.size();
+		}
+
+		@Override
+		public Template getItem(int position) {
+			return fieldTemplates.get(position);
+		}
+
+		@Override
+		public long getItemId(int paramInt) {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+
+		@Override
+		public View getView(int position, View convertView,
+				ViewGroup paramViewGroup) {
+			View view = (View) convertView;
+			
+			if(view==null) {
+				view = inflater.inflate(R.layout.plays_item, null);
+			}
+			
+			TextView name = (TextView) view.findViewById(R.id.play_name);
+			name.setTypeface(FontManager.getInstance().getFont(FontManager.CHALK_REGULAR));
+			name.setTextColor(getResources().getColor(android.R.color.white));
+			name.setText(getItem(position).getName());
+
+			
+			return view;
+		}
+		
+	}
 }

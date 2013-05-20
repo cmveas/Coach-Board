@@ -1,7 +1,13 @@
 package com.sportcoachhelper.model;
 
-public class TemplateItem {
+import java.io.Serializable;
 
+public class TemplateItem implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7079729288279589889L;
 	public static final int SHAPE_CIRCLE = 0;
 	public static final int SHAPE_SQUARE = 1;
 	public static final int SHAPE_TRIANGLE = 2;

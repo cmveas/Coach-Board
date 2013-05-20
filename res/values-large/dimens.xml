@@ -7,5 +7,5 @@
     <dimen name="pager_court_width">500dp</dimen>
     <dimen name="pager_court_height">400dp</dimen>
     <dimen name="toolbar_width">125dp</dimen>
-
+	<dimen name="play_list_title">60sp</dimen>
 </resources>

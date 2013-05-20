@@ -17,6 +17,7 @@ import android.graphics.Canvas;
 import android.graphics.DashPathEffect;
 import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.os.Environment;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -26,6 +27,7 @@ import com.sportcoachhelper.database.DatabaseHelper;
 import com.sportcoachhelper.interfaces.OnComponentSelectedListener;
 import com.sportcoachhelper.model.Play;
 import com.sportcoachhelper.model.Team;
+import com.sportcoachhelper.model.Template;
 import com.sportcoachhelper.model.TemplateItem;
 import com.sportcoachhelper.paths.BallPath;
 import com.sportcoachhelper.paths.CirclePath;
@@ -37,6 +39,7 @@ import com.sportcoachhelper.paths.TrianglePath;
 import com.sportcoachhelper.paths.interfaces.Detectable;
 import com.sportcoachhelper.paths.interfaces.Dibujables;
 import com.sportcoachhelper.util.TeamManager;
+import com.sportcoachhelper.util.TemplateManager;
 import com.sportcoachhelper.util.Utility;
 
 public class DrawingView extends View {
@@ -133,6 +136,32 @@ public class DrawingView extends View {
 	protected void onSizeChanged(int w, int h, int oldw, int oldh) {
 		super.onSizeChanged(w, h, oldw, oldh);
 		initializeField(w, h);
+		
+		if(template!=null) {
+			ArrayList<TemplateItem> templates = template.getPlayers();
+			
+			for (TemplateItem item : templates) {
+				int x = getXValueFromPercentage(item.getxPercentage());
+				int y = getYValueFromPercentage(item.getyPercentage());
+				int shape = item.getShape();
+				switch (shape) {
+				case TemplateItem.SHAPE_CIRCLE:
+					
+					setCirclePlayer(x, y, TeamManager.getInstance().getTeamA().getNumber());
+					break;
+
+				case TemplateItem.SHAPE_SQUARE:
+					setSquarePlayer(x, y, TeamManager.getInstance().getTeamA().getNumber());
+					break;
+					
+				case TemplateItem.SHAPE_TRIANGLE:
+					setTrianglePlayer(x, y, TeamManager.getInstance().getTeamA().getNumber());
+					break;
+				}
+			}
+			invalidate();
+			template=null;
+		}
 	}
 
 	private void initializeField(int w, int h) {
@@ -193,6 +222,7 @@ public class DrawingView extends View {
 	private Detectable movable;
 	private String lineMode = getContext().getString(R.string.continuous_line_mode);
 	private long now;
+	private Template template;
 	private static final float TOUCH_TOLERANCE = 2;
 	private static final String TAG = "DrawingView";
 
@@ -374,7 +404,7 @@ public class DrawingView extends View {
 	}
 	
 	private void initPlayerPath(int x, int y,Team team) {
-		mPlayerPath = new CirclePath(team.getPaint(),x-ColorPath.HALF_SIZE,y-ColorPath.HALF_SIZE);	
+		mPlayerPath = new CirclePath(team.getPaint(),x,y);	
 		((CirclePath)mPlayerPath).setTeam(team.getNumber());
 		setPathSelected(mPlayerPath);
 	}
@@ -398,10 +428,12 @@ public class DrawingView extends View {
 	}
 
 	private void setPathSelected(ColorPath mPlayerPath) {
-		disSelectMovable();
-		movable = mPlayerPath;
-		selectMovable();
-		setSelectedPath(movable);
+		if(mPlayerPath!=null) {
+			disSelectMovable();
+			movable = mPlayerPath;
+			selectMovable();
+			setSelectedPath(movable);
+		}
 	}
 	
 	public void setSquarePlayer(int x, int y, int team) {
@@ -411,7 +443,7 @@ public class DrawingView extends View {
 	}
 
 	private void initSquarePath(int x,int y, Team team) {
-		mPlayerPath = new SquarePath(team.getPaint(),x-ColorPath.HALF_SIZE,y-ColorPath.HALF_SIZE);		
+		mPlayerPath = new SquarePath(team.getPaint(),x,y);		
 		((SquarePath)mPlayerPath).setTeam(team.getNumber());
 		setPathSelected(mPlayerPath);
 	}
@@ -471,8 +503,11 @@ public class DrawingView extends View {
 		stream.writeObject(play);
 		stream.flush();
 		
-		
 		DatabaseHelper.getInstance().insertPlay(name, play.getField() ,  toSaveFile.getAbsolutePath(), System.currentTimeMillis());
+		
+		createTemplate();
+		
+		
 		
 	} catch (FileNotFoundException e) {
 		// TODO Auto-generated catch block
@@ -481,6 +516,65 @@ public class DrawingView extends View {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
+	}
+
+	/**
+	 * Creation and template saving
+	 */
+	private void createTemplate() {
+		Template template = new Template();
+		template.setField(play.getField());
+		template.setName(play.getName());
+		ArrayList<Dibujables> plays = play.getUndoablePaths();
+		for (Dibujables dibujable : plays) {
+			if(dibujable instanceof ShapePath) {
+				TemplateItem item = new TemplateItem();
+				int shape = -1;
+				if(dibujable instanceof CirclePath) {
+					shape = TemplateItem.SHAPE_CIRCLE;
+				} else if(dibujable instanceof TrianglePath) {
+					shape = TemplateItem.SHAPE_TRIANGLE;
+				} else if(dibujable instanceof SquarePath) {
+					shape = TemplateItem.SHAPE_SQUARE;
+				} 
+				item.setShape(shape);
+				item.setxPercentage(getXPercentageOf(((ShapePath) dibujable).getX()));
+				item.setyPercentage(getYPercentageOf(((ShapePath) dibujable).getY()));
+				template.add(item);
+			}
+		}
+		File toSaveFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath()
+				+ "/" + play.getName() + "_template");	
+		
+		FileOutputStream output;
+		try {
+			if(!toSaveFile.exists()) {
+				toSaveFile.createNewFile();
+			}
+			output = new FileOutputStream(toSaveFile);
+
+			ObjectOutputStream stream = new ObjectOutputStream(output);
+			stream.writeObject(template);
+			stream.flush();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	private int getYPercentageOf(int y) {
+		int totalHeight = getHeight();
+		int percentage = (y * 100)/totalHeight;
+		return percentage;
+	}
+
+	private int getXPercentageOf(int x) {
+		int totalWidth = getWidth();
+		int percentage = (x * 100)/totalWidth;
+		return percentage;
 	}
 
 	public void openDocument(File file) {
@@ -567,6 +661,21 @@ public class DrawingView extends View {
 		if(listener!=null) {
 			listener.onComponentRelease();
 		}
+	}
+
+	public void loadFromTemplate(String play2) {
+		template = TemplateManager.getInstance().getTemplateFromName(play2);
+		
+	}
+
+	private int getYValueFromPercentage(int y) {
+		int result = (y*getHeight())/100;
+		return result;
+	}
+
+	private int getXValueFromPercentage(int x) {
+		int result = (x*getWidth())/100;
+		return result;
 	}
 
 

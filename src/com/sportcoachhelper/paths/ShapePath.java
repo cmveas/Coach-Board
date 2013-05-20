@@ -1,5 +1,6 @@
 package com.sportcoachhelper.paths;
 
+import com.sportcoachhelper.model.TemplateItem;
 import com.sportcoachhelper.util.TeamManager;
 
 import android.graphics.Canvas;
@@ -7,12 +8,15 @@ import android.graphics.Paint;
 
 public abstract class ShapePath extends ColorPath {
 
+	
 	private int team = 1;
+	private TemplateItem template;
 	
 	public ShapePath(Paint paint, int x, int y) {
 		super(paint);
 		setX(x);
 		setY(y);
+		template = new TemplateItem();
 		reinitialize();
 	}
 
