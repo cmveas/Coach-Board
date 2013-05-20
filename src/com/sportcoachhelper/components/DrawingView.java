@@ -39,6 +39,7 @@ import com.sportcoachhelper.paths.TrianglePath;
 import com.sportcoachhelper.paths.interfaces.Detectable;
 import com.sportcoachhelper.paths.interfaces.Dibujables;
 import com.sportcoachhelper.util.TeamManager;
+import com.sportcoachhelper.util.TemplateManager;
 import com.sportcoachhelper.util.Utility;
 
 public class DrawingView extends View {
@@ -135,6 +136,32 @@ public class DrawingView extends View {
 	protected void onSizeChanged(int w, int h, int oldw, int oldh) {
 		super.onSizeChanged(w, h, oldw, oldh);
 		initializeField(w, h);
+		
+		if(template!=null) {
+			ArrayList<TemplateItem> templates = template.getPlayers();
+			
+			for (TemplateItem item : templates) {
+				int x = getXValueFromPercentage(item.getxPercentage());
+				int y = getYValueFromPercentage(item.getyPercentage());
+				int shape = item.getShape();
+				switch (shape) {
+				case TemplateItem.SHAPE_CIRCLE:
+					
+					setCirclePlayer(x, y, TeamManager.getInstance().getTeamA().getNumber());
+					break;
+
+				case TemplateItem.SHAPE_SQUARE:
+					setSquarePlayer(x, y, TeamManager.getInstance().getTeamA().getNumber());
+					break;
+					
+				case TemplateItem.SHAPE_TRIANGLE:
+					setTrianglePlayer(x, y, TeamManager.getInstance().getTeamA().getNumber());
+					break;
+				}
+			}
+			invalidate();
+			template=null;
+		}
 	}
 
 	private void initializeField(int w, int h) {
@@ -195,6 +222,7 @@ public class DrawingView extends View {
 	private Detectable movable;
 	private String lineMode = getContext().getString(R.string.continuous_line_mode);
 	private long now;
+	private Template template;
 	private static final float TOUCH_TOLERANCE = 2;
 	private static final String TAG = "DrawingView";
 
@@ -376,7 +404,7 @@ public class DrawingView extends View {
 	}
 	
 	private void initPlayerPath(int x, int y,Team team) {
-		mPlayerPath = new CirclePath(team.getPaint(),x-ColorPath.HALF_SIZE,y-ColorPath.HALF_SIZE);	
+		mPlayerPath = new CirclePath(team.getPaint(),x,y);	
 		((CirclePath)mPlayerPath).setTeam(team.getNumber());
 		setPathSelected(mPlayerPath);
 	}
@@ -400,10 +428,12 @@ public class DrawingView extends View {
 	}
 
 	private void setPathSelected(ColorPath mPlayerPath) {
-		disSelectMovable();
-		movable = mPlayerPath;
-		selectMovable();
-		setSelectedPath(movable);
+		if(mPlayerPath!=null) {
+			disSelectMovable();
+			movable = mPlayerPath;
+			selectMovable();
+			setSelectedPath(movable);
+		}
 	}
 	
 	public void setSquarePlayer(int x, int y, int team) {
@@ -413,7 +443,7 @@ public class DrawingView extends View {
 	}
 
 	private void initSquarePath(int x,int y, Team team) {
-		mPlayerPath = new SquarePath(team.getPaint(),x-ColorPath.HALF_SIZE,y-ColorPath.HALF_SIZE);		
+		mPlayerPath = new SquarePath(team.getPaint(),x,y);		
 		((SquarePath)mPlayerPath).setTeam(team.getNumber());
 		setPathSelected(mPlayerPath);
 	}
@@ -493,6 +523,8 @@ public class DrawingView extends View {
 	 */
 	private void createTemplate() {
 		Template template = new Template();
+		template.setField(play.getField());
+		template.setName(play.getName());
 		ArrayList<Dibujables> plays = play.getUndoablePaths();
 		for (Dibujables dibujable : plays) {
 			if(dibujable instanceof ShapePath) {
@@ -511,8 +543,8 @@ public class DrawingView extends View {
 				template.add(item);
 			}
 		}
-		File toSaveFile = new File(Environment.getExternalStorageDirectory()
-				+ "/" + play.getName() + "_" + template);	
+		File toSaveFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath()
+				+ "/" + play.getName() + "_template");	
 		
 		FileOutputStream output;
 		try {
@@ -629,6 +661,21 @@ public class DrawingView extends View {
 		if(listener!=null) {
 			listener.onComponentRelease();
 		}
+	}
+
+	public void loadFromTemplate(String play2) {
+		template = TemplateManager.getInstance().getTemplateFromName(play2);
+		
+	}
+
+	private int getYValueFromPercentage(int y) {
+		int result = (y*getHeight())/100;
+		return result;
+	}
+
+	private int getXValueFromPercentage(int x) {
+		int result = (x*getWidth())/100;
+		return result;
 	}
 
 
