@@ -25,7 +25,7 @@ public class TemplateManager {
 		loadFormation(assets,"4-5-1_template");
 		loadFormation(assets,"5-3-2_template");
 		loadFormation(assets,"5-4-1_template");
-
+		loadFormation(assets,"voley1_template");
 		
 	}
 
