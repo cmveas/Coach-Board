@@ -346,6 +346,8 @@ public class DrawingView extends View {
                 setTrianglePlayer((int)x,(int)y,TeamManager.getInstance().getTeamB().getNumber());
             }else if (tag!=null && tag.equals(getContext().getString(R.string.visitroundplayer))) {
                 setCirclePlayer((int)x,(int)y,TeamManager.getInstance().getTeamB().getNumber());
+            } else if (tag!=null && tag.equals(getContext().getString(R.string.ball))) {
+                setBall((int)x-ColorPath.HALF_SIZE,(int)y-ColorPath.HALF_SIZE,TeamManager.getInstance().getTeamB().getNumber(),Utility.giveMeFieldBall(play.getField()));
             }
 
 

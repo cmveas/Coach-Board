@@ -12,23 +12,13 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.FragmentManager;
 import android.util.Log;
-import android.view.DragEvent;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.MotionEvent;
-import android.view.View;
+import android.view.*;
 import android.view.View.DragShadowBuilder;
 import android.view.View.OnClickListener;
 import android.view.View.OnDragListener;
 import android.view.View.OnTouchListener;
-import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.CompoundButton;
+import android.widget.*;
 import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.ToggleButton;
 
 import com.sportcoachhelper.components.DrawingView;
 import com.sportcoachhelper.dialogs.ClearDialog;
@@ -50,7 +40,7 @@ public class MainActivity extends GraphicsActivity implements
 	private ToggleButton playerImage;
 	private ToggleButton triangleTool;
 	private ToggleButton squareTool;
-	private ImageView ballTool;
+	private ToggleButton ballTool;
 	private EditText playerNumber;
 	private Button playerNumberButton;
 	private ToggleButton playerImage2;
@@ -62,8 +52,9 @@ public class MainActivity extends GraphicsActivity implements
 	private ToggleButton organizationMode;
 	private ToggleButton continuousLineMode;
 	private ToggleButton dottedLineMode;
+    private LinearLayout layoutToolBar2;
 
-	@Override
+    @Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		Utility.setHoloTheme(this);
@@ -81,7 +72,7 @@ public class MainActivity extends GraphicsActivity implements
 		playerImage = (ToggleButton) findViewById(R.id.playerTool);
 		triangleTool = (ToggleButton) findViewById(R.id.triangleTool);
 		squareTool = (ToggleButton) findViewById(R.id.squareTool);
-		ballTool = (ImageView) findViewById(R.id.ballTool);
+
 		playerNumberButton = (Button) findViewById(R.id.playerNumberButton);
 		playerNumber = (EditText) findViewById(R.id.playerNumber);
 		trash = (ImageView) findViewById(R.id.trash);
@@ -108,6 +99,7 @@ public class MainActivity extends GraphicsActivity implements
 		organizationMode = (ToggleButton) findViewById(R.id.organization_mode);
 		continuousLineMode = (ToggleButton) findViewById(R.id.continuous_line_mode);
 		dottedLineMode = (ToggleButton) findViewById(R.id.dotted_line_mode);
+        layoutToolBar2 = (LinearLayout) findViewById(R.id.layoutToolBar2);
 		
 		organizationMode.setChecked(true);
 
@@ -132,11 +124,15 @@ public class MainActivity extends GraphicsActivity implements
 		}
 		
 		mode = getString(R.string.organization_mode);
-		setOrganizationModeButton();
+
+        drawTheAppropiateBall(field);
+
+        ballTool = (ToggleButton) findViewById(R.id.ballTool);
+
+        setOrganizationModeButton();
 		
 		manageDrag(field);
 
-		drawTheAppropiateBall(field);
 
 		drawingView.setOnComponentSelectedListener(this);
 
@@ -195,7 +191,7 @@ public class MainActivity extends GraphicsActivity implements
                     setChoosingLocalRoundPlayer();
                     modeChanged();
                 } 	else {
-                    checkAButtonIsPressed(dottedLineMode);
+                    checkAButtonIsPressed(playerImage);
                 }
             }
         })	;
@@ -208,7 +204,7 @@ public class MainActivity extends GraphicsActivity implements
                     setChoosingLocalTriangePlayer();
                     modeChanged();
                 } 	else {
-                    checkAButtonIsPressed(dottedLineMode);
+                    checkAButtonIsPressed(triangleTool);
                 }
             }
         })	;
@@ -221,7 +217,7 @@ public class MainActivity extends GraphicsActivity implements
                     setChoosingLocalSquarePlayer();
                     modeChanged();
                 } 	else {
-                    checkAButtonIsPressed(dottedLineMode);
+                    checkAButtonIsPressed(squareTool);
                 }
             }
         })	;
@@ -234,7 +230,7 @@ public class MainActivity extends GraphicsActivity implements
                     setChoosingVisitRoundPlayer();
                     modeChanged();
                 } 	else {
-                    checkAButtonIsPressed(dottedLineMode);
+                    checkAButtonIsPressed(playerImage2);
                 }
             }
         })	;
@@ -247,7 +243,7 @@ public class MainActivity extends GraphicsActivity implements
                     setChoosingVisitTriangePlayer();
                     modeChanged();
                 } 	else {
-                    checkAButtonIsPressed(dottedLineMode);
+                    checkAButtonIsPressed(triangleTool2);
                 }
             }
         })	;
@@ -260,13 +256,37 @@ public class MainActivity extends GraphicsActivity implements
                     setChoosingVisitSquarePlayer();
                     modeChanged();
                 } 	else {
-                    checkAButtonIsPressed(dottedLineMode);
+                    checkAButtonIsPressed(squareTool2);
                 }
             }
         })	;
+
+        ballTool.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked) {
+                    setChoosingBall();
+                    modeChanged();
+                } 	else {
+                    checkAButtonIsPressed(ballTool);
+                }
+            }
+        })	;
+
     }
 
-
+    private void setChoosingBall() {
+        organizationMode.setChecked(false);
+        continuousLineMode.setChecked(false);
+        playerImage2.setChecked(false);
+        playerImage.setChecked(false);
+        squareTool.setChecked(false);
+        squareTool2.setChecked(false);
+        triangleTool.setChecked(false);
+        triangleTool2.setChecked(false);
+        drawingView.setLastSelectedPlayerView(ballTool);
+    }
 
 
     protected void modeChanged() {
@@ -283,6 +303,7 @@ public class MainActivity extends GraphicsActivity implements
         squareTool2.setChecked(false);
         triangleTool.setChecked(false);
         triangleTool2.setChecked(false);
+        ballTool.setChecked(false);
         drawingView.setMode(getString(R.string.drawing_mode));
 		drawingView.setLineMode(getString(R.string.continuous_line_mode));
 		
@@ -296,6 +317,7 @@ public class MainActivity extends GraphicsActivity implements
         squareTool2.setChecked(false);
         playerImage.setChecked(false);
         triangleTool2.setChecked(false);
+        ballTool.setChecked(false);
         drawingView.setLastSelectedPlayerView(triangleTool);
     }
 
@@ -307,10 +329,9 @@ public class MainActivity extends GraphicsActivity implements
         playerImage.setChecked(false);
         triangleTool.setChecked(false);
         triangleTool2.setChecked(false);
+        ballTool.setChecked(false);
         drawingView.setLastSelectedPlayerView(squareTool);
     }
-
-
 
     protected void setChoosingLocalRoundPlayer(){
         organizationMode.setChecked(false);
@@ -320,6 +341,7 @@ public class MainActivity extends GraphicsActivity implements
         squareTool2.setChecked(false);
         triangleTool.setChecked(false);
         triangleTool2.setChecked(false);
+        ballTool.setChecked(false);
         drawingView.setLastSelectedPlayerView(playerImage);
     }
 
@@ -332,6 +354,7 @@ public class MainActivity extends GraphicsActivity implements
         squareTool2.setChecked(false);
         playerImage.setChecked(false);
         triangleTool.setChecked(false);
+        ballTool.setChecked(false);
         drawingView.setLastSelectedPlayerView(triangleTool2);
     }
 
@@ -343,6 +366,7 @@ public class MainActivity extends GraphicsActivity implements
         playerImage.setChecked(false);
         triangleTool.setChecked(false);
         triangleTool2.setChecked(false);
+        ballTool.setChecked(false);
         drawingView.setLastSelectedPlayerView(squareTool2);
     }
 
@@ -356,6 +380,7 @@ public class MainActivity extends GraphicsActivity implements
         squareTool2.setChecked(false);
         triangleTool.setChecked(false);
         triangleTool2.setChecked(false);
+        ballTool.setChecked(false);
         drawingView.setLastSelectedPlayerView(playerImage2);
     }
 	
@@ -368,6 +393,7 @@ public class MainActivity extends GraphicsActivity implements
         squareTool2.setChecked(false);
         triangleTool.setChecked(false);
         triangleTool2.setChecked(false);
+        ballTool.setChecked(false);
 		drawingView.setMode(getString(R.string.drawing_mode));
 		drawingView.setLineMode(getString(R.string.dotted_line_mode));
 		
@@ -389,25 +415,15 @@ public class MainActivity extends GraphicsActivity implements
 	}
 
 	private void drawTheAppropiateBall(String field) {
-		int type = giveMeFieldBall(field);
-		int resource = BallPath.getResourceFromType(type);
-		ballTool.setImageResource(resource);
+		int type = Utility.giveMeFieldBall(field);
+		int resource = BallPath.getLayoutFromType(type);
+		View view = getLayoutInflater().inflate(resource,null);
+        layoutToolBar2.addView(view);
+        ViewGroup.LayoutParams params = view.getLayoutParams();
+        params.height = (int) getResources().getDimension(R.dimen.toolbar_button_height);
+        view.setLayoutParams(params);
 	}
 
-	private int giveMeFieldBall(String field) {
-		int resource = -1;
-		final String volley = getString(R.string.voley);
-		final String soccer = getString(R.string.soccer);
-		final String basket = getString(R.string.basketball);
-		if (field.equals(soccer)) {
-			resource = BallPath.SOCCER_BALL;
-		} else if (field.equals(basket)) {
-			resource = BallPath.BASKETBALL;
-		} else if (field.equals(volley)) {
-			resource = BallPath.VOLLEYBALL;
-		}
-		return resource;
-	}
 
 	private boolean fullTools(String field) {
 		boolean result = false;
@@ -463,7 +479,7 @@ public class MainActivity extends GraphicsActivity implements
 				} else if (label.equals("square")) {
 					drawingView.setSquarePlayer(x, y, team);
 				} else if (label.equals("ball")) {
-					drawingView.setBall(x, y, team, giveMeFieldBall(field));
+					drawingView.setBall(x, y, team, Utility.giveMeFieldBall(field));
 				}
 			}
 		};

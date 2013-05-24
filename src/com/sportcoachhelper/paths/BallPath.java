@@ -49,6 +49,23 @@ public class BallPath extends ColorPath {
 		return result;
 	}
 
+
+    public static int getLayoutFromType(int ballType) {
+        int result = 0;
+        switch(ballType){
+            case SOCCER_BALL:
+                result = R.layout.soccerbalcomponent;
+                break;
+            case VOLLEYBALL:
+                result = R.layout.voleyballcomponent;
+                break;
+            case BASKETBALL:
+                result = R.layout.basketballcomponent;
+                break;
+        }
+        return result;
+    }
+
 	public Bitmap getBitmap() {
 		return bitmap;
 	}

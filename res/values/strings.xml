@@ -31,6 +31,9 @@
     <string name="visitroundplayer">visitroundplayer</string>
     <string name="visittriangleplayer">visittriangleplayer</string>
     <string name="visitsquareplayer">visitsquareplayer</string>
+    <string name="voleyball">voley</string>
+    <string name="soccerball">soccerball</string>
+    <string name="ball">ball</string>
 
 
     <string-array name="fields">
