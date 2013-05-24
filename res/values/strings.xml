@@ -25,9 +25,15 @@
 	<string name="dotted_line_mode">Dotted Line</string>
 	<string name="saved_plays">Saved Plays</string>
 	<string name="templates">Templates</string>
-	
-	
-	<string-array name="fields">
+    <string name="localroundplayer">localroundplayer</string>
+    <string name="localtriangleplayer">localtriangleplayer</string>
+    <string name="localsquareplayer">localsquareplayer</string>
+    <string name="visitroundplayer">visitroundplayer</string>
+    <string name="visittriangleplayer">visittriangleplayer</string>
+    <string name="visitsquareplayer">visitsquareplayer</string>
+
+
+    <string-array name="fields">
 		<item >@string/soccer</item>
 		<item >@string/voley</item>
 		<item >@string/basketball</item>

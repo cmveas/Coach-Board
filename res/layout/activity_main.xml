@@ -14,69 +14,71 @@
             android:id="@+id/layoutToolBar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+            android:background="@android:color/background_light">
 
-            <ImageView
+            <ToggleButton
                 android:id="@+id/playerTool"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="@dimen/toolbar_button_height"
                 android:padding="10dp"
-                android:src="@drawable/player" />
+                android:tag="@string/localroundplayer"
+                style="@style/local_round_player_style" />
 
-            <ImageView
+            <ToggleButton
                 android:id="@+id/triangleTool"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="@dimen/toolbar_button_height"
                 android:padding="10dp"
-                android:src="@drawable/player_triangle" />
+                android:tag="@string/localtriangleplayer"
+                style="@style/local_triangle_player_style" />
 
-            <ImageView
+            <ToggleButton
                 android:id="@+id/squareTool"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="@dimen/toolbar_button_height"
                 android:padding="10dp"
-                android:src="@drawable/player_square" />
-
-          
-
-            <EditText
-                android:id="@+id/playerNumber"
-                android:layout_width="match_parent"
-                android:layout_height="75dp"
-                android:inputType="number"
-                android:padding="10dp"
-                android:visibility="gone" />
-            <Button
-                android:id="@+id/playerNumberButton"
-                android:layout_width="match_parent"
-                android:layout_height="75dp"
-                android:padding="10dp"
-                android:text="@string/setNumber"
-                android:visibility="gone" />
+                android:tag="@string/localsquareplayer"
+                style="@style/local_square_player_style"/>
             
-            <ImageView
+            <ToggleButton
                 android:id="@+id/playerTool2"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:tint="#FF0000"
+                android:layout_height="@dimen/toolbar_button_height"
                 android:padding="10dp"
-                android:src="@drawable/player" />
+                android:tag="@string/visitroundplayer"
+                style="@style/visit_round_player_style"/>
 
-            <ImageView
+            <ToggleButton
                 android:id="@+id/triangleTool2"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:tint="#FF0000"
+                android:layout_height="@dimen/toolbar_button_height"
                 android:padding="10dp"
-                android:src="@drawable/player_triangle" />
+                android:tag="@string/visittriangleplayer"
+                style="@style/visit_triangle_player_style"/>
 
-            <ImageView
+            <ToggleButton
                 android:id="@+id/squareTool2"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:tint="#FF0000"
+                android:layout_height="@dimen/toolbar_button_height"
                 android:padding="10dp"
-                android:src="@drawable/player_square" />
+                android:tag="@string/visitsquareplayer"
+                style="@style/visit_square_player_style" />
+
+            <EditText
+                    android:id="@+id/playerNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/editPlayerNumberSize"
+                    android:inputType="number"
+                    android:padding="10dp"
+                    android:visibility="gone" />
+            <Button
+                    android:id="@+id/playerNumberButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/editPlayerNumberSize"
+                    android:padding="10dp"
+                    android:text="@string/setNumber"
+                    android:visibility="gone" />
         </LinearLayout>
     </ScrollView>
 
@@ -94,8 +96,8 @@
     
      <ImageView
         android:id="@+id/trash"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="@dimen/trash_bin_size"
+        android:layout_height="@dimen/trash_bin_size"
         android:visibility="gone"
         android:layout_alignLeft="@id/drawingPanel"
         android:layout_alignBottom="@id/drawingPanel"
@@ -107,7 +109,8 @@
         android:layout_width="@dimen/toolbar_width"
         android:layout_alignParentRight="true"
         android:layout_height="match_parent"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:background="@android:color/background_light">
 
        <LinearLayout
             android:id="@id/layoutToolBar"
@@ -120,7 +123,7 @@
             <ToggleButton
                 android:id="@+id/organization_mode"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="@dimen/toolbar_button_height"
                 android:padding="10dp"
                 style="@style/organization_button_style"
                  />
@@ -128,21 +131,21 @@
             <ToggleButton
                 android:id="@+id/continuous_line_mode"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="@dimen/toolbar_button_height"
                 android:padding="10dp"
                 style="@style/continuous_line_button_style" />
             
              <ToggleButton
                 android:id="@+id/dotted_line_mode"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="@dimen/toolbar_button_height"
                 android:padding="10dp"
                 style="@style/dotted_line_button_style" />
              
              <ImageView
                 android:id="@+id/ballTool"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="@dimen/toolbar_button_height"
                 android:padding="10dp"
                 android:src="@drawable/volleyball" />
         </LinearLayout>

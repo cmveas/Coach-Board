@@ -47,15 +47,15 @@ public class MainActivity extends GraphicsActivity implements
 
 	private static final int PICKFILE_RESULT_CODE = 0;
 	private DrawingView drawingView;
-	private ImageView playerImage;
-	private ImageView triangleTool;
-	private ImageView squareTool;
+	private ToggleButton playerImage;
+	private ToggleButton triangleTool;
+	private ToggleButton squareTool;
 	private ImageView ballTool;
 	private EditText playerNumber;
 	private Button playerNumberButton;
-	private ImageView playerImage2;
-	private ImageView triangleTool2;
-	private ImageView squareTool2;
+	private ToggleButton playerImage2;
+	private ToggleButton triangleTool2;
+	private ToggleButton squareTool2;
 	private String field;
 	private ImageView trash;
 	private String mode;
@@ -78,9 +78,9 @@ public class MainActivity extends GraphicsActivity implements
 		 * Team A Toolbar
 		 */
 
-		playerImage = (ImageView) findViewById(R.id.playerTool);
-		triangleTool = (ImageView) findViewById(R.id.triangleTool);
-		squareTool = (ImageView) findViewById(R.id.squareTool);
+		playerImage = (ToggleButton) findViewById(R.id.playerTool);
+		triangleTool = (ToggleButton) findViewById(R.id.triangleTool);
+		squareTool = (ToggleButton) findViewById(R.id.squareTool);
 		ballTool = (ImageView) findViewById(R.id.ballTool);
 		playerNumberButton = (Button) findViewById(R.id.playerNumberButton);
 		playerNumber = (EditText) findViewById(R.id.playerNumber);
@@ -102,9 +102,9 @@ public class MainActivity extends GraphicsActivity implements
 		 * Team B Toolbar
 		 */
 
-		playerImage2 = (ImageView) findViewById(R.id.playerTool2);
-		triangleTool2 = (ImageView) findViewById(R.id.triangleTool2);
-		squareTool2 = (ImageView) findViewById(R.id.squareTool2);
+		playerImage2 = (ToggleButton) findViewById(R.id.playerTool2);
+		triangleTool2 = (ToggleButton) findViewById(R.id.triangleTool2);
+		squareTool2 = (ToggleButton) findViewById(R.id.squareTool2);
 		organizationMode = (ToggleButton) findViewById(R.id.organization_mode);
 		continuousLineMode = (ToggleButton) findViewById(R.id.continuous_line_mode);
 		dottedLineMode = (ToggleButton) findViewById(R.id.dotted_line_mode);
@@ -182,24 +182,192 @@ public class MainActivity extends GraphicsActivity implements
 				}		
 			}
 		})	;
+
+        loadPlayerListeners();
 	}
 
-	protected void modeChanged() {
+    private void loadPlayerListeners() {
+        playerImage.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked) {
+                    setChoosingLocalRoundPlayer();
+                    modeChanged();
+                } 	else {
+                    checkAButtonIsPressed(dottedLineMode);
+                }
+            }
+        })	;
+
+        triangleTool.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked) {
+                    setChoosingLocalTriangePlayer();
+                    modeChanged();
+                } 	else {
+                    checkAButtonIsPressed(dottedLineMode);
+                }
+            }
+        })	;
+
+        squareTool.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked) {
+                    setChoosingLocalSquarePlayer();
+                    modeChanged();
+                } 	else {
+                    checkAButtonIsPressed(dottedLineMode);
+                }
+            }
+        })	;
+
+        playerImage2.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked) {
+                    setChoosingVisitRoundPlayer();
+                    modeChanged();
+                } 	else {
+                    checkAButtonIsPressed(dottedLineMode);
+                }
+            }
+        })	;
+
+        triangleTool2.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked) {
+                    setChoosingVisitTriangePlayer();
+                    modeChanged();
+                } 	else {
+                    checkAButtonIsPressed(dottedLineMode);
+                }
+            }
+        })	;
+
+        squareTool2.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked) {
+                    setChoosingVisitSquarePlayer();
+                    modeChanged();
+                } 	else {
+                    checkAButtonIsPressed(dottedLineMode);
+                }
+            }
+        })	;
+    }
+
+
+
+
+    protected void modeChanged() {
 		drawingView.setModeChanged();
 		
 	}
 
 	protected void setContinuousLine() {
 		organizationMode.setChecked(false);
-		dottedLineMode.setChecked(false);	
-		drawingView.setMode(getString(R.string.drawing_mode));
+		dottedLineMode.setChecked(false);
+        playerImage.setChecked(false);
+        playerImage2.setChecked(false);
+        squareTool.setChecked(false);
+        squareTool2.setChecked(false);
+        triangleTool.setChecked(false);
+        triangleTool2.setChecked(false);
+        drawingView.setMode(getString(R.string.drawing_mode));
 		drawingView.setLineMode(getString(R.string.continuous_line_mode));
 		
 	}
+
+    protected void setChoosingLocalTriangePlayer() {
+        organizationMode.setChecked(false);
+        continuousLineMode.setChecked(false);
+        playerImage2.setChecked(false);
+        squareTool.setChecked(false);
+        squareTool2.setChecked(false);
+        playerImage.setChecked(false);
+        triangleTool2.setChecked(false);
+        drawingView.setLastSelectedPlayerView(triangleTool);
+    }
+
+    protected void setChoosingLocalSquarePlayer() {
+        organizationMode.setChecked(false);
+        continuousLineMode.setChecked(false);
+        playerImage2.setChecked(false);
+        squareTool2.setChecked(false);
+        playerImage.setChecked(false);
+        triangleTool.setChecked(false);
+        triangleTool2.setChecked(false);
+        drawingView.setLastSelectedPlayerView(squareTool);
+    }
+
+
+
+    protected void setChoosingLocalRoundPlayer(){
+        organizationMode.setChecked(false);
+        continuousLineMode.setChecked(false);
+        playerImage2.setChecked(false);
+        squareTool.setChecked(false);
+        squareTool2.setChecked(false);
+        triangleTool.setChecked(false);
+        triangleTool2.setChecked(false);
+        drawingView.setLastSelectedPlayerView(playerImage);
+    }
+
+
+    protected void setChoosingVisitTriangePlayer() {
+        organizationMode.setChecked(false);
+        continuousLineMode.setChecked(false);
+        playerImage2.setChecked(false);
+        squareTool.setChecked(false);
+        squareTool2.setChecked(false);
+        playerImage.setChecked(false);
+        triangleTool.setChecked(false);
+        drawingView.setLastSelectedPlayerView(triangleTool2);
+    }
+
+    protected void setChoosingVisitSquarePlayer() {
+        organizationMode.setChecked(false);
+        continuousLineMode.setChecked(false);
+        playerImage2.setChecked(false);
+        squareTool.setChecked(false);
+        playerImage.setChecked(false);
+        triangleTool.setChecked(false);
+        triangleTool2.setChecked(false);
+        drawingView.setLastSelectedPlayerView(squareTool2);
+    }
+
+
+
+    protected void setChoosingVisitRoundPlayer(){
+        organizationMode.setChecked(false);
+        continuousLineMode.setChecked(false);
+        playerImage.setChecked(false);
+        squareTool.setChecked(false);
+        squareTool2.setChecked(false);
+        triangleTool.setChecked(false);
+        triangleTool2.setChecked(false);
+        drawingView.setLastSelectedPlayerView(playerImage2);
+    }
 	
 	protected void setDottedLine() {
 		organizationMode.setChecked(false);
-		continuousLineMode.setChecked(false);	
+		continuousLineMode.setChecked(false);
+        playerImage.setChecked(false);
+        playerImage2.setChecked(false);
+        squareTool.setChecked(false);
+        squareTool2.setChecked(false);
+        triangleTool.setChecked(false);
+        triangleTool2.setChecked(false);
 		drawingView.setMode(getString(R.string.drawing_mode));
 		drawingView.setLineMode(getString(R.string.dotted_line_mode));
 		
@@ -485,7 +653,13 @@ public class MainActivity extends GraphicsActivity implements
 
 	private void setOrganizationMode() {
 		continuousLineMode.setChecked(false);
-		dottedLineMode.setChecked(false);	
+		dottedLineMode.setChecked(false);
+        playerImage.setChecked(false);
+        playerImage2.setChecked(false);
+        squareTool.setChecked(false);
+        squareTool2.setChecked(false);
+        triangleTool.setChecked(false);
+        triangleTool2.setChecked(false);
 		drawingView.setMode(getString(R.string.organization_mode));
 	}
 	

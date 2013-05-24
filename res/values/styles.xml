@@ -29,28 +29,49 @@
     <style name="splash_image_style" >
         <item name="android:gravity">center</item>
         <item name="android:layout_gravity">center</item>
-        
+    </style>
+
+    <style name="customizableToggleButton" parent="android:Widget">
+        <item name="android:layout_margin">3dp</item>
+        <item name="android:textOn"></item>
+        <item name="android:textOff"></item>
     </style>
     
 
-    <style name="organization_button_style" parent="android:Widget">
+    <style name="organization_button_style" parent="customizableToggleButton">
 	    <item name="android:background">@drawable/organization_mode_style</item>
-	    <item name="android:layout_margin">3dp</item>
-	    <item name="android:textOn"></item>
-	    <item name="android:textOff"></item>
 	</style>
 	
-     <style name="continuous_line_button_style" parent="android:Widget">
+     <style name="continuous_line_button_style" parent="customizableToggleButton">
 	    <item name="android:background">@drawable/continuous_line_mode_style</item>
-	    <item name="android:layout_margin">3dp</item>
-	    <item name="android:textOn"></item>
-	    <item name="android:textOff"></item>
 	</style>
 	
-     <style name="dotted_line_button_style" parent="android:Widget">
+     <style name="dotted_line_button_style" parent="customizableToggleButton">
 	    <item name="android:background">@drawable/dotted_line_mode_style</item>
-	    <item name="android:layout_margin">3dp</item>
-	    <item name="android:textOn"></item>
-	    <item name="android:textOff"></item>
 	</style>
+
+    <style name="local_round_player_style" parent="customizableToggleButton">
+        <item name="android:background">@drawable/local_round_player_background</item>
+    </style>
+
+    <style name="local_triangle_player_style" parent="customizableToggleButton">
+        <item name="android:background">@drawable/local_triangle_player_background</item>
+    </style>
+
+    <style name="local_square_player_style" parent="customizableToggleButton">
+        <item name="android:background">@drawable/local_square_player_background</item>
+    </style>
+
+    <style name="visit_round_player_style" parent="customizableToggleButton">
+        <item name="android:background">@drawable/visit_round_player_background</item>
+    </style>
+
+    <style name="visit_triangle_player_style" parent="customizableToggleButton">
+        <item name="android:background">@drawable/visit_triangle_player_background</item>
+    </style>
+
+    <style name="visit_square_player_style" parent="customizableToggleButton">
+        <item name="android:background">@drawable/visit_square_player_background</item>
+    </style>
+
 </resources>

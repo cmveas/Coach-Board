@@ -1,15 +1,5 @@
 package com.sportcoachhelper.components;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.StreamCorruptedException;
-import java.util.ArrayList;
-
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -21,6 +11,7 @@ import android.os.Environment;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ToggleButton;
 
 import com.sportcoachhelper.R;
 import com.sportcoachhelper.database.DatabaseHelper;
@@ -42,6 +33,16 @@ import com.sportcoachhelper.util.TeamManager;
 import com.sportcoachhelper.util.TemplateManager;
 import com.sportcoachhelper.util.Utility;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.StreamCorruptedException;
+import java.util.ArrayList;
+
 public class DrawingView extends View {
 
 	private Bitmap mBitmap;
@@ -55,7 +56,8 @@ public class DrawingView extends View {
 	private OnComponentSelectedListener listener;
 	private String stateMode = getContext().getString(R.string.organization_mode);
 	private Play play;
-	
+    private ToggleButton playerButton;
+
 
 	public void setOnComponentSelectedListener(OnComponentSelectedListener listener){
 		this.listener = listener;
@@ -228,22 +230,24 @@ public class DrawingView extends View {
 
 	private void touch_start(float x, float y) {
 		android.util.Log.d(TAG, "touch_start");
-		if(isOrganizationMode()) {
-			disSelectMovable();
-			movable = checkMovableObjectsPosition(x, y);
-			
-			if(movable==null) {
-				movable = checkNonMovableObjectsPosition(x, y);
-			}
-			setSelectedPath(movable);
-			selectMovable();
-		} else {
-			initializePaints();
-			mPath.reset();
-			mPath.moveTo(x, y);
-			mX = x;
-			mY = y;
-		}				
+        if(playerButton==null) {
+            if(isOrganizationMode()) {
+                disSelectMovable();
+                movable = checkMovableObjectsPosition(x, y);
+
+                if(movable==null) {
+                    movable = checkNonMovableObjectsPosition(x, y);
+                }
+                setSelectedPath(movable);
+                selectMovable();
+            } else {
+                initializePaints();
+                mPath.reset();
+                mPath.moveTo(x, y);
+                mX = x;
+                mY = y;
+            }
+        }
 	}
 
 	private void selectMovable() {
@@ -316,16 +320,42 @@ public class DrawingView extends View {
 
 	private void touch_up(float x, float y) {
 		android.util.Log.d(TAG, "touch_up");
-		if (!isOrganizationMode()) {
-			mPath.lineTo(mX, mY);
-			// commit the path to our offscreen
-			// mCanvas.drawPath(mPath, mPaint);
-			// kill this so we don't double draw
-			// mPath.reset();
-			addPathsToQueue(mPath);
-			// mPath.reset();
-			movable=null;
-		}
+        if(playerButton==null) {
+            if (!isOrganizationMode()) {
+                mPath.lineTo(mX, mY);
+                // commit the path to our offscreen
+                // mCanvas.drawPath(mPath, mPaint);
+                // kill this so we don't double draw
+                // mPath.reset();
+                addPathsToQueue(mPath);
+                // mPath.reset();
+                movable=null;
+            }
+        } else {
+            String tag = (String) playerButton.getTag();
+
+            if(tag!=null && tag.equals(getContext().getString(R.string.localroundplayer))) {
+                setCirclePlayer((int)x,(int)y,TeamManager.getInstance().getTeamA().getNumber());
+            } else if (tag!=null && tag.equals(getContext().getString(R.string.localsquareplayer))) {
+                setSquarePlayer((int)x,(int)y,TeamManager.getInstance().getTeamA().getNumber());
+            } else if (tag!=null && tag.equals(getContext().getString(R.string.localtriangleplayer))) {
+                setTrianglePlayer((int)x,(int)y,TeamManager.getInstance().getTeamA().getNumber());
+            } else if (tag!=null && tag.equals(getContext().getString(R.string.visitsquareplayer))) {
+                setSquarePlayer((int)x,(int)y,TeamManager.getInstance().getTeamB().getNumber());
+            } else if (tag!=null && tag.equals(getContext().getString(R.string.visittriangleplayer))) {
+                setTrianglePlayer((int)x,(int)y,TeamManager.getInstance().getTeamB().getNumber());
+            }else if (tag!=null && tag.equals(getContext().getString(R.string.visitroundplayer))) {
+                setCirclePlayer((int)x,(int)y,TeamManager.getInstance().getTeamB().getNumber());
+            }
+
+
+            post(new Runnable() {
+                public void run() {
+                    playerButton.setChecked(false);
+                    playerButton=null;
+                }
+            });
+        }
 	}
 
 	private void addPathsToQueue(ColorPath mPath) {
@@ -677,6 +707,11 @@ public class DrawingView extends View {
 		int result = (x*getWidth())/100;
 		return result;
 	}
+
+
+    public void setLastSelectedPlayerView(ToggleButton button){
+        this.playerButton = button;
+    }
 
 
 }
