@@ -90,7 +90,7 @@
         android:layout_height="match_parent"
         android:layout_centerInParent="true"
         android:layout_toRightOf="@id/layoutToolBar"
-        android:layout_toLeftOf="@+id/layoutToolBar2"    
+        android:layout_toLeftOf="@+id/scrollbar2"
         >
     </com.sportcoachhelper.components.DrawingView>
     
@@ -105,7 +105,7 @@
         android:onClick="eraseSelected" ></ImageView>
     
     <ScrollView
-        android:id="@+id/layoutToolBar2"
+        android:id="@+id/scrollbar2"
         android:layout_width="@dimen/toolbar_width"
         android:layout_alignParentRight="true"
         android:layout_height="match_parent"
@@ -113,7 +113,7 @@
         android:background="@android:color/background_light">
 
        <LinearLayout
-            android:id="@id/layoutToolBar"
+            android:id="@+id/layoutToolBar2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical" >
@@ -142,12 +142,7 @@
                 android:padding="10dp"
                 style="@style/dotted_line_button_style" />
              
-             <ImageView
-                android:id="@+id/ballTool"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/toolbar_button_height"
-                android:padding="10dp"
-                android:src="@drawable/volleyball" />
+
         </LinearLayout>
     </ScrollView>
 
