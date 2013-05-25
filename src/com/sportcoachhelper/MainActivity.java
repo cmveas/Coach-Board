@@ -4,6 +4,7 @@ import java.io.File;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
+import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.ClipData;
 import android.content.Intent;
@@ -33,10 +34,12 @@ import com.sportcoachhelper.util.TeamManager;
 import com.sportcoachhelper.util.Utility;
 
 public class MainActivity extends GraphicsActivity implements
-		OnComponentSelectedListener {
+		OnComponentSelectedListener, ColorPickerDialog.OnColorChangedListener {
 
 	private static final int PICKFILE_RESULT_CODE = 0;
-	private DrawingView drawingView;
+    private static final int DOTTED_LINE_ID = 1;
+    private static final int CONTINUOUS_LINE_ID = 2;
+    private DrawingView drawingView;
 	private ToggleButton playerImage;
 	private ToggleButton triangleTool;
 	private ToggleButton squareTool;
@@ -53,6 +56,7 @@ public class MainActivity extends GraphicsActivity implements
 	private ToggleButton continuousLineMode;
 	private ToggleButton dottedLineMode;
     private LinearLayout layoutToolBar2;
+    private int id;
 
     @Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -138,8 +142,27 @@ public class MainActivity extends GraphicsActivity implements
 
 		checkForFullTools();
 	}
-	
-	public void setOrganizationModeButton(){
+
+    @Override
+    protected Dialog onCreateDialog(int id, Bundle args) {
+        Dialog dialog = null;
+        switch(id){
+            case DOTTED_LINE_ID:
+                int color = args.getInt("color");
+                ColorPickerDialog colorPickerDialog = new ColorPickerDialog(this,this,color);
+                dialog = colorPickerDialog;
+                break;
+            case CONTINUOUS_LINE_ID:
+                color = args.getInt("color");
+                colorPickerDialog = new ColorPickerDialog(this,this,color);
+                dialog = colorPickerDialog;
+                break;
+        }
+        this.id=id;
+        return dialog;
+    }
+
+    public void setOrganizationModeButton(){
 		organizationMode.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 			
 			@Override
@@ -165,6 +188,16 @@ public class MainActivity extends GraphicsActivity implements
 				}		
 			}
 		})	;
+
+        continuousLineMode.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putInt("color",drawingView.getContinuousColor());
+                showDialog(CONTINUOUS_LINE_ID, bundle);
+                return true;
+            }
+        });
 		
 		dottedLineMode.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 			
@@ -178,6 +211,16 @@ public class MainActivity extends GraphicsActivity implements
 				}		
 			}
 		})	;
+
+        dottedLineMode.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putInt("color",drawingView.getContinuousColor());
+                showDialog(DOTTED_LINE_ID,bundle);
+                return true;
+            }
+        });
 
         loadPlayerListeners();
 	}
@@ -575,7 +618,19 @@ public class MainActivity extends GraphicsActivity implements
 		}
 	}
 
-	class TouchForDragListener implements OnTouchListener {
+    @Override
+    public void colorChanged(int color) {
+        switch (id) {
+            case DOTTED_LINE_ID:
+                drawingView.setDottedLineColor(color);
+                break;
+            case CONTINUOUS_LINE_ID:
+                drawingView.setContinuousLineColor(color);
+                break;
+        }
+    }
+
+    class TouchForDragListener implements OnTouchListener {
 
 		private View view;
 		private String dataToInput;

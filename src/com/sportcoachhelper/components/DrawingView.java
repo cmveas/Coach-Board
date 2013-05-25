@@ -57,9 +57,11 @@ public class DrawingView extends View {
 	private String stateMode = getContext().getString(R.string.organization_mode);
 	private Play play;
     private ToggleButton playerButton;
+    private int dottedLine=0xFF000000;
+    private int continuousLine=0xFF000000;
 
 
-	public void setOnComponentSelectedListener(OnComponentSelectedListener listener){
+    public void setOnComponentSelectedListener(OnComponentSelectedListener listener){
 		this.listener = listener;
 	}
 	
@@ -91,7 +93,7 @@ public class DrawingView extends View {
 		mPaint = new Paint();
 		mPaint.setAntiAlias(true);
 		mPaint.setDither(true);
-		mPaint.setColor(0xFF000000);
+		mPaint.setColor(getColorPerLineMode(lineMode));
 		mPaint.setStyle(Paint.Style.STROKE);
 		mPaint.setStrokeJoin(Paint.Join.ROUND);
 		mPaint.setStrokeCap(Paint.Cap.ROUND);
@@ -123,11 +125,16 @@ public class DrawingView extends View {
 
 	}
 
+    private int getColorPerLineMode(String mode) {
+        if(mode.equals(getContext().getString(R.string.continuous_line_mode))){
+            return continuousLine;
+        } else {
+            return dottedLine;
+        }
+    }
 
 
-
-	
-	private int w;
+    private int w;
 	private int h;
 
 	public void setDrawingPaint(Paint paint) {
@@ -620,16 +627,12 @@ public class DrawingView extends View {
 			invalidate();
 			
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (StreamCorruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -716,4 +719,15 @@ public class DrawingView extends View {
     }
 
 
+    public int getContinuousColor() {
+        return mPaint.getColor();
+    }
+
+    public void setDottedLineColor(int color) {
+       dottedLine = color;
+    }
+
+    public void setContinuousLineColor(int color) {
+        continuousLine = color;
+}
 }
