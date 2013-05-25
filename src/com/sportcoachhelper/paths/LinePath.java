@@ -9,6 +9,16 @@ public class LinePath extends ColorPath {
 	private static final boolean DEBUG = false ;
 	private String lineMode;
 
+    public int getColor() {
+        return color;
+    }
+
+    public void setColor(int color) {
+        this.color = color;
+    }
+
+    private int color;
+
 	public String getLineMode() {
 		return lineMode;
 	}

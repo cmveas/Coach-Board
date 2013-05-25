@@ -334,6 +334,7 @@ public class DrawingView extends View {
                 // mCanvas.drawPath(mPath, mPaint);
                 // kill this so we don't double draw
                 // mPath.reset();
+                mPath.setColor(getColorPerLineMode(lineMode));
                 addPathsToQueue(mPath);
                 // mPath.reset();
                 movable=null;
@@ -658,6 +659,7 @@ public class DrawingView extends View {
 			}  else if (dibujable instanceof LinePath) {
 				Paint paint = new Paint(mPaint);
 				paint.setPathEffect(getLineMode(((LinePath)dibujable).getLineMode()));
+                paint.setColor(((LinePath)dibujable).getColor());
 				((LinePath)dibujable).setPaint(paint);	
 				((LinePath)dibujable).loadPathPointsAsQuadTo();
 			} 
