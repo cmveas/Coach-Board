@@ -619,6 +619,17 @@ public class MainActivity extends GraphicsActivity implements
 	}
 
     @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        if(!supportsDragAndDrop()){
+            for(int i=0;i<menu.size();i++){
+                MenuItem entry = menu.getItem(i);
+                entry.setIcon(null);
+            }
+        }
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
     public void colorChanged(int color) {
         switch (id) {
             case DOTTED_LINE_ID:
