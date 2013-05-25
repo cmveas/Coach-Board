@@ -6,9 +6,10 @@
     <dimen name="court_padding">30dp</dimen>
     <dimen name="pager_court_width">500dp</dimen>
     <dimen name="pager_court_height">400dp</dimen>
-    <dimen name="toolbar_width">125dp</dimen>
+    <dimen name="toolbar_width">75dp</dimen>
 	<dimen name="play_list_title">60sp</dimen>
-    <dimen name="toolbar_button_height">100dp</dimen>
+    <dimen name="toolbar_button_height">75dp</dimen>
     <dimen name="trash_bin_size">50dp</dimen>
     <dimen name="editPlayerNumberSize">75dp</dimen>
+    <dimen name="lineBackgroundSize">10dp</dimen>
 </resources>

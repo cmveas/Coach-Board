@@ -370,6 +370,9 @@ public class DrawingView extends View {
 
 	private void addPathsToQueue(ColorPath mPath) {
 		play.addPath(mPath);
+        if(mPath instanceof ShapePath) {
+            listener.onPlayerAdded();
+        }
 	}
 
 	private void setSelectedPath(Detectable movable) {

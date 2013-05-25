@@ -11,4 +11,5 @@
     <dimen name="toolbar_button_height">50dp</dimen>
     <dimen name="trash_bin_size">50dp</dimen>
     <dimen name="editPlayerNumberSize">50dp</dimen>
+    <dimen name="lineBackgroundSize">10dp</dimen>
 </resources>

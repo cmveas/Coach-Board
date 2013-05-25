@@ -128,12 +128,20 @@
                 style="@style/organization_button_style"
                  />
 
+
+
             <ToggleButton
                 android:id="@+id/continuous_line_mode"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/toolbar_button_height"
                 android:padding="10dp"
                 style="@style/continuous_line_button_style" />
+
+           <View
+                   android:layout_width="match_parent"
+                   android:layout_height="@dimen/lineBackgroundSize"
+                   android:id="@+id/continuousBackground">
+           </View>
             
              <ToggleButton
                 android:id="@+id/dotted_line_mode"
@@ -141,9 +149,16 @@
                 android:layout_height="@dimen/toolbar_button_height"
                 android:padding="10dp"
                 style="@style/dotted_line_button_style" />
-             
+
+           <View
+                   android:layout_width="match_parent"
+                   android:layout_height="@dimen/lineBackgroundSize"
+                   android:id="@+id/dottedBackground">
+           </View>
 
         </LinearLayout>
     </ScrollView>
+
+
 
 </RelativeLayout>

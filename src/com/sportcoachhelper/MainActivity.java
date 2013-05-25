@@ -57,6 +57,8 @@ public class MainActivity extends GraphicsActivity implements
 	private ToggleButton dottedLineMode;
     private LinearLayout layoutToolBar2;
     private int id;
+    private View continuousBackground;
+    private View dottedBackground;
 
     @Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +78,8 @@ public class MainActivity extends GraphicsActivity implements
 		playerImage = (ToggleButton) findViewById(R.id.playerTool);
 		triangleTool = (ToggleButton) findViewById(R.id.triangleTool);
 		squareTool = (ToggleButton) findViewById(R.id.squareTool);
+        continuousBackground = findViewById(R.id.continuousBackground);
+        dottedBackground = findViewById(R.id.dottedBackground);
 
 		playerNumberButton = (Button) findViewById(R.id.playerNumberButton);
 		playerNumber = (EditText) findViewById(R.id.playerNumber);
@@ -137,11 +141,17 @@ public class MainActivity extends GraphicsActivity implements
 		
 		manageDrag(field);
 
-
 		drawingView.setOnComponentSelectedListener(this);
 
 		checkForFullTools();
+
+        setInitialLineColors();
 	}
+
+    private void setInitialLineColors() {
+        dottedBackground.setBackgroundColor(getResources().getColor(android.R.color.black));
+        continuousBackground.setBackgroundColor(getResources().getColor(android.R.color.black));
+    }
 
     @Override
     protected Dialog onCreateDialog(int id, Bundle args) {
@@ -634,9 +644,13 @@ public class MainActivity extends GraphicsActivity implements
         switch (id) {
             case DOTTED_LINE_ID:
                 drawingView.setDottedLineColor(color);
+                dottedBackground.setBackgroundColor(color);
+                dottedLineMode.setChecked(true);
                 break;
             case CONTINUOUS_LINE_ID:
                 drawingView.setContinuousLineColor(color);
+                continuousLineMode.setChecked(true);
+                continuousBackground.setBackgroundColor(color);
                 break;
         }
     }
@@ -708,7 +722,12 @@ public class MainActivity extends GraphicsActivity implements
 		trash.setVisibility(View.VISIBLE);
 	}
 
-	@Override
+    @Override
+    public void onPlayerAdded() {
+        organizationMode.setChecked(true);
+    }
+
+    @Override
 	public void onComponentRelease() {
 		playerNumber.setVisibility(View.GONE);
 		playerNumberButton.setVisibility(View.GONE);
