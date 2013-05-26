@@ -17,6 +17,13 @@ public class CirclePath extends ShapePath {
 	public void reinitialize() {
 		super.reinitialize();
 		addCircle(x, y, ColorPath.HALF_SIZE, Path.Direction.CCW);
-		addCirclePath(new float[] {x,y});		
+		addShapePath(new float[]{x, y});
 	}
+
+    @Override
+    public String getComponentType() {
+        return "circle";
+    }
+
+
 }

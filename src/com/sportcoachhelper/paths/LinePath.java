@@ -2,6 +2,9 @@ package com.sportcoachhelper.paths;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class LinePath extends ColorPath {
 
@@ -113,10 +116,34 @@ public class LinePath extends ColorPath {
 		
 		return result;
 	}
-	
-	@Override
+
+    @Override
+    public JSONArray toJsonData() {
+
+        JSONArray array = new JSONArray();
+        try {
+       for(float [] points : pathPoints) {
+            JSONObject item = new JSONObject();
+            item.put("X",points[0]);
+            item.put("Y",points[1]);
+            item.put("XF",points[2]);
+            item.put("YF",points[3]);
+        }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return array;
+    }
+
+    @Override
 	public boolean canBeMoved() {
 		return false;
 	}
+
+    @Override
+    public String getComponentType() {
+        return "line";
+    }
 
 }

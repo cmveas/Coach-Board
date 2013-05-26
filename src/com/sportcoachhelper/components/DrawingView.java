@@ -550,8 +550,10 @@ public class DrawingView extends View {
 		stream.writeObject(play);
 		stream.flush();
 		
-		DatabaseHelper.getInstance().insertPlay(name, play.getField() ,  toSaveFile.getAbsolutePath(), System.currentTimeMillis());
-		
+		long playId= DatabaseHelper.getInstance().insertPlay(name, play.getField() ,  toSaveFile.getAbsolutePath(), System.currentTimeMillis());
+
+        createDBComponents(playId);
+
 		createTemplate();
 		
 		
@@ -565,7 +567,15 @@ public class DrawingView extends View {
 	}
 	}
 
-	/**
+    private void createDBComponents(long playId) {
+        ArrayList<Dibujables> components = play.getUndoablePaths();
+        for(Dibujables component : components){
+            DatabaseHelper.getInstance().insertPlayComponent(component.getComponentType(),,);
+        }
+
+    }
+
+    /**
 	 * Creation and template saving
 	 */
 	private void createTemplate() {

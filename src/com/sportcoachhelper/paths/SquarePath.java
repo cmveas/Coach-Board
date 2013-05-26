@@ -14,8 +14,13 @@ public class SquarePath extends ShapePath {
 	public void reinitialize() {
 		super.reinitialize();
 		addRect(x,y, x+ColorPath.SIZE, y+ColorPath.SIZE, Path.Direction.CCW);	
-		addCirclePath(new float[]{x,y, x+ColorPath.SIZE, y+ColorPath.SIZE });
+		addShapePath(new float[]{x, y, x + ColorPath.SIZE, y + ColorPath.SIZE});
 		
 	}
+
+    @Override
+    public String getComponentType() {
+        return "square";
+    }
 
 }
