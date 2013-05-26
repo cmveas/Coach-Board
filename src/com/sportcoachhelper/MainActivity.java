@@ -168,7 +168,6 @@ public class MainActivity extends GraphicsActivity implements
                 dialog = colorPickerDialog;
                 break;
         }
-        this.id=id;
         return dialog;
     }
 
@@ -205,6 +204,7 @@ public class MainActivity extends GraphicsActivity implements
                 Bundle bundle = new Bundle();
                 bundle.putInt("color",drawingView.getContinuousColor());
                 showDialog(CONTINUOUS_LINE_ID, bundle);
+                id=CONTINUOUS_LINE_ID;
                 return true;
             }
         });
@@ -228,6 +228,7 @@ public class MainActivity extends GraphicsActivity implements
                 Bundle bundle = new Bundle();
                 bundle.putInt("color",drawingView.getContinuousColor());
                 showDialog(DOTTED_LINE_ID,bundle);
+                id=DOTTED_LINE_ID;
                 return true;
             }
         });
