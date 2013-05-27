@@ -32,6 +32,7 @@ import com.sportcoachhelper.paths.interfaces.Dibujables;
 import com.sportcoachhelper.util.TeamManager;
 import com.sportcoachhelper.util.TemplateManager;
 import com.sportcoachhelper.util.Utility;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -568,11 +569,22 @@ public class DrawingView extends View {
 	}
 
     private void createDBComponents(long playId) {
+        try{
         ArrayList<Dibujables> components = play.getUndoablePaths();
+        int index = 0;
         for(Dibujables component : components){
-            DatabaseHelper.getInstance().insertPlayComponent(component.getComponentType(),,);
+            JSONObject data = new JSONObject();
+            data.put("X",((ColorPath)component).getX());
+            data.put("Y",((ColorPath)component).getY());
+            data.put("SIZE",ColorPath.SIZE);
+            data.put("HALF_SIZE",ColorPath.HALF_SIZE);
+            data.put("DATA",component.toJsonData());
+            DatabaseHelper.getInstance().insertPlayComponent(component.getComponentType(),data.toString(),playId,index);
+            index++;
         }
-
+        } catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
     /**

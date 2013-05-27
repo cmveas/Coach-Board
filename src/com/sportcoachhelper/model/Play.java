@@ -8,7 +8,8 @@ import com.sportcoachhelper.paths.interfaces.Detectable;
 import com.sportcoachhelper.paths.interfaces.Dibujables;
 
 public class Play implements Serializable {
-	
+
+    private int 
 	private long lastSaved;
 	private String name;
 	private String field;
@@ -77,7 +78,9 @@ public class Play implements Serializable {
 		this.lastSaved = lastSaved;
 	}
 
+    public void loadFully(){
 
+    }
 	
 	
 }

@@ -101,13 +101,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	}
 
 
-    public void insertPlayComponent(String shape, String data, int playId, int order){
+    public void insertPlayComponent(String shape, String data, long playId, int order){
         SQLiteDatabase db = getWritableDatabase();
 
         ContentValues cv = new ContentValues();
         cv.put(PLAYS_COMPONENT_SHAPE, shape);
         cv.put(PLAYS_COMPONENT_DATA, data);
-        cv.put(PLAYS_COMPONENT_ORDER, data);
+        cv.put(PLAYS_COMPONENT_ORDER, order);
         cv.put(PLAYS_COMPONENT_PLAY_ID,playId);
 
         db.insert(PLAYS_TABLE_NAME, null, cv);
