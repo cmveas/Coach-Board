@@ -18,6 +18,7 @@ import android.view.View.DragShadowBuilder;
 import android.view.View.OnClickListener;
 import android.view.View.OnDragListener;
 import android.view.View.OnTouchListener;
+import android.webkit.WebView;
 import android.widget.*;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 
@@ -26,11 +27,12 @@ import com.sportcoachhelper.dialogs.ClearDialog;
 import com.sportcoachhelper.dialogs.PlaysNameDialogFragment;
 import com.sportcoachhelper.fragments.ScreenSlidePageFragment;
 import com.sportcoachhelper.interfaces.OnComponentSelectedListener;
+import com.sportcoachhelper.managers.PlaysManager;
 import com.sportcoachhelper.model.Play;
 import com.sportcoachhelper.model.Team;
 import com.sportcoachhelper.paths.BallPath;
 import com.sportcoachhelper.paths.ColorPath;
-import com.sportcoachhelper.util.TeamManager;
+import com.sportcoachhelper.managers.TeamManager;
 import com.sportcoachhelper.util.Utility;
 
 public class MainActivity extends GraphicsActivity implements
@@ -117,12 +119,10 @@ public class MainActivity extends GraphicsActivity implements
 		
 		String type = intent.getStringExtra(ScreenSlidePageFragment.TYPE);
 		if (type != null && type.equals("play")) {
-			String play = intent.getStringExtra(ScreenSlidePageFragment.PLAY);
-			if (play != null && !play.trim().equals("")) {
-				drawingView.openDocument(new File(Environment
-						.getExternalStorageDirectory().getAbsolutePath()
-						+ "/"
-						+ play));
+			long playId = intent.getLongExtra(ScreenSlidePageFragment.PLAY,-1);
+            Play play = PlaysManager.getInstance().getPlay(field, playId);
+            if ( playId!=-1) {
+				drawingView.openDocument(play);
 			}
 		} else if (type != null && type.equals("template")) {
 			String play = intent.getStringExtra(ScreenSlidePageFragment.PLAY);
@@ -146,7 +146,10 @@ public class MainActivity extends GraphicsActivity implements
 		checkForFullTools();
 
         setInitialLineColors();
+
 	}
+
+
 
     private void setInitialLineColors() {
         dottedBackground.setBackgroundColor(getResources().getColor(android.R.color.black));
@@ -585,7 +588,12 @@ public class MainActivity extends GraphicsActivity implements
 			openDocument();
 			break;
 		case R.id.menu_save_document:
-			showPlayNameDialog();
+            String playName = drawingView.getPlay().getName();
+            if(playName!=null) {
+                drawingView.saveDocument(playName);
+            } else {
+                showPlayNameDialog();
+            }
 			break;
 		case R.id.menu_clear_document:
 			showClearDialog();
@@ -616,8 +624,7 @@ public class MainActivity extends GraphicsActivity implements
 	}
 
 	public void saveDocument(String name) {
-		File file = Environment.getExternalStorageDirectory();
-		drawingView.saveDocument(file, name);
+		drawingView.saveDocument( name);
 
 	}
 

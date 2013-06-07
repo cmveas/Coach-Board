@@ -5,7 +5,9 @@ import android.graphics.Path;
 
 public class SquarePath extends ShapePath {
 
-	public SquarePath(Paint paint, int x, int y) {
+    public static final String SQUARE = "square";
+
+    public SquarePath(Paint paint, int x, int y) {
 		super(paint,x,y);
 		// TODO Auto-generated constructor stub
 	}
@@ -14,8 +16,13 @@ public class SquarePath extends ShapePath {
 	public void reinitialize() {
 		super.reinitialize();
 		addRect(x,y, x+ColorPath.SIZE, y+ColorPath.SIZE, Path.Direction.CCW);	
-		addCirclePath(new float[]{x,y, x+ColorPath.SIZE, y+ColorPath.SIZE });
+		addShapePath(new float[]{x, y, x + ColorPath.SIZE, y + ColorPath.SIZE});
 		
 	}
+
+    @Override
+    public String getComponentType() {
+        return SQUARE;
+    }
 
 }

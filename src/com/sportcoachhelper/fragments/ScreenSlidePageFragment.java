@@ -7,7 +7,6 @@ import java.util.Date;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -23,19 +22,19 @@ import android.widget.TextView;
 
 import com.sportcoachhelper.MainActivity;
 import com.sportcoachhelper.R;
-import com.sportcoachhelper.database.DatabaseHelper;
-import com.sportcoachhelper.fragments.ScreenSlidePageFragment.TemplateAdapter;
+import com.sportcoachhelper.managers.PlaysManager;
 import com.sportcoachhelper.model.Play;
 import com.sportcoachhelper.model.Template;
-import com.sportcoachhelper.util.FontManager;
-import com.sportcoachhelper.util.TemplateManager;
+import com.sportcoachhelper.managers.FontManager;
+import com.sportcoachhelper.managers.TemplateManager;
 
 @SuppressLint("ValidFragment")
 public class ScreenSlidePageFragment extends Fragment {
 
     public static final String PLAY = "play";
     public static final String TYPE = "type";
-	private int position;
+
+    private int position;
 	private String label;
 	private int[] fieldIndexes;
 	private ImageView field_type;
@@ -50,6 +49,7 @@ public class ScreenSlidePageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
 		android.util.Log.d("[OnCreateView]","[OnCreateView]");
+
         ViewGroup rootView = (ViewGroup) inflater.inflate(
                 R.layout.display_field_fragment, container, false);
         fieldIndexes = getActivity().getResources().getIntArray(R.array.fieldsIndexes);
@@ -81,7 +81,7 @@ public class ScreenSlidePageFragment extends Fragment {
         			View paramView, int position, long paramLong) {
         		Play play = (Play) playsAdapter.getItem(position);
         		Intent intent = new Intent(getActivity(),MainActivity.class);
-        		intent.putExtra(PLAY, play.getName());
+        		intent.putExtra(PLAY, play.getId());
         		intent.putExtra(TYPE, "play");
         		intent.putExtra("field", label);
         		startActivity(intent);
@@ -136,43 +136,32 @@ public class ScreenSlidePageFragment extends Fragment {
 	@Override
 	public void onResume() {
 		super.onResume();
-		playsAdapter.reloadList(label);
-		playsAdapter.notifyDataSetChanged();
+        PlaysManager.getInstance().invalidate(label);
+        playsAdapter.notifyDataSetChanged();
 		
 	}
 	
 	public class PlaysAdapter extends BaseAdapter {
 
-		private ArrayList<Play> plays;
+        private ArrayList<Play> plays;
 		private LayoutInflater inflater;
 
 		public PlaysAdapter(){
-		
-		}
+            inflater = LayoutInflater.from(getActivity());
+            initialize();
+        }
 
-		private void reloadList(String label) {
-			plays = new ArrayList<Play>();
-			Cursor cursor = DatabaseHelper.getInstance().getPlays(label);
-			if(cursor.moveToFirst()) {
-				int nameIndex = cursor.getColumnIndex(DatabaseHelper.PLAYS_NAME);
-				int dateIndex = cursor.getColumnIndex(DatabaseHelper.PLAYS_DATE);
-				while(!cursor.isAfterLast()){
-					String name = cursor.getString(nameIndex);
-					long date = cursor.getLong(dateIndex);
-					Play temp = new Play();
-					temp.setName(name);
-					temp.setLastSaved(date);
-					plays.add(temp);
-					cursor.moveToNext();
-				}
-			}
-			if(cursor!=null && !cursor.isClosed()) {
-				cursor.close();
-			}
-			inflater = LayoutInflater.from(getActivity());
-		}
-		
-		@Override
+        private void initialize() {
+            plays = PlaysManager.getInstance().getPlaysFromField(label);
+        }
+
+        @Override
+        public void notifyDataSetChanged() {
+            initialize();
+            super.notifyDataSetChanged();
+        }
+
+        @Override
 		public int getCount() {
 			int result = 0;
 			if(plays!=null) {

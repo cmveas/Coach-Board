@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.sportcoachhelper.fragments.ScreenSlidePageFragment;
+import com.sportcoachhelper.managers.PlaysManager;
 import com.sportcoachhelper.util.Utility;
 
 public class ActHomeScreen extends FragmentActivity {
@@ -69,7 +70,10 @@ public class ActHomeScreen extends FragmentActivity {
 		int current = mPager.getCurrentItem();
 		
 		setPositionInAdapter(current);
-	}
+
+
+
+    }
 	
 	
 	private void setPositionInAdapter(int pos) {

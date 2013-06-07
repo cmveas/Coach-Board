@@ -1,4 +1,4 @@
-package com.sportcoachhelper.util;
+package com.sportcoachhelper.managers;
 
 import com.sportcoachhelper.CoachApp;
 

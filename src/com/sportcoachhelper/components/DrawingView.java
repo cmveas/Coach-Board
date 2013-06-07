@@ -1,6 +1,7 @@
 package com.sportcoachhelper.components;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -13,6 +14,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ToggleButton;
 
+import com.sportcoachhelper.CoachApp;
 import com.sportcoachhelper.R;
 import com.sportcoachhelper.database.DatabaseHelper;
 import com.sportcoachhelper.interfaces.OnComponentSelectedListener;
@@ -29,9 +31,12 @@ import com.sportcoachhelper.paths.SquarePath;
 import com.sportcoachhelper.paths.TrianglePath;
 import com.sportcoachhelper.paths.interfaces.Detectable;
 import com.sportcoachhelper.paths.interfaces.Dibujables;
-import com.sportcoachhelper.util.TeamManager;
-import com.sportcoachhelper.util.TemplateManager;
+import com.sportcoachhelper.managers.TeamManager;
+import com.sportcoachhelper.managers.TemplateManager;
 import com.sportcoachhelper.util.Utility;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -370,7 +375,7 @@ public class DrawingView extends View {
 
 	private void addPathsToQueue(ColorPath mPath) {
 		play.addPath(mPath);
-        if(isShape(mPath)) {
+        if(listener !=null && isShape(mPath)) {
             listener.onPlayerAdded();
         }
 	}
@@ -381,8 +386,10 @@ public class DrawingView extends View {
 
     private void setSelectedPath(Detectable movable) {
 		mSelectedPath =movable;
-		listener.onComponentSelected((ColorPath)mSelectedPath);
-	}
+        if(listener!=null) {
+		    listener.onComponentSelected((ColorPath)mSelectedPath);
+        }
+     }
 
 	
 
@@ -536,36 +543,46 @@ public class DrawingView extends View {
 		initializeField(w, h);
 	}
 
-	public void saveDocument(File file, String name) {
-	File toSaveFile = new File(file.getAbsoluteFile() + "/" + name);
+	public void saveDocument(String name) {
+
 	try {
-	
-	if(!toSaveFile.exists()) {
-		toSaveFile.createNewFile();
-	}
-	
-		FileOutputStream output = new FileOutputStream(toSaveFile);
-		ObjectOutputStream stream = new ObjectOutputStream(output);
-		play.setName(name);
-		stream.writeObject(play);
-		stream.flush();
-		
-		DatabaseHelper.getInstance().insertPlay(name, play.getField() ,  toSaveFile.getAbsolutePath(), System.currentTimeMillis());
-		
-		createTemplate();
-		
-		
-		
-	} catch (FileNotFoundException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	} catch (IOException e) {
-		// TODO Auto-generated catch block
+
+		if(play.getId()!=-1) {
+            DatabaseHelper.getInstance().updatePlay(play.getId(),name, play.getField() , "", System.currentTimeMillis());
+            DatabaseHelper.getInstance().deletePlayComponents(play.getId());
+        } else {
+            long playId= DatabaseHelper.getInstance().insertPlay(name, play.getField() , "", System.currentTimeMillis());
+            play.setId(playId);
+
+        }
+
+            createDBComponents(play.getId());
+            createTemplate();
+
+	} catch (Exception e) {
 		e.printStackTrace();
 	}
 	}
 
-	/**
+    private void createDBComponents(long playId) {
+        try{
+        if(playId!=-1) {
+            ArrayList<Dibujables> components = play.getUndoablePaths();
+            int index = 0;
+            for(Dibujables component : components){
+                JSONObject data = new JSONObject();
+                android.util.Log.d(TAG,"Saving shape: " + component.getComponentType());
+                data.put("DATA",component.toJsonData());
+                DatabaseHelper.getInstance().insertPlayComponent(component.getComponentType(),data.toString(),playId,index);
+                index++;
+            }
+            }
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    /**
 	 * Creation and template saving
 	 */
 	private void createTemplate() {
@@ -604,10 +621,8 @@ public class DrawingView extends View {
 			stream.writeObject(template);
 			stream.flush();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -646,9 +661,121 @@ public class DrawingView extends View {
 		
 		
 	}
-	
-	
-	public Play getPlay(){
+
+    public void openDocument(Play play) {
+        try {
+          this.play = play;
+          Cursor cursor = DatabaseHelper.getInstance().getPlayComponents(play.getId());
+
+          if(cursor!=null && cursor.moveToFirst()  ) {
+              int indexShape = cursor.getColumnIndex(DatabaseHelper.PLAYS_COMPONENT_SHAPE);
+              int indexData = cursor.getColumnIndex(DatabaseHelper.PLAYS_COMPONENT_DATA);
+            while(!cursor.isAfterLast()){
+                String shape = cursor.getString(indexShape);
+                android.util.Log.d(TAG,"Loading Shape:" + shape);
+                if(shape!=null && (shape.equals(CirclePath.CIRCLE)||shape.equals(SquarePath.SQUARE)||shape.equals(TrianglePath.TRIANGLE))) {
+                    processShapeData(shape,cursor.getString(indexData));
+                } else if(shape!=null && shape.equals(LinePath.LINE)) {
+                    processLineData(cursor.getString(indexData));
+                } else if(shape!=null && shape.equals(BallPath.BALL)) {
+                    processBallData(cursor.getString(indexData));
+                }
+                cursor.moveToNext();
+            }
+          }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+    private void processBallData(String data) {
+        try {
+        JSONObject dataJson = new JSONObject(data);
+        JSONArray array = dataJson.getJSONArray("DATA");
+            int ballType = -1;
+
+                JSONObject Data = array.getJSONObject(0);
+                ballType =  Data.getInt("balltype");
+                Data = array.getJSONObject(1);
+                int x = Data.getInt("X");
+                int y = Data.getInt("Y");
+                BallPath ball = new BallPath(mPaint, ballType, CoachApp.getInstance().getResources());
+                ball.setX(x);
+                ball.setY(y);
+                play.addPath(ball);
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void processLineData(String data) {
+        try {
+            JSONObject dataJson = new JSONObject(data);
+            JSONArray array = dataJson.getJSONArray("DATA");
+            LinePath path = new LinePath(mPaint);
+
+            Paint newLinePaint = new Paint(path.getPaint());
+            String mode = null;
+            int color = -1;
+            for(int i=0;i<array.length();i++) {
+                JSONObject Data = array.getJSONObject(i);
+                if(i==0) {
+                    mode =  Data.getString("mode");
+                } else if(i==1) {
+                    color =  Data.getInt("color");
+
+
+                }
+                else {
+                    float x = (float) Data.getDouble("X");
+                    float y = (float)  Data.getDouble("Y");
+                    float xf = (float)  Data.getDouble("XF");
+                    float yf = (float)  Data.getDouble("YF");
+                    float[] pointsData = new float[] {x,y,xf,yf};
+                    path.addPathPoints(pointsData);
+                }
+
+            }
+
+            Paint paint = new Paint(mPaint);
+            paint.setPathEffect(getLineMode(mode));
+            paint.setColor(color);
+            path.setPaint(paint);
+            path.setLineMode(mode);
+            path.setColor(color);
+            path.loadPathPointsAsQuadTo();
+            play.addPath(path);
+
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    private void processShapeData(String shape,String data) {
+        try {
+            JSONObject dataJson = new JSONObject(data);
+            JSONArray array = dataJson.getJSONArray("DATA");
+            JSONObject Data = array.getJSONObject(0);
+            int x = Data.getInt("X");
+            int y = Data.getInt("Y");
+            int team = Data.getInt("Team");
+            if(shape.equals(CirclePath.CIRCLE)) {
+                setCirclePlayer(x,y,team);
+            } else if (shape.equals(SquarePath.SQUARE)) {
+                setSquarePlayer(x,y,team);
+            } else if (shape.equals(TrianglePath.TRIANGLE)){
+                setTrianglePlayer(x,y,team);
+            }
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+
+    public Play getPlay(){
 		return play;
 	}
 

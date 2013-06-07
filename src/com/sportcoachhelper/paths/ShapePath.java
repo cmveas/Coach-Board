@@ -1,10 +1,13 @@
 package com.sportcoachhelper.paths;
 
 import com.sportcoachhelper.model.TemplateItem;
-import com.sportcoachhelper.util.TeamManager;
+import com.sportcoachhelper.managers.TeamManager;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public abstract class ShapePath extends ColorPath {
 
@@ -48,4 +51,26 @@ public abstract class ShapePath extends ColorPath {
 		reset();
 		
 	}
+
+    @Override
+    public JSONArray toJsonData() {
+
+        JSONArray array = new JSONArray();
+        try {
+            for(float [] points : pathPoints) {
+                JSONObject item = new JSONObject();
+                item.put("X",points[0]);
+                item.put("Y",points[1]);
+                item.put("Team",getTeam());
+                item.put("SIZE",SIZE);
+                item.put("HALF_SIZE",HALF_SIZE);
+                array.put(item);
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return array;
+    }
+
 }

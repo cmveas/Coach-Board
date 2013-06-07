@@ -11,7 +11,7 @@ public abstract class SerializablePath extends Path implements Serializable,
 		Dibujables {
 
 	
-	private ArrayList<float[]> pathPoints;
+	protected ArrayList<float[]> pathPoints;
 
 	public SerializablePath() {
 		super();
@@ -37,7 +37,7 @@ public abstract class SerializablePath extends Path implements Serializable,
 		this.pathPoints.add(points);
 	}
 	
-	public void addCirclePath(float[] points) {
+	public void addShapePath(float[] points) {
 		this.pathPoints.add(0, points);
 		while(pathPoints.size()>1) {
 			pathPoints.remove(1);
@@ -74,7 +74,7 @@ public abstract class SerializablePath extends Path implements Serializable,
 			lineTo(x-ColorPath.HALF_SIZE, y+ColorPath.SIZE);
 			lineTo(x+ColorPath.HALF_SIZE, y+ColorPath.SIZE);
 			lineTo(x, y);	
-			addCirclePath(new float[]{x,y});
+			addShapePath(new float[]{x, y});
 		}
 	}
 	

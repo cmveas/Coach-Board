@@ -8,8 +8,18 @@ import com.sportcoachhelper.paths.interfaces.Detectable;
 import com.sportcoachhelper.paths.interfaces.Dibujables;
 
 public class Play implements Serializable {
-	
-	private long lastSaved;
+
+    private long id=-1;
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    private long lastSaved;
 	private String name;
 	private String field;
 	private ArrayList<Dibujables> undoablePaths = new ArrayList<Dibujables>();
@@ -77,7 +87,9 @@ public class Play implements Serializable {
 		this.lastSaved = lastSaved;
 	}
 
+    public void loadFully(){
 
+    }
 	
 	
 }

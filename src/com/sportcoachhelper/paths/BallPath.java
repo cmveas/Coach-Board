@@ -10,11 +10,19 @@ import android.graphics.Paint;
 import com.sportcoachhelper.CoachApp;
 import com.sportcoachhelper.R;
 import com.sportcoachhelper.util.Utility;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class BallPath extends ColorPath {
+    @Override
+    public String getComponentType() {
+        return "ball";
+    }
 
+    public static final String BALL = "ball";
 
-	public static final int SOCCER_BALL = 0;
+    public static final int SOCCER_BALL = 0;
 	public static final int VOLLEYBALL = 1;
 	public static final int BASKETBALL = 2;
 	
@@ -96,6 +104,8 @@ public class BallPath extends ColorPath {
 		}
 		return result;
 	}
+
+
 	
 	@Override
 	public boolean canBeMoved() {
@@ -107,5 +117,26 @@ public class BallPath extends ColorPath {
 		// TODO Auto-generated method stub
 		
 	}
+
+    @Override
+    public JSONArray toJsonData() {
+        JSONObject itemType = new JSONObject();
+        JSONArray array = new JSONArray();
+        try {
+            itemType.put("balltype",ballType);
+            array.put(itemType);
+
+                JSONObject item = new JSONObject();
+                item.put("X",x);
+                item.put("Y",y);
+                item.put("SIZE",SIZE);
+                item.put("HALF_SIZE",HALF_SIZE);
+                array.put(item);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return array;
+    }
 	
 }

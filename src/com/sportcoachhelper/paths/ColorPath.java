@@ -4,7 +4,6 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 
 import com.sportcoachhelper.paths.interfaces.Detectable;
-import com.sportcoachhelper.util.TeamManager;
 
 public abstract class ColorPath extends SerializablePath implements Detectable {
 	
@@ -124,5 +123,6 @@ public abstract class ColorPath extends SerializablePath implements Detectable {
 	
 	public boolean isSelected(){
 		return selected;
-	}
+    }
+
 }
