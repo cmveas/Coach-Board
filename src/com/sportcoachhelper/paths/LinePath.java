@@ -9,6 +9,7 @@ import org.json.JSONObject;
 public class LinePath extends ColorPath {
 
 	private static final String TAG = "LinePath";
+    public static final String LINE = "line";
 	private static final boolean DEBUG = false ;
 	private String lineMode;
 
@@ -121,13 +122,24 @@ public class LinePath extends ColorPath {
     public JSONArray toJsonData() {
 
         JSONArray array = new JSONArray();
+        JSONObject itemType = new JSONObject();
+        JSONObject colorJson = new JSONObject();
+
+
         try {
+            itemType.put("mode",lineMode);
+            colorJson.put("color",color);
+
+            array.put(itemType);
+            array.put(colorJson);
+
        for(float [] points : pathPoints) {
             JSONObject item = new JSONObject();
             item.put("X",points[0]);
             item.put("Y",points[1]);
             item.put("XF",points[2]);
             item.put("YF",points[3]);
+            array.put(item);
         }
 
         } catch (JSONException e) {

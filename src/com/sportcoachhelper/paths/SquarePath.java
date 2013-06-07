@@ -5,7 +5,9 @@ import android.graphics.Path;
 
 public class SquarePath extends ShapePath {
 
-	public SquarePath(Paint paint, int x, int y) {
+    public static final String SQUARE = "square";
+
+    public SquarePath(Paint paint, int x, int y) {
 		super(paint,x,y);
 		// TODO Auto-generated constructor stub
 	}
@@ -20,7 +22,7 @@ public class SquarePath extends ShapePath {
 
     @Override
     public String getComponentType() {
-        return "square";
+        return SQUARE;
     }
 
 }

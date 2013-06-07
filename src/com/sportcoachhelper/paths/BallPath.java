@@ -20,6 +20,8 @@ public class BallPath extends ColorPath {
         return "ball";
     }
 
+    public static final String BALL = "ball";
+
     public static final int SOCCER_BALL = 0;
 	public static final int VOLLEYBALL = 1;
 	public static final int BASKETBALL = 2;
@@ -118,17 +120,18 @@ public class BallPath extends ColorPath {
 
     @Override
     public JSONArray toJsonData() {
-
+        JSONObject itemType = new JSONObject();
         JSONArray array = new JSONArray();
         try {
-            for(float [] points : pathPoints) {
+            itemType.put("balltype",ballType);
+            array.put(itemType);
+
                 JSONObject item = new JSONObject();
-                item.put("X",points[0]);
-                item.put("Y",points[1]);
+                item.put("X",x);
+                item.put("Y",y);
                 item.put("SIZE",SIZE);
                 item.put("HALF_SIZE",HALF_SIZE);
                 array.put(item);
-            }
 
         } catch (JSONException e) {
             e.printStackTrace();

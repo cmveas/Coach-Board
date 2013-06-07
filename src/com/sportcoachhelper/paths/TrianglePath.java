@@ -8,7 +8,9 @@ import org.json.JSONObject;
 
 public class TrianglePath extends ShapePath {
 
-	public TrianglePath(Paint paint, int x, int y) {
+    public static final String TRIANGLE = "triangle";
+
+    public TrianglePath(Paint paint, int x, int y) {
 		super(paint,x,y);
 	}
 
@@ -25,6 +27,6 @@ public class TrianglePath extends ShapePath {
 
     @Override
     public String getComponentType() {
-        return "triangle";
+        return TRIANGLE;
     }
 }

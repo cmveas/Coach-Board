@@ -5,7 +5,9 @@ import android.graphics.Path;
 
 public class CirclePath extends ShapePath {
 
-	public CirclePath(Paint paint, int x, int y) {
+    public static final String CIRCLE = "circle";
+
+    public CirclePath(Paint paint, int x, int y) {
 		super(paint,x,y);
 	}
 	
@@ -22,7 +24,7 @@ public class CirclePath extends ShapePath {
 
     @Override
     public String getComponentType() {
-        return "circle";
+        return CIRCLE;
     }
 
 

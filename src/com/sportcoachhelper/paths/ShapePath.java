@@ -1,7 +1,7 @@
 package com.sportcoachhelper.paths;
 
 import com.sportcoachhelper.model.TemplateItem;
-import com.sportcoachhelper.util.TeamManager;
+import com.sportcoachhelper.managers.TeamManager;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;

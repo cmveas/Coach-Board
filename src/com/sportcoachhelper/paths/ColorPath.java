@@ -4,9 +4,6 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 
 import com.sportcoachhelper.paths.interfaces.Detectable;
-import com.sportcoachhelper.util.TeamManager;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 public abstract class ColorPath extends SerializablePath implements Detectable {
 	
