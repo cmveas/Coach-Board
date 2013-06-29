@@ -23,12 +23,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	public static final String PLAYS_FIELD = "field";
 	public static final String PLAYS_DATA = "data";
     public static final String PLAYS_VERSION = "version";
+    public static final String PLAYS_FIELD_TYPE = "type";
 	
 	private static final String CREATE_TABLE_PLAYS = "create table " + PLAYS_TABLE_NAME + " (" +
 													 PLAYS_ID + " integer primary key," +
 													 PLAYS_NAME + " text not null," +
 													 PLAYS_DATA + " text not null," + 
 													 PLAYS_FIELD + " text not null," +
+                                                     PLAYS_FIELD_TYPE + " text not null," +
                                                      PLAYS_VERSION + " integer not null," +
 													 PLAYS_DATE + " integer);";
 
@@ -49,6 +51,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                                                         PLAYS_COMPONENT_ORDER + " integer not null," +
                                                         PLAYS_COMPONENT_SHAPE + " text not null," +
                                                         PLAYS_COMPONENT_DATA + " text not null);";
+
     private final int mVersion;
 
 
@@ -88,7 +91,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 	}
 	
-	public long insertPlay(String name, String field, String play, long date){
+	public long insertPlay(String name, String field,String type , String play, long date){
 		SQLiteDatabase db = getWritableDatabase();
         long id = -1;
         try{
@@ -96,6 +99,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		cv.put(PLAYS_NAME, name);
 		cv.put(PLAYS_DATE, date);
 		cv.put(PLAYS_FIELD, field);
+        cv.put(PLAYS_FIELD_TYPE, type);
         cv.put(PLAYS_VERSION, mVersion);
 		cv.put(PLAYS_DATA, play);
 	
@@ -129,13 +133,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		
 	}
 
-    public void updatePlay(long id,String name, String field, String play, long date) {
+    public void updatePlay(long id,String name, String field,String type, String play, long date) {
         SQLiteDatabase db = getWritableDatabase();
 
         ContentValues cv = new ContentValues();
         cv.put(PLAYS_NAME, name);
         cv.put(PLAYS_DATE, date);
         cv.put(PLAYS_FIELD, field);
+        cv.put(PLAYS_FIELD_TYPE, type);
         cv.put(PLAYS_DATA, play);
 
          db.update(PLAYS_TABLE_NAME, cv, PLAYS_ID + "=?", new String[]{"" + id});

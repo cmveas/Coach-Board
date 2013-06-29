@@ -116,7 +116,7 @@ public class MainActivity extends GraphicsActivity implements
 		Intent intent = getIntent();
 		field = intent.getStringExtra("field");
 		drawingView.setField(field);
-		
+
 		String type = intent.getStringExtra(ScreenSlidePageFragment.TYPE);
 		if (type != null && type.equals("play")) {
 			long playId = intent.getLongExtra(ScreenSlidePageFragment.PLAY,-1);
@@ -130,6 +130,9 @@ public class MainActivity extends GraphicsActivity implements
 				drawingView.loadFromTemplate(play);
 			}
 		}
+
+        String field_type = intent.getStringExtra(ScreenSlidePageFragment.TYPE_FIELD);
+        drawingView.setFieldType(field_type);
 		
 		mode = getString(R.string.organization_mode);
 

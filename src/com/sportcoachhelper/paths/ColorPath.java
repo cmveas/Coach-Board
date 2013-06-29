@@ -8,8 +8,8 @@ import com.sportcoachhelper.paths.interfaces.Detectable;
 public abstract class ColorPath extends SerializablePath implements Detectable {
 	
 	private static final boolean DEBUG = false ;
-	public static final int SIZE = 50;
-	public static final int HALF_SIZE = 25;
+	public static final int SIZE = 30;
+	public static final int HALF_SIZE = 15;
 	private static final String TAG = "ColorPath";
 	
 	protected transient Paint paint;

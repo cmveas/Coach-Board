@@ -29,6 +29,14 @@
     	android:padding="@dimen/court_padding"
     	android:layout_gravity="center"
     	android:id="@+id/field_type"/>
+
+        <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/type_of_field"
+
+                android:padding="@dimen/court_padding"
+                ></Spinner>
     
 	</LinearLayout>
 	
@@ -72,7 +80,8 @@
     		android:id="@+id/templateList" 
     		android:layout_marginBottom="50dp"
     		></ListView>
-   
+
+
     
 	</LinearLayout>
 	

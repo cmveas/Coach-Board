@@ -90,7 +90,7 @@ public class DrawingView extends View {
 
 	private void init() {
 		play = new Play();
-		
+		play.setFieldType(getContext().getString(R.string.full));
 	}
 
 	private void initializePaints() {
@@ -185,27 +185,55 @@ public class DrawingView extends View {
 			mBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
 			mCanvas = new Canvas(mBitmap);
 			Bitmap bitmap = getFieldFromSelection();
-			Bitmap resizedBitmap = Utility.getResizedBitmap(bitmap, h, w);
-			mCanvas.drawBitmap(resizedBitmap, new Matrix(), new Paint());
+            if(bitmap!=null) {
+			    Bitmap resizedBitmap = Utility.getResizedBitmap(bitmap, h, w);
+			    mCanvas.drawBitmap(resizedBitmap, new Matrix(), new Paint());
+            }
 		}
 	}
 
 	private Bitmap getFieldFromSelection() {
-		Bitmap bitmap = BitmapFactory.decodeResource(getResources(),
-				R.drawable.soccer);
+		Bitmap bitmap = null;
 		Context context = getContext();
 		final String volley = context.getString(R.string.voley);
 		final String soccer = context.getString(R.string.soccer);
 		final String basket = context.getString(R.string.basketball);
+        int result = -1;
+        String field_type = play.getFieldType();
 		if(play.getField().equals(soccer)) {
-			bitmap = BitmapFactory.decodeResource(getResources(),
-					R.drawable.soccer);
+            if(field_type!=null) {
+                if(field_type.equals(getContext().getString(R.string.full))) {
+                    result = R.drawable.soccer;
+                } else if(field_type.equals(getContext().getString(R.string.attack_half))) {
+                    result = R.drawable.soccer_attack_half;
+                } else if(field_type.equals(getContext().getString(R.string.defense_half))){
+                    result = R.drawable.soccer_half;
+                }
+                bitmap = BitmapFactory.decodeResource(getResources(),
+                        result);
+            }
 		} else if (play.getField().equals(volley)) {
-			bitmap = BitmapFactory.decodeResource(getResources(),
-					R.drawable.voley);
+
+            if(field_type.equals(getContext().getString(R.string.full))) {
+                result = R.drawable.voley;
+            } else if(field_type.equals(getContext().getString(R.string.attack_half))) {
+                result = R.drawable.voley_half;
+            } else if(field_type.equals(getContext().getString(R.string.defense_half))){
+                result = R.drawable.voley_half_inverse;
+            }
+            bitmap = BitmapFactory.decodeResource(getResources(),
+                    result);
 		} else if (play.getField().equals(basket)) {
-			bitmap = BitmapFactory.decodeResource(getResources(),
-					R.drawable.basket);
+
+            if(field_type.equals(getContext().getString(R.string.full))) {
+                result = R.drawable.basket;
+            } else if(field_type.equals(getContext().getString(R.string.attack_half))) {
+                result = R.drawable.basket_half;
+            } else if(field_type.equals(getContext().getString(R.string.defense_half))){
+                result = R.drawable.basket_half_inverse;
+            }
+            bitmap = BitmapFactory.decodeResource(getResources(),
+                    result);
 		}
 		return bitmap;
 	}
@@ -548,10 +576,10 @@ public class DrawingView extends View {
 	try {
 
 		if(play.getId()!=-1) {
-            DatabaseHelper.getInstance().updatePlay(play.getId(),name, play.getField() , "", System.currentTimeMillis());
+            DatabaseHelper.getInstance().updatePlay(play.getId(),name, play.getField(), play.getFieldType() , "", System.currentTimeMillis());
             DatabaseHelper.getInstance().deletePlayComponents(play.getId());
         } else {
-            long playId= DatabaseHelper.getInstance().insertPlay(name, play.getField() , "", System.currentTimeMillis());
+            long playId= DatabaseHelper.getInstance().insertPlay(name, play.getField(),play.getFieldType() , "", System.currentTimeMillis());
             play.setId(playId);
 
         }
@@ -866,4 +894,8 @@ public class DrawingView extends View {
     public void setContinuousLineColor(int color) {
         continuousLine = color;
 }
+
+    public void setFieldType(String field_type) {
+       play.setFieldType(field_type);
+    }
 }
