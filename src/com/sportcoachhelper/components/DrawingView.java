@@ -193,6 +193,8 @@ public class DrawingView extends View {
 	private Bitmap getFieldFromSelection() {
 		Bitmap bitmap = BitmapFactory.decodeResource(getResources(),
 				R.drawable.soccer);
+        Utility.decodeSampledBitmapFromResource()
+
 		Context context = getContext();
 		final String volley = context.getString(R.string.voley);
 		final String soccer = context.getString(R.string.soccer);
