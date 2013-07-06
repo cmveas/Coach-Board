@@ -116,7 +116,7 @@ public class MainActivity extends GraphicsActivity implements
 		Intent intent = getIntent();
 		field = intent.getStringExtra("field");
 		drawingView.setField(field);
-		
+
 		String type = intent.getStringExtra(ScreenSlidePageFragment.TYPE);
 		if (type != null && type.equals("play")) {
 			long playId = intent.getLongExtra(ScreenSlidePageFragment.PLAY,-1);
@@ -130,6 +130,11 @@ public class MainActivity extends GraphicsActivity implements
 				drawingView.loadFromTemplate(play);
 			}
 		}
+
+        String field_type = intent.getStringExtra(ScreenSlidePageFragment.TYPE_FIELD);
+        drawingView.setFieldType(field_type);
+
+        setFieldMargin(field_type);
 		
 		mode = getString(R.string.organization_mode);
 
@@ -149,6 +154,15 @@ public class MainActivity extends GraphicsActivity implements
 
 	}
 
+    private void setFieldMargin(String field_type) {
+        int margin = 0;
+        if(field_type.equals(getString(R.string.attack_half))) {
+            margin= 40;
+        } else if(field_type.equals(getString(R.string.defense_half))){
+            margin = 40;
+        }
+        drawingView.setSidesMargins(margin);
+    }
 
 
     private void setInitialLineColors() {

@@ -11,4 +11,6 @@
     <dimen name="trash_bin_size">30dp</dimen>
     <dimen name="editPlayerNumberSize">75dp</dimen>
     <dimen name="lineBackgroundSize">10dp</dimen>
+    <dimen name="types_of_field_size">72dp</dimen>
+
 </resources>

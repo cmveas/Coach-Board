@@ -10,6 +10,7 @@ import com.sportcoachhelper.paths.interfaces.Dibujables;
 public class Play implements Serializable {
 
     private long id=-1;
+    private String field_type;
 
     public void setId(long id) {
         this.id = id;
@@ -90,6 +91,14 @@ public class Play implements Serializable {
     public void loadFully(){
 
     }
-	
-	
+
+
+    public void setFieldType(String field_type) {
+        this.field_type=field_type;
+
+    }
+
+    public String getFieldType() {
+        return field_type;
+    }
 }

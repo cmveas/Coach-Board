@@ -9,15 +9,19 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.sportcoachhelper.MainActivity;
@@ -33,6 +37,7 @@ public class ScreenSlidePageFragment extends Fragment {
 
     public static final String PLAY = "play";
     public static final String TYPE = "type";
+    public static final String TYPE_FIELD = "type field";
 
     private int position;
 	private String label;
@@ -44,8 +49,12 @@ public class ScreenSlidePageFragment extends Fragment {
 	private TextView savedPlays;
 	private TextView template_list_title;
 	private ListView templateList;
+    private Spinner type_of_field;
+    private TypesListAdapter spinnerData
+            ;
+    private String type;
 
-	@Override
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
 		android.util.Log.d("[OnCreateView]","[OnCreateView]");
@@ -56,18 +65,21 @@ public class ScreenSlidePageFragment extends Fragment {
         field_name = (TextView) rootView.findViewById(R.id.field_name);
         savedPlays = (TextView) rootView.findViewById(R.id.play_list_title);
         template_list_title = (TextView) rootView.findViewById(R.id.template_list_title);
+        type_of_field = (Spinner) rootView.findViewById(R.id.type_of_field);
         field_name.setText(label);
         field_name.setTypeface(FontManager.getInstance().getFont(FontManager.CHALK_REGULAR));
         savedPlays.setTypeface(FontManager.getInstance().getFont(FontManager.CHALK_REGULAR));
         template_list_title.setTypeface(FontManager.getInstance().getFont(FontManager.CHALK_REGULAR));
         field_type = (ImageView) rootView.findViewById(R.id.field_type);
-        field_type.setImageResource(getField());
+        type = getString(R.string.full);
+        setFieldType();
         field_type.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 					Intent intent = new Intent(getActivity(),MainActivity.class);
 					intent.putExtra("field", label);
+                     intent.putExtra(TYPE_FIELD, type);
 					startActivity(intent);
 			}
 		});
@@ -83,9 +95,10 @@ public class ScreenSlidePageFragment extends Fragment {
         		Intent intent = new Intent(getActivity(),MainActivity.class);
         		intent.putExtra(PLAY, play.getId());
         		intent.putExtra(TYPE, "play");
+                intent.putExtra(TYPE_FIELD, type);
         		intent.putExtra("field", label);
         		startActivity(intent);
-        	}
+               	}
 		});
         
         templateList = (ListView) rootView.findViewById(R.id.templateList);
@@ -99,26 +112,68 @@ public class ScreenSlidePageFragment extends Fragment {
         		Intent intent = new Intent(getActivity(),MainActivity.class);
         		intent.putExtra(PLAY, template.getName());
         		intent.putExtra(TYPE, "template");
+                intent.putExtra(TYPE_FIELD, getString(R.string.full));
         		intent.putExtra("field", template.getField());
         		startActivity(intent);
         	}
 		});
         templateList.setDividerHeight(0);
+
+        String [] types_of_fields = getResources().getStringArray(R.array.types_of_fields);
+        spinnerData = new TypesListAdapter(getActivity(), types_of_fields);
+        type_of_field.setAdapter(spinnerData);
+        type_of_field.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+                type = spinnerData.getItem(position);
+                setFieldType();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
         return rootView;
     }
-	
 
-	private int getField() {
+    private void setFieldType() {
+        field_type.setImageResource(getField());
+    }
+
+
+    private int getField() {
 		int result = R.drawable.soccer;
 		switch(position){
 		case 0:
-			result = R.drawable.soccer;
+            if(type.equals(getString(R.string.full))) {
+                result = R.drawable.soccer;
+            } else if(type.equals(getString(R.string.attack_half))) {
+                result = R.drawable.soccer_attack_half;
+            } else if(type.equals(getString(R.string.defense_half))){
+                result = R.drawable.soccer_half;
+            }
+
 			break;
 		case 1:
-			result = R.drawable.voley;
+            if(type.equals(getString(R.string.full))) {
+                result = R.drawable.voley;
+            } else if(type.equals(getString(R.string.attack_half))) {
+                result = R.drawable.voley_half;
+            } else if(type.equals(getString(R.string.defense_half))){
+                result = R.drawable.voley_half_inverse;
+            }
+
 			break;
 		case 2:
-			result = R.drawable.basket;
+            if(type.equals(getString(R.string.full))) {
+                result = R.drawable.basket;
+            } else if(type.equals(getString(R.string.attack_half))) {
+                result = R.drawable.basket_half;
+            } else if(type.equals(getString(R.string.defense_half))){
+                result = R.drawable.basket_half_inverse;
+            }
 			break;
 		}
 		return result;
@@ -255,4 +310,48 @@ public class ScreenSlidePageFragment extends Fragment {
 		}
 		
 	}
+
+
+    class TypesListAdapter extends BaseAdapter{
+
+        private final String[] fields;
+        private final LayoutInflater inflater;
+
+        public TypesListAdapter(FragmentActivity activity, String[] types_of_fields) {
+            fields = types_of_fields;
+            inflater = LayoutInflater.from(activity);
+        }
+
+        @Override
+        public View getDropDownView(int position, View convertView, ViewGroup parent) {
+            return getView(position, convertView, parent);
+        }
+
+        @Override
+        public int getCount() {
+            return fields.length;
+        }
+
+        @Override
+        public String getItem(int i) {
+            return fields[i];
+        }
+
+        @Override
+        public long getItemId(int i) {
+            return 0;
+        }
+
+        @Override
+        public View getView(int i, View view, ViewGroup viewGroup) {
+            TextView text = (TextView) view;
+            if(text==null) {
+                text = (TextView)  inflater.inflate(R.layout.types_layout_item,null);
+            }
+            text.setText(getItem(i));
+            text.setTypeface(FontManager.getInstance().getFont(FontManager.CHALK_REGULAR));
+            text.setTextColor(getResources().getColor(android.R.color.white));
+            return text;
+        }
+    }
 }

@@ -43,16 +43,19 @@ public class PlaysManager {
             int nameIndex = cursor.getColumnIndex(DatabaseHelper.PLAYS_NAME);
             int dateIndex = cursor.getColumnIndex(DatabaseHelper.PLAYS_DATE);
             int fieldIndex = cursor.getColumnIndex(DatabaseHelper.PLAYS_FIELD);
+            int fieldTypeIndex = cursor.getColumnIndex(DatabaseHelper.PLAYS_FIELD_TYPE);
             int idIndex = cursor.getColumnIndex(DatabaseHelper.PLAYS_ID);
             while(!cursor.isAfterLast()){
                 String name = cursor.getString(nameIndex);
                 long date = cursor.getLong(dateIndex);
                 long id = cursor.getLong(idIndex);
                 String field = cursor.getString(fieldIndex);
+                String fieldType = cursor.getString(fieldTypeIndex);
                 Play temp = new Play();
                 temp.setField(field);
                 temp.setName(name);
                 temp.setLastSaved(date);
+                temp.setFieldType(fieldType);
                 temp.setId(id);
                 plays.add(temp);
                 cursor.moveToNext();
