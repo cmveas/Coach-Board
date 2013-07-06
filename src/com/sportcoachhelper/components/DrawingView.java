@@ -900,6 +900,6 @@ public class DrawingView extends View {
     }
 
     public void setSidesMargins(int margin) {
-        set
+
     }
 }
