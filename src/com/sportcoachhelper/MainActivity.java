@@ -133,6 +133,8 @@ public class MainActivity extends GraphicsActivity implements
 
         String field_type = intent.getStringExtra(ScreenSlidePageFragment.TYPE_FIELD);
         drawingView.setFieldType(field_type);
+
+        setFieldMargin(field_type);
 		
 		mode = getString(R.string.organization_mode);
 
@@ -152,6 +154,15 @@ public class MainActivity extends GraphicsActivity implements
 
 	}
 
+    private void setFieldMargin(String field_type) {
+        int margin = 0;
+        if(field_type.equals(getString(R.string.attack_half))) {
+            margin= 40;
+        } else if(field_type.equals(getString(R.string.defense_half))){
+            margin = 40;
+        }
+        drawingView.setSidesMargins(margin);
+    }
 
 
     private void setInitialLineColors() {

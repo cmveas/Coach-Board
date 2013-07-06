@@ -898,4 +898,8 @@ public class DrawingView extends View {
     public void setFieldType(String field_type) {
        play.setFieldType(field_type);
     }
+
+    public void setSidesMargins(int margin) {
+        set
+    }
 }

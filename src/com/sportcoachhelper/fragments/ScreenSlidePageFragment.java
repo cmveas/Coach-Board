@@ -167,7 +167,13 @@ public class ScreenSlidePageFragment extends Fragment {
 
 			break;
 		case 2:
-			result = R.drawable.basket;
+            if(type.equals(getString(R.string.full))) {
+                result = R.drawable.basket;
+            } else if(type.equals(getString(R.string.attack_half))) {
+                result = R.drawable.basket_half;
+            } else if(type.equals(getString(R.string.defense_half))){
+                result = R.drawable.basket_half_inverse;
+            }
 			break;
 		}
 		return result;
