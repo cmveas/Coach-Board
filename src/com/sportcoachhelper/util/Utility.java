@@ -93,5 +93,18 @@ public class Utility {
         options.inJustDecodeBounds = false;
         return BitmapFactory.decodeResource(resources, resource,options);
     }
+
+    public static Bitmap decodeBitmapHalfResFromResource(Resources resources, int resource) {
+
+        // First decode with inJustDecodeBounds=true to check dimensions
+        final BitmapFactory.Options options = new BitmapFactory.Options();
+
+        // Calculate inSampleSize
+        options.inSampleSize = 2;
+
+        // Decode bitmap with inSampleSize set
+        options.inJustDecodeBounds = false;
+        return BitmapFactory.decodeResource(resources, resource,options);
+    }
 	
 }

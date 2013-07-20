@@ -10,7 +10,6 @@ import android.content.ClipData;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.*;
@@ -18,7 +17,6 @@ import android.view.View.DragShadowBuilder;
 import android.view.View.OnClickListener;
 import android.view.View.OnDragListener;
 import android.view.View.OnTouchListener;
-import android.webkit.WebView;
 import android.widget.*;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 
@@ -61,6 +59,8 @@ public class MainActivity extends GraphicsActivity implements
     private int id;
     private View continuousBackground;
     private View dottedBackground;
+    private View rightEmptySpace;
+    private View leftEmptySpace;
 
     @Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -110,6 +110,9 @@ public class MainActivity extends GraphicsActivity implements
 		continuousLineMode = (ToggleButton) findViewById(R.id.continuous_line_mode);
 		dottedLineMode = (ToggleButton) findViewById(R.id.dotted_line_mode);
         layoutToolBar2 = (LinearLayout) findViewById(R.id.layoutToolBar2);
+        leftEmptySpace = findViewById(R.id.leftEmptySpace);
+        rightEmptySpace= findViewById(R.id.rightEmptySpace);
+
 		
 		organizationMode.setChecked(true);
 
@@ -134,7 +137,7 @@ public class MainActivity extends GraphicsActivity implements
         String field_type = intent.getStringExtra(ScreenSlidePageFragment.TYPE_FIELD);
         drawingView.setFieldType(field_type);
 
-        setFieldMargin(field_type);
+        checkBorders(field_type);
 		
 		mode = getString(R.string.organization_mode);
 
@@ -154,14 +157,17 @@ public class MainActivity extends GraphicsActivity implements
 
 	}
 
-    private void setFieldMargin(String field_type) {
-        int margin = 0;
-        if(field_type.equals(getString(R.string.attack_half))) {
-            margin= 40;
-        } else if(field_type.equals(getString(R.string.defense_half))){
-            margin = 40;
+    private void checkBorders(String field_type) {
+
+        if(field_type.equals(getString(R.string.attack_half)) || field_type.equals(getString(R.string.defense_half))) {
+            displaySideBorders();
         }
-        drawingView.setSidesMargins(margin);
+
+    }
+
+    private void displaySideBorders() {
+        leftEmptySpace.setVisibility(View.VISIBLE);
+        rightEmptySpace.setVisibility(View.VISIBLE);
     }
 
 
