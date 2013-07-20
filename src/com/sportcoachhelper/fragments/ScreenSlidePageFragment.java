@@ -31,6 +31,7 @@ import com.sportcoachhelper.model.Play;
 import com.sportcoachhelper.model.Template;
 import com.sportcoachhelper.managers.FontManager;
 import com.sportcoachhelper.managers.TemplateManager;
+import com.sportcoachhelper.util.Utility;
 
 @SuppressLint("ValidFragment")
 public class ScreenSlidePageFragment extends Fragment {
@@ -136,10 +137,12 @@ public class ScreenSlidePageFragment extends Fragment {
         });
 
         return rootView;
-    }
+}
 
     private void setFieldType() {
-        field_type.setImageResource(getField());
+        int resource = getField();
+
+        field_type.setImageBitmap(Utility.decodeBitmapHalfResFromResource(getResources(),resource));
     }
 
 

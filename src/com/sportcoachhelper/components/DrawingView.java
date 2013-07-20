@@ -181,7 +181,7 @@ public class DrawingView extends View {
 	private void initializeField(int w, int h) {
 		this.w=w;
 		this.h=h;
-		if(w!=0 && h!=0) {
+		if(w>0 && h>0) {
 			mBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
 			mCanvas = new Canvas(mBitmap);
 			Bitmap bitmap = getFieldFromSelection();

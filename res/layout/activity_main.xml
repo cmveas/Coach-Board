@@ -82,6 +82,13 @@
         </LinearLayout>
     </ScrollView>
 
+    <View
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@id/layoutToolBar"
+            android:id="@+id/leftEmptySpace"
+            android:visibility="gone"
+            ></View>
    
     
     <com.sportcoachhelper.components.DrawingView
@@ -89,10 +96,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerInParent="true"
-        android:layout_toRightOf="@id/layoutToolBar"
-        android:layout_toLeftOf="@+id/scrollbar2"
+        android:layout_toRightOf="@id/leftEmptySpace"
+        android:layout_toLeftOf="@+id/rightEmptySpace"
         >
     </com.sportcoachhelper.components.DrawingView>
+
+
+    <View
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@+id/scrollbar2"
+            android:id="@+id/rightEmptySpace"
+            android:visibility="gone"
+            ></View>
+
     
      <ImageView
         android:id="@+id/trash"
@@ -105,7 +122,7 @@
         android:onClick="eraseSelected" ></ImageView>
     
     <ScrollView
-        android:id="@+id/scrollbar2"
+        android:id="@id/scrollbar2"
         android:layout_width="@dimen/toolbar_width"
         android:layout_alignParentRight="true"
         android:layout_height="match_parent"
