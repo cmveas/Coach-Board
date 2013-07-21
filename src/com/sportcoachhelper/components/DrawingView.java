@@ -228,9 +228,9 @@ public class DrawingView extends View {
             if(field_type.equals(getContext().getString(R.string.full))) {
                 result = R.drawable.basket;
             } else if(field_type.equals(getContext().getString(R.string.attack_half))) {
-                result = R.drawable.basket_half_inverse;
-            } else if(field_type.equals(getContext().getString(R.string.defense_half))){
                 result = R.drawable.basket_half;
+            } else if(field_type.equals(getContext().getString(R.string.defense_half))){
+                result = R.drawable.basket_half_inverse;
             }
             bitmap = BitmapFactory.decodeResource(getResources(),
                     result);

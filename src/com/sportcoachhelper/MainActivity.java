@@ -147,7 +147,7 @@ public class MainActivity extends GraphicsActivity implements
 
         setOrganizationModeButton();
 		
-		//manageDrag(field);
+		manageDrag(field);
 
 		drawingView.setOnComponentSelectedListener(this);
 
@@ -604,9 +604,6 @@ public class MainActivity extends GraphicsActivity implements
 	public boolean onMenuItemSelected(int featureId, MenuItem item) {
 		boolean result = false;
 		switch (item.getItemId()) {
-		case R.id.menu_open_document:
-			openDocument();
-			break;
 		case R.id.menu_save_document:
             String playName = drawingView.getPlay().getName();
             if(playName!=null) {
