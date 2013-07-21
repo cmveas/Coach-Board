@@ -3,11 +3,12 @@
 
     <dimen name="splash_title_size">108dp</dimen>
     <dimen name="splash_btn_enter_size"> 72sp</dimen>
-    <dimen name="court_padding">30dp</dimen>
+    <dimen name="court_padding">15dp</dimen>
     <dimen name="pager_court_width">400dp</dimen>
     <dimen name="pager_court_height">300dp</dimen>
     <dimen name="toolbar_width">75dp</dimen>
     <dimen name="toolbar_button_height">75dp</dimen>
     <dimen name="lineBackgroundSize">10dp</dimen>
+    <dimen name="saved_plays_padding_top">50dp</dimen>
 
 </resources>

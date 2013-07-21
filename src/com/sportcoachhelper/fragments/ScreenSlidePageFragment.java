@@ -11,13 +11,11 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -96,7 +94,7 @@ public class ScreenSlidePageFragment extends Fragment {
         		Intent intent = new Intent(getActivity(),MainActivity.class);
         		intent.putExtra(PLAY, play.getId());
         		intent.putExtra(TYPE, "play");
-                intent.putExtra(TYPE_FIELD, type);
+                intent.putExtra(TYPE_FIELD, play.getFieldType());
         		intent.putExtra("field", label);
         		startActivity(intent);
                	}
@@ -163,9 +161,9 @@ public class ScreenSlidePageFragment extends Fragment {
             if(type.equals(getString(R.string.full))) {
                 result = R.drawable.voley;
             } else if(type.equals(getString(R.string.attack_half))) {
-                result = R.drawable.voley_half;
-            } else if(type.equals(getString(R.string.defense_half))){
                 result = R.drawable.voley_half_inverse;
+            } else if(type.equals(getString(R.string.defense_half))){
+                result = R.drawable.voley_half;
             }
 
 			break;
@@ -255,6 +253,10 @@ public class ScreenSlidePageFragment extends Fragment {
 			name.setText(plays.get(position).getName());
 			 DateFormat format = SimpleDateFormat.getDateTimeInstance();
 			date.setText(format.format(new Date(plays.get(position).getLastSaved())));
+            TextView type = (TextView) view.findViewById(R.id.play_type);
+            type.setTypeface(FontManager.getInstance().getFont(FontManager.CHALK_REGULAR));
+            type.setTextColor(getResources().getColor(android.R.color.white));
+            type.setText(plays.get(position).getFieldType());
 			
 			return view;
 		}
@@ -304,9 +306,11 @@ public class ScreenSlidePageFragment extends Fragment {
 			}
 			
 			TextView name = (TextView) view.findViewById(R.id.play_name);
+
 			name.setTypeface(FontManager.getInstance().getFont(FontManager.CHALK_REGULAR));
 			name.setTextColor(getResources().getColor(android.R.color.white));
 			name.setText(getItem(position).getName());
+
 
 			
 			return view;
