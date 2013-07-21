@@ -147,7 +147,7 @@ public class MainActivity extends GraphicsActivity implements
 
         setOrganizationModeButton();
 		
-		manageDrag(field);
+		//manageDrag(field);
 
 		drawingView.setOnComponentSelectedListener(this);
 

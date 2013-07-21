@@ -217,9 +217,9 @@ public class DrawingView extends View {
             if(field_type.equals(getContext().getString(R.string.full))) {
                 result = R.drawable.voley;
             } else if(field_type.equals(getContext().getString(R.string.attack_half))) {
-                result = R.drawable.voley_half;
-            } else if(field_type.equals(getContext().getString(R.string.defense_half))){
                 result = R.drawable.voley_half_inverse;
+            } else if(field_type.equals(getContext().getString(R.string.defense_half))){
+                result = R.drawable.voley_half;
             }
             bitmap = BitmapFactory.decodeResource(getResources(),
                     result);
@@ -228,9 +228,9 @@ public class DrawingView extends View {
             if(field_type.equals(getContext().getString(R.string.full))) {
                 result = R.drawable.basket;
             } else if(field_type.equals(getContext().getString(R.string.attack_half))) {
-                result = R.drawable.basket_half;
-            } else if(field_type.equals(getContext().getString(R.string.defense_half))){
                 result = R.drawable.basket_half_inverse;
+            } else if(field_type.equals(getContext().getString(R.string.defense_half))){
+                result = R.drawable.basket_half;
             }
             bitmap = BitmapFactory.decodeResource(getResources(),
                     result);
@@ -299,6 +299,7 @@ public class DrawingView extends View {
 	private void disSelectMovable() {
 		if(movable!=null) {
 			movable.setSelected(false);
+            movable = null;
 		}
 	}
 

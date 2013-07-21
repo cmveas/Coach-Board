@@ -13,6 +13,16 @@
         android:textSize="36sp"
         android:id="@+id/play_name"
         />
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_weight="5"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="36sp"
+            android:id="@+id/play_type"
+            />
     
     
     <TextView 
