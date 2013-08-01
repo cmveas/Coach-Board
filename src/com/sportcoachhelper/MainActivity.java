@@ -647,7 +647,7 @@ public class MainActivity extends GraphicsActivity implements
 
 	@Override
 	public void onBackPressed() {
-		boolean result = drawingView.undoLast();
+		boolean result  = false;/*drawingView.undoLast();*/
 		if (!result) {
 			super.onBackPressed();
 		}

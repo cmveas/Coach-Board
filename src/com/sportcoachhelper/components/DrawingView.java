@@ -575,7 +575,7 @@ public class DrawingView extends View {
 	public void saveDocument(String name) {
 
 	try {
-
+        play.setName(name);
 		if(play.getId()!=-1) {
             DatabaseHelper.getInstance().updatePlay(play.getId(),name, play.getField(), play.getFieldType() , "", System.currentTimeMillis());
             DatabaseHelper.getInstance().deletePlayComponents(play.getId());

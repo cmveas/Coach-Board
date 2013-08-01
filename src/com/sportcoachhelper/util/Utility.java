@@ -43,7 +43,7 @@ public class Utility {
 	public static void setHoloTheme(Activity activity){
 		
 		 if( (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.HONEYCOMB)) {
-			 activity.setTheme(android.R.style.Theme_Holo_Light);			 
+			 activity.setTheme(R.style.Theme_Coachbar);
 		 }
 	}
 
