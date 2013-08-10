@@ -265,6 +265,36 @@
                     </LinearLayout>
                 </TableRow>
 
+            <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center"
+            android:id="@+id/tableRow3">
+
+                    <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="fill_parent"
+                            android:layout_gravity="center"
+                            android:src="@drawable/trash"
+                            android:layout_weight="5">
+
+
+                         </ImageView>
+
+                        <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="fill_parent"
+                                android:layout_weight="5"
+                                android:id="@+id/help_trash"
+                                android:orientation="vertical">
+
+
+                        </TextView>
+            </TableRow>
+
+
+
+
             </TableLayout>
 
 
