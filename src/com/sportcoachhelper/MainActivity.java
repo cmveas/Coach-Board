@@ -495,7 +495,7 @@ public class MainActivity extends GraphicsActivity implements
 		int type = Utility.giveMeFieldBall(field);
 		int resource = BallPath.getLayoutFromType(type);
 		View view = getLayoutInflater().inflate(resource,null);
-        layoutToolBar2.addView(view);
+        layoutToolBar2.addView(view, layoutToolBar2.getChildCount()-1);
         ViewGroup.LayoutParams params = view.getLayoutParams();
         params.height = (int) getResources().getDimension(R.dimen.toolbar_button_height);
         view.setLayoutParams(params);
@@ -612,6 +612,9 @@ public class MainActivity extends GraphicsActivity implements
                 showPlayNameDialog();
             }
 			break;
+            case R.id.menu_help_document:
+                openHelp();
+                break;
 		case R.id.menu_clear_document:
 			showClearDialog();
 			result = true;
@@ -628,7 +631,12 @@ public class MainActivity extends GraphicsActivity implements
 		return result;
 	}
 
-	private void openDocument() {
+    private void openHelp() {
+        Intent intent = new Intent(this,ActHelpPage.class);
+        startActivity(intent);
+    }
+
+    private void openDocument() {
 		Intent fileintent = new Intent(Intent.ACTION_GET_CONTENT);
 		try {
 			fileintent.setType("file/*");

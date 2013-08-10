@@ -111,15 +111,7 @@
             ></View>
 
     
-     <ImageView
-        android:id="@+id/trash"
-        android:layout_width="@dimen/trash_bin_size"
-        android:layout_height="@dimen/trash_bin_size"
-        android:visibility="gone"
-        android:layout_alignLeft="@id/drawingPanel"
-        android:layout_alignBottom="@id/drawingPanel"
-        android:src="@drawable/trash"
-        android:onClick="eraseSelected" ></ImageView>
+
     
     <ScrollView
         android:id="@id/scrollbar2"
@@ -172,6 +164,15 @@
                    android:layout_height="@dimen/lineBackgroundSize"
                    android:id="@+id/dottedBackground">
            </View>
+
+           <ImageView
+                   android:id="@+id/trash"
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   android:visibility="gone"
+                   android:layout_gravity="bottom"
+                   android:src="@drawable/trash"
+                   android:onClick="eraseSelected" ></ImageView>
 
         </LinearLayout>
     </ScrollView>

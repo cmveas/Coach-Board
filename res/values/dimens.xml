@@ -13,5 +13,6 @@
     <dimen name="lineBackgroundSize">10dp</dimen>
     <dimen name="types_of_field_size">72dp</dimen>
     <dimen name="saved_plays_padding_top">50dp</dimen>
+    <dimen name="icon_help">150dp</dimen>
 
 </resources>
