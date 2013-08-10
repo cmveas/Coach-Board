@@ -35,7 +35,26 @@
     <string name="soccerball">soccerball</string>
     <string name="ball">ball</string>
     <string name="visit_and_like">Visit and Like our page</string>
-
+    <string name="helptitle">Help</string>
+    <string name="menu_help">help</string>
+    <string name="help_mode_content">When drawing there are three modes.
+    </string>
+    <string name="help_mode_selection"><br><b>The Selection Mode:</b> To Change the position of the players that are added to the field. In this mode the players can be erased by using the trash icon at the bottom of the screen</br></string>
+    <string name="help_mode_continuous"><br><b>The Continuous Line Mode:</b> To draw continuous lines on the field(If held, the continuous icon allows us to change the color of the line)</br>
+       </string>
+    <string name="help_mode_dotted"> <br><b>The Dotted Line Mode:</b> To draw dotted lines on the field (If held, the dotted icon allows us to change the color of the line)</br></string>
+    <string name="help_players_content">These are the players that can be placed in the field. Players can be dragged into the field, for the devices that allow this functionality or they can be selected by tapping on them and then tapping back in the desired position.
+    </string>
+    <string name="help_round_player">
+        <b>Round Players:</b> Round players can be placed on any field. The black round players are for local teams and the red for visitors</string>
+    <string name="help_triangle_player">
+        <b>Triangle Players:</b> Triangle players can be placed only on volleyball fields. The black triangle players are for local teams and the red for visitors</string>
+    <string name="help_square_player">
+        <b>Square Players:</b> Square players can be placed only on volleyball fields. The black square players are for local teams and the red for visitors</string>
+    <string name="help_balls">Balls</string>
+    <string name="help_balls_content">Balls behave the same way as the players. They can be added,
+        their position can be changed and they can be erased using the trash can. All these operations are performed in selection mode
+    </string>
 
     <string-array name="fields">
 		<item >@string/soccer</item>

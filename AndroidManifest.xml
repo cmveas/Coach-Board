@@ -39,6 +39,11 @@
              android:name="com.sportcoachhelper.ActHomeScreen"
              android:screenOrientation="landscape"
              ></activity>
+
+        <activity
+                android:name="com.sportcoachhelper.ActHelpPage"
+                android:screenOrientation="landscape"
+                ></activity>
     </application>
     
     
