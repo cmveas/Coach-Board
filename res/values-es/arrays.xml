@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="types_of_fields">
+            <item >@string/full</item>
+            <item >@string/attack_half</item>
+            <item >@string/defense_half</item>
+    </string-array>
+    <string name="full">Completo</string>
+    <string name="attack_half">Mitad de Ataque</string>
+    <string name="defense_half">Mitad de Defensa</string>
+</resources>

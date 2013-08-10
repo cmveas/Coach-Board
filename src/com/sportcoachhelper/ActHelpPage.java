@@ -17,6 +17,7 @@ public class ActHelpPage extends Activity {
     private TextView roundPlayerHelp;
     private TextView trianglePlayerHelp;
     private TextView squarePlayerHelp;
+    private TextView help_trash;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,5 +46,8 @@ public class ActHelpPage extends Activity {
 
         squarePlayerHelp = (TextView) findViewById(R.id.squarePlayerHelp);
         squarePlayerHelp.setText(getText(R.string.help_square_player));
+
+        help_trash = (TextView) findViewById(R.id.help_trash);
+        help_trash.setText(getText(R.string.help_trash_can));
     }
 }
