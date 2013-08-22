@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Asistente para Entrandor</string>
+    <string name="app_name">Pizarra para entrenadores</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Configuración</string>
     <string name="menu_clear">Nueva Pizarra</string>
