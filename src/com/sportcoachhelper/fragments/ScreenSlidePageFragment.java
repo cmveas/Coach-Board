@@ -292,7 +292,6 @@ public class ScreenSlidePageFragment extends Fragment {
 
 		@Override
 		public long getItemId(int paramInt) {
-			// TODO Auto-generated method stub
 			return 0;
 		}
 

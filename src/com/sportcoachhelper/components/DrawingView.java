@@ -1,5 +1,6 @@
 package com.sportcoachhelper.components;
 
+import android.app.Activity;
 import android.content.Context;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -10,6 +11,7 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.os.Environment;
 import android.util.AttributeSet;
+import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ToggleButton;
@@ -64,6 +66,8 @@ public class DrawingView extends View {
     private ToggleButton playerButton;
     private int dottedLine=0xFF000000;
     private int continuousLine=0xFF000000;
+    private int screenWidth;
+    private int screenHeight;
 
 
     public void setOnComponentSelectedListener(OnComponentSelectedListener listener){
@@ -89,6 +93,12 @@ public class DrawingView extends View {
 	}
 
 	private void init() {
+
+        if(getContext() instanceof Activity) {
+            Display display = ((Activity)getContext()).getWindowManager().getDefaultDisplay();
+            screenWidth = display.getWidth();
+            screenHeight = display.getHeight();
+        }
 		play = new Play();
 		play.setFieldType(getContext().getString(R.string.full));
 	}
@@ -209,8 +219,7 @@ public class DrawingView extends View {
                 } else if(field_type.equals(getContext().getString(R.string.defense_half))){
                     result = R.drawable.soccer_half;
                 }
-                bitmap = BitmapFactory.decodeResource(getResources(),
-                        result);
+
             }
 		} else if (play.getField().equals(volley)) {
 
@@ -221,8 +230,6 @@ public class DrawingView extends View {
             } else if(field_type.equals(getContext().getString(R.string.defense_half))){
                 result = R.drawable.voley_half;
             }
-            bitmap = BitmapFactory.decodeResource(getResources(),
-                    result);
 		} else if (play.getField().equals(basket)) {
 
             if(field_type.equals(getContext().getString(R.string.full))) {
@@ -232,9 +239,8 @@ public class DrawingView extends View {
             } else if(field_type.equals(getContext().getString(R.string.defense_half))){
                 result = R.drawable.basket_half_inverse;
             }
-            bitmap = BitmapFactory.decodeResource(getResources(),
-                    result);
 		}
+        bitmap = Utility.decodeSampledBitmapFromResource(getResources(),result,screenWidth,screenHeight);
 		return bitmap;
 	}
 

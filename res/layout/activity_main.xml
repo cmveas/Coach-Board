@@ -83,7 +83,7 @@
     </ScrollView>
 
     <View
-            android:layout_width="200dp"
+            android:layout_width="@dimen/half_field_padding"
             android:layout_height="match_parent"
             android:layout_toRightOf="@id/layoutToolBar"
             android:id="@+id/leftEmptySpace"
@@ -103,7 +103,7 @@
 
 
     <View
-            android:layout_width="200dp"
+            android:layout_width="@dimen/half_field_padding"
             android:layout_height="match_parent"
             android:layout_toLeftOf="@+id/scrollbar2"
             android:id="@+id/rightEmptySpace"

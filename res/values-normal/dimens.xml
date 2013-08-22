@@ -12,5 +12,8 @@
     <dimen name="trash_bin_size">50dp</dimen>
     <dimen name="editPlayerNumberSize">50dp</dimen>
     <dimen name="lineBackgroundSize">10dp</dimen>
-    <dimen name="saved_plays_padding_top">20dp</dimen>
+    <dimen name="saved_plays_padding_top">2dp</dimen>
+    <dimen name="plays_name_list_size">20sp</dimen>
+    <dimen name="types_of_field_size">24dp</dimen>
+    <dimen name="half_field_padding">50dp</dimen>
 </resources>

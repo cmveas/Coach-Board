@@ -10,6 +10,10 @@
 	<dimen name="play_list_title">60sp</dimen>
     <dimen name="toolbar_button_height">75dp</dimen>
     <dimen name="trash_bin_size">50dp</dimen>
+    <dimen name="types_of_field_size">60dp</dimen>
     <dimen name="editPlayerNumberSize">75dp</dimen>
     <dimen name="lineBackgroundSize">10dp</dimen>
+    <dimen name="plays_name_list_size">24sp</dimen>
+    <dimen name="list_of_plays_padding">2dp</dimen>
+    <dimen name="half_field_padding">200dp</dimen>
 </resources>
