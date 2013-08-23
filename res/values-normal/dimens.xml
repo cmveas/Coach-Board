@@ -3,7 +3,7 @@
 
     <dimen name="splash_title_size">48dp</dimen>
     <dimen name="splash_btn_enter_size">36sp</dimen>
-    <dimen name="court_padding">4dp</dimen>
+    <dimen name="court_padding">2dp</dimen>
     <dimen name="pager_court_width">150dp</dimen>
     <dimen name="pager_court_height">75dp</dimen>
     <dimen name="toolbar_width">50dp</dimen>

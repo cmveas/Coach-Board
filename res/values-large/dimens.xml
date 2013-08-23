@@ -4,7 +4,7 @@
     <dimen name="splash_title_size">108dp</dimen>
     <dimen name="splash_btn_enter_size"> 72sp</dimen>
     <dimen name="court_padding">30dp</dimen>
-    <dimen name="pager_court_width">500dp</dimen>
+    <dimen name="pager_court_width">250dp</dimen>
     <dimen name="pager_court_height">400dp</dimen>
     <dimen name="toolbar_width">75dp</dimen>
 	<dimen name="play_list_title">60sp</dimen>
