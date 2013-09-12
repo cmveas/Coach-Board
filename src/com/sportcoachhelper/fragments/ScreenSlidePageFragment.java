@@ -17,8 +17,10 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -45,13 +47,13 @@ public class ScreenSlidePageFragment extends Fragment {
 	private TextView field_name;
 	private ListView playList;
 	private PlaysAdapter playsAdapter;
-	private TextView savedPlays;
-	private TextView template_list_title;
 	private ListView templateList;
     private Spinner type_of_field;
     private TypesListAdapter spinnerData
             ;
     private String type;
+    private RadioButton btnSaves;
+    private RadioButton btnTemplates;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -62,13 +64,9 @@ public class ScreenSlidePageFragment extends Fragment {
                 R.layout.display_field_fragment, container, false);
         fieldIndexes = getActivity().getResources().getIntArray(R.array.fieldsIndexes);
         field_name = (TextView) rootView.findViewById(R.id.field_name);
-        savedPlays = (TextView) rootView.findViewById(R.id.play_list_title);
-        template_list_title = (TextView) rootView.findViewById(R.id.template_list_title);
         type_of_field = (Spinner) rootView.findViewById(R.id.type_of_field);
         field_name.setText(label);
         field_name.setTypeface(FontManager.getInstance().getFont(FontManager.CHALK_REGULAR));
-        savedPlays.setTypeface(FontManager.getInstance().getFont(FontManager.CHALK_REGULAR));
-        template_list_title.setTypeface(FontManager.getInstance().getFont(FontManager.CHALK_REGULAR));
         field_type = (ImageView) rootView.findViewById(R.id.field_type);
         type = getString(R.string.full);
         setFieldType();
@@ -118,6 +116,32 @@ public class ScreenSlidePageFragment extends Fragment {
 		});
         templateList.setDividerHeight(0);
 
+
+        btnSaves = (RadioButton) rootView.findViewById(R.id.btnSaves);
+
+        btnSaves.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(b){
+                    enableSaves();
+                }
+            }
+        });
+        btnSaves.setTypeface(FontManager.getInstance().getFont(FontManager.CHALK_REGULAR));
+
+        btnTemplates = (RadioButton) rootView.findViewById(R.id.btnTemplates);
+
+        btnTemplates.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(b){
+                   disableSaves();
+                }
+            }
+        });
+
+        btnTemplates.setTypeface(FontManager.getInstance().getFont(FontManager.CHALK_REGULAR));
+
         String [] types_of_fields = getResources().getStringArray(R.array.types_of_fields);
         spinnerData = new TypesListAdapter(getActivity(), types_of_fields);
         type_of_field.setAdapter(spinnerData);
@@ -134,8 +158,22 @@ public class ScreenSlidePageFragment extends Fragment {
             }
         });
 
+        enableSaves();
+
         return rootView;
 }
+
+    private void disableSaves() {
+        templateList.setVisibility(View.VISIBLE);
+
+        playList.setVisibility(View.GONE);
+    }
+
+    private void enableSaves() {
+        playList.setVisibility(View.VISIBLE);
+
+        templateList.setVisibility(View.GONE);
+    }
 
     private void setFieldType() {
         int resource = getField();
