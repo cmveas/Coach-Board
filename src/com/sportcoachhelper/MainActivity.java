@@ -4,9 +4,11 @@ import java.io.File;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.ClipData;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -39,6 +41,7 @@ public class MainActivity extends GraphicsActivity implements
 	private static final int PICKFILE_RESULT_CODE = 0;
     private static final int DOTTED_LINE_ID = 1;
     private static final int CONTINUOUS_LINE_ID = 2;
+    private static final int WARN_NOT_SAVED_EXIT = 3;
     private DrawingView drawingView;
 	private ToggleButton playerImage;
 	private ToggleButton triangleTool;
@@ -165,6 +168,15 @@ public class MainActivity extends GraphicsActivity implements
 
     }
 
+
+    public boolean checkIfSaved() {
+        boolean result = false;
+        if(drawingView.getPlay().getId()!=-1) {
+            result = true;
+        }
+        return result;
+    }
+
     private void displaySideBorders() {
         leftEmptySpace.setVisibility(View.VISIBLE);
         rightEmptySpace.setVisibility(View.VISIBLE);
@@ -189,6 +201,20 @@ public class MainActivity extends GraphicsActivity implements
                 color = args.getInt("color");
                 colorPickerDialog = new ColorPickerDialog(this,this,color);
                 dialog = colorPickerDialog;
+                break;
+            case WARN_NOT_SAVED_EXIT:
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+                builder.setMessage(getString(R.string.no_save_are_you_sure_exit))
+                        .setCancelable(false)
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                finish();
+                            }
+                        })
+                        .setNegativeButton("No", null)
+                        .show();
                 break;
         }
         return dialog;
@@ -620,7 +646,7 @@ public class MainActivity extends GraphicsActivity implements
 			result = true;
 			break;
 		case R.id.menu_exit:
-			finish();
+                warnAboutNotSaved();
 			break;
 		}
 
@@ -630,6 +656,11 @@ public class MainActivity extends GraphicsActivity implements
 
 		return result;
 	}
+
+    private void warnAboutNotSaved() {
+        showDialog(WARN_NOT_SAVED_EXIT);
+    }
+
 
     private void openHelp() {
         Intent intent = new Intent(this,ActHelpPage.class);
