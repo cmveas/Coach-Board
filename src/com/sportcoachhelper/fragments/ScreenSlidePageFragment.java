@@ -312,7 +312,7 @@ public class ScreenSlidePageFragment extends Fragment {
 			ArrayList<Template> allTemplates = TemplateManager.getInstance().getTemplates();
 			fieldTemplates = new ArrayList<Template>();
 			for (Template template : allTemplates) {
-				if(template.getField().equals(label)) {
+				if(field_name.getText().toString().equals(getString(R.string.soccer))) {
 					fieldTemplates.add(template);
 				}
 			}

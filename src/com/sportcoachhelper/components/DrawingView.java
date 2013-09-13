@@ -208,7 +208,7 @@ public class DrawingView extends View {
 		final String volley = context.getString(R.string.voley);
 		final String soccer = context.getString(R.string.soccer);
 		final String basket = context.getString(R.string.basketball);
-        int result = -1;
+        int result = R.drawable.soccer;
         String field_type = play.getFieldType();
 		if(play.getField().equals(soccer)) {
             if(field_type!=null) {

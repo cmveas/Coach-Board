@@ -41,7 +41,7 @@
                                 android:layout_width="@dimen/icon_help"
                                 android:layout_height="@dimen/icon_help"
                                 android:layout_gravity="center"
-                                android:layout_margin="20dp"
+                                android:layout_margin="@dimen/icon_help_margin"
                                 android:id="@+id/modeselection"
                                 android:src="@drawable/btn_selection"/>
 
@@ -49,7 +49,7 @@
                                 android:layout_width="@dimen/icon_help"
                                 android:layout_height="@dimen/icon_help"
                                 android:layout_gravity="center"
-                                android:layout_margin="20dp"
+                                android:layout_margin="@dimen/icon_help_margin"
                                 android:id="@+id/continuousLine"
                                 android:src="@drawable/btn_continuous_line"/>
 
@@ -57,7 +57,7 @@
                                 android:layout_width="@dimen/icon_help"
                                 android:layout_height="@dimen/icon_help"
                                 android:layout_gravity="center"
-                                android:layout_margin="20dp"
+                                android:layout_margin="@dimen/icon_help_margin"
                                 android:id="@+id/dottedLines"
                                 android:src="@drawable/btn_dotted_line"/>
                     </LinearLayout>
@@ -127,7 +127,7 @@
                                 android:layout_width="@dimen/icon_help"
                                 android:layout_height="@dimen/icon_help"
                                 android:layout_gravity="center"
-                                android:layout_margin="20dp"
+                                android:layout_margin="@dimen/icon_help_margin"
                                 android:id="@+id/imageView"
                                 android:src="@drawable/local_round_player"/>
 
@@ -135,7 +135,7 @@
                                 android:layout_width="@dimen/icon_help"
                                 android:layout_height="@dimen/icon_help"
                                 android:layout_gravity="center"
-                                android:layout_margin="20dp"
+                                android:layout_margin="@dimen/icon_help_margin"
                                 android:id="@+id/imageView3"
                                 android:src="@drawable/local_triangle_player"/>
 
@@ -143,7 +143,7 @@
                                 android:layout_width="@dimen/icon_help"
                                 android:layout_height="@dimen/icon_help"
                                 android:layout_gravity="center"
-                                android:layout_margin="20dp"
+                                android:layout_margin="@dimen/icon_help_margin"
                                 android:id="@+id/imageView4"
                                 android:src="@drawable/local_square_player"/>
                     </LinearLayout>

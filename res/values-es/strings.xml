@@ -9,7 +9,7 @@
     <string name="menu_save">Guardar</string>
     <string name="menu_exit">Salir</string>
     <string name="sure_want_clear">Está seguro que quiere empezar en una nueva pizarra?</string>
-	<string name="splash_title">Asistente para Entrandor</string>
+	<string name="splash_title">Pizarra para Entrenador</string>
 	<string name="enter">Ingresar</string>
 	<string name="setNumber">Rotulo</string>
 	<string name="enter_play_name">Ingrese el nombre de la jugada</string>
@@ -24,7 +24,7 @@
 	<string name="continuous_line_mode">Linea Continua</string>
 	<string name="dotted_line_mode">Linea punteada</string>
 	<string name="saved_plays">Jugadas Guardadas</string>
-	<string name="templates">Plantillas</string>
+	<string name="templates">Formaciones</string>
     <string name="localroundplayer">localroundplayer</string>
     <string name="localtriangleplayer">localtriangleplayer</string>
     <string name="localsquareplayer">localsquareplayer</string>

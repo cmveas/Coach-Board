@@ -16,4 +16,7 @@
     <dimen name="plays_name_list_size">20sp</dimen>
     <dimen name="types_of_field_size">24dp</dimen>
     <dimen name="half_field_padding">50dp</dimen>
+    <dimen name="radio_button_text_size" >24sp </dimen>
+    <dimen name="icon_help">75dp</dimen>
+    <dimen name="icon_help_margin">10dp</dimen>
 </resources>

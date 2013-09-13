@@ -48,7 +48,7 @@ public class Utility {
 	}
 
     public static int giveMeFieldBall(String field) {
-        int resource = -1;
+        int resource = BallPath.SOCCER_BALL;
         final String volley = CoachApp.getInstance().getString(R.string.voley);
         final String soccer = CoachApp.getInstance().getString(R.string.soccer);
         final String basket = CoachApp.getInstance().getString(R.string.basketball);

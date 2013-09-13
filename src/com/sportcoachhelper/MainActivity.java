@@ -144,6 +144,7 @@ public class MainActivity extends GraphicsActivity implements
 		
 		mode = getString(R.string.organization_mode);
 
+
         drawTheAppropiateBall(field);
 
         ballTool = (ToggleButton) findViewById(R.id.ballTool);
@@ -213,8 +214,8 @@ public class MainActivity extends GraphicsActivity implements
                                 finish();
                             }
                         })
-                        .setNegativeButton("No", null)
-                        .show();
+                        .setNegativeButton("No", null);
+                dialog = builder.create();
                 break;
         }
         return dialog;
@@ -687,9 +688,7 @@ public class MainActivity extends GraphicsActivity implements
 	@Override
 	public void onBackPressed() {
 		boolean result  = false;/*drawingView.undoLast();*/
-		if (!result) {
-			super.onBackPressed();
-		}
+		showDialog(WARN_NOT_SAVED_EXIT);
 	}
 
     @Override

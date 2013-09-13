@@ -42,7 +42,7 @@ public class BallPath extends ColorPath {
 	}
 
 	public static int getResourceFromType(int ballType) {
-		int result = 0;
+		int result = R.drawable.soccerball;
 		switch(ballType){
 		case SOCCER_BALL:
 			result = R.drawable.soccerball;
