@@ -1,9 +1,12 @@
 package com.sportcoachhelper.model;
 
+import android.graphics.Canvas;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
 import com.sportcoachhelper.paths.ColorPath;
+import com.sportcoachhelper.paths.ShapePath;
 import com.sportcoachhelper.paths.interfaces.Detectable;
 import com.sportcoachhelper.paths.interfaces.Dibujables;
 
@@ -100,5 +103,15 @@ public class Play implements Serializable {
 
     public String getFieldType() {
         return field_type;
+    }
+
+    public void loadAllOnCanvas(Canvas another) {
+
+        for (Dibujables path : undoablePaths) {
+            if(!(path instanceof ShapePath)) {
+                path.draw(another);
+            }
+
+        }
     }
 }

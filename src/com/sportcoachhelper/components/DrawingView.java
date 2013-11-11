@@ -4,11 +4,12 @@ import android.app.Activity;
 import android.content.Context;
 import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.DashPathEffect;
 import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
 import android.os.Environment;
 import android.util.AttributeSet;
 import android.view.Display;
@@ -68,6 +69,8 @@ public class DrawingView extends View {
     private int continuousLine=0xFF000000;
     private int screenWidth;
     private int screenHeight;
+    private  Canvas another;
+    private Bitmap figuresBitmap;
 
 
     public void setOnComponentSelectedListener(OnComponentSelectedListener listener){
@@ -106,6 +109,8 @@ public class DrawingView extends View {
 	private void initializePaints() {
 		
 		mPaint = new Paint();
+
+        if(lineMode.equals(getContext().getString(R.string.continuous_line_mode))){
 		mPaint.setAntiAlias(true);
 		mPaint.setDither(true);
 		mPaint.setColor(getColorPerLineMode(lineMode));
@@ -114,9 +119,19 @@ public class DrawingView extends View {
 		mPaint.setStrokeCap(Paint.Cap.ROUND);
 		mPaint.setStrokeWidth(4);
 		mPaint.setPathEffect(getLineMode(lineMode));
-		
+
 		mPath = new LinePath(mPaint);
 		mPath.setLineMode(lineMode);
+        } else {
+            mPaint.setAntiAlias(true);
+            mPaint.setDither(true);
+            mPaint.setStyle(Paint.Style.STROKE);
+            mPaint.setStrokeWidth(4);
+            mPaint.setXfermode(new PorterDuffXfermode(
+                    PorterDuff.Mode.CLEAR));
+            mPath = new LinePath(mPaint);
+            mPath.setLineMode(lineMode);
+        }
 		mBitmapPaint = new Paint(Paint.DITHER_FLAG);		
 		
 		playerPaint = new Paint();
@@ -192,6 +207,12 @@ public class DrawingView extends View {
 		this.w=w;
 		this.h=h;
 		if(w>0 && h>0) {
+            Bitmap.Config conf = Bitmap.Config.ARGB_8888; // see other conf types
+            figuresBitmap = Bitmap.createBitmap(w, h, conf);
+
+            another = new Canvas(figuresBitmap);
+
+
 			mBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
 			mCanvas = new Canvas(mBitmap);
 			Bitmap bitmap = getFieldFromSelection();
@@ -251,14 +272,19 @@ public class DrawingView extends View {
 		
 		//canvas.drawColor(0xFFFFFFFF);
 
-		canvas.drawBitmap(mBitmap, 0, 0, mBitmapPaint);
 
+
+
+/*
 		ArrayList<Dibujables> undoablePaths = play.getUndoablePaths();
-		
+
 		for (Dibujables path : undoablePaths) {
-			path.draw(canvas);
-			
-		}
+			path.draw(another);
+
+		}*/
+
+        canvas.drawBitmap(mBitmap, 0, 0, mBitmapPaint);
+        canvas.drawBitmap(figuresBitmap,0,0,mBitmapPaint);
 
 		canvas.drawPath(mPath, mPaint);
 		long last = System.currentTimeMillis();
@@ -375,7 +401,8 @@ public class DrawingView extends View {
                 // kill this so we don't double draw
                 // mPath.reset();
                 mPath.setColor(getColorPerLineMode(lineMode));
-                addPathsToQueue(mPath);
+                another.drawPath(mPath, mPaint);
+
                 // mPath.reset();
                 movable=null;
             }
@@ -413,6 +440,7 @@ public class DrawingView extends View {
         if(listener !=null && isShape(mPath)) {
             listener.onPlayerAdded();
         }
+        another.drawPath(mPath, mPath.getPaint());
 	}
 
     private boolean isShape(ColorPath mPath) {
@@ -718,6 +746,8 @@ public class DrawingView extends View {
                 cursor.moveToNext();
             }
           }
+
+          play.loadAllOnCanvas(another);
 
         } catch (Exception e) {
             e.printStackTrace();
