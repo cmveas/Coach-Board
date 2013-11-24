@@ -31,13 +31,277 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a5aaec99-a1f2-44fc-98d7-1156c5bd1d66" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/android_support_v13.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/android_support_v4.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/android_support_v4_944d470ebd8546a9f76b12688a13f80b.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/3-4-1-2_template" afterPath="$PROJECT_DIR$/assets/3-4-1-2_template" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/3-4-3_template" afterPath="$PROJECT_DIR$/assets/3-4-3_template" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/3-6-1_template" afterPath="$PROJECT_DIR$/assets/3-6-1_template" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/4-3-3_template" afterPath="$PROJECT_DIR$/assets/4-3-3_template" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/4-4-2_template" afterPath="$PROJECT_DIR$/assets/4-4-2_template" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/4-5-1_template" afterPath="$PROJECT_DIR$/assets/4-5-1_template" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/5-3-2_template" afterPath="$PROJECT_DIR$/assets/5-3-2_template" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/5-4-1_template" afterPath="$PROJECT_DIR$/assets/5-4-1_template" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/GoogleAdMobAdsSdk-6.4.1.jar" afterPath="$PROJECT_DIR$/libs/GoogleAdMobAdsSdk-6.4.1.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/web/VolleyballRotation.svg.png" afterPath="$PROJECT_DIR$/docs/web/VolleyballRotation.svg.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-hdpi/ab_bottom_solid_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-hdpi/ab_bottom_solid_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/ab_bottom_solid_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/ab_bottom_solid_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-xhdpi/ab_bottom_solid_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-xhdpi/ab_bottom_solid_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-hdpi/ab_solid_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-hdpi/ab_solid_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/ab_solid_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/ab_solid_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-xhdpi/ab_solid_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-xhdpi/ab_solid_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-hdpi/ab_stacked_solid_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-hdpi/ab_stacked_solid_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/ab_stacked_solid_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/ab_stacked_solid_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-xhdpi/ab_stacked_solid_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-xhdpi/ab_stacked_solid_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-hdpi/ab_texture_tile_coachbar.png" afterPath="$PROJECT_DIR$/res/drawable-hdpi/ab_texture_tile_coachbar.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/ab_texture_tile_coachbar.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/ab_texture_tile_coachbar.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-xhdpi/ab_texture_tile_coachbar.png" afterPath="$PROJECT_DIR$/res/drawable-xhdpi/ab_texture_tile_coachbar.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-hdpi/ab_transparent_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-hdpi/ab_transparent_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/ab_transparent_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/ab_transparent_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-xhdpi/ab_transparent_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-xhdpi/ab_transparent_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/android-support-v4.jar" afterPath="$PROJECT_DIR$/libs/android-support-v4.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/arrow_left.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/arrow_left.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/arrow_right.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/arrow_right.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-large-mdpi/basket.png" afterPath="$PROJECT_DIR$/res/drawable-large-mdpi/basket.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/basket.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/basket.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-normal-mdpi/basket.png" afterPath="$PROJECT_DIR$/res/drawable-normal-mdpi/basket.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/basket_half.jpg" afterPath="$PROJECT_DIR$/res/drawable-mdpi/basket_half.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/basket_half_inverse.jpg" afterPath="$PROJECT_DIR$/res/drawable-mdpi/basket_half_inverse.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/basketball.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/basketball.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/basketball_selected.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/basketball_selected.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-hdpi/btn_cab_done_default_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-hdpi/btn_cab_done_default_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/btn_cab_done_default_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/btn_cab_done_default_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-xhdpi/btn_cab_done_default_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-xhdpi/btn_cab_done_default_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-hdpi/btn_cab_done_focused_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-hdpi/btn_cab_done_focused_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/btn_cab_done_focused_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/btn_cab_done_focused_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-xhdpi/btn_cab_done_focused_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-xhdpi/btn_cab_done_focused_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-hdpi/btn_cab_done_pressed_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-hdpi/btn_cab_done_pressed_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/btn_cab_done_pressed_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/btn_cab_done_pressed_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-xhdpi/btn_cab_done_pressed_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-xhdpi/btn_cab_done_pressed_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/btn_continuous_line.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/btn_continuous_line.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/btn_dotted_line.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/btn_dotted_line.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/btn_selection.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/btn_selection.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/btnbackground.9.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/btnbackground.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/btnbackgroundcommon.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/btnbackgroundcommon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-hdpi/cab_background_bottom_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-hdpi/cab_background_bottom_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/cab_background_bottom_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/cab_background_bottom_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-xhdpi/cab_background_bottom_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-xhdpi/cab_background_bottom_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-hdpi/cab_background_top_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-hdpi/cab_background_top_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/cab_background_top_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/cab_background_top_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-xhdpi/cab_background_top_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-xhdpi/cab_background_top_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/cancha_voley.jpg" afterPath="$PROJECT_DIR$/res/drawable-mdpi/cancha_voley.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/coach-board-key.keystore" afterPath="$PROJECT_DIR$/coach-board-key.keystore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ic_launcher-web.png" afterPath="$PROJECT_DIR$/ic_launcher-web.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-hdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/res/drawable-hdpi/ic_launcher.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-ldpi/ic_launcher.png" afterPath="$PROJECT_DIR$/res/drawable-ldpi/ic_launcher.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/ic_launcher.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-xhdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/res/drawable-xhdpi/ic_launcher.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/icon.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/images.jpg" afterPath="$PROJECT_DIR$/res/drawable-mdpi/images.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-hdpi/list_focused_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-hdpi/list_focused_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/list_focused_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/list_focused_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-xhdpi/list_focused_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-xhdpi/list_focused_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-hdpi/menu_dropdown_panel_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-hdpi/menu_dropdown_panel_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/menu_dropdown_panel_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/menu_dropdown_panel_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-xhdpi/menu_dropdown_panel_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-xhdpi/menu_dropdown_panel_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/new_document.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/new_document.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/images/phil_jackson_1992_06_07.jpg" afterPath="$PROJECT_DIR$/docs/images/phil_jackson_1992_06_07.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/player.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/player.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/player_selected.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/player_selected.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/player_selected_visit.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/player_selected_visit.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/player_square.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/player_square.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/player_square_selected.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/player_square_selected.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/player_square_selected_visit.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/player_square_selected_visit.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/player_square_visit.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/player_square_visit.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/player_triangle.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/player_triangle.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/player_triangle_selected.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/player_triangle_selected.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/player_triangle_visit.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/player_triangle_visit.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/player_visit.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/player_visit.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-hdpi/progress_bg_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-hdpi/progress_bg_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/progress_bg_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/progress_bg_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-xhdpi/progress_bg_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-xhdpi/progress_bg_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-hdpi/progress_primary_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-hdpi/progress_primary_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/progress_primary_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/progress_primary_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-xhdpi/progress_primary_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-xhdpi/progress_primary_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-hdpi/progress_secondary_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-hdpi/progress_secondary_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/progress_secondary_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/progress_secondary_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-xhdpi/progress_secondary_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-xhdpi/progress_secondary_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-large-mdpi/soccer.jpg" afterPath="$PROJECT_DIR$/res/drawable-large-mdpi/soccer.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/soccer.jpg" afterPath="$PROJECT_DIR$/res/drawable-mdpi/soccer.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-normal-mdpi/soccer.jpg" afterPath="$PROJECT_DIR$/res/drawable-normal-mdpi/soccer.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/soccer_attack_half.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/soccer_attack_half.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/soccer_half.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/soccer_half.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/images/soccer_half.xcf" afterPath="$PROJECT_DIR$/docs/images/soccer_half.xcf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/soccer_half_inverse.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/soccer_half_inverse.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/soccerball.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/soccerball.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/soccerball_selected.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/soccerball_selected.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-hdpi/spinner_ab_default_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-hdpi/spinner_ab_default_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/spinner_ab_default_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/spinner_ab_default_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-xhdpi/spinner_ab_default_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-xhdpi/spinner_ab_default_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-hdpi/spinner_ab_disabled_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-hdpi/spinner_ab_disabled_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/spinner_ab_disabled_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/spinner_ab_disabled_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-xhdpi/spinner_ab_disabled_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-xhdpi/spinner_ab_disabled_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-hdpi/spinner_ab_focused_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-hdpi/spinner_ab_focused_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/spinner_ab_focused_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/spinner_ab_focused_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-xhdpi/spinner_ab_focused_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-xhdpi/spinner_ab_focused_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-hdpi/spinner_ab_pressed_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-hdpi/spinner_ab_pressed_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/spinner_ab_pressed_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/spinner_ab_pressed_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-xhdpi/spinner_ab_pressed_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-xhdpi/spinner_ab_pressed_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/splash_background2.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/splash_background2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/splash_image.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/splash_image.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/splash_image2.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/splash_image2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/splash_image3.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/splash_image3.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-hdpi/tab_selected_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-hdpi/tab_selected_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/tab_selected_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/tab_selected_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-xhdpi/tab_selected_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-xhdpi/tab_selected_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-hdpi/tab_selected_focused_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-hdpi/tab_selected_focused_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/tab_selected_focused_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/tab_selected_focused_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-xhdpi/tab_selected_focused_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-xhdpi/tab_selected_focused_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-hdpi/tab_selected_pressed_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-hdpi/tab_selected_pressed_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/tab_selected_pressed_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/tab_selected_pressed_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-xhdpi/tab_selected_pressed_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-xhdpi/tab_selected_pressed_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-hdpi/tab_unselected_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-hdpi/tab_unselected_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/tab_unselected_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/tab_unselected_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-xhdpi/tab_unselected_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-xhdpi/tab_unselected_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-hdpi/tab_unselected_focused_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-hdpi/tab_unselected_focused_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/tab_unselected_focused_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/tab_unselected_focused_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-xhdpi/tab_unselected_focused_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-xhdpi/tab_unselected_focused_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-hdpi/tab_unselected_pressed_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-hdpi/tab_unselected_pressed_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/tab_unselected_pressed_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/tab_unselected_pressed_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-xhdpi/tab_unselected_pressed_coachbar.9.png" afterPath="$PROJECT_DIR$/res/drawable-xhdpi/tab_unselected_pressed_coachbar.9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/trash.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/trash.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-large-mdpi/voley.gif" afterPath="$PROJECT_DIR$/res/drawable-large-mdpi/voley.gif" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/voley.gif" afterPath="$PROJECT_DIR$/res/drawable-mdpi/voley.gif" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-normal-mdpi/voley.gif" afterPath="$PROJECT_DIR$/res/drawable-normal-mdpi/voley.gif" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/voley1_template" afterPath="$PROJECT_DIR$/assets/voley1_template" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/voley_half.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/voley_half.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/images/voley_half.xcf" afterPath="$PROJECT_DIR$/docs/images/voley_half.xcf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/voley_half_inverse.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/voley_half_inverse.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/volleyball.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/volleyball.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/volleyball_selected.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/volleyball_selected.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/wit.ttf" afterPath="$PROJECT_DIR$/assets/wit.ttf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.classpath" afterPath="$PROJECT_DIR$/.classpath" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore.save" afterPath="$PROJECT_DIR$/.gitignore.save" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.name" afterPath="$PROJECT_DIR$/.idea/.name" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.project" afterPath="$PROJECT_DIR$/.project" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/sportcoachhelper/ActHelpPage.java" afterPath="$PROJECT_DIR$/src/com/sportcoachhelper/ActHelpPage.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/sportcoachhelper/ActHomeScreen.java" afterPath="$PROJECT_DIR$/src/com/sportcoachhelper/ActHomeScreen.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/sportcoachhelper/ActSplashScreen.java" afterPath="$PROJECT_DIR$/src/com/sportcoachhelper/ActSplashScreen.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/sportcoachhelper/paths/BallPath.java" afterPath="$PROJECT_DIR$/src/com/sportcoachhelper/paths/BallPath.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gen/com/sportcoachhelper/BuildConfig.java" afterPath="$PROJECT_DIR$/gen/com/sportcoachhelper/BuildConfig.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/sportcoachhelper/paths/CirclePath.java" afterPath="$PROJECT_DIR$/src/com/sportcoachhelper/paths/CirclePath.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/sportcoachhelper/dialogs/ClearDialog.java" afterPath="$PROJECT_DIR$/src/com/sportcoachhelper/dialogs/ClearDialog.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/sportcoachhelper/CoachApp.java" afterPath="$PROJECT_DIR$/src/com/sportcoachhelper/CoachApp.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/sportcoachhelper/paths/ColorPath.java" afterPath="$PROJECT_DIR$/src/com/sportcoachhelper/paths/ColorPath.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/sportcoachhelper/ColorPickerDialog.java" afterPath="$PROJECT_DIR$/src/com/sportcoachhelper/ColorPickerDialog.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/sportcoachhelper/database/DatabaseHelper.java" afterPath="$PROJECT_DIR$/src/com/sportcoachhelper/database/DatabaseHelper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/sportcoachhelper/paths/interfaces/Detectable.java" afterPath="$PROJECT_DIR$/src/com/sportcoachhelper/paths/interfaces/Detectable.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/sportcoachhelper/paths/interfaces/Dibujables.java" afterPath="$PROJECT_DIR$/src/com/sportcoachhelper/paths/interfaces/Dibujables.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/sportcoachhelper/components/DrawingView.java" afterPath="$PROJECT_DIR$/src/com/sportcoachhelper/components/DrawingView.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/sportcoachhelper/managers/FontManager.java" afterPath="$PROJECT_DIR$/src/com/sportcoachhelper/managers/FontManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/GoogleAdMobAdsSdk_6_4_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/GoogleAdMobAdsSdk_6_4_1.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/sportcoachhelper/GraphicsActivity.java" afterPath="$PROJECT_DIR$/src/com/sportcoachhelper/GraphicsActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/sportcoachhelper/paths/LinePath.java" afterPath="$PROJECT_DIR$/src/com/sportcoachhelper/paths/LinePath.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/sportcoachhelper/MainActivity.java" afterPath="$PROJECT_DIR$/src/com/sportcoachhelper/MainActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gen/com/sportcoachhelper/Manifest.java" afterPath="$PROJECT_DIR$/gen/com/sportcoachhelper/Manifest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/sportcoachhelper/interfaces/OnComponentSelectedListener.java" afterPath="$PROJECT_DIR$/src/com/sportcoachhelper/interfaces/OnComponentSelectedListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/sportcoachhelper/PictureLayout.java" afterPath="$PROJECT_DIR$/src/com/sportcoachhelper/PictureLayout.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/sportcoachhelper/model/Play.java" afterPath="$PROJECT_DIR$/src/com/sportcoachhelper/model/Play.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/sportcoachhelper/managers/PlaysManager.java" afterPath="$PROJECT_DIR$/src/com/sportcoachhelper/managers/PlaysManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/sportcoachhelper/dialogs/PlaysNameDialogFragment.java" afterPath="$PROJECT_DIR$/src/com/sportcoachhelper/dialogs/PlaysNameDialogFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gen/com/sportcoachhelper/R.java" afterPath="$PROJECT_DIR$/gen/com/sportcoachhelper/R.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/sportcoachhelper/fragments/ScreenSlidePageFragment.java" afterPath="$PROJECT_DIR$/src/com/sportcoachhelper/fragments/ScreenSlidePageFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/sportcoachhelper/paths/SerializablePath.java" afterPath="$PROJECT_DIR$/src/com/sportcoachhelper/paths/SerializablePath.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/sportcoachhelper/paths/ShapePath.java" afterPath="$PROJECT_DIR$/src/com/sportcoachhelper/paths/ShapePath.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SportCoachHelper.iml" afterPath="$PROJECT_DIR$/SportCoachHelper.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/sportcoachhelper/paths/SquarePath.java" afterPath="$PROJECT_DIR$/src/com/sportcoachhelper/paths/SquarePath.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/sportcoachhelper/model/Team.java" afterPath="$PROJECT_DIR$/src/com/sportcoachhelper/model/Team.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/sportcoachhelper/managers/TeamManager.java" afterPath="$PROJECT_DIR$/src/com/sportcoachhelper/managers/TeamManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/sportcoachhelper/model/Template.java" afterPath="$PROJECT_DIR$/src/com/sportcoachhelper/model/Template.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/sportcoachhelper/model/TemplateItem.java" afterPath="$PROJECT_DIR$/src/com/sportcoachhelper/model/TemplateItem.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/sportcoachhelper/managers/TemplateManager.java" afterPath="$PROJECT_DIR$/src/com/sportcoachhelper/managers/TemplateManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/sportcoachhelper/paths/TrianglePath.java" afterPath="$PROJECT_DIR$/src/com/sportcoachhelper/paths/TrianglePath.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/sportcoachhelper/util/Utility.java" afterPath="$PROJECT_DIR$/src/com/sportcoachhelper/util/Utility.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable/ab_background_textured_coachbar.xml" afterPath="$PROJECT_DIR$/res/drawable/ab_background_textured_coachbar.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/activity_main.xml" afterPath="$PROJECT_DIR$/res/layout/activity_main.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/menu/activity_main.xml" afterPath="$PROJECT_DIR$/res/menu/activity_main.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/android_support_v4.xml" afterPath="$PROJECT_DIR$/.idea/libraries/android_support_v4.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/android_support_v4_944d470ebd8546a9f76b12688a13f80b.xml" afterPath="$PROJECT_DIR$/.idea/libraries/android_support_v4_944d470ebd8546a9f76b12688a13f80b.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/arrays.xml" afterPath="$PROJECT_DIR$/res/values/arrays.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values-es/arrays.xml" afterPath="$PROJECT_DIR$/res/values-es/arrays.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable/basketball_background.xml" afterPath="$PROJECT_DIR$/res/drawable/basketball_background.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable/basketball_button.xml" afterPath="$PROJECT_DIR$/res/drawable/basketball_button.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/basketballcomponent.xml" afterPath="$PROJECT_DIR$/res/layout/basketballcomponent.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable/box.xml" afterPath="$PROJECT_DIR$/res/drawable/box.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable/btn_cab_done_coachbar.xml" afterPath="$PROJECT_DIR$/res/drawable/btn_cab_done_coachbar.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable/btn_continuous_line_transparent.xml" afterPath="$PROJECT_DIR$/res/drawable/btn_continuous_line_transparent.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable/btn_dotted_line_transparent.xml" afterPath="$PROJECT_DIR$/res/drawable/btn_dotted_line_transparent.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable/btn_selection_transparent.xml" afterPath="$PROJECT_DIR$/res/drawable/btn_selection_transparent.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/colors_coachbar.xml" afterPath="$PROJECT_DIR$/res/values/colors_coachbar.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable/continuous_line_mode.xml" afterPath="$PROJECT_DIR$/res/drawable/continuous_line_mode.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable/continuous_line_mode_style.xml" afterPath="$PROJECT_DIR$/res/drawable/continuous_line_mode_style.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/data tables.txt" afterPath="$PROJECT_DIR$/docs/data tables.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/dialog_clear_board.xml" afterPath="$PROJECT_DIR$/res/layout/dialog_clear_board.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/dimens.xml" afterPath="$PROJECT_DIR$/res/values/dimens.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values-large/dimens.xml" afterPath="$PROJECT_DIR$/res/values-large/dimens.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values-normal/dimens.xml" afterPath="$PROJECT_DIR$/res/values-normal/dimens.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values-v11/dimens.xml" afterPath="$PROJECT_DIR$/res/values-v11/dimens.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values-v14/dimens.xml" afterPath="$PROJECT_DIR$/res/values-v14/dimens.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values-xlarge/dimens.xml" afterPath="$PROJECT_DIR$/res/values-xlarge/dimens.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/display_field_fragment.xml" afterPath="$PROJECT_DIR$/res/layout/display_field_fragment.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable/dotted_line_mode.xml" afterPath="$PROJECT_DIR$/res/drawable/dotted_line_mode.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable/dotted_line_mode_style.xml" afterPath="$PROJECT_DIR$/res/drawable/dotted_line_mode_style.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/help.html" afterPath="$PROJECT_DIR$/assets/help.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/help.xml" afterPath="$PROJECT_DIR$/res/layout/help.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/home.xml" afterPath="$PROJECT_DIR$/res/layout/home.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable/local_round_player.xml" afterPath="$PROJECT_DIR$/res/drawable/local_round_player.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable/local_round_player_background.xml" afterPath="$PROJECT_DIR$/res/drawable/local_round_player_background.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable/local_square_player.xml" afterPath="$PROJECT_DIR$/res/drawable/local_square_player.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable/local_square_player_background.xml" afterPath="$PROJECT_DIR$/res/drawable/local_square_player_background.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable/local_triangle_player.xml" afterPath="$PROJECT_DIR$/res/drawable/local_triangle_player.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable/local_triangle_player_background.xml" afterPath="$PROJECT_DIR$/res/drawable/local_triangle_player_background.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" afterPath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable/organization_mode_style.xml" afterPath="$PROJECT_DIR$/res/drawable/organization_mode_style.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable/orgnization_mode.xml" afterPath="$PROJECT_DIR$/res/drawable/orgnization_mode.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/plays_item.xml" afterPath="$PROJECT_DIR$/res/layout/plays_item.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/plays_name_fragment.xml" afterPath="$PROJECT_DIR$/res/layout/plays_name_fragment.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable/pressed_background_coachbar.xml" afterPath="$PROJECT_DIR$/res/drawable/pressed_background_coachbar.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable/progress_horizontal_coachbar.xml" afterPath="$PROJECT_DIR$/res/drawable/progress_horizontal_coachbar.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proguard-project.txt" afterPath="$PROJECT_DIR$/proguard-project.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project.properties" afterPath="$PROJECT_DIR$/project.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable/round_player.xml" afterPath="$PROJECT_DIR$/res/drawable/round_player.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" afterPath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable/selectable_background_coachbar.xml" afterPath="$PROJECT_DIR$/res/drawable/selectable_background_coachbar.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/soccerbalcomponent.xml" afterPath="$PROJECT_DIR$/res/layout/soccerbalcomponent.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable/soccerball_background.xml" afterPath="$PROJECT_DIR$/res/drawable/soccerball_background.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable/soccerball_button.xml" afterPath="$PROJECT_DIR$/res/drawable/soccerball_button.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable/spinner_background_ab_coachbar.xml" afterPath="$PROJECT_DIR$/res/drawable/spinner_background_ab_coachbar.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/splash.xml" afterPath="$PROJECT_DIR$/res/layout/splash.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/strings.xml" afterPath="$PROJECT_DIR$/res/values/strings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values-es/strings.xml" afterPath="$PROJECT_DIR$/res/values-es/strings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/styles.xml" afterPath="$PROJECT_DIR$/res/values/styles.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values-large/styles.xml" afterPath="$PROJECT_DIR$/res/values-large/styles.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values-v11/styles.xml" afterPath="$PROJECT_DIR$/res/values-v11/styles.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values-v14/styles.xml" afterPath="$PROJECT_DIR$/res/values-v14/styles.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values-xlarge/styles.xml" afterPath="$PROJECT_DIR$/res/values-xlarge/styles.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/styles_coachbar.xml" afterPath="$PROJECT_DIR$/res/values/styles_coachbar.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable/tab_indicator_ab_coachbar.xml" afterPath="$PROJECT_DIR$/res/drawable/tab_indicator_ab_coachbar.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/types_layout_item.xml" afterPath="$PROJECT_DIR$/res/layout/types_layout_item.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/usefullcode" afterPath="$PROJECT_DIR$/docs/usefullcode" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable/visit_round_player.xml" afterPath="$PROJECT_DIR$/res/drawable/visit_round_player.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable/visit_round_player_background.xml" afterPath="$PROJECT_DIR$/res/drawable/visit_round_player_background.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable/visit_square_player.xml" afterPath="$PROJECT_DIR$/res/drawable/visit_square_player.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable/visit_square_player_background.xml" afterPath="$PROJECT_DIR$/res/drawable/visit_square_player_background.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable/visit_triangle_player.xml" afterPath="$PROJECT_DIR$/res/drawable/visit_triangle_player.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable/visit_triangle_player_background.xml" afterPath="$PROJECT_DIR$/res/drawable/visit_triangle_player_background.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/voleyballcomponent.xml" afterPath="$PROJECT_DIR$/res/layout/voleyballcomponent.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable/volleyball_background.xml" afterPath="$PROJECT_DIR$/res/drawable/volleyball_background.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable/volleyball_button.xml" afterPath="$PROJECT_DIR$/res/drawable/volleyball_button.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SportCoachHelper.iws" />
@@ -502,19 +766,8 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/sportcoachhelper/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="34" selection-start="1386" selection-end="1386" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="11280">
+            <state line="149" column="0" selection-start="5258" selection-end="5258" vertical-scroll-proportion="0.0" vertical-offset="2235" max-vertical-offset="12570">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GraphicsActivity.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/sportcoachhelper/GraphicsActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="1" selection-start="1" selection-end="1" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="645">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -522,16 +775,16 @@
       <file leaf-file-name="DrawingView.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/sportcoachhelper/components/DrawingView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="342" column="4" selection-start="10593" selection-end="10593" vertical-scroll-proportion="0.0" vertical-offset="5130" max-vertical-offset="13770">
+            <state line="342" column="4" selection-start="10654" selection-end="10654" vertical-scroll-proportion="0.0" vertical-offset="3915" max-vertical-offset="13245">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PlaysManager.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="PlaysManager.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/sportcoachhelper/managers/PlaysManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="0" selection-start="675" selection-end="675" vertical-scroll-proportion="0.0" vertical-offset="555" max-vertical-offset="1305">
+            <state line="53" column="0" selection-start="1848" selection-end="1848" vertical-scroll-proportion="0.19527897" vertical-offset="539" max-vertical-offset="1305">
               <folding />
             </state>
           </provider>
@@ -540,7 +793,7 @@
       <file leaf-file-name="Play.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/sportcoachhelper/model/Play.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="101" column="5" selection-start="1944" selection-end="1944" vertical-scroll-proportion="0.0" vertical-offset="1515" max-vertical-offset="1650">
+            <state line="101" column="5" selection-start="1980" selection-end="1980" vertical-scroll-proportion="0.0" vertical-offset="1515" max-vertical-offset="1845">
               <folding />
             </state>
           </provider>
@@ -568,6 +821,15 @@
         <entry file="file://$PROJECT_DIR$/src/com/sportcoachhelper/paths/SquarePath.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="5" column="13" selection-start="112" selection-end="112" vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="510">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Utility.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/sportcoachhelper/util/Utility.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="89" column="0" selection-start="2950" selection-end="2950" vertical-scroll-proportion="0.0" vertical-offset="1335" max-vertical-offset="1740">
               <folding />
             </state>
           </provider>
@@ -609,6 +871,8 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
+        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/res/values/dimens.xml" />
         <option value="$PROJECT_DIR$/res/layout/help.xml" />
         <option value="$PROJECT_DIR$/res/values-normal/dimens.xml" />
         <option value="$PROJECT_DIR$/res/values-large/dimens.xml" />
@@ -623,8 +887,6 @@
         <option value="$PROJECT_DIR$/src/com/sportcoachhelper/paths/ColorPath.java" />
         <option value="$PROJECT_DIR$/src/com/sportcoachhelper/model/Play.java" />
         <option value="$PROJECT_DIR$/src/com/sportcoachhelper/components/DrawingView.java" />
-        <option value="$PROJECT_DIR$/src/com/sportcoachhelper/managers/PlaysManager.java" />
-        <option value="$PROJECT_DIR$/src/com/sportcoachhelper/GraphicsActivity.java" />
       </list>
     </option>
   </component>
@@ -648,11 +910,6 @@
   </component>
   <component name="ProjectReloadState">
     <option name="STATE" value="0" />
-  </component>
-  <component name="ProjectStructureProblems">
-    <ignored-problems>
-      <problem id="unused-library(library:project:android-support-v4-944d470ebd8546a9f76b12688a13f80b)" />
-    </ignored-problems>
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
@@ -704,20 +961,64 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SportCoachHelper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SportCoachHelper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sportcoachhelper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SportCoachHelper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SportCoachHelper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sportcoachhelper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="managers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="SHOW_ALL_PROCESSES" value="false" />
     <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="recentsLimit" value="5" />
     <property name="MemberChooser.sorted" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../adt-bundle/sdk/extras/android/support/v13/android-support-v13.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../voley/Coach-Board" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="10.1.1.109:5555" />
     <property name="DEBUGGABLE_DEVICE" value="10.1.1.109:5555" />
@@ -732,7 +1033,7 @@
     <property name="FullScreen" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="dir.diff.last.used.directory" value="$USER_HOME$/voley/Coach-Board" />
+    <property name="dir.diff.last.used.directory" value="$PROJECT_DIR$/../../../../voley/Coach-Board" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -963,8 +1264,8 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2096" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.32918552" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="1310" y="236" width="1132" height="416" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2096" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.32918552" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="1048" y="390" width="1132" height="416" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32952815" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -975,8 +1276,8 @@
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32952815" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31703204" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" x="-87" y="918" width="1314" height="191" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
     </layout>
@@ -993,6 +1294,13 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/com/sportcoachhelper/util/Utility.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="89" column="0" selection-start="2950" selection-end="2950" vertical-scroll-proportion="0.0" vertical-offset="1335" max-vertical-offset="1740">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/sportcoachhelper/managers/TemplateManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="19" column="0" selection-start="483" selection-end="483" vertical-scroll-proportion="0.0" vertical-offset="285" max-vertical-offset="1110">
@@ -1035,6 +1343,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/sportcoachhelper/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="149" column="0" selection-start="5258" selection-end="5258" vertical-scroll-proportion="0.0" vertical-offset="1557" max-vertical-offset="11280">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/sportcoachhelper/util/Utility.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="89" column="0" selection-start="2950" selection-end="2950" vertical-scroll-proportion="0.0" vertical-offset="1077" max-vertical-offset="1605">
@@ -1044,7 +1359,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/sportcoachhelper/paths/interfaces/Detectable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="9" selection-start="188" selection-end="188" vertical-scroll-proportion="0.41095892" vertical-offset="0" max-vertical-offset="438" />
+        <state line="12" column="9" selection-start="188" selection-end="188" vertical-scroll-proportion="0.41095892" vertical-offset="0" max-vertical-offset="438">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/sportcoachhelper/paths/LinePath.java">
@@ -1070,38 +1387,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/sportcoachhelper/model/Play.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="101" column="5" selection-start="1944" selection-end="1944" vertical-scroll-proportion="0.0" vertical-offset="1515" max-vertical-offset="1650">
+        <state line="101" column="5" selection-start="1980" selection-end="1980" vertical-scroll-proportion="0.0" vertical-offset="1162" max-vertical-offset="1725">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/sportcoachhelper/components/DrawingView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="342" column="4" selection-start="10593" selection-end="10593" vertical-scroll-proportion="0.0" vertical-offset="5130" max-vertical-offset="13770">
+        <state line="342" column="4" selection-start="10654" selection-end="10654" vertical-scroll-proportion="0.0" vertical-offset="3915" max-vertical-offset="13245">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/sportcoachhelper/managers/PlaysManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="0" selection-start="675" selection-end="675" vertical-scroll-proportion="0.0" vertical-offset="555" max-vertical-offset="1305">
+        <state line="53" column="0" selection-start="1848" selection-end="1848" vertical-scroll-proportion="0.19527897" vertical-offset="539" max-vertical-offset="1305">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/sportcoachhelper/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="34" selection-start="1386" selection-end="1386" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="11280">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/sportcoachhelper/GraphicsActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="1" selection-start="1" selection-end="1" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="645">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1145,7 +1446,7 @@
       </state>
       <state key="JdkListConfigurable.UI">
         <settings>
-          <last-edited>Android API 19 Platform</last-edited>
+          <last-edited>Android API 18 Platform</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1181,7 +1482,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>android-support-v13</last-edited>
+          <last-edited>android-support-v4</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
