@@ -27,15 +27,14 @@
     <option name="TOOL_WINDOW_LOG_LEVEL" value="DEBUG" />
   </component>
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/res/values/strings.xml" line="78" />
+    <bookmark url="file://$PROJECT_DIR$/res/values/strings.xml" line="80" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a5aaec99-a1f2-44fc-98d7-1156c5bd1d66" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/android_support_v4_944d470ebd8546a9f76b12688a13f80b.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SportCoachHelper.iml" afterPath="$PROJECT_DIR$/SportCoachHelper.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/android_support_v4.xml" afterPath="$PROJECT_DIR$/.idea/libraries/android_support_v4.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project.properties" afterPath="$PROJECT_DIR$/project.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/sportcoachhelper/components/DrawingView.java" afterPath="$PROJECT_DIR$/src/com/sportcoachhelper/components/DrawingView.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/sportcoachhelper/MainActivity.java" afterPath="$PROJECT_DIR$/src/com/sportcoachhelper/MainActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/activity_main.xml" afterPath="$PROJECT_DIR$/res/layout/activity_main.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/strings.xml" afterPath="$PROJECT_DIR$/res/values/strings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SportCoachHelper.iws" />
@@ -60,7 +59,7 @@
   </component>
   <component name="DebuggerManager">
     <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
-      <breakpoint url="file://$PROJECT_DIR$/src/com/sportcoachhelper/MainActivity.java" line="126" class="com.sportcoachhelper.MainActivity" package="com.sportcoachhelper">
+      <breakpoint url="file://$PROJECT_DIR$/src/com/sportcoachhelper/MainActivity.java" line="129" class="com.sportcoachhelper.MainActivity" package="com.sportcoachhelper">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -105,7 +104,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/com/sportcoachhelper/components/DrawingView.java" line="709" class="com.sportcoachhelper.components.DrawingView" package="com.sportcoachhelper.components">
+      <breakpoint url="file://$PROJECT_DIR$/src/com/sportcoachhelper/components/DrawingView.java" line="705" class="com.sportcoachhelper.components.DrawingView" package="com.sportcoachhelper.components">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -120,7 +119,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/com/sportcoachhelper/components/DrawingView.java" line="622" class="com.sportcoachhelper.components.DrawingView" package="com.sportcoachhelper.components">
+      <breakpoint url="file://$PROJECT_DIR$/src/com/sportcoachhelper/components/DrawingView.java" line="618" class="com.sportcoachhelper.components.DrawingView" package="com.sportcoachhelper.components">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -210,7 +209,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/com/sportcoachhelper/components/DrawingView.java" line="716" class="com.sportcoachhelper.components.DrawingView" package="com.sportcoachhelper.components">
+      <breakpoint url="file://$PROJECT_DIR$/src/com/sportcoachhelper/components/DrawingView.java" line="712" class="com.sportcoachhelper.components.DrawingView" package="com.sportcoachhelper.components">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -255,7 +254,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/com/sportcoachhelper/MainActivity.java" line="149" class="com.sportcoachhelper.MainActivity" package="com.sportcoachhelper">
+      <breakpoint url="file://$PROJECT_DIR$/src/com/sportcoachhelper/MainActivity.java" line="152" class="com.sportcoachhelper.MainActivity" package="com.sportcoachhelper">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -285,7 +284,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/com/sportcoachhelper/MainActivity.java" line="165" class="com.sportcoachhelper.MainActivity" package="com.sportcoachhelper">
+      <breakpoint url="file://$PROJECT_DIR$/src/com/sportcoachhelper/MainActivity.java" line="168" class="com.sportcoachhelper.MainActivity" package="com.sportcoachhelper">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -315,7 +314,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/com/sportcoachhelper/MainActivity.java" line="374" class="com.sportcoachhelper.MainActivity$14" package="com.sportcoachhelper">
+      <breakpoint url="file://$PROJECT_DIR$/src/com/sportcoachhelper/MainActivity.java" line="405" class="com.sportcoachhelper.MainActivity$15" package="com.sportcoachhelper">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -345,7 +344,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/com/sportcoachhelper/components/DrawingView.java" line="312" class="com.sportcoachhelper.components.DrawingView" package="com.sportcoachhelper.components">
+      <breakpoint url="file://$PROJECT_DIR$/src/com/sportcoachhelper/components/DrawingView.java" line="308" class="com.sportcoachhelper.components.DrawingView" package="com.sportcoachhelper.components">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -360,7 +359,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/com/sportcoachhelper/components/DrawingView.java" line="863" class="com.sportcoachhelper.components.DrawingView" package="com.sportcoachhelper.components">
+      <breakpoint url="file://$PROJECT_DIR$/src/com/sportcoachhelper/components/DrawingView.java" line="859" class="com.sportcoachhelper.components.DrawingView" package="com.sportcoachhelper.components">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -375,7 +374,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/com/sportcoachhelper/MainActivity.java" line="296" class="com.sportcoachhelper.MainActivity$8" package="com.sportcoachhelper">
+      <breakpoint url="file://$PROJECT_DIR$/src/com/sportcoachhelper/MainActivity.java" line="327" class="com.sportcoachhelper.MainActivity$9" package="com.sportcoachhelper">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -390,7 +389,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/com/sportcoachhelper/components/DrawingView.java" line="591" class="com.sportcoachhelper.components.DrawingView" package="com.sportcoachhelper.components">
+      <breakpoint url="file://$PROJECT_DIR$/src/com/sportcoachhelper/components/DrawingView.java" line="587" class="com.sportcoachhelper.components.DrawingView" package="com.sportcoachhelper.components">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -405,7 +404,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/com/sportcoachhelper/MainActivity.java" line="634" class="com.sportcoachhelper.MainActivity" package="com.sportcoachhelper">
+      <breakpoint url="file://$PROJECT_DIR$/src/com/sportcoachhelper/MainActivity.java" line="667" class="com.sportcoachhelper.MainActivity" package="com.sportcoachhelper">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -480,7 +479,67 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/com/sportcoachhelper/MainActivity.java" line="522" class="com.sportcoachhelper.MainActivity" package="com.sportcoachhelper">
+      <breakpoint url="file://$PROJECT_DIR$/src/com/sportcoachhelper/MainActivity.java" line="555" class="com.sportcoachhelper.MainActivity" package="com.sportcoachhelper">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/com/sportcoachhelper/MainActivity.java" line="304" class="com.sportcoachhelper.MainActivity" package="com.sportcoachhelper">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/com/sportcoachhelper/components/DrawingView.java" line="112" class="com.sportcoachhelper.components.DrawingView" package="com.sportcoachhelper.components">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/com/sportcoachhelper/MainActivity.java" line="280" class="com.sportcoachhelper.MainActivity$7" package="com.sportcoachhelper">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/com/sportcoachhelper/components/DrawingView.java" line="269" class="com.sportcoachhelper.components.DrawingView" package="com.sportcoachhelper.components">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -545,7 +604,35 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/sportcoachhelper/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="520" column="51" selection-start="17438" selection-end="17438" vertical-scroll-proportion="0.0" vertical-offset="7800" max-vertical-offset="12570">
+            <state line="851" column="38" selection-start="26906" selection-end="26906" vertical-scroll-proportion="-407.84616" vertical-offset="931" max-vertical-offset="11850">
+              <folding>
+                <element signature="e#5284#5321#0" expanded="true" />
+                <element signature="e#5685#5716#0" expanded="true" />
+                <element signature="e#5739#5771#0" expanded="true" />
+                <element signature="e#7148#7193#0" expanded="true" />
+                <element signature="e#8142#8420#0" expanded="true" />
+                <element signature="e#8415#8416#0" expanded="true" />
+                <element signature="e#9217#9591#0" expanded="true" />
+                <element signature="e#9580#9581#0" expanded="true" />
+                <element signature="e#10513#10544#0" expanded="true" />
+                <element signature="e#14612#14644#0" expanded="true" />
+                <element signature="e#14673#14713#0" expanded="true" />
+                <element signature="e#17829#17861#0" expanded="true" />
+                <element signature="e#17890#17926#0" expanded="true" />
+                <element signature="e#18914#18972#0" expanded="true" />
+                <element signature="e#19110#19135#0" expanded="true" />
+                <element signature="e#19161#19187#0" expanded="true" />
+                <element signature="e#19213#19243#0" expanded="true" />
+                <element signature="e#27242#27279#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Context.class" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$APPLICATION_HOME_DIR$/sdk/platforms/android-19/android.jar!/android/content/Context.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="92" column="34" selection-start="4829" selection-end="4829" vertical-scroll-proportion="0.0" vertical-offset="1196" max-vertical-offset="4500">
               <folding />
             </state>
           </provider>
@@ -554,25 +641,107 @@
       <file leaf-file-name="BallPath.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/sportcoachhelper/paths/BallPath.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="44" column="43" selection-start="1205" selection-end="1205" vertical-scroll-proportion="0.0" vertical-offset="660" max-vertical-offset="2220">
+            <state line="44" column="43" selection-start="1205" selection-end="1205" vertical-scroll-proportion="0.0" vertical-offset="660" max-vertical-offset="1995">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DrawingView.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="DrawingView.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/sportcoachhelper/components/DrawingView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="210" column="39" selection-start="6300" selection-end="6300" vertical-scroll-proportion="0.0" vertical-offset="3150" max-vertical-offset="14220">
+            <state line="109" column="8" selection-start="3371" selection-end="3371" vertical-scroll-proportion="0.23178808" vertical-offset="765" max-vertical-offset="13290">
+              <folding>
+                <element signature="e#2198#2248#0" expanded="true" />
+                <element signature="e#3290#3327#0" expanded="true" />
+                <element signature="e#3424#3477#0" expanded="true" />
+                <element signature="e#3498#3547#0" expanded="true" />
+                <element signature="e#5001#5054#0" expanded="true" />
+                <element signature="e#6903#6936#0" expanded="true" />
+                <element signature="e#6962#6996#0" expanded="true" />
+                <element signature="e#7022#7060#0" expanded="true" />
+                <element signature="e#7262#7299#0" expanded="true" />
+                <element signature="e#7396#7440#0" expanded="true" />
+                <element signature="e#7549#7594#0" expanded="true" />
+                <element signature="e#7765#7802#0" expanded="true" />
+                <element signature="e#7890#7934#0" expanded="true" />
+                <element signature="e#8035#8080#0" expanded="true" />
+                <element signature="e#8227#8264#0" expanded="true" />
+                <element signature="e#8353#8397#0" expanded="true" />
+                <element signature="e#8491#8536#0" expanded="true" />
+                <element signature="e#9458#9511#0" expanded="true" />
+                <element signature="e#10597#10647#0" expanded="true" />
+                <element signature="e#12714#12763#0" expanded="true" />
+                <element signature="e#12912#12962#0" expanded="true" />
+                <element signature="e#13111#13163#0" expanded="true" />
+                <element signature="e#13314#13364#0" expanded="true" />
+                <element signature="e#13513#13565#0" expanded="true" />
+                <element signature="e#13715#13764#0" expanded="true" />
+                <element signature="e#13913#13950#0" expanded="true" />
+                <element signature="e#14158#14333#0" expanded="true" />
+                <element signature="e#14318#14319#0" expanded="true" />
+                <element signature="e#27023#27024#0" expanded="true" />
+                <element signature="e#27051#27052#0" expanded="true" />
+                <element signature="e#27221#27222#0" expanded="true" />
+                <element signature="e#27248#27249#0" expanded="true" />
+                <element signature="e#27352#27405#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="strings.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="26" column="29" selection-start="1181" selection-end="1192" vertical-scroll-proportion="0.0" vertical-offset="134" max-vertical-offset="1380">
               <folding />
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activity_main.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/layout/activity_main.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="150" column="21" selection-start="5765" selection-end="5765" vertical-scroll-proportion="4.185185" vertical-offset="2363" max-vertical-offset="3000">
+              <folding>
+                <element signature="e#329#351#0" expanded="true" />
+                <element signature="e#873#903#0" expanded="true" />
+                <element signature="e#971#997#0" expanded="true" />
+                <element signature="e#1221#1251#0" expanded="true" />
+                <element signature="e#1319#1348#0" expanded="true" />
+                <element signature="e#1573#1603#0" expanded="true" />
+                <element signature="e#1671#1698#0" expanded="true" />
+                <element signature="e#1933#1963#0" expanded="true" />
+                <element signature="e#2031#2057#0" expanded="true" />
+                <element signature="e#2281#2311#0" expanded="true" />
+                <element signature="e#2379#2408#0" expanded="true" />
+                <element signature="e#2633#2663#0" expanded="true" />
+                <element signature="e#2731#2758#0" expanded="true" />
+                <element signature="e#2991#3020#0" expanded="true" />
+                <element signature="e#3335#3364#0" expanded="true" />
+                <element signature="e#3441#3460#0" expanded="true" />
+                <element signature="e#3596#3623#0" expanded="true" />
+                <element signature="e#4280#4307#0" expanded="true" />
+                <element signature="e#4609#4631#0" expanded="true" />
+                <element signature="e#5217#5247#0" expanded="true" />
+                <element signature="e#5538#5568#0" expanded="true" />
+                <element signature="e#5785#5812#0" expanded="true" />
+                <element signature="e#6072#6102#0" expanded="true" />
+                <element signature="e#6315#6342#0" expanded="true" />
+                <element signature="e#6576#6606#0" expanded="true" />
+                <element signature="e#6809#6836#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer">
+            <state />
           </provider>
         </entry>
       </file>
       <file leaf-file-name="PlaysManager.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/sportcoachhelper/managers/PlaysManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="53" column="0" selection-start="1848" selection-end="1848" vertical-scroll-proportion="0.0" vertical-offset="795" max-vertical-offset="1470">
+            <state line="53" column="0" selection-start="1848" selection-end="1848" vertical-scroll-proportion="0.0" vertical-offset="703" max-vertical-offset="1305">
               <folding />
             </state>
           </provider>
@@ -590,37 +759,19 @@
       <file leaf-file-name="TemplateManager.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/sportcoachhelper/managers/TemplateManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="30" selection-start="482" selection-end="482" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="915">
+            <state line="18" column="30" selection-start="482" selection-end="482" vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="1110">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PlaysNameDialogFragment.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="PlaysNameDialogFragment.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/sportcoachhelper/dialogs/PlaysNameDialogFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="4" selection-start="555" selection-end="555" vertical-scroll-proportion="0.5790441" vertical-offset="0" max-vertical-offset="930">
+            <state line="21" column="4" selection-start="555" selection-end="555" vertical-scroll-proportion="0.0" vertical-offset="233" max-vertical-offset="930">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ScreenSlidePageFragment.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/sportcoachhelper/fragments/ScreenSlidePageFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="313" column="0" selection-start="10615" selection-end="10615" vertical-scroll-proportion="0.0" vertical-offset="4695" max-vertical-offset="6105">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Template.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/sportcoachhelper/model/Template.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="32" selection-start="32" selection-end="32" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="750">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -643,8 +794,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/res/values/dimens.xml" />
         <option value="$PROJECT_DIR$/res/layout/help.xml" />
         <option value="$PROJECT_DIR$/res/values-normal/dimens.xml" />
@@ -655,10 +804,12 @@
         <option value="$PROJECT_DIR$/src/com/sportcoachhelper/fragments/ScreenSlidePageFragment.java" />
         <option value="$PROJECT_DIR$/src/com/sportcoachhelper/paths/BallPath.java" />
         <option value="$PROJECT_DIR$/src/com/sportcoachhelper/util/Utility.java" />
-        <option value="$PROJECT_DIR$/src/com/sportcoachhelper/MainActivity.java" />
-        <option value="$PROJECT_DIR$/src/com/sportcoachhelper/components/DrawingView.java" />
         <option value="$PROJECT_DIR$/src/com/sportcoachhelper/managers/TemplateManager.java" />
         <option value="$PROJECT_DIR$/src/com/sportcoachhelper/dialogs/PlaysNameDialogFragment.java" />
+        <option value="$PROJECT_DIR$/res/layout/activity_main.xml" />
+        <option value="$PROJECT_DIR$/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/src/com/sportcoachhelper/MainActivity.java" />
+        <option value="$PROJECT_DIR$/src/com/sportcoachhelper/components/DrawingView.java" />
       </list>
     </option>
   </component>
@@ -666,9 +817,9 @@
     <treeState />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="24" />
+    <option name="y" value="28" />
     <option name="width" value="1368" />
-    <option name="height" value="821" />
+    <option name="height" value="814" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -701,7 +852,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -731,12 +881,31 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SportCoachHelper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SportCoachHelper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layout" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -750,7 +919,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../adt-bundle/sdk/extras/android/support/v4/android-support-v4.jar!/" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="BH905L8L06" />
-    <property name="DEBUGGABLE_DEVICE" value="emulator-5554 (HTC_Evo_LTE)" />
+    <property name="DEBUGGABLE_DEVICE" value="BH905L8L06" />
     <property name="GoToClass.includeJavaFiles" value="false" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="DEBUGGABLE_PROCESS" value="com.sportcoachhelper" />
@@ -805,6 +974,19 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -830,19 +1012,6 @@
       <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -979,35 +1148,55 @@
   <component name="TimeTrackingManager">
     <option name="totallyTimeSpent" value="89195000" />
   </component>
+  <component name="TodoView" selected-index="0">
+    <todo-panel id="selected-file">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="default-changelist">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="24" width="1368" height="821" extended-state="0" />
+    <frame x="0" y="28" width="1368" height="814" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924226" sideWeight="0.6730769" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17908788" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17867436" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924226" sideWeight="0.6730769" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32952815" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" x="647" y="422" width="128" height="37" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32703003" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31556195" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" x="-87" y="918" width="1314" height="191" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" x="1005" y="341" width="128" height="37" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21037464" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21212122" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.32918552" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="822" y="264" width="128" height="40" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21037464" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.32918552" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="1110" y="165" width="128" height="40" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299712" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32952815" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24342105" sideWeight="0.7878453" order="3" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32486188" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25642964" sideWeight="0.7878453" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32420748" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32952815" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31712708" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" x="-87" y="918" width="1314" height="191" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1023,34 +1212,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/sportcoachhelper/model/Template.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="32" selection-start="32" selection-end="32" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="750">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/values-large/dimens.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="42" selection-start="840" selection-end="842" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="405">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="38" selection-start="1186" selection-end="1195" vertical-scroll-proportion="0.0" vertical-offset="218" max-vertical-offset="1350">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/values-xlarge/dimens.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="44" selection-start="705" selection-end="705" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="330">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/values-es/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="39" selection-start="544" selection-end="544" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1305">
@@ -1069,9 +1230,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="40" column="50" selection-start="1711" selection-end="1711" vertical-scroll-proportion="-3.6206896" vertical-offset="495" max-vertical-offset="1860">
           <folding>
-            <element signature="e#1271#1286#0" expanded="true" />
-            <element signature="e#2852#2873#0" expanded="true" />
-            <element signature="e#3640#3659#0" expanded="true" />
+            <element signature="e#1271#1286#0" expanded="false" />
+            <element signature="e#2852#2873#0" expanded="false" />
+            <element signature="e#3640#3659#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1086,13 +1247,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/sportcoachhelper/paths/BallPath.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="43" selection-start="1205" selection-end="1205" vertical-scroll-proportion="0.0" vertical-offset="444" max-vertical-offset="2055">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/sportcoachhelper/fragments/ScreenSlidePageFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="313" column="0" selection-start="10615" selection-end="10615" vertical-scroll-proportion="0.0" vertical-offset="3669" max-vertical-offset="5370">
@@ -1100,30 +1254,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/sportcoachhelper/managers/PlaysManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="0" selection-start="1848" selection-end="1848" vertical-scroll-proportion="0.0" vertical-offset="369" max-vertical-offset="1335">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/sportcoachhelper/util/Utility.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="44" column="0" selection-start="1152" selection-end="1152" vertical-scroll-proportion="0.0" vertical-offset="234" max-vertical-offset="1605">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/sportcoachhelper/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="520" column="51" selection-start="17438" selection-end="17438" vertical-scroll-proportion="0.0" vertical-offset="1719" max-vertical-offset="11775">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/sportcoachhelper/components/DrawingView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="210" column="39" selection-start="6300" selection-end="6300" vertical-scroll-proportion="0.0" vertical-offset="3150" max-vertical-offset="14220">
           <folding />
         </state>
       </provider>
@@ -1137,9 +1270,148 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/sportcoachhelper/dialogs/PlaysNameDialogFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="4" selection-start="555" selection-end="555" vertical-scroll-proportion="0.5790441" vertical-offset="0" max-vertical-offset="930">
+        <state line="21" column="4" selection-start="555" selection-end="555" vertical-scroll-proportion="0.0" vertical-offset="233" max-vertical-offset="930">
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/sportcoachhelper/paths/interfaces/Dibujables.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="9" selection-start="145" selection-end="145" vertical-scroll-proportion="0.16544117" vertical-offset="0" max-vertical-offset="544">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/activity_main.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="150" column="21" selection-start="5765" selection-end="5765" vertical-scroll-proportion="4.185185" vertical-offset="2363" max-vertical-offset="3000">
+          <folding>
+            <element signature="e#329#351#0" expanded="true" />
+            <element signature="e#873#903#0" expanded="true" />
+            <element signature="e#971#997#0" expanded="true" />
+            <element signature="e#1221#1251#0" expanded="true" />
+            <element signature="e#1319#1348#0" expanded="true" />
+            <element signature="e#1573#1603#0" expanded="true" />
+            <element signature="e#1671#1698#0" expanded="true" />
+            <element signature="e#1933#1963#0" expanded="true" />
+            <element signature="e#2031#2057#0" expanded="true" />
+            <element signature="e#2281#2311#0" expanded="true" />
+            <element signature="e#2379#2408#0" expanded="true" />
+            <element signature="e#2633#2663#0" expanded="true" />
+            <element signature="e#2731#2758#0" expanded="true" />
+            <element signature="e#2991#3020#0" expanded="true" />
+            <element signature="e#3335#3364#0" expanded="true" />
+            <element signature="e#3441#3460#0" expanded="true" />
+            <element signature="e#3596#3623#0" expanded="true" />
+            <element signature="e#4280#4307#0" expanded="true" />
+            <element signature="e#4609#4631#0" expanded="true" />
+            <element signature="e#5217#5247#0" expanded="true" />
+            <element signature="e#5538#5568#0" expanded="true" />
+            <element signature="e#5785#5812#0" expanded="true" />
+            <element signature="e#6072#6102#0" expanded="true" />
+            <element signature="e#6315#6342#0" expanded="true" />
+            <element signature="e#6576#6606#0" expanded="true" />
+            <element signature="e#6809#6836#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/sportcoachhelper/paths/BallPath.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="43" selection-start="1205" selection-end="1205" vertical-scroll-proportion="0.0" vertical-offset="444" max-vertical-offset="2055">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/sportcoachhelper/managers/PlaysManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="53" column="0" selection-start="1848" selection-end="1848" vertical-scroll-proportion="0.0" vertical-offset="369" max-vertical-offset="1335">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="29" selection-start="1181" selection-end="1192" vertical-scroll-proportion="0.0" vertical-offset="134" max-vertical-offset="1380">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/sdk/platforms/android-19/android.jar!/android/content/Context.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="92" column="34" selection-start="4829" selection-end="4829" vertical-scroll-proportion="0.0" vertical-offset="1196" max-vertical-offset="4500">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/sportcoachhelper/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="851" column="38" selection-start="26906" selection-end="26906" vertical-scroll-proportion="-407.84616" vertical-offset="931" max-vertical-offset="11850">
+          <folding>
+            <element signature="e#5284#5321#0" expanded="true" />
+            <element signature="e#5685#5716#0" expanded="true" />
+            <element signature="e#5739#5771#0" expanded="true" />
+            <element signature="e#7148#7193#0" expanded="true" />
+            <element signature="e#8142#8420#0" expanded="true" />
+            <element signature="e#8415#8416#0" expanded="true" />
+            <element signature="e#9217#9591#0" expanded="true" />
+            <element signature="e#9580#9581#0" expanded="true" />
+            <element signature="e#10513#10544#0" expanded="true" />
+            <element signature="e#14612#14644#0" expanded="true" />
+            <element signature="e#14673#14713#0" expanded="true" />
+            <element signature="e#17829#17861#0" expanded="true" />
+            <element signature="e#17890#17926#0" expanded="true" />
+            <element signature="e#18914#18972#0" expanded="true" />
+            <element signature="e#19110#19135#0" expanded="true" />
+            <element signature="e#19161#19187#0" expanded="true" />
+            <element signature="e#19213#19243#0" expanded="true" />
+            <element signature="e#27242#27279#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/sportcoachhelper/components/DrawingView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="109" column="8" selection-start="3371" selection-end="3371" vertical-scroll-proportion="0.23178808" vertical-offset="765" max-vertical-offset="13290">
+          <folding>
+            <element signature="e#2198#2248#0" expanded="true" />
+            <element signature="e#3290#3327#0" expanded="true" />
+            <element signature="e#3424#3477#0" expanded="true" />
+            <element signature="e#3498#3547#0" expanded="true" />
+            <element signature="e#5001#5054#0" expanded="true" />
+            <element signature="e#6903#6936#0" expanded="true" />
+            <element signature="e#6962#6996#0" expanded="true" />
+            <element signature="e#7022#7060#0" expanded="true" />
+            <element signature="e#7262#7299#0" expanded="true" />
+            <element signature="e#7396#7440#0" expanded="true" />
+            <element signature="e#7549#7594#0" expanded="true" />
+            <element signature="e#7765#7802#0" expanded="true" />
+            <element signature="e#7890#7934#0" expanded="true" />
+            <element signature="e#8035#8080#0" expanded="true" />
+            <element signature="e#8227#8264#0" expanded="true" />
+            <element signature="e#8353#8397#0" expanded="true" />
+            <element signature="e#8491#8536#0" expanded="true" />
+            <element signature="e#9458#9511#0" expanded="true" />
+            <element signature="e#10597#10647#0" expanded="true" />
+            <element signature="e#12714#12763#0" expanded="true" />
+            <element signature="e#12912#12962#0" expanded="true" />
+            <element signature="e#13111#13163#0" expanded="true" />
+            <element signature="e#13314#13364#0" expanded="true" />
+            <element signature="e#13513#13565#0" expanded="true" />
+            <element signature="e#13715#13764#0" expanded="true" />
+            <element signature="e#13913#13950#0" expanded="true" />
+            <element signature="e#14158#14333#0" expanded="true" />
+            <element signature="e#14318#14319#0" expanded="true" />
+            <element signature="e#27023#27024#0" expanded="true" />
+            <element signature="e#27051#27052#0" expanded="true" />
+            <element signature="e#27221#27222#0" expanded="true" />
+            <element signature="e#27248#27249#0" expanded="true" />
+            <element signature="e#27352#27405#0" expanded="true" />
           </folding>
         </state>
       </provider>

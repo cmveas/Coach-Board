@@ -22,9 +22,11 @@
 	<string name="drawing_mode">Drawing Mode</string>
 	<string name="organization_mode">Organization Mode</string>
 	<string name="continuous_line_mode">Continuous Line</string>
-	<string name="dotted_line_mode">Dotted Line</string>
 	<string name="saved_plays">Saved Plays</string>
-	<string name="templates">Templates</string>
+    <string name="dotted_line_mode">Dotted Line</string>
+    <string name="eraser_mode">Dotted Line</string>
+
+    <string name="templates">Templates</string>
     <string name="localroundplayer">localroundplayer</string>
     <string name="localtriangleplayer">localtriangleplayer</string>
     <string name="localsquareplayer">localsquareplayer</string>

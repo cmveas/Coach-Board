@@ -58,6 +58,7 @@ public class MainActivity extends GraphicsActivity implements
 	private ToggleButton organizationMode;
 	private ToggleButton continuousLineMode;
 	private ToggleButton dottedLineMode;
+    private ToggleButton eraser_mode;
     private LinearLayout layoutToolBar2;
     private int id;
     private View continuousBackground;
@@ -109,12 +110,14 @@ public class MainActivity extends GraphicsActivity implements
 		playerImage2 = (ToggleButton) findViewById(R.id.playerTool2);
 		triangleTool2 = (ToggleButton) findViewById(R.id.triangleTool2);
 		squareTool2 = (ToggleButton) findViewById(R.id.squareTool2);
+        eraser_mode=(ToggleButton) findViewById(R.id.eraser_mode);
 		organizationMode = (ToggleButton) findViewById(R.id.organization_mode);
 		continuousLineMode = (ToggleButton) findViewById(R.id.continuous_line_mode);
 		dottedLineMode = (ToggleButton) findViewById(R.id.dotted_line_mode);
         layoutToolBar2 = (LinearLayout) findViewById(R.id.layoutToolBar2);
         leftEmptySpace = findViewById(R.id.leftEmptySpace);
         rightEmptySpace= findViewById(R.id.rightEmptySpace);
+
 
 		
 		organizationMode.setChecked(true);
@@ -272,6 +275,18 @@ public class MainActivity extends GraphicsActivity implements
 			}
 		})	;
 
+        eraser_mode.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                if(isChecked) {
+                    setEraserMode();
+                    modeChanged();
+                } 	else {
+                    checkAButtonIsPressed(eraser_mode);
+                }
+            }
+        });
+
         dottedLineMode.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
@@ -285,6 +300,22 @@ public class MainActivity extends GraphicsActivity implements
 
         loadPlayerListeners();
 	}
+
+    private void setEraserMode() {
+        dottedLineMode.setChecked(false);
+        organizationMode.setChecked(false);
+        continuousLineMode.setChecked(false);
+        playerImage.setChecked(false);
+        playerImage2.setChecked(false);
+        squareTool.setChecked(false);
+        squareTool2.setChecked(false);
+        triangleTool.setChecked(false);
+        triangleTool2.setChecked(false);
+        ballTool.setChecked(false);
+        drawingView.setLineMode(getString(R.string.eraser_mode));
+
+    }
+
 
     private void loadPlayerListeners() {
         playerImage.setOnCheckedChangeListener(new OnCheckedChangeListener() {
@@ -399,6 +430,7 @@ public class MainActivity extends GraphicsActivity implements
 	}
 
 	protected void setContinuousLine() {
+        eraser_mode.setChecked(false);
 		organizationMode.setChecked(false);
 		dottedLineMode.setChecked(false);
         playerImage.setChecked(false);
@@ -489,6 +521,7 @@ public class MainActivity extends GraphicsActivity implements
     }
 	
 	protected void setDottedLine() {
+        eraser_mode.setChecked(false);
 		organizationMode.setChecked(false);
 		continuousLineMode.setChecked(false);
         playerImage.setChecked(false);
@@ -504,7 +537,7 @@ public class MainActivity extends GraphicsActivity implements
 	}
 
 	protected void checkAButtonIsPressed(ToggleButton selectedButton) {
-		if(!organizationMode.isChecked() && !continuousLineMode.isChecked() && !dottedLineMode.isChecked()) {
+		if(!organizationMode.isChecked() && !continuousLineMode.isChecked() && !dottedLineMode.isChecked() && !eraser_mode.isChecked()) {
 			selectedButton.setChecked(true);
 		}
 		
@@ -816,6 +849,7 @@ public class MainActivity extends GraphicsActivity implements
 	}
 
 	private void setOrganizationMode() {
+        eraser_mode.setChecked(false);
 		continuousLineMode.setChecked(false);
 		dottedLineMode.setChecked(false);
         playerImage.setChecked(false);

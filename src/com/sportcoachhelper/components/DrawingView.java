@@ -110,7 +110,7 @@ public class DrawingView extends View {
 		
 		mPaint = new Paint();
 
-        if(lineMode.equals(getContext().getString(R.string.continuous_line_mode))){
+        if(lineMode.equals(getContext().getString(R.string.continuous_line_mode)) || lineMode.equals(getContext().getString(R.string.dotted_line_mode))){
 		mPaint.setAntiAlias(true);
 		mPaint.setDither(true);
 		mPaint.setColor(getColorPerLineMode(lineMode));
@@ -126,7 +126,7 @@ public class DrawingView extends View {
             mPaint.setAntiAlias(true);
             mPaint.setDither(true);
             mPaint.setStyle(Paint.Style.STROKE);
-            mPaint.setStrokeWidth(4);
+            mPaint.setStrokeWidth(8);
             mPaint.setXfermode(new PorterDuffXfermode(
                     PorterDuff.Mode.CLEAR));
             mPath = new LinePath(mPaint);
@@ -272,21 +272,17 @@ public class DrawingView extends View {
 		
 		//canvas.drawColor(0xFFFFFFFF);
 
-
-
-
-/*
 		ArrayList<Dibujables> undoablePaths = play.getUndoablePaths();
 
 		for (Dibujables path : undoablePaths) {
 			path.draw(another);
+		}
 
-		}*/
+        another.drawPath(mPath, mPaint);
 
         canvas.drawBitmap(mBitmap, 0, 0, mBitmapPaint);
         canvas.drawBitmap(figuresBitmap,0,0,mBitmapPaint);
 
-		canvas.drawPath(mPath, mPaint);
 		long last = System.currentTimeMillis();
 		android.util.Log.d(TAG, "onDraw Finished:" + (last - now) + "now: " + now + " last:" + last);
 	}
@@ -401,7 +397,7 @@ public class DrawingView extends View {
                 // kill this so we don't double draw
                 // mPath.reset();
                 mPath.setColor(getColorPerLineMode(lineMode));
-                another.drawPath(mPath, mPaint);
+
 
                 // mPath.reset();
                 movable=null;
@@ -938,5 +934,8 @@ public class DrawingView extends View {
 
     public void setSidesMargins(int margin) {
 
+    }
+
+    public void setEraserMode() {
     }
 }
