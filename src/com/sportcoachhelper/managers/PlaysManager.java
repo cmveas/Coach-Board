@@ -18,6 +18,7 @@ public class PlaysManager {
 
     private static final PlaysManager instance = new PlaysManager();
     private final String[] fields;
+    private final StorageManager mStorageManager;
 
     public static PlaysManager getInstance() {
         return instance;
@@ -28,6 +29,7 @@ public class PlaysManager {
 
     public PlaysManager(){
         fields = CoachApp.getInstance().getResources().getStringArray(R.array.fields);
+        mStorageManager = CoachApp.getInstance().getStorageManager();
         for(String field : fields){
             reloadList(field);
         }
@@ -38,7 +40,7 @@ public class PlaysManager {
     private void reloadList(String label) {
         allPlays.remove(label);
         ArrayList<Play> plays = new ArrayList<Play>();
-        Cursor cursor = DatabaseHelper.getInstance().getPlays(label);
+        Cursor cursor = mStorageManager.getPlays(label);
         if(cursor.moveToFirst()) {
             int nameIndex = cursor.getColumnIndex(DatabaseHelper.PLAYS_NAME);
             int dateIndex = cursor.getColumnIndex(DatabaseHelper.PLAYS_DATE);

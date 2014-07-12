@@ -20,6 +20,7 @@ import com.sportcoachhelper.CoachApp;
 import com.sportcoachhelper.R;
 import com.sportcoachhelper.database.DatabaseHelper;
 import com.sportcoachhelper.interfaces.OnComponentSelectedListener;
+import com.sportcoachhelper.managers.StorageManager;
 import com.sportcoachhelper.model.Play;
 import com.sportcoachhelper.model.Team;
 import com.sportcoachhelper.model.Template;
@@ -68,6 +69,7 @@ public class DrawingView extends View {
     private int continuousLine=0xFF000000;
     private int screenWidth;
     private int screenHeight;
+    private StorageManager mStorageManager;
 
 
     public void setOnComponentSelectedListener(OnComponentSelectedListener listener){
@@ -93,6 +95,8 @@ public class DrawingView extends View {
 	}
 
 	private void init() {
+
+        mStorageManager =  ((CoachApp)getContext().getApplicationContext()).getStorageManager();
 
         if(getContext() instanceof Activity) {
             Display display = ((Activity)getContext()).getWindowManager().getDefaultDisplay();
@@ -583,10 +587,10 @@ public class DrawingView extends View {
 	try {
         play.setName(name);
 		if(play.getId()!=-1) {
-            DatabaseHelper.getInstance().updatePlay(play.getId(),name, play.getField(), play.getFieldType() , "", System.currentTimeMillis());
-            DatabaseHelper.getInstance().deletePlayComponents(play.getId());
+            mStorageManager.updatePlay(play.getId(),name, play.getField(), play.getFieldType() , "", System.currentTimeMillis());
+
         } else {
-            long playId= DatabaseHelper.getInstance().insertPlay(name, play.getField(),play.getFieldType() , "", System.currentTimeMillis());
+            long playId=  mStorageManager.insertPlay(name, play.getField(),play.getFieldType() , "", System.currentTimeMillis());
             play.setId(playId);
 
         }
@@ -608,7 +612,7 @@ public class DrawingView extends View {
                 JSONObject data = new JSONObject();
                 android.util.Log.d(TAG,"Saving shape: " + component.getComponentType());
                 data.put("DATA",component.toJsonData());
-                DatabaseHelper.getInstance().insertPlayComponent(component.getComponentType(),data.toString(),playId,index);
+                mStorageManager.insertPlayComponent(component.getComponentType(), data.toString(), playId, index);
                 index++;
             }
             }
@@ -700,7 +704,7 @@ public class DrawingView extends View {
     public void openDocument(Play play) {
         try {
           this.play = play;
-          Cursor cursor = DatabaseHelper.getInstance().getPlayComponents(play.getId());
+          Cursor cursor = mStorageManager.getPlayComponents(play.getId());
 
           if(cursor!=null && cursor.moveToFirst()  ) {
               int indexShape = cursor.getColumnIndex(DatabaseHelper.PLAYS_COMPONENT_SHAPE);

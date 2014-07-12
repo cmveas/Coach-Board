@@ -72,7 +72,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	 
 				instance = new DatabaseHelper(CoachApp.getInstance(), "plays", null, pInfo.versionCode);
 			} catch (NameNotFoundException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
