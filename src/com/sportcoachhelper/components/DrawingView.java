@@ -70,6 +70,7 @@ public class DrawingView extends View {
     private int screenWidth;
     private int screenHeight;
     private StorageManager mStorageManager;
+    private Bitmap mLinesBitmap;
 
 
     public void setOnComponentSelectedListener(OnComponentSelectedListener listener){
@@ -197,6 +198,7 @@ public class DrawingView extends View {
 		this.h=h;
 		if(w>0 && h>0) {
 			mBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
+            mLinesBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
 			mCanvas = new Canvas(mBitmap);
 			Bitmap bitmap = getFieldFromSelection();
             if(bitmap!=null) {
@@ -257,6 +259,8 @@ public class DrawingView extends View {
 
 		canvas.drawBitmap(mBitmap, 0, 0, mBitmapPaint);
 
+        canvas.drawBitmap(mLinesBitmap, 0, 0, mBitmapPaint);
+
 		ArrayList<Dibujables> undoablePaths = play.getUndoablePaths();
 		
 		for (Dibujables path : undoablePaths) {
@@ -291,16 +295,24 @@ public class DrawingView extends View {
                 setSelectedPath(movable);
                 selectMovable();
             } else {
-                initializePaints();
-                mPath.reset();
-                mPath.moveTo(x, y);
-                mX = x;
-                mY = y;
+                startPainting(x, y);
             }
         }
 	}
 
-	private void selectMovable() {
+    private void startPainting(float x, float y) {
+        initializePaints();
+        initializePaths(x, y);
+    }
+
+    private void initializePaths(float x, float y) {
+        mPath.reset();
+        mPath.moveTo(x, y);
+        mX = x;
+        mY = y;
+    }
+
+    private void selectMovable() {
 		if(movable!=null) {
 			movable.setSelected(true);
 		}
@@ -373,15 +385,7 @@ public class DrawingView extends View {
 		android.util.Log.d(TAG, "touch_up");
         if(playerButton==null) {
             if (!isOrganizationMode()) {
-                mPath.lineTo(mX, mY);
-                // commit the path to our offscreen
-                // mCanvas.drawPath(mPath, mPaint);
-                // kill this so we don't double draw
-                // mPath.reset();
-                mPath.setColor(getColorPerLineMode(lineMode));
-                addPathsToQueue(mPath);
-                // mPath.reset();
-                movable=null;
+                endLinePaint();
             }
         } else {
             String tag = (String) playerButton.getTag();
@@ -412,7 +416,23 @@ public class DrawingView extends View {
         }
 	}
 
-	private void addPathsToQueue(ColorPath mPath) {
+    private void endLinePaint() {
+        mPath.lineTo(mX, mY);
+        // commit the path to our offscreen
+        // mCanvas.drawPath(mPath, mPaint);
+        // kill this so we don't double draw
+        // mPath.reset();
+        mPath.setColor(getColorPerLineMode(lineMode));
+
+
+        Canvas c = new Canvas();
+        c.setBitmap(mLinesBitmap);
+        c.drawPath(mPath,mBitmapPaint);
+        // mPath.reset();
+        movable=null;
+    }
+
+    private void addPathsToQueue(ColorPath mPath) {
 		play.addPath(mPath);
         if(listener !=null && isShape(mPath)) {
             listener.onPlayerAdded();
