@@ -22,13 +22,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	public static final String PLAYS_DATE = "date";
 	public static final String PLAYS_FIELD = "field";
 	public static final String PLAYS_DATA = "data";
+    public static final String PLAYS_LINES_DATA = "lines_data";
     public static final String PLAYS_VERSION = "version";
     public static final String PLAYS_FIELD_TYPE = "type";
 	
 	private static final String CREATE_TABLE_PLAYS = "create table " + PLAYS_TABLE_NAME + " (" +
 													 PLAYS_ID + " integer primary key," +
 													 PLAYS_NAME + " text not null," +
-													 PLAYS_DATA + " text not null," + 
+													 PLAYS_DATA + " text not null," +
+                                                     PLAYS_LINES_DATA + " blob not null," +
 													 PLAYS_FIELD + " text not null," +
                                                      PLAYS_FIELD_TYPE + " text not null," +
                                                      PLAYS_VERSION + " integer not null," +
@@ -90,18 +92,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 	}
 	
-	public long insertPlay(String name, String field,String type , String play, long date){
+	public long insertPlay(String name, String field, String type, String play, long date, byte[] byteArray){
 		SQLiteDatabase db = getWritableDatabase();
         long id = -1;
         try{
-		ContentValues cv = new ContentValues();
-		cv.put(PLAYS_NAME, name);
-		cv.put(PLAYS_DATE, date);
-		cv.put(PLAYS_FIELD, field);
-        cv.put(PLAYS_FIELD_TYPE, type);
-        cv.put(PLAYS_VERSION, mVersion);
-		cv.put(PLAYS_DATA, play);
-	
+        ContentValues cv = getContentValues(name, field, type, play, date, byteArray);
+
 		id =  db.insertOrThrow(PLAYS_TABLE_NAME, null, cv);
         }catch (Exception e) {
             e.printStackTrace();
@@ -132,18 +128,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		
 	}
 
-    public void updatePlay(long id,String name, String field,String type, String play, long date) {
+    public void updatePlay(long id, String name, String field, String type, String play, long date, byte[] byteArray) {
         SQLiteDatabase db = getWritableDatabase();
 
+        ContentValues cv = getContentValues(name, field, type, play, date, byteArray);
+
+         db.update(PLAYS_TABLE_NAME, cv, PLAYS_ID + "=?", new String[]{"" + id});
+
+    }
+
+    private ContentValues getContentValues(String name, String field, String type, String play, long date, byte[] byteArray) {
         ContentValues cv = new ContentValues();
         cv.put(PLAYS_NAME, name);
         cv.put(PLAYS_DATE, date);
         cv.put(PLAYS_FIELD, field);
         cv.put(PLAYS_FIELD_TYPE, type);
         cv.put(PLAYS_DATA, play);
-
-         db.update(PLAYS_TABLE_NAME, cv, PLAYS_ID + "=?", new String[]{"" + id});
-
+        cv.put(PLAYS_VERSION, 2);
+        cv.put(PLAYS_LINES_DATA, byteArray);
+        return cv;
     }
 
     public void deletePlayComponents(long id) {

@@ -11,6 +11,7 @@ public class Play implements Serializable {
 
     private long id=-1;
     private String field_type;
+    private byte[] linesByteArray;
 
     public void setId(long id) {
         this.id = id;
@@ -100,5 +101,13 @@ public class Play implements Serializable {
 
     public String getFieldType() {
         return field_type;
+    }
+
+    public void setLinesByteArray(byte[] linesByteArray) {
+        this.linesByteArray = linesByteArray;
+    }
+
+    public byte[] getLinesByteArray(){
+        return linesByteArray;
     }
 }

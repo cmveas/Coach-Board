@@ -11,6 +11,8 @@ import com.sportcoachhelper.CoachApp;
 import com.sportcoachhelper.R;
 import com.sportcoachhelper.paths.BallPath;
 
+import java.io.ByteArrayOutputStream;
+
 public class Utility {
 
 	public static final boolean DEBUG_ENABLED = true;
@@ -106,5 +108,35 @@ public class Utility {
         options.inJustDecodeBounds = false;
         return BitmapFactory.decodeResource(resources, resource,options);
     }
-	
+
+    public static int getPercentageDimension(int x,int totalDimension) {
+        return (x*100)/totalDimension;
+    }
+
+    /**
+     * Transforms the bitmap into a Byte array
+     * @param bmp Bitmap to transform
+     * @return Array of bytes that represents the bitmap
+     */
+    public static byte[] getByteArray(Bitmap bmp){
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bmp.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        return stream.toByteArray();
+    }
+
+
+    public static Bitmap decodeSampledBitmapFromArray(byte[] linesArray, int screenWidth, int screenHeight) {
+        // First decode with inJustDecodeBounds=true to check dimensions
+        final BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeByteArray(linesArray,0,linesArray.length,options);
+
+        // Calculate inSampleSize
+        options.inSampleSize = calculateInSampleSize(options, screenWidth, screenHeight);
+
+        // Decode bitmap with inSampleSize set
+        options.inJustDecodeBounds = false;
+        return BitmapFactory.decodeByteArray(linesArray,0,linesArray.length,options);
+
+    }
 }

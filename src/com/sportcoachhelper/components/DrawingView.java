@@ -4,12 +4,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.DashPathEffect;
 import android.graphics.Matrix;
 import android.graphics.Paint;
-import android.os.Environment;
 import android.util.AttributeSet;
 import android.view.Display;
 import android.view.MotionEvent;
@@ -44,16 +42,14 @@ import org.json.JSONObject;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.io.StreamCorruptedException;
 import java.util.ArrayList;
 
 public class DrawingView extends View {
 
-	private Bitmap mBitmap;
+	private Bitmap mCourtBackgroundBitmap;
 	private Canvas mCanvas;
 	private LinePath mPath;
 	private Paint mBitmapPaint;
@@ -99,16 +95,20 @@ public class DrawingView extends View {
 
         mStorageManager =  ((CoachApp)getContext().getApplicationContext()).getStorageManager();
 
+        getScreenDimensions();
+        play = new Play();
+		play.setFieldType(getContext().getString(R.string.full));
+	}
+
+    private void getScreenDimensions() {
         if(getContext() instanceof Activity) {
             Display display = ((Activity)getContext()).getWindowManager().getDefaultDisplay();
             screenWidth = display.getWidth();
             screenHeight = display.getHeight();
         }
-		play = new Play();
-		play.setFieldType(getContext().getString(R.string.full));
-	}
+    }
 
-	private void initializePaints() {
+    private void initializePaints() {
 		
 		mPaint = new Paint();
 		mPaint.setAntiAlias(true);
@@ -164,7 +164,7 @@ public class DrawingView extends View {
 	@Override
 	protected void onSizeChanged(int w, int h, int oldw, int oldh) {
 		super.onSizeChanged(w, h, oldw, oldh);
-		initializeField(w, h);
+		initializeField((int) w, (int) h);
 		
 		if(template!=null) {
 			ArrayList<TemplateItem> templates = template.getPlayers();
@@ -197,18 +197,34 @@ public class DrawingView extends View {
 		this.w=w;
 		this.h=h;
 		if(w>0 && h>0) {
-			mBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
-            mLinesBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
-			mCanvas = new Canvas(mBitmap);
-			Bitmap bitmap = getFieldFromSelection();
-            if(bitmap!=null) {
-			    Bitmap resizedBitmap = Utility.getResizedBitmap(bitmap, h, w);
-			    mCanvas.drawBitmap(resizedBitmap, new Matrix(), new Paint());
-            }
+            initializeFieldBitmap(w, h);
+            initializeLinesBitmap(w, h);
+
 		}
 	}
 
-	private Bitmap getFieldFromSelection() {
+    private void initializeFieldBitmap(int w, int h) {
+        mCourtBackgroundBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
+        mCanvas = new Canvas(mCourtBackgroundBitmap);
+        Bitmap bitmap = getFieldFromSelection();
+        if(bitmap!=null) {
+            Bitmap resizedBitmap = Utility.getResizedBitmap(bitmap, h, w);
+            mCanvas.drawBitmap(resizedBitmap, new Matrix(), new Paint());
+        }
+    }
+
+    private void initializeLinesBitmap(int w, int h) {
+        mLinesBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
+        byte[] linesArray = play!=null && play.getLinesByteArray()!=null ? play.getLinesByteArray() : null;
+
+        if(linesArray!=null) {
+            Bitmap bitmap = Utility.decodeSampledBitmapFromArray(linesArray, screenWidth, screenHeight);
+            Canvas canvas = new Canvas(mLinesBitmap);
+            mCanvas.drawBitmap(bitmap, new Matrix(), new Paint());
+        }
+    }
+
+    private Bitmap getFieldFromSelection() {
 		Bitmap bitmap = null;
 		Context context = getContext();
 		final String volley = context.getString(R.string.voley);
@@ -257,23 +273,35 @@ public class DrawingView extends View {
 		
 		//canvas.drawColor(0xFFFFFFFF);
 
-		canvas.drawBitmap(mBitmap, 0, 0, mBitmapPaint);
+        drawField(canvas);
 
-        canvas.drawBitmap(mLinesBitmap, 0, 0, mBitmapPaint);
+        drawLines(canvas);
 
-		ArrayList<Dibujables> undoablePaths = play.getUndoablePaths();
-		
-		for (Dibujables path : undoablePaths) {
-			path.draw(canvas);
-			
-		}
+        drawPlayers(canvas);
 
 		canvas.drawPath(mPath, mPaint);
 		long last = System.currentTimeMillis();
 		android.util.Log.d(TAG, "onDraw Finished:" + (last - now) + "now: " + now + " last:" + last);
 	}
 
-	private float mX, mY;
+    private void drawField(Canvas canvas) {
+        canvas.drawBitmap(mCourtBackgroundBitmap, 0, 0, mBitmapPaint);
+    }
+
+    private void drawLines(Canvas canvas) {
+        canvas.drawBitmap(mLinesBitmap, 0, 0, mBitmapPaint);
+    }
+
+    private void drawPlayers(Canvas canvas) {
+        ArrayList<Dibujables> undoablePaths = play.getUndoablePaths();
+
+        for (Dibujables path : undoablePaths) {
+            path.draw(canvas);
+
+        }
+    }
+
+    private float mX, mY;
 	private Paint ballPaint;
 	private Detectable movable;
 	private String lineMode = getContext().getString(R.string.continuous_line_mode);
@@ -418,17 +446,13 @@ public class DrawingView extends View {
 
     private void endLinePaint() {
         mPath.lineTo(mX, mY);
-        // commit the path to our offscreen
-        // mCanvas.drawPath(mPath, mPaint);
-        // kill this so we don't double draw
-        // mPath.reset();
+
         mPath.setColor(getColorPerLineMode(lineMode));
 
 
         Canvas c = new Canvas();
         c.setBitmap(mLinesBitmap);
-        c.drawPath(mPath,mBitmapPaint);
-        // mPath.reset();
+        mPath.draw(c);
         movable=null;
     }
 
@@ -500,6 +524,7 @@ public class DrawingView extends View {
 
 	public void clearBoard() {
 		play.removeAllMoves();
+        play.setName("");
 		
 		if(mPlayerPath!=null) {
 			mPlayerPath.reset();
@@ -534,8 +559,8 @@ public class DrawingView extends View {
 		mPlayerPath = new TrianglePath(team.getPaint(),x,y);	
 		TemplateItem item = new TemplateItem();
 		item.setShape(TemplateItem.SHAPE_TRIANGLE);
-		item.setxPercentage(getPercentageWidth(x));
-		item.setyPercentage(getPercentageHeight(y));
+		item.setxPercentage(Utility.getPercentageDimension(x, getWidth()));
+		item.setyPercentage(Utility.getPercentageDimension(y, getHeight()));
 		((TrianglePath)mPlayerPath).setTeam(team.getNumber());
 		setPathSelected(mPlayerPath);
 	}
@@ -574,16 +599,7 @@ public class DrawingView extends View {
 		invalidate();
 	}
 
-	private int getPercentageWidth(int x) {
-		int totalWidth = getWidth();
-		return (x*100)/totalWidth;
-	}
-	
 
-	private int getPercentageHeight(int y) {
-		int totalHeight = getHeight();
-		return (y*100)/totalHeight;
-	}
 
 
 
@@ -599,92 +615,12 @@ public class DrawingView extends View {
 
 	public void setField(String label) {
 		play.setField(label);
-		initializeField(w, h);
+		initializeField((int) w, (int) h);
 	}
 
-	public void saveDocument(String name) {
 
-	try {
-        play.setName(name);
-		if(play.getId()!=-1) {
-            mStorageManager.updatePlay(play.getId(),name, play.getField(), play.getFieldType() , "", System.currentTimeMillis());
 
-        } else {
-            long playId=  mStorageManager.insertPlay(name, play.getField(),play.getFieldType() , "", System.currentTimeMillis());
-            play.setId(playId);
 
-        }
-
-            createDBComponents(play.getId());
-            createTemplate();
-
-	} catch (Exception e) {
-		e.printStackTrace();
-	}
-	}
-
-    private void createDBComponents(long playId) {
-        try{
-        if(playId!=-1) {
-            ArrayList<Dibujables> components = play.getUndoablePaths();
-            int index = 0;
-            for(Dibujables component : components){
-                JSONObject data = new JSONObject();
-                android.util.Log.d(TAG,"Saving shape: " + component.getComponentType());
-                data.put("DATA",component.toJsonData());
-                mStorageManager.insertPlayComponent(component.getComponentType(), data.toString(), playId, index);
-                index++;
-            }
-            }
-        } catch(Exception e){
-            e.printStackTrace();
-        }
-    }
-
-    /**
-	 * Creation and template saving
-	 */
-	private void createTemplate() {
-		Template template = new Template();
-		template.setField(play.getField());
-		template.setName(play.getName());
-		ArrayList<Dibujables> plays = play.getUndoablePaths();
-		for (Dibujables dibujable : plays) {
-			if(dibujable instanceof ShapePath) {
-				TemplateItem item = new TemplateItem();
-				int shape = -1;
-				if(dibujable instanceof CirclePath) {
-					shape = TemplateItem.SHAPE_CIRCLE;
-				} else if(dibujable instanceof TrianglePath) {
-					shape = TemplateItem.SHAPE_TRIANGLE;
-				} else if(dibujable instanceof SquarePath) {
-					shape = TemplateItem.SHAPE_SQUARE;
-				} 
-				item.setShape(shape);
-				item.setxPercentage(getXPercentageOf(((ShapePath) dibujable).getX()));
-				item.setyPercentage(getYPercentageOf(((ShapePath) dibujable).getY()));
-				template.add(item);
-			}
-		}
-		File toSaveFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath()
-				+ "/" + play.getName() + "_template");	
-		
-		FileOutputStream output;
-		try {
-			if(!toSaveFile.exists()) {
-				toSaveFile.createNewFile();
-			}
-			output = new FileOutputStream(toSaveFile);
-
-			ObjectOutputStream stream = new ObjectOutputStream(output);
-			stream.writeObject(template);
-			stream.flush();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
 
 	private int getYPercentageOf(int y) {
 		int totalHeight = getHeight();
@@ -749,6 +685,7 @@ public class DrawingView extends View {
 
 
     }
+
 
     private void processBallData(String data) {
         try {
@@ -933,4 +870,9 @@ public class DrawingView extends View {
     public void setSidesMargins(int margin) {
 
     }
+
+    public void saveDocument(String playName) {
+        mStorageManager.saveDocument(play,playName,getWidth(),getHeight(),mLinesBitmap);
+    }
+
 }
