@@ -8,7 +8,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.sportcoachhelper.MainActivity;
+import com.sportcoachhelper.DrawPlayActivity;
 import com.sportcoachhelper.R;
 
 public class ClearDialog extends DialogFragment {
@@ -34,7 +34,7 @@ public class ClearDialog extends DialogFragment {
 			
 			@Override
 			public void onClick(View v) {
-				MainActivity activity = (MainActivity)getActivity();
+				DrawPlayActivity activity = (DrawPlayActivity)getActivity();
 				activity.onFinishClearDialog(true);
 				dismiss();
 			}
@@ -44,7 +44,7 @@ public class ClearDialog extends DialogFragment {
 			
 			@Override
 			public void onClick(View v) {
-				MainActivity activity = (MainActivity)getActivity();
+				DrawPlayActivity activity = (DrawPlayActivity)getActivity();
 				activity.onFinishClearDialog(false);
 				dismiss();
 			}

@@ -35,7 +35,7 @@ import com.sportcoachhelper.paths.ColorPath;
 import com.sportcoachhelper.managers.TeamManager;
 import com.sportcoachhelper.util.Utility;
 
-public class MainActivity extends GraphicsActivity implements
+public class DrawPlayActivity extends GraphicsActivity implements
 		OnComponentSelectedListener, ColorPickerDialog.OnColorChangedListener {
 
 	private static final int PICKFILE_RESULT_CODE = 0;
@@ -64,6 +64,7 @@ public class MainActivity extends GraphicsActivity implements
     private View dottedBackground;
     private View rightEmptySpace;
     private View leftEmptySpace;
+    private ToggleButton eraserLineMode;
 
     @Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -112,6 +113,7 @@ public class MainActivity extends GraphicsActivity implements
 		organizationMode = (ToggleButton) findViewById(R.id.organization_mode);
 		continuousLineMode = (ToggleButton) findViewById(R.id.continuous_line_mode);
 		dottedLineMode = (ToggleButton) findViewById(R.id.dotted_line_mode);
+        eraserLineMode = (ToggleButton) findViewById(R.id.eraser_line_mode);
         layoutToolBar2 = (LinearLayout) findViewById(R.id.layoutToolBar2);
         leftEmptySpace = findViewById(R.id.leftEmptySpace);
         rightEmptySpace= findViewById(R.id.rightEmptySpace);
@@ -187,6 +189,7 @@ public class MainActivity extends GraphicsActivity implements
     private void setInitialLineColors() {
         dottedBackground.setBackgroundColor(getResources().getColor(android.R.color.black));
         continuousBackground.setBackgroundColor(getResources().getColor(android.R.color.black));
+
     }
 
     @Override
@@ -283,8 +286,36 @@ public class MainActivity extends GraphicsActivity implements
             }
         });
 
+        eraserLineMode.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked) {
+                    setEraseLine();
+                    modeChanged();
+                } 	else {
+                    checkAButtonIsPressed(eraserLineMode);
+                }
+            }
+        })	;
+
         loadPlayerListeners();
 	}
+
+    private void setEraseLine() {
+        continuousLineMode.setChecked(false);
+        organizationMode.setChecked(false);
+        dottedLineMode.setChecked(false);
+        playerImage.setChecked(false);
+        playerImage2.setChecked(false);
+        squareTool.setChecked(false);
+        squareTool2.setChecked(false);
+        triangleTool.setChecked(false);
+        triangleTool2.setChecked(false);
+        ballTool.setChecked(false);
+        drawingView.setMode(getString(R.string.erase_mode));
+        drawingView.setLineMode(getString(R.string.continuous_line_mode));
+    }
 
     private void loadPlayerListeners() {
         playerImage.setOnCheckedChangeListener(new OnCheckedChangeListener() {
@@ -389,6 +420,7 @@ public class MainActivity extends GraphicsActivity implements
         squareTool2.setChecked(false);
         triangleTool.setChecked(false);
         triangleTool2.setChecked(false);
+        eraserLineMode.setChecked(false);
         drawingView.setLastSelectedPlayerView(ballTool);
     }
 
@@ -408,6 +440,7 @@ public class MainActivity extends GraphicsActivity implements
         triangleTool.setChecked(false);
         triangleTool2.setChecked(false);
         ballTool.setChecked(false);
+        eraserLineMode.setChecked(false);
         drawingView.setMode(getString(R.string.drawing_mode));
 		drawingView.setLineMode(getString(R.string.continuous_line_mode));
 		
@@ -498,13 +531,14 @@ public class MainActivity extends GraphicsActivity implements
         triangleTool.setChecked(false);
         triangleTool2.setChecked(false);
         ballTool.setChecked(false);
+        eraserLineMode.setChecked(false);
 		drawingView.setMode(getString(R.string.drawing_mode));
 		drawingView.setLineMode(getString(R.string.dotted_line_mode));
 		
 	}
 
 	protected void checkAButtonIsPressed(ToggleButton selectedButton) {
-		if(!organizationMode.isChecked() && !continuousLineMode.isChecked() && !dottedLineMode.isChecked()) {
+		if(!organizationMode.isChecked() && !continuousLineMode.isChecked() && !dottedLineMode.isChecked() && !eraserLineMode.isChecked()) {
 			selectedButton.setChecked(true);
 		}
 		

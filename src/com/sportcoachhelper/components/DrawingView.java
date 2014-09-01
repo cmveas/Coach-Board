@@ -8,6 +8,8 @@ import android.graphics.Canvas;
 import android.graphics.DashPathEffect;
 import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
 import android.util.AttributeSet;
 import android.view.Display;
 import android.view.MotionEvent;
@@ -111,14 +113,26 @@ public class DrawingView extends View {
     private void initializePaints() {
 		
 		mPaint = new Paint();
-		mPaint.setAntiAlias(true);
-		mPaint.setDither(true);
-		mPaint.setColor(getColorPerLineMode(lineMode));
-		mPaint.setStyle(Paint.Style.STROKE);
-		mPaint.setStrokeJoin(Paint.Join.ROUND);
-		mPaint.setStrokeCap(Paint.Cap.ROUND);
-		mPaint.setStrokeWidth(4);
-		mPaint.setPathEffect(getLineMode(lineMode));
+
+        if(isEraser()) {
+            mPaint.setXfermode(new PorterDuffXfermode(
+                    PorterDuff.Mode.CLEAR));
+            mPaint.setColor(0x00000000);
+            mPaint.setStyle(Paint.Style.STROKE);
+            mPaint.setStrokeJoin(Paint.Join.ROUND);
+            mPaint.setStrokeCap(Paint.Cap.ROUND);
+            mPaint.setStrokeWidth(20);
+        } else {
+            mPaint.setAntiAlias(true);
+            mPaint.setDither(true);
+            mPaint.setColor(getColorPerLineMode(lineMode));
+            mPaint.setStyle(Paint.Style.STROKE);
+            mPaint.setStrokeJoin(Paint.Join.ROUND);
+            mPaint.setStrokeCap(Paint.Cap.ROUND);
+            mPaint.setStrokeWidth(4);
+            mPaint.setPathEffect(getLineMode(lineMode));
+        }
+
 		
 		mPath = new LinePath(mPaint);
 		mPath.setLineMode(lineMode);
@@ -270,8 +284,6 @@ public class DrawingView extends View {
 	protected void onDraw(Canvas canvas) {
 		long now = System.currentTimeMillis();
 		android.util.Log.d(TAG, "onDraw Started");
-		
-		//canvas.drawColor(0xFFFFFFFF);
 
         drawField(canvas);
 
@@ -279,10 +291,16 @@ public class DrawingView extends View {
 
         drawPlayers(canvas);
 
-		canvas.drawPath(mPath, mPaint);
-		long last = System.currentTimeMillis();
+        drawCurrentLine(canvas);
+        long last = System.currentTimeMillis();
 		android.util.Log.d(TAG, "onDraw Finished:" + (last - now) + "now: " + now + " last:" + last);
 	}
+
+    private void drawCurrentLine(Canvas canvas) {
+        if(mPath!=null && !isEraser()) {
+            canvas.drawPath(mPath, mPaint);
+        }
+    }
 
     private void drawField(Canvas canvas) {
         canvas.drawBitmap(mCourtBackgroundBitmap, 0, 0, mBitmapPaint);
@@ -406,7 +424,8 @@ public class DrawingView extends View {
 				mX = x;
 				mY = y;
 			}
-		}
+            drawLineToLinesPaint();
+        }
 	}
 
 	private void touch_up(float x, float y) {
@@ -446,14 +465,18 @@ public class DrawingView extends View {
 
     private void endLinePaint() {
         mPath.lineTo(mX, mY);
+        drawLineToLinesPaint();
+        mPath = null;
+        movable=null;
+    }
 
+    private void drawLineToLinesPaint() {
         mPath.setColor(getColorPerLineMode(lineMode));
 
 
         Canvas c = new Canvas();
         c.setBitmap(mLinesBitmap);
         mPath.draw(c);
-        movable=null;
     }
 
     private void addPathsToQueue(ColorPath mPath) {
@@ -821,6 +844,13 @@ public class DrawingView extends View {
 		}
 		return result;
 	}
+
+    public boolean isEraser(){
+        if(stateMode.equals(getContext().getString(R.string.erase_mode))){
+           return true;
+        }
+        return false;
+    }
 
 	public void setModeChanged() {
 		disSelectMovable();

@@ -58,6 +58,7 @@
     <string name="help_trash_can"> <b>Trash Bin:</b>The Trash Bin can be used to erase players, lines or the ball. It must be used in selection mode and can only be seen if anything is selected (Selecting a line can be tricky, Im still fixing this editing feature)</string>
     <string name="rno_save_are_you_sure_exit">The play has not been saved. Are you sure you want to exit?</string>
     <string name="no_save_are_you_sure_exit">Some not saved changes could be lost, are yo sure you want to exit?</string>
+    <string name="erase_mode">erase</string>
 
     <string-array name="fields">
 		<item >@string/soccer</item>

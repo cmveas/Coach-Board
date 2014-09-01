@@ -24,7 +24,7 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.sportcoachhelper.MainActivity;
+import com.sportcoachhelper.DrawPlayActivity;
 import com.sportcoachhelper.R;
 import com.sportcoachhelper.managers.PlaysManager;
 import com.sportcoachhelper.model.Play;
@@ -74,7 +74,7 @@ public class ScreenSlidePageFragment extends Fragment {
 			
 			@Override
 			public void onClick(View v) {
-					Intent intent = new Intent(getActivity(),MainActivity.class);
+					Intent intent = new Intent(getActivity(),DrawPlayActivity.class);
 					intent.putExtra("field", label);
                      intent.putExtra(TYPE_FIELD, type);
 					startActivity(intent);
@@ -89,7 +89,7 @@ public class ScreenSlidePageFragment extends Fragment {
         	public void onItemClick(AdapterView<?> paramAdapterView,
         			View paramView, int position, long paramLong) {
         		Play play = (Play) playsAdapter.getItem(position);
-        		Intent intent = new Intent(getActivity(),MainActivity.class);
+        		Intent intent = new Intent(getActivity(),DrawPlayActivity.class);
         		intent.putExtra(PLAY, play.getId());
         		intent.putExtra(TYPE, "play");
                 intent.putExtra(TYPE_FIELD, play.getFieldType());
@@ -106,7 +106,7 @@ public class ScreenSlidePageFragment extends Fragment {
         			View paramView, int position, long paramLong) {
         		TemplateAdapter templateAdapter = (TemplateAdapter) paramAdapterView.getAdapter();
         		Template template = (Template) templateAdapter.getItem(position);
-        		Intent intent = new Intent(getActivity(),MainActivity.class);
+        		Intent intent = new Intent(getActivity(),DrawPlayActivity.class);
         		intent.putExtra(PLAY, template.getName());
         		intent.putExtra(TYPE, "template");
                 intent.putExtra(TYPE_FIELD, getString(R.string.full));

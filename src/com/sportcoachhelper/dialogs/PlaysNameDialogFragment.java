@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.sportcoachhelper.MainActivity;
+import com.sportcoachhelper.DrawPlayActivity;
 import com.sportcoachhelper.R;
 
 public class PlaysNameDialogFragment extends DialogFragment {
@@ -45,7 +45,7 @@ public class PlaysNameDialogFragment extends DialogFragment {
 			public void onClick(View v) {
 				String name = edv.getText().toString();
 				if(name!=null && !name.trim().equals("")) {
-					MainActivity activity = (MainActivity)getActivity();
+					DrawPlayActivity activity = (DrawPlayActivity)getActivity();
 					activity.saveDocument(name);
 					dismiss();
 				}
