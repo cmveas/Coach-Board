@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- From: file:/Users/claudioveas/Development/repository/Coach-Board/app/src/main/res/values-es/strings.xml -->
+    <eat-comment />
+
+    <string-array name="fields">
+        <item>@string/soccer</item>
+        <item>@string/voley</item>
+        <item>@string/basketball</item>
+    </string-array>
+
+    <integer-array name="fieldsIndexes">
+        <item>@drawable/soccer</item>
+        <item>@drawable/voley</item>
+        <item>@drawable/basket</item>
+    </integer-array>
+
+    <string-array name="main_line_options">
+        <item>@string/continuous_line_mode</item>
+        <item>@string/dotted_line_mode</item>
+    </string-array>
+    <string-array name="main_mode_options">
+        <item>@string/organization_mode</item>
+        <item>@string/drawing_mode</item>
+    </string-array>
+    <!-- From: file:/Users/claudioveas/Development/repository/Coach-Board/app/src/main/res/values-es/arrays.xml -->
+    <eat-comment />
+
+    <string-array name="types_of_fields">
+        <item>@string/full</item>
+        <item>@string/attack_half</item>
+        <item>@string/defense_half</item>
+    </string-array>
+    <!-- From: file:/Users/claudioveas/Development/repository/Coach-Board/app/src/main/res/values-es/strings.xml -->
+    <eat-comment />
+
+    <string name="app_name">Pizarra para entrenadores</string>
+    <!-- From: file:/Users/claudioveas/Development/repository/Coach-Board/app/src/main/res/values-es/arrays.xml -->
+    <eat-comment />
+
+    <string name="attack_half">Mitad de Ataque</string>
+    <!-- From: file:/Users/claudioveas/Development/repository/Coach-Board/app/src/main/res/values-es/strings.xml -->
+    <eat-comment />
+
+    <string name="ball">ball</string>
+    <string name="basketball">Basket</string>
+    <string name="continuous_line_mode">Linea Continua</string>
+    <!-- From: file:/Users/claudioveas/Development/repository/Coach-Board/app/src/main/res/values-es/arrays.xml -->
+    <eat-comment />
+
+    <string name="defense_half">Mitad de Defensa</string>
+    <!-- From: file:/Users/claudioveas/Development/repository/Coach-Board/app/src/main/res/values-es/strings.xml -->
+    <eat-comment />
+
+    <string name="dotted_line_mode">Linea punteada</string>
+    <string name="drawing_mode">Modo Dibujo</string>
+    <string name="enter">Ingresar</string>
+    <string name="enter_play_name">Ingrese el nombre de la jugada</string>
+    <string name="field">Campo</string>
+    <!-- From: file:/Users/claudioveas/Development/repository/Coach-Board/app/src/main/res/values-es/arrays.xml -->
+    <eat-comment />
+
+    <string name="full">Completo</string>
+    <!-- From: file:/Users/claudioveas/Development/repository/Coach-Board/app/src/main/res/values-es/strings.xml -->
+    <eat-comment />
+
+    <string name="hello_world">Hello world!</string>
+    <string name="help_balls"><b>Pelotas</b></string>
+    <string name="help_balls_content">Las Pelotas pueden agregarse igual que los jugadores. Pueden ser agregadas y manipuladas siempre que se este en modo organización</string>
+    <string name="help_mode_content"><b> Modos de Dibujo</b></string>
+    <string name="help_mode_continuous"><br><b>Modo Linea continua:</b> Para dibujar lineas de trazo continuo (Al mantenerse apretada la linea, es posible cambiar el color de dibujado)</br></string>
+    <string name="help_mode_dotted"><br><b>Modo Linea punteada:</b> Para dibujar lineas de trazo punteado (Al mantenerse apretada la linea, es posible cambiar el color de dibujado)</br></string>
+    <string name="help_mode_selection"><br><b>Modo Selección:</b> Para agregar y  cambiar la posicion de los jugadores. En este modo se puede usar el icono de basura para borrar los jugadores, las lineas y la pelota</br></string>
+    <string name="help_players_content">Estos son los jugadores que pueden ser ubicados en el campo. Los jugadores pueden ser arrastrados (drag and drop) al campo, si es que el dispositivo lo permite o pueden ser seleccionados al tocar uno de ellos y luego volver a tocar en la posición de destino.</string>
+    <string name="help_round_player"><b>Jugador Circular:</b> Los jugadores circulares estan disponibles en todos los campos. Los jugadores negros son para el equipo local y los rojos para el visitante</string>
+    <string name="help_square_player"><b>Jugador cuadrado:</b> Los jugadores cuadrados estan disponibles solo en campos de voley. Los jugadores negros son para el equipo local y los rojos para el visitante</string>
+    <string name="help_trash_can"><b>Cesto de Basura:</b> El cesto de basura es utilizado para borrar jugadores, lineas o la pelota. Solo es visible si hay algo seleccionado (Seleccionar lineas puede presentar un reto, es una funcionalidad en progreso. Por favor tenga paciencia)</string>
+    <string name="help_triangle_player"><b>Jugador triangular:</b> Los jugadores triangulares estan disponibles solo en campos de voley. Los jugadores negros son para el equipo local y los rojos para el visitante</string>
+    <string name="helptitle">Ayuda</string>
+    <string name="localroundplayer">localroundplayer</string>
+    <string name="localsquareplayer">localsquareplayer</string>
+    <string name="localtriangleplayer">localtriangleplayer</string>
+    <string name="menu_clear">Nueva Pizarra</string>
+    <string name="menu_exit">Salir</string>
+    <string name="menu_help">Ayuda</string>
+    <string name="menu_open">Abrir</string>
+    <string name="menu_save">Guardar</string>
+    <string name="menu_settings">Configuración</string>
+    <string name="organization_mode">Modo Organización</string>
+    <string name="play_name">Nombre de la jugada</string>
+    <string name="saved_plays">Jugadas Guardadas</string>
+    <string name="setNumber">Rotulo</string>
+    <string name="soccer">Futbol</string>
+    <string name="soccerball">soccerball</string>
+    <string name="splash_title">Pizarra para Entrenador</string>
+    <string name="sure_want_clear">Está seguro que quiere empezar en una nueva pizarra?</string>
+    <string name="templates">Formaciones</string>
+    <string name="visit_and_like">Visita nuestra pagina y hazle "Me gusta"</string>
+    <string name="visitroundplayer">visitroundplayer</string>
+    <string name="visitsquareplayer">visitsquareplayer</string>
+    <string name="visittriangleplayer">visittriangleplayer</string>
+    <string name="voley">Voley</string>
+    <string name="voleyball">voley</string>
+
+</resources>

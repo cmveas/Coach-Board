@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ToggleButton
+        android:id="@+id/ballTool"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbar_button_height"
+        android:padding="10dp"
+        style="@style/volleyball_style"
+        android:tag="@string/ball"
+        android:src="@drawable/volleyball" >
+
+</ToggleButton><!-- From: file:/Users/claudioveas/Development/repository/Coach-Board/app/src/main/res/layout/voleyballcomponent.xml -->

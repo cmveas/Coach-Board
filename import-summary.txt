@@ -1,0 +1,178 @@
+ECLIPSE ANDROID PROJECT IMPORT SUMMARY
+======================================
+
+Ignored Files:
+--------------
+The following files were *not* copied into the new Gradle project; you
+should evaluate whether these are still needed in your project and if
+so manually move them:
+
+* .gitignore
+* .gitignore.save
+* .idea/
+* .idea/.fuse_hidden0000049600000001
+* .idea/.name
+* .idea/Coach-Board.iml
+* .idea/checkstyle-idea.xml
+* .idea/compiler.xml
+* .idea/copyright/
+* .idea/copyright/profiles_settings.xml
+* .idea/encodings.xml
+* .idea/libraries/
+* .idea/libraries/GoogleAdMobAdsSdk_6_4_1.xml
+* .idea/libraries/android_support_v13.xml
+* .idea/misc.xml
+* .idea/modules.xml
+* .idea/scopes/
+* .idea/scopes/scope_settings.xml
+* .idea/vcs.xml
+* .idea/workspace.xml
+* SportCoachHelper.iml
+* coach-board-key.keystore
+* docs/
+* docs/data tables.txt
+* docs/images/
+* docs/images/phil_jackson_1992_06_07.jpg
+* docs/images/soccer_half.xcf
+* docs/images/voley_half.xcf
+* docs/usefullcode
+* docs/web/
+* docs/web/VolleyballRotation.svg.png
+* ic_launcher-web.png
+* out/
+* out/production/
+* out/production/SportCoachHelper/
+* out/production/SportCoachHelper/SportCoachHelper.apk
+* out/production/SportCoachHelper/com/
+* out/production/SportCoachHelper/com/sportcoachhelper/
+* out/production/SportCoachHelper/com/sportcoachhelper/ActHelpPage.class
+* out/production/SportCoachHelper/com/sportcoachhelper/ActHomeScreen$1.class
+* out/production/SportCoachHelper/com/sportcoachhelper/ActHomeScreen$ScreenSlidePagerAdapter.class
+* out/production/SportCoachHelper/com/sportcoachhelper/ActHomeScreen.class
+* out/production/SportCoachHelper/com/sportcoachhelper/ActSplashScreen$1.class
+* out/production/SportCoachHelper/com/sportcoachhelper/ActSplashScreen.class
+* out/production/SportCoachHelper/com/sportcoachhelper/BuildConfig.class
+* out/production/SportCoachHelper/com/sportcoachhelper/CoachApp.class
+* out/production/SportCoachHelper/com/sportcoachhelper/ColorPickerDialog$1.class
+* out/production/SportCoachHelper/com/sportcoachhelper/ColorPickerDialog$ColorPickerView.class
+* out/production/SportCoachHelper/com/sportcoachhelper/ColorPickerDialog$OnColorChangedListener.class
+* out/production/SportCoachHelper/com/sportcoachhelper/ColorPickerDialog.class
+* out/production/SportCoachHelper/com/sportcoachhelper/DrawPlayActivity$1.class
+* out/production/SportCoachHelper/com/sportcoachhelper/DrawPlayActivity$10.class
+* out/production/SportCoachHelper/com/sportcoachhelper/DrawPlayActivity$11.class
+* out/production/SportCoachHelper/com/sportcoachhelper/DrawPlayActivity$12.class
+* out/production/SportCoachHelper/com/sportcoachhelper/DrawPlayActivity$13.class
+* out/production/SportCoachHelper/com/sportcoachhelper/DrawPlayActivity$14.class
+* out/production/SportCoachHelper/com/sportcoachhelper/DrawPlayActivity$15.class
+* out/production/SportCoachHelper/com/sportcoachhelper/DrawPlayActivity$16.class
+* out/production/SportCoachHelper/com/sportcoachhelper/DrawPlayActivity$2.class
+* out/production/SportCoachHelper/com/sportcoachhelper/DrawPlayActivity$3.class
+* out/production/SportCoachHelper/com/sportcoachhelper/DrawPlayActivity$4.class
+* out/production/SportCoachHelper/com/sportcoachhelper/DrawPlayActivity$5.class
+* out/production/SportCoachHelper/com/sportcoachhelper/DrawPlayActivity$6.class
+* out/production/SportCoachHelper/com/sportcoachhelper/DrawPlayActivity$7.class
+* out/production/SportCoachHelper/com/sportcoachhelper/DrawPlayActivity$8.class
+* out/production/SportCoachHelper/com/sportcoachhelper/DrawPlayActivity$9.class
+* out/production/SportCoachHelper/com/sportcoachhelper/DrawPlayActivity$TouchForDragListener.class
+* out/production/SportCoachHelper/com/sportcoachhelper/DrawPlayActivity.class
+* out/production/SportCoachHelper/com/sportcoachhelper/GraphicsActivity.class
+* out/production/SportCoachHelper/com/sportcoachhelper/PictureLayout.class
+* out/production/SportCoachHelper/com/sportcoachhelper/R$array.class
+* out/production/SportCoachHelper/com/sportcoachhelper/R$attr.class
+* out/production/SportCoachHelper/com/sportcoachhelper/R$color.class
+* out/production/SportCoachHelper/com/sportcoachhelper/R$dimen.class
+* out/production/SportCoachHelper/com/sportcoachhelper/R$drawable.class
+* out/production/SportCoachHelper/com/sportcoachhelper/R$id.class
+* out/production/SportCoachHelper/com/sportcoachhelper/R$layout.class
+* out/production/SportCoachHelper/com/sportcoachhelper/R$menu.class
+* out/production/SportCoachHelper/com/sportcoachhelper/R$string.class
+* out/production/SportCoachHelper/com/sportcoachhelper/R$style.class
+* out/production/SportCoachHelper/com/sportcoachhelper/R.class
+* out/production/SportCoachHelper/com/sportcoachhelper/components/
+* out/production/SportCoachHelper/com/sportcoachhelper/components/DrawingView$1.class
+* out/production/SportCoachHelper/com/sportcoachhelper/components/DrawingView.class
+* out/production/SportCoachHelper/com/sportcoachhelper/database/
+* out/production/SportCoachHelper/com/sportcoachhelper/database/DatabaseHelper.class
+* out/production/SportCoachHelper/com/sportcoachhelper/dialogs/
+* out/production/SportCoachHelper/com/sportcoachhelper/dialogs/ClearDialog$1.class
+* out/production/SportCoachHelper/com/sportcoachhelper/dialogs/ClearDialog$2.class
+* out/production/SportCoachHelper/com/sportcoachhelper/dialogs/ClearDialog.class
+* out/production/SportCoachHelper/com/sportcoachhelper/dialogs/PlaysNameDialogFragment$1.class
+* out/production/SportCoachHelper/com/sportcoachhelper/dialogs/PlaysNameDialogFragment.class
+* out/production/SportCoachHelper/com/sportcoachhelper/fragments/
+* out/production/SportCoachHelper/com/sportcoachhelper/fragments/ScreenSlidePageFragment$1.class
+* out/production/SportCoachHelper/com/sportcoachhelper/fragments/ScreenSlidePageFragment$2.class
+* out/production/SportCoachHelper/com/sportcoachhelper/fragments/ScreenSlidePageFragment$3.class
+* out/production/SportCoachHelper/com/sportcoachhelper/fragments/ScreenSlidePageFragment$4.class
+* out/production/SportCoachHelper/com/sportcoachhelper/fragments/ScreenSlidePageFragment$5.class
+* out/production/SportCoachHelper/com/sportcoachhelper/fragments/ScreenSlidePageFragment$6.class
+* out/production/SportCoachHelper/com/sportcoachhelper/fragments/ScreenSlidePageFragment$PlaysAdapter.class
+* out/production/SportCoachHelper/com/sportcoachhelper/fragments/ScreenSlidePageFragment$TemplateAdapter.class
+* out/production/SportCoachHelper/com/sportcoachhelper/fragments/ScreenSlidePageFragment$TypesListAdapter.class
+* out/production/SportCoachHelper/com/sportcoachhelper/fragments/ScreenSlidePageFragment.class
+* out/production/SportCoachHelper/com/sportcoachhelper/interfaces/
+* out/production/SportCoachHelper/com/sportcoachhelper/interfaces/OnComponentSelectedListener.class
+* out/production/SportCoachHelper/com/sportcoachhelper/managers/
+* out/production/SportCoachHelper/com/sportcoachhelper/managers/FontManager.class
+* out/production/SportCoachHelper/com/sportcoachhelper/managers/PlaysManager.class
+* out/production/SportCoachHelper/com/sportcoachhelper/managers/StorageManager.class
+* out/production/SportCoachHelper/com/sportcoachhelper/managers/TeamManager.class
+* out/production/SportCoachHelper/com/sportcoachhelper/managers/TemplateManager.class
+* out/production/SportCoachHelper/com/sportcoachhelper/model/
+* out/production/SportCoachHelper/com/sportcoachhelper/model/Play.class
+* out/production/SportCoachHelper/com/sportcoachhelper/model/Team.class
+* out/production/SportCoachHelper/com/sportcoachhelper/model/Template.class
+* out/production/SportCoachHelper/com/sportcoachhelper/model/TemplateItem.class
+* out/production/SportCoachHelper/com/sportcoachhelper/paths/
+* out/production/SportCoachHelper/com/sportcoachhelper/paths/BallPath.class
+* out/production/SportCoachHelper/com/sportcoachhelper/paths/CirclePath.class
+* out/production/SportCoachHelper/com/sportcoachhelper/paths/ColorPath.class
+* out/production/SportCoachHelper/com/sportcoachhelper/paths/LinePath.class
+* out/production/SportCoachHelper/com/sportcoachhelper/paths/SerializablePath.class
+* out/production/SportCoachHelper/com/sportcoachhelper/paths/ShapePath.class
+* out/production/SportCoachHelper/com/sportcoachhelper/paths/SquarePath.class
+* out/production/SportCoachHelper/com/sportcoachhelper/paths/TrianglePath.class
+* out/production/SportCoachHelper/com/sportcoachhelper/paths/interfaces/
+* out/production/SportCoachHelper/com/sportcoachhelper/paths/interfaces/Detectable.class
+* out/production/SportCoachHelper/com/sportcoachhelper/paths/interfaces/Dibujables.class
+* out/production/SportCoachHelper/com/sportcoachhelper/util/
+* out/production/SportCoachHelper/com/sportcoachhelper/util/Utility.class
+* proguard-project.txt
+
+Replaced Jars with Dependencies:
+--------------------------------
+The importer recognized the following .jar files as third party
+libraries and replaced them with Gradle dependencies instead. This has
+the advantage that more explicit version information is known, and the
+libraries can be updated automatically. However, it is possible that
+the .jar file in your project was of an older version than the
+dependency we picked, which could render the project not compileable.
+You can disable the jar replacement in the import wizard and try again:
+
+android-support-v4.jar => com.android.support:support-v4:19.1.0
+
+Moved Files:
+------------
+Android Gradle projects use a different directory structure than ADT
+Eclipse projects. Here's how the projects were restructured:
+
+* AndroidManifest.xml => app/src/main/AndroidManifest.xml
+* assets/ => app/src/main/assets/
+* libs/GoogleAdMobAdsSdk-6.4.1.jar => app/libs/GoogleAdMobAdsSdk-6.4.1.jar
+* res/ => app/src/main/res/
+* src/ => app/src/main/java/
+
+Next Steps:
+-----------
+You can now build the project. The Gradle project needs network
+connectivity to download dependencies.
+
+Bugs:
+-----
+If for some reason your project does not build, and you determine that
+it is due to a bug or limitation of the Eclipse to Gradle importer,
+please file a bug at http://b.android.com with category
+Component-Tools.
+
+(This import summary is for your information only, and can be deleted
+after import once you are satisfied with the results.)

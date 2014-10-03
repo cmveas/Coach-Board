@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- From: file:/Users/claudioveas/Development/repository/Coach-Board/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/18.0.0/res/values-large/values.xml -->
+    <eat-comment />
+
+    <bool name="abc_action_bar_embed_tabs_pre_jb">true</bool>
+    <bool name="abc_config_allowActionMenuItemTextWithIcon">true</bool>
+    <bool name="abc_split_action_bar_is_narrow">false</bool>
+
+    <dimen name="abc_config_prefDialogWidth">440dp</dimen>
+    <dimen name="abc_search_view_text_min_width">192dip</dimen>
+    <!-- From: file:/Users/claudioveas/Development/repository/Coach-Board/app/src/main/res/values-large/dimens.xml -->
+    <eat-comment />
+
+    <dimen name="court_padding">30dp</dimen>
+    <dimen name="editPlayerNumberSize">75dp</dimen>
+    <dimen name="half_field_padding">200dp</dimen>
+    <dimen name="lineBackgroundSize">10dp</dimen>
+    <dimen name="list_of_plays_padding">2dp</dimen>
+    <dimen name="pager_court_height">400dp</dimen>
+    <dimen name="pager_court_width">250dp</dimen>
+    <dimen name="play_list_title">60sp</dimen>
+    <dimen name="plays_name_list_size">24sp</dimen>
+    <dimen name="radio_button_text_size">24sp </dimen>
+    <dimen name="splash_btn_enter_size"> 72sp</dimen>
+    <dimen name="splash_title_size">108dp</dimen>
+    <dimen name="toolbar_button_height">75dp</dimen>
+    <dimen name="toolbar_width">75dp</dimen>
+    <dimen name="trash_bin_size">50dp</dimen>
+    <dimen name="types_of_field_size">60dp</dimen>
+    <!-- From: file:/Users/claudioveas/Development/repository/Coach-Board/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/18.0.0/res/values-large/values.xml -->
+    <eat-comment />
+
+    <integer name="abc_max_action_buttons">4</integer>
+    <!-- From: file:/Users/claudioveas/Development/repository/Coach-Board/app/src/main/res/values-large/styles.xml -->
+    <eat-comment />
+
+    <style name="AppBaseTheme">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+
+    <style name="splash_image_style">
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="splash_title_style">
+        <item name="android:textSize">@dimen/splash_title_size</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+</resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ToggleButton
+        android:id="@+id/ballTool"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbar_button_height"
+        android:padding="10dp"
+        android:tag="@string/ball"
+        style="@style/soccerball_style"
+         >
+
+</ToggleButton><!-- From: file:/Users/claudioveas/Development/repository/Coach-Board/app/src/main/res/layout/soccerbalcomponent.xml -->

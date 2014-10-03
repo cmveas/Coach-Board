@@ -1,0 +1,190 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" >
+
+    <ScrollView
+        android:id="@+id/layoutToolBar"
+        android:layout_width="@dimen/toolbar_width"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/layoutToolBar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@android:color/background_light">
+
+            <ToggleButton
+                android:id="@+id/playerTool"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/toolbar_button_height"
+                android:padding="10dp"
+                android:tag="@string/localroundplayer"
+                style="@style/local_round_player_style" />
+
+            <ToggleButton
+                android:id="@+id/triangleTool"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/toolbar_button_height"
+                android:padding="10dp"
+                android:tag="@string/localtriangleplayer"
+                style="@style/local_triangle_player_style" />
+
+            <ToggleButton
+                android:id="@+id/squareTool"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/toolbar_button_height"
+                android:padding="10dp"
+                android:tag="@string/localsquareplayer"
+                style="@style/local_square_player_style"/>
+            
+            <ToggleButton
+                android:id="@+id/playerTool2"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/toolbar_button_height"
+                android:padding="10dp"
+                android:tag="@string/visitroundplayer"
+                style="@style/visit_round_player_style"/>
+
+            <ToggleButton
+                android:id="@+id/triangleTool2"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/toolbar_button_height"
+                android:padding="10dp"
+                android:tag="@string/visittriangleplayer"
+                style="@style/visit_triangle_player_style"/>
+
+            <ToggleButton
+                android:id="@+id/squareTool2"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/toolbar_button_height"
+                android:padding="10dp"
+                android:tag="@string/visitsquareplayer"
+                style="@style/visit_square_player_style" />
+
+            <EditText
+                    android:id="@+id/playerNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/editPlayerNumberSize"
+                    android:inputType="number"
+                    android:padding="10dp"
+                    android:visibility="gone" />
+            <Button
+                    android:id="@+id/playerNumberButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/editPlayerNumberSize"
+                    android:padding="10dp"
+                    android:text="@string/setNumber"
+                    android:visibility="gone" />
+        </LinearLayout>
+    </ScrollView>
+
+    <View
+            android:layout_width="@dimen/half_field_padding"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@id/layoutToolBar"
+            android:id="@+id/leftEmptySpace"
+            android:visibility="gone"
+            ></View>
+   
+    
+    <com.sportcoachhelper.components.DrawingView
+        android:id="@+id/drawingPanel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:layout_toRightOf="@id/leftEmptySpace"
+        android:layout_toLeftOf="@+id/rightEmptySpace"
+        >
+    </com.sportcoachhelper.components.DrawingView>
+
+
+    <View
+            android:layout_width="@dimen/half_field_padding"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@+id/scrollbar2"
+            android:id="@+id/rightEmptySpace"
+            android:visibility="gone"
+            ></View>
+
+    
+
+    
+    <ScrollView
+        android:id="@id/scrollbar2"
+        android:layout_width="@dimen/toolbar_width"
+        android:layout_alignParentRight="true"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@android:color/background_light">
+
+       <LinearLayout
+            android:id="@+id/layoutToolBar2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            
+
+            <ToggleButton
+                android:id="@+id/organization_mode"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/toolbar_button_height"
+                android:padding="10dp"
+                style="@style/organization_button_style"
+                 />
+
+
+
+            <ToggleButton
+                android:id="@+id/continuous_line_mode"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/toolbar_button_height"
+                android:padding="10dp"
+                style="@style/continuous_line_button_style" />
+
+           <View
+                   android:layout_width="match_parent"
+                   android:layout_height="@dimen/lineBackgroundSize"
+                   android:id="@+id/continuousBackground">
+           </View>
+            
+             <ToggleButton
+                android:id="@+id/dotted_line_mode"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/toolbar_button_height"
+                android:padding="10dp"
+                style="@style/dotted_line_button_style" />
+
+           <ToggleButton
+               android:id="@+id/eraser_line_mode"
+               android:layout_width="match_parent"
+               android:layout_height="@dimen/toolbar_button_height"
+               android:padding="10dp"
+               style="@style/dotted_line_button_style" />
+
+
+           <View
+                   android:layout_width="match_parent"
+                   android:layout_height="@dimen/lineBackgroundSize"
+                   android:id="@+id/dottedBackground">
+           </View>
+
+           <ImageView
+                   android:id="@+id/trash"
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   android:visibility="gone"
+                   android:layout_gravity="bottom"
+                   android:src="@drawable/trash"
+                   android:onClick="eraseSelected" ></ImageView>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+
+</RelativeLayout><!-- From: file:/Users/claudioveas/Development/repository/Coach-Board/app/src/main/res/layout/activity_main.xml -->

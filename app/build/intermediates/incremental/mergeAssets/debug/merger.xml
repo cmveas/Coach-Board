@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="2" >
+
+    <dataSet config="18.0.0" >
+        <source path="/Users/claudioveas/Development/repository/Coach-Board/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/18.0.0/assets" />
+    </dataSet>
+    <dataSet config="18.0.0" >
+        <source path="/Users/claudioveas/Development/repository/Coach-Board/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/18.0.0/assets" />
+    </dataSet>
+    <dataSet config="main" >
+        <source path="/Users/claudioveas/Development/repository/Coach-Board/app/src/main/assets" >
+            <file
+                name="3-4-1-2_template"
+                path="/Users/claudioveas/Development/repository/Coach-Board/app/src/main/assets/3-4-1-2_template" />
+            <file
+                name="3-4-3_template"
+                path="/Users/claudioveas/Development/repository/Coach-Board/app/src/main/assets/3-4-3_template" />
+            <file
+                name="3-6-1_template"
+                path="/Users/claudioveas/Development/repository/Coach-Board/app/src/main/assets/3-6-1_template" />
+            <file
+                name="4-3-3_template"
+                path="/Users/claudioveas/Development/repository/Coach-Board/app/src/main/assets/4-3-3_template" />
+            <file
+                name="4-4-2_template"
+                path="/Users/claudioveas/Development/repository/Coach-Board/app/src/main/assets/4-4-2_template" />
+            <file
+                name="4-5-1_template"
+                path="/Users/claudioveas/Development/repository/Coach-Board/app/src/main/assets/4-5-1_template" />
+            <file
+                name="5-3-2_template"
+                path="/Users/claudioveas/Development/repository/Coach-Board/app/src/main/assets/5-3-2_template" />
+            <file
+                name="5-4-1_template"
+                path="/Users/claudioveas/Development/repository/Coach-Board/app/src/main/assets/5-4-1_template" />
+            <file
+                name="help.html"
+                path="/Users/claudioveas/Development/repository/Coach-Board/app/src/main/assets/help.html" />
+            <file
+                name="voley1_template"
+                path="/Users/claudioveas/Development/repository/Coach-Board/app/src/main/assets/voley1_template" />
+            <file
+                name="wit.ttf"
+                path="/Users/claudioveas/Development/repository/Coach-Board/app/src/main/assets/wit.ttf" />
+        </source>
+    </dataSet>
+    <dataSet config="debug" >
+        <source path="/Users/claudioveas/Development/repository/Coach-Board/app/src/debug/assets" />
+    </dataSet>
+
+</merger>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="ring" >
+    <size android:width="30dp" android:height="30dp"/>
+    <gradient android:startColor="#ff0000" android:endColor="#ff0000"/>
+	<stroke android:width="2dp" android:color="#ff0000" />
+</shape><!-- From: file:/Users/claudioveas/Development/repository/Coach-Board/app/src/main/res/drawable/round_player.xml -->
